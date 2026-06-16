@@ -9,3 +9,15 @@ out/
 coverage/
 .claude/
 **.local
+
+# build artifacts
+*.tsbuildinfo
+next-env.d.ts
+
+# expo / react-native
+.expo/
+dist/
+web-build/
+*.orig.*
+.metro-health-check*
+expo-env.d.ts

@@ -1,29 +1,25 @@
 {
-  "name": "daily-news-api",
+  "name": "daily-newx",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "typecheck": "tsc --noEmit",
-    "lint": "next lint --max-warnings 0",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "dev:api": "yarn workspace daily-news-api dev",
+    "build:api": "yarn workspace daily-news-api build",
+    "test:api": "yarn workspace daily-news-api test",
+    "typecheck:api": "yarn workspace daily-news-api typecheck",
+    "reader": "yarn workspace reader start",
+    "reader:web": "yarn workspace reader web",
+    "typecheck:reader": "yarn workspace reader typecheck",
+    "typecheck": "yarn typecheck:api && yarn typecheck:reader"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.45.0",
-    "next": "^14.2.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@types/node": "^20.14.0",
-    "@types/react": "^18.3.3",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.5",
-    "typescript": "^5.5.3",
-    "vitest": "^2.0.5"
+    "@supabase/ssr": "^0.12.0",
+    "@supabase/supabase-js": "^2.108.2"
   }
 }
