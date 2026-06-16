@@ -1,0 +1,84 @@
+{
+  "_note": "형식 검증용 샘플. 화면 식별자는 날짜 'YYYY-MM-DD호', 링크는 대시 없는 20260616. 일반 대중용 톤(특정 직군 한정 금지), 선택 필드는 의미 있을 때만. 실제 운영은 매일 10:00 KST 루틴이 1차 출처를 검증해 채운다.",
+  "issue": {
+    "issue_date": "2026-06-16",
+    "issue_no": 56,
+    "intro": "오늘은 '작고 무료로 쓸 수 있는 AI 모델이 어디까지 따라왔나'가 화제입니다. 컴퓨터에서 직접 돌리는 AI로 코딩을 대체할 수 있을지에 대한 토론, 그리고 AI가 쓴 코드의 안전성을 따져본 연구를 함께 봅니다.",
+    "outro": "무료·로컬 모델과 상용 모델의 거리가 좁혀지는 흐름입니다. 내일은 실제 현업에서 로컬 모델을 주력으로 쓴 사례가 나올지 지켜볼 만합니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "내 컴퓨터에서 직접 돌리는 AI로 코딩, 클로드·GPT를 대체할 수 있을까",
+      "tldr": "로컬 AI 모델이 상용 서비스를 대체할 수 있는지, 사용자들이 실제 경험을 모아 토론 중.",
+      "summary": "온라인 커뮤니티 해커뉴스에서 '내 컴퓨터에서 직접 돌리는 AI 모델(로컬 모델)만으로 일상 코딩을 완전히 대체한 사람이 있나'라는 질문이 큰 호응을 얻었습니다. 사람들이 속도, 설치 난이도, 결과 품질을 실제 경험으로 비교하고 있습니다.",
+      "key_points": [
+        "질문의 핵심: 가끔 실험이 아니라 '주력 도구'로 로컬 모델을 쓸 수 있는가",
+        "비교 기준: 응답 속도, 설치·설정 난이도, 코드 품질",
+        "반응: '특정 오픈 모델이면 상당 부분 커버된다' vs '작은 모델로는 한계' 등 현실적"
+      ],
+      "what_you_get": "유료 AI 서비스 대신 무료로 쓸 수 있는지, 어떤 모델이 쓸 만한지에 대한 솔직한 사용자 경험.",
+      "action": "토론 원문을 읽어보고, 관심 있으면 추천된 무료 모델을 직접 한 번 써보세요.",
+      "why_now": "비용·개인정보·인터넷 없이 쓰기를 고민하는 사람에게 참고가 되는 흐름.",
+      "source_url": "https://news.ycombinator.com/item?id=48542100",
+      "source_name": "hn-algolia",
+      "score": 8,
+      "story_slug": "local-model-replace-claude-gpt",
+      "tags": ["로컬AI", "오픈모델", "코딩도구"],
+      "entities": ["Hacker News", "Claude", "GPT"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-16"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "OpenAI 코덱스(Codex) 명령줄 도구 업데이트 — 웹 검색 기능 추가",
+      "tldr": "AI 코딩 도구가 작업 중 직접 웹 검색으로 최신 정보를 가져올 수 있게 됨.",
+      "summary": "OpenAI가 코딩을 돕는 명령줄 도구 'Codex CLI'의 새 버전을 내놨습니다. 이제 코드 작업 중에 도구가 직접 웹을 검색해 최신 정보를 참고할 수 있고, 외부 도구 연결 호환성도 좋아졌습니다.",
+      "key_points": [
+        "작업 도중 웹 검색 결과를 바로 받아와 참고",
+        "다양한 외부 도구와의 연결 안정성 향상",
+        "진단 명령에 환경 정보 추가(민감한 값은 가림)"
+      ],
+      "what_you_get": "AI가 옛 지식만이 아니라 실시간 정보를 보고 답하도록 만들 수 있음.",
+      "action": "이미 쓰는 사람은 최신 버전으로 업데이트하면 웹 검색 기능을 바로 써볼 수 있어요.",
+      "why_now": null,
+      "source_url": "https://github.com/openai/codex/releases",
+      "source_name": "github-releases",
+      "score": 7,
+      "story_slug": "openai-codex-cli-web-search",
+      "tags": ["AI코딩도구", "OpenAI"],
+      "entities": ["OpenAI", "Codex"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-15"
+    },
+    {
+      "category": "paper",
+      "position": 1,
+      "title": "AI가 고쳐 올린 코드, 품질과 보안은 괜찮을까 — 대규모 분석 연구",
+      "tldr": "AI가 자동으로 수정·제출한 코드 수천 건을 분석해 안전성을 따져본 연구.",
+      "summary": "AI가 자동으로 코드를 다듬어 제출한 변경(PR) 수천 건을 모아 품질과 보안 위험을 분석한 논문입니다. AI가 만든 코드가 유지보수와 보안에 어떤 영향을 주는지 실제 데이터로 보여줍니다.",
+      "key_points": [
+        "AI가 만든 코드 변경을 대규모로 모아 실증 분석",
+        "자동 품질 평가 도구로 위험 신호를 수치화",
+        "그대로 받아들이기 전 주의할 패턴(불필요한 복잡화, 보안 처리 누락 등) 식별"
+      ],
+      "what_you_get": "AI가 쓴 코드를 어디까지 믿어도 되는지에 대한 근거 데이터.",
+      "action": null,
+      "why_now": "AI 코딩이 보편화된 지금, 'AI 코드를 그대로 써도 되나'를 숫자로 따진 연구라 의미가 큼.",
+      "source_url": "https://arxiv.org/list/cs.SE/recent",
+      "source_name": "arxiv",
+      "score": 6,
+      "story_slug": "ai-refactoring-pr-quality-security",
+      "tags": ["AI코드", "코드보안", "연구"],
+      "entities": ["GitHub"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-14"
+    }
+  ]
+}

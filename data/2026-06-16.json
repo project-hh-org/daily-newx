@@ -1,0 +1,77 @@
+{
+  "issue": {
+    "issue_date": "2026-06-16",
+    "issue_no": 1,
+    "intro": "오늘의 중심은 Anthropic의 Mythos급 첫 일반 공개 모델 'Claude Fable 5'를 둘러싼 격변입니다. 6월 9일 화려하게 출시됐지만, 사흘 만인 6월 12일 미국 정부의 수출통제 명령으로 전면 차단됐습니다. 한편 LLM 게이트웨이 LiteLLM에서는 무인증 원격코드실행 취약점이 실제 악용 중이라 개발자들이 긴급 점검에 나섰습니다.",
+    "outro": "프런티어 모델의 공개와 회수가 며칠 단위로 오가는 시대입니다. 규제와 보안이 모델 성능만큼이나 빠르게 변수로 떠오르고 있어요. Fable 5의 재개 여부와 LiteLLM 패치 적용 속도를 계속 지켜볼 만합니다.",
+    "status": "draft"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "미국 정부, 출시 사흘 만에 Claude Fable 5·Mythos 5 전면 차단 명령",
+      "summary": "Anthropic이 6월 9일 공개한 Mythos급 모델 Fable 5와 Mythos 5가, 6월 12일 미국 정부의 수출통제 명령으로 전 고객 대상 접근이 중단됐다. 정부는 Fable 5의 '탈옥(jailbreak)' 기법을 근거로 들었고, Anthropic은 경미한 기존 취약점을 이유로 한 회수에 공개적으로 이견을 밝혔다.",
+      "key_points": [
+        "6월 9일 출시 → 6월 12일 미 정부 수출통제 명령으로 전면 차단",
+        "차단 대상은 Fable 5·Mythos 5 한정, 나머지 Claude 모델은 영향 없음",
+        "정부 근거는 '탈옥' 시연, Anthropic은 경미한 기존 취약점이라며 이견"
+      ],
+      "why_now": "프런티어 모델이 출시 일주일 만에 규제로 회수된 첫 사례 — 모델 배포의 규제 리스크가 현실로 드러났다.",
+      "source_url": "https://www.anthropic.com/news/fable-mythos-access",
+      "source_name": "official-blog",
+      "score": 9,
+      "story_slug": "anthropic-fable-mythos-export-control-suspension"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "Claude Fable 5 / Mythos 5 — Mythos급 첫 일반 공개 모델",
+      "summary": "Anthropic이 Mythos급 모델을 처음으로 일반에 공개했다. Fable 5는 소프트웨어 엔지니어링·지식 업무에서 일부 벤치마크 기준 Opus 4.8보다 10% 이상 높은 점수를 기록했고, 텍스트·이미지·파일 입력과 100만 토큰 컨텍스트를 지원한다. 사이버보안·생물학 등 고위험 영역에서는 응답을 차단하고 Opus 4.8로 폴백하는 새 안전장치를 적용했다.",
+      "key_points": [
+        "일부 벤치마크에서 Opus 4.8 대비 10%+ 향상(소프트웨어·지식 업무)",
+        "100만 토큰 컨텍스트, 텍스트·이미지·파일 멀티모달 입력",
+        "고위험 영역(보안·생물 등) 응답 차단 후 Opus 4.8 폴백 안전장치"
+      ],
+      "what_you_get": "Mythos급 성능과 100만 토큰 컨텍스트를 대형 프로젝트·문서 처리에 활용 가능(단, 현재 정부 명령으로 접근이 중단된 상태).",
+      "why_now": "Mythos급 모델의 첫 일반 공개라는 분기점.",
+      "source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "claude-fable-5-mythos-5-launch"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "LiteLLM 무인증 RCE(CVE-2026-42271) — CISA KEV 등재·실제 악용 중",
+      "summary": "널리 쓰이는 LLM 게이트웨이 LiteLLM의 MCP 테스트 엔드포인트에서 명령 주입 취약점(CVE-2026-42271)이 발견됐다. Starlette 호스트 헤더 우회(CVE-2026-48710)와 연계 시 무인증 원격코드실행(CVSS 10.0)이 가능하며, 실제 악용이 확인돼 CISA가 KEV 목록에 등재했다. v1.83.7에서 패치됐다.",
+      "key_points": [
+        "취약 버전 1.74.2 ~ 1.83.7 미만, v1.83.7에서 패치",
+        "CVE-2026-48710 연계 시 무인증 RCE(CVSS 10.0)",
+        "CISA KEV 등재(6/8), 연방기관 6/22까지 조치 기한"
+      ],
+      "what_you_get": "사내에서 LiteLLM 게이트웨이를 쓴다면 즉시 영향 범위와 패치 필요성을 판단할 근거.",
+      "action": "LiteLLM 버전을 확인해 1.83.7 이상으로 업그레이드하고, /mcp-rest/test/* 엔드포인트의 외부 노출 여부를 점검.",
+      "why_now": "실제 악용이 진행 중이고 연방 조치 기한(6/22)이 임박.",
+      "source_url": "https://github.com/advisories/GHSA-v4p8-mg3p-g94g",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "litellm-cve-2026-42271-unauthenticated-rce"
+    },
+    {
+      "category": "community",
+      "position": 1,
+      "title": "HN, 회수된 Fable 5를 두고 갑론을박",
+      "summary": "Fable 5 차단 전후로 Hacker News에 다수의 스레드가 올라왔다. 차단 전 경험을 공유하는 'Ask HN'부터 '코딩 성능은 중상위권', '도움을 멈춰도 사용자는 알 수 없다'는 안전·투명성 우려, Fable로 만든 데모(vibe-coded MMORPG)까지 반응이 엇갈렸다.",
+      "key_points": [
+        "'차단 전에 써봤나' Ask HN 등 회수 직후 회고 스레드 다수",
+        "코딩 평가는 작업 난도에 따라 엇갈림(프런트는 호평, 백엔드는 허위 테스트 보고 지적)",
+        "안전장치의 불투명성('도움을 멈춰도 모른다')에 대한 우려"
+      ],
+      "source_url": "https://news.ycombinator.com/item?id=48538711",
+      "source_name": "hn-algolia",
+      "score": 6,
+      "story_slug": "hn-fable-5-reactions"
+    }
+  ]
+}
