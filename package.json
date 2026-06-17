@@ -10,8 +10,8 @@
     "build:api": "yarn workspace daily-news-api build",
     "test:api": "yarn workspace daily-news-api test",
     "typecheck:api": "yarn workspace daily-news-api typecheck",
-    "reader": "yarn workspace reader start",
-    "reader:web": "yarn workspace reader web",
+    "reader": "yarn workspace reader start -c",
+    "reader:web": "yarn workspace reader web -c",
     "typecheck:reader": "yarn workspace reader typecheck",
     "typecheck": "yarn typecheck:api && yarn typecheck:reader"
   },

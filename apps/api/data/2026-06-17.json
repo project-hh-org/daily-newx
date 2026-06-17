@@ -1,0 +1,66 @@
+{
+  "issue": {
+    "issue_date": "2026-06-17",
+    "issue_no": 2,
+    "intro": "오늘도 중심은 앤트로픽(Anthropic)의 최상위 모델 'Fable 5·Mythos 5'를 둘러싼 미국 정부와의 충돌입니다. 6월 12일 수출통제로 두 모델이 전면 차단된 뒤 닷새가 지났지만, 매일 협상에도 평행선만 이어지고 있어요. 한편 조용하지만 지갑에 직접 닿는 변화도 있습니다. 개발 도구 깃허브 코파일럿(GitHub Copilot)이 '쓴 만큼 내는' 사용량 기반 과금으로 이달부터 바뀌었습니다.",
+    "outro": "프런티어 모델 한 종이 안보 이슈로 멈춰 서고, 그 해제 여부를 정부·기업이 매일 줄다리기하는 풍경이 일상이 됐습니다. 동시에 AI를 '얼마나 쓰느냐'가 곧 비용이 되는 종량제 흐름도 빨라지고 있어요. Fable 5의 재개 시점과, 코파일럿식 종량 과금이 다른 도구로 번질지 함께 지켜볼 만합니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "앤트로픽 vs 백악관, 'Fable 5·Mythos 5 차단' 닷새째 평행선",
+      "tldr": "최상위 모델 두 종을 멈춰 세운 수출통제를 두고, 앤트로픽과 미 정부가 매일 협상에도 합의에 이르지 못하고 있다.",
+      "summary": "미국 백악관(트럼프 행정부)이 6월 12일 앤트로픽의 최상위 AI 모델 Fable 5와 Mythos 5에 수출 제한을 걸자, 앤트로픽은 두 모델을 전면 오프라인으로 내렸다. 발단은 '중국과 연계된 것으로 의심되는 그룹이 Mythos 5에 접근했다'는 정황이었다(워싱턴 이그재미너 보도). 이후 앤트로픽은 매일 정부 측과 화상 협의를 이어갔고 이번 주에는 고위 기술진을 워싱턴으로 보냈지만, 6월 15일 기준 해제 합의는 나오지 않았다. 백악관의 AI 정책 책임자 데이비드 색스는 'CEO 다리오 아모데이가 비협조적이었고, 앤트로픽이 안전보다 소비자용 모델 판매를 우선했다'고 비판했다. 아모데이는 세 차례 통화에서 '이번 보안 우회는 가드레일을 무력화하는 진짜 탈옥(jailbreak)이 아니다'라고 반박한 것으로 알려졌다(폴리티코 보도). 백악관은 아마존이 Mythos 5의 탈옥 기법을 찾아냈다는 점을 근거로 들었다(월스트리트저널 보도).",
+      "key_points": [
+        "6월 12일 수출 제한 → 앤트로픽이 Fable 5·Mythos 5 전면 오프라인",
+        "발단은 '중국 연계 의심 그룹의 Mythos 5 접근' 정황(보도)",
+        "매일 화상 협의·고위진 방문에도 6/15까지 합의 없음",
+        "백악관 색스 'CEO 비협조' vs 앤트로픽 '진짜 탈옥 아냐'로 충돌"
+      ],
+      "why_now": "프런티어 모델이 출시 일주일 만에 회수된 데 이어, 그 해제를 두고 정부·기업이 공개적으로 맞서는 첫 사례가 닷새째 진행 중이다.",
+      "action": "앤트로픽의 공식 성명과 보도 원문을 직접 읽고 양측 주장을 비교해 보기.",
+      "source_url": "https://www.washingtonexaminer.com/policy/technology/4608906/anthropic-meeting-white-house-resolve-mythos-fable-ai-restrictions/",
+      "source_name": "news",
+      "score": 9,
+      "tags": ["수출통제", "AI규제", "모델차단", "국가안보"],
+      "entities": ["Anthropic", "White House", "David Sacks", "Dario Amodei", "Amazon", "Claude Fable 5", "Claude Mythos 5"],
+      "related": [
+        "https://www.anthropic.com/news/fable-mythos-access",
+        "https://www.politico.com/news/2026/06/13/inside-the-whirlwind-24-hours-that-led-the-white-house-to-slap-export-controls-on-anthropic-00961519",
+        "https://www.washingtonexaminer.com/policy/technology/4607706/amazon-researcher-anthropic-ai-security-weaknesses/"
+      ],
+      "follow_up_of": "anthropic-fable-mythos-export-control-suspension",
+      "source_published_at": "2026-06-15",
+      "story_slug": "anthropic-white-house-fable-mythos-standoff"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "깃허브 코파일럿, '쓴 만큼 내는' 종량 과금으로 전환 — 6월 1일 시행",
+      "tldr": "고정 한도(프리미엄 요청) 대신 토큰 사용량에 따라 'AI 크레딧'을 차감하는 방식으로 모든 코파일럿 요금제가 바뀌었다.",
+      "summary": "마이크로소프트의 AI 코딩 도구 깃허브 코파일럿이 6월 1일부터 모든 요금제를 사용량 기반 과금으로 전환했다. 기존의 '프리미엄 요청' 횟수 대신, 입력·출력·캐시 토큰 사용량을 모델별 공개 단가로 계산해 'GitHub AI 크레딧'에서 차감한다(1크레딧 = 0.01달러). 구독 기본료는 그대로다 — Pro 월 10달러, Pro+ 39달러, Business 사용자당 19달러, Enterprise 사용자당 39달러이며, 각 요금제는 구독료와 같은 금액만큼의 월 크레딧을 포함한다. 코드 자동완성은 계속 무료로 제공되지만, 한도를 다 쓰면 저가 모델로 넘어가던 '폴백' 기능은 사라지고, 이제는 남은 크레딧과 관리자 예산 설정으로 사용이 통제된다. 깃허브는 '여러 시간짜리 자율 코딩(에이전트형) 사용이 기본이 되면서 추론 비용이 급증해 정액제가 지속 불가능해졌다'고 설명했다.",
+      "key_points": [
+        "프리미엄 요청 → 'GitHub AI 크레딧'(1크레딧=$0.01)으로 교체",
+        "기본 구독료 동결, 요금제별로 구독료와 같은 액수의 월 크레딧 포함",
+        "코드 자동완성은 무료 유지 / 저가 모델 '폴백'은 폐지",
+        "관리자 예산·사용자별 한도 설정으로 지출 통제 가능"
+      ],
+      "what_you_get": "코파일럿 비용이 '횟수'가 아니라 '실제 토큰 사용량'으로 매겨지는 구조를 이해하고, 내 사용 패턴의 비용을 가늠할 근거.",
+      "action": "코파일럿을 쓴다면 github.com의 Billing Overview에서 크레딧 사용량·예상 비용을 확인하고, 연간 플랜 사용자는 6월부터 바뀐 모델 멀티플라이어 영향을 점검.",
+      "why_now": "AI 도구가 '대화 한 번'에서 '몇 시간짜리 자율 작업'으로 무거워지며, 정액제에서 종량제로 넘어가는 업계 흐름의 대표 사례.",
+      "source_url": "https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/",
+      "source_name": "official-blog",
+      "score": 7,
+      "tags": ["코딩도구", "요금제", "사용량과금", "AI크레딧"],
+      "entities": ["GitHub Copilot", "GitHub", "Microsoft"],
+      "related": [
+        "https://github.blog/changelog/2026-06-01-updates-to-github-copilot-billing-and-plans/",
+        "https://github.com/orgs/community/discussions/197089"
+      ],
+      "source_published_at": "2026-04-27",
+      "story_slug": "github-copilot-usage-based-billing"
+    }
+  ]
+}

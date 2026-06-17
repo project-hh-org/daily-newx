@@ -91,28 +91,42 @@ GET /api/daily-news/20260616     # 내부에서 2026-06-16 으로 변환 (대시
 화면 라벨 표기: 2026.06.16
 ```
 
+### 모노레포 구조 (yarn workspaces)
+
+```
+daily-newx/
+  apps/api/      Next.js 인제스트/조회 API (포트 4000)
+  apps/reader/   Expo RN 웹앱 — 공개 리더 (포트 4040)
+```
+
 ### 로컬 실행
 
 ```bash
-npm install
-cp .env.example .env.local      # SUPABASE_URL / SERVICE_ROLE_KEY / INGEST_TOKEN 채우기
-# Supabase SQL 에디터에서 db/schema.sql 1회 실행
-npm run dev                     # http://localhost:3000
+# 레포 루트에서
+yarn install
+cp apps/api/.env.example   apps/api/.env.local      # SUPABASE_URL / SERVICE_ROLE_KEY / INGEST_TOKEN / INGEST_URL
+cp apps/reader/.env.example apps/reader/.env.local   # EXPO_PUBLIC_API_BASE / EXPO_PUBLIC_USE_FIXTURE
+# Supabase SQL 에디터에서 apps/api/db/schema.sql 1회 실행
 
-npm run typecheck && npm run lint && npm test   # CI 게이트
+yarn dev:api          # API  → http://localhost:4000
+yarn reader:web       # 리더 → http://localhost:4040  (/daily/20260616)
+
+# CI 게이트
+yarn workspace daily-news-api typecheck && yarn workspace daily-news-api test && yarn workspace daily-news-api build
+yarn typecheck:reader
 ```
 
-토큰·URL 값은 채팅·저장소에 두지 말 것. `.env.local` 은 gitignore 됨.
+토큰·키·URL 값은 채팅·저장소에 두지 말 것. `.env*` 은 gitignore 됨.
+리더는 `EXPO_PUBLIC_USE_FIXTURE=1` 이면 DB/API 없이 번들 데이터로 렌더(빠른 UI 확인용).
 
 ### 루틴 연결
 
-`.env.local` 에 `INGEST_URL=http://localhost:3000/api/daily-news`, `INGEST_TOKEN=...` 을 두면
+`apps/api/.env.local` 에 `INGEST_URL=http://localhost:4000/api/daily-news`, `INGEST_TOKEN=...` 을 두면
 스케줄 작업 `daily-llm-news` 가 JSON 저장 후 자동 POST 한다.
+(데이터 저장 위치도 모노레포 이동으로 `apps/api/data/` 가 됨 — 루틴 쓰기 경로 확인.)
 
 ## 다음 단계
 
-- [ ] Supabase 프로젝트에 `db/schema.sql` 적용 + `.env.local` 채우기
-- [ ] `npm install` 후 `typecheck`/`lint`/`test`/`build` 통과 확인 (현재 미실행)
-- [ ] 어드민 페이지(수동 추가/수정) — 같은 API 재사용
-- [ ] Expo RN 웹앱(`/daily/20260616`, 라벨 `2026.06.16`) — `GET /api/daily-news/20260616` 소비
-- [ ] 주제별 타임라인 페이지 — `entities` 로 같은 주체를 일자순 묶기
+- [x] 모노레포(yarn workspaces) 전환 + 공개 리더(Expo) — `GET /api/daily-news/20260616` 소비, 라벨 `2026.06.16`
+- [ ] 어드민 페이지(수동 보정·삭제·재정렬) — 같은 API 재사용
+- [ ] 주제별 타임라인 페이지 — `entities` 로 같은 주체를 일자순 묶기 + `tags` 클러스터 + `follow_up_of` 스레드
