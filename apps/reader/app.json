@@ -1,20 +1,38 @@
 {
   "expo": {
     "name": "daily-newx",
-    "slug": "daily-newx-reader",
+    "slug": "daily-newx",
     "version": "0.1.0",
     "orientation": "portrait",
     "scheme": "dailynewx",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": false,
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "kr.co.danble.dailynewx",
+      "buildNumber": "1",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "web": {
       "bundler": "metro",
       "output": "single"
     },
-    "plugins": ["expo-router"]
+    "plugins": [
+      "expo-router"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "aaffaa07-2378-4eee-b242-93d98a19d8fc"
+      }
+    },
+    "owner": "project-hh"
   }
 }

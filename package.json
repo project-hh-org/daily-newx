@@ -16,7 +16,7 @@
     "typecheck": "yarn typecheck:api && yarn typecheck:reader"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",
