@@ -119,9 +119,10 @@ export async function getTimeline(
   if (axis === "category") {
     query = query.eq("category", value);
   } else if (axis === "tag") {
-    query = query.contains("tags", [value]);
+    // jsonb 컬럼: PG 배열 리터럴이 아니라 JSON 배열 문자열로 containment(@>) 질의.
+    query = query.contains("tags", JSON.stringify([value]));
   } else {
-    query = query.contains("entities", [value]);
+    query = query.contains("entities", JSON.stringify([value]));
   }
   if (!drafts) query = query.eq("daily_issues.status", "published");
 
