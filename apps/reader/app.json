@@ -6,12 +6,10 @@
     "orientation": "portrait",
     "scheme": "dailynewx",
     "userInterfaceStyle": "automatic",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "kr.co.danble.dailynewx",
+      "bundleIdentifier": "kr.co.dailynewx",
       "buildNumber": "1",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -21,11 +19,7 @@
       "bundler": "metro",
       "output": "single"
     },
-    "plugins": [
-      "expo-router",
-      "expo-status-bar",
-      "expo-notifications"
-    ],
+    "plugins": ["expo-router", "expo-status-bar", "expo-notifications"],
     "extra": {
       "router": {
         "origin": false
