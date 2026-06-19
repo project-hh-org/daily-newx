@@ -47,6 +47,44 @@ export const blockSchema = z.discriminatedUnion("type", [
     caption: z.string().nullable().default(null),
     credit: z.string().nullable().default(null),
   }),
+  z.object({ type: z.literal("divider") }),
+  z.object({
+    type: z.literal("numbered"),
+    label: z.string().nullable().default(null),
+    items: z.array(z.string().min(1)).min(1),
+  }),
+  z.object({
+    type: z.literal("table"),
+    headers: z.array(z.string()).default([]),
+    rows: z.array(z.array(z.string())).min(1),
+  }),
+  z.object({
+    type: z.literal("code"),
+    code: z.string().min(1),
+    lang: z.string().nullable().default(null),
+  }),
+  z.object({
+    type: z.literal("embed"),
+    url: httpUrlSchema,
+    title: z.string().nullable().default(null),
+    provider: z.string().nullable().default(null),
+  }),
+  z.object({
+    type: z.literal("prosCons"),
+    pros: z.array(z.string()).default([]),
+    cons: z.array(z.string()).default([]),
+  }),
+  z.object({
+    type: z.literal("timeline"),
+    events: z
+      .array(z.object({ date: z.string().nullable().default(null), text: z.string().min(1) }))
+      .min(1),
+  }),
+  z.object({
+    type: z.literal("definition"),
+    term: z.string().min(1),
+    text: z.string().min(1),
+  }),
 ]);
 export type Block = z.infer<typeof blockSchema>;
 
