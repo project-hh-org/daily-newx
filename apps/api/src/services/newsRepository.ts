@@ -30,6 +30,7 @@ export async function upsertIssue(payload: IngestPayload): Promise<IngestResult>
     position: it.position,
     title: it.title,
     summary: it.summary,
+    blocks: it.blocks,
     key_points: it.key_points,
     what_you_get: it.what_you_get,
     action: it.action,
@@ -74,7 +75,7 @@ export async function getIssue(issueDate: string): Promise<IngestPayload | null>
   const { data: items, error: itemsError } = await supabase
     .from("daily_items")
     .select(
-      "id, category, position, title, summary, key_points, what_you_get, action, why_now, source_url, source_name, score, story_slug, tldr, tags, entities, related, follow_up_of, source_published_at",
+      "id, category, position, title, summary, blocks, key_points, what_you_get, action, why_now, source_url, source_name, score, story_slug, tldr, tags, entities, related, follow_up_of, source_published_at",
     )
     .eq("issue_date", issueDate)
     .order("category", { ascending: true })
@@ -86,7 +87,7 @@ export async function getIssue(issueDate: string): Promise<IngestPayload | null>
 
 // 아티클/타임라인 공통 컬럼 — id 와 issue_date 포함(개별 행이 자기 날짜를 안다).
 const ARTICLE_COLS =
-  "id, issue_date, category, position, title, summary, key_points, what_you_get, action, why_now, source_url, source_name, score, story_slug, tldr, tags, entities, related, follow_up_of, source_published_at";
+  "id, issue_date, category, position, title, summary, blocks, key_points, what_you_get, action, why_now, source_url, source_name, score, story_slug, tldr, tags, entities, related, follow_up_of, source_published_at";
 
 // 단건 조회: GET /api/article/{id}
 export async function getArticleById(id: string): Promise<unknown | null> {

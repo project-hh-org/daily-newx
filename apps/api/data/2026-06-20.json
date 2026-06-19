@@ -1,0 +1,145 @@
+{
+  "issue": {
+    "issue_date": "2026-06-20",
+    "issue_no": 5,
+    "intro": "Fable 5 차단 이야기의 퍼즐이 거의 다 맞춰졌습니다. SK텔레콤의 중국 연루 의혹이 첫 번째 방아쇠였고, 아마존 연구원의 별도 보안 보고가 차단 범위를 전 세계로 키웠다는 전말이 처음으로 명확하게 보도됐습니다. 앤트로픽은 그 논란의 중심에 있는 한국에서 서울 사무소를 열고 삼성·LG·네이버 등 대기업 6곳과 동시 파트너십을 발표하며 공세를 늦추지 않았습니다. 오늘(6/20)은 피해를 입은 유료 Fable 5 이용자의 환불 신청 마감일이기도 합니다.",
+    "outro": "Fable 5 복구 협상은 앤트로픽 임원이 '며칠 안에 돌아올 것'이라고 자신하는 발언과, 전문가들이 현재 기술로는 달성할 수 없다고 보는 백악관 요구 사이 어딘가에서 진행 중입니다. 이번 사안은 단순히 한 회사의 제품 문제가 아니라, 정부가 민간 AI 기업에 어디까지 요구할 수 있는지를 가르는 첫 번째 실전 충돌입니다. 이번 주말이 지나면 어떤 절충안이 나올지, 그 조건이 다른 AI 기업의 신모델 출시 방식에도 영향을 줄 수 있어 주목됩니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "Fable 5 전 세계 차단의 진짜 방아쇠 — SK텔레콤·아마존 연구원의 2단계 에스컬레이션 전말",
+      "tldr": "SK텔레콤 중국 연루 의혹 + 아마존 연구원의 별도 보안 보고 = 이 두 가지가 합쳐져 전 세계 차단으로 확대됐다. 6월 19일, 이 과정이 처음으로 완전하게 공개됐다.",
+      "summary": "왜 Fable 5가 갑자기 전 세계에서 사라졌는지, 이제야 전체 그림이 나왔습니다. 미국 언론 WIRED와 워싱턴포스트(The Washington Post)의 취재를 종합한 보도가 6월 19일 구체적으로 공개됐습니다. 차단은 한 번의 결정이 아니라 두 단계로 이뤄졌습니다. 1단계: 백악관이 앤트로픽에 투자한 주요 파트너인 SK텔레콤(2023년 1억 달러 투자)을 '중국 연루가 의심되는 기업'으로 지목하고, SK텔레콤의 Mythos 5 접근만 차단하도록 요청했습니다. 앤트로픽은 즉각 따랐습니다. 2단계: 그로부터 며칠 후, 아마존 연구원들이 공개 버전인 Fable 5에서 잠재적 취약점을 별도로 발견해 백악관에 보고했습니다. 행정부는 '앤트로픽이 자사의 첨단 AI 기술을 안전하게 관리할 수 없다'고 판단하고, 6월 12일 오후 5시 21분 해외 국적자 전원의 접근을 차단하는 수출통제 명령을 내렸습니다. 실시간 국적 필터링이 기술적으로 불가능했던 앤트로픽은 결국 두 모델을 전 세계에서 일시 중단했습니다. SK텔레콤은 '중국과의 연결고리는 사실이 아니다'라고 강하게 부인했으며, 핵심 통신망에 화웨이·ZTE 장비를 사용하지 않는다고 밝혔습니다.",
+      "key_points": [
+        "1단계: 백악관이 SK텔레콤을 '중국 연루 의혹'으로 지목 → SK텔레콤 접근만 차단 요청, 앤트로픽 즉시 이행",
+        "2단계: 아마존 연구원이 Fable 5에서 별도 취약점 발견·보고 → 행정부가 전면 수출통제 명령으로 확대",
+        "SK텔레콤 '중국과 무관하다' 강하게 부인 — 핵심망에 화웨이·ZTE 없음",
+        "6월 12일 오후 5:21 수출통제 명령 도착 → 앤트로픽, 두 모델 전 세계 일시 중단"
+      ],
+      "what_you_get": "AI 모델이 왜 갑자기 전 세계에서 사라졌는지, 그 결정이 어떤 두 단계를 거쳐 이뤄졌는지를 양측 주장과 취재 보도 기준으로 파악할 수 있습니다.",
+      "action": "앤트로픽의 공식 성명과 WIRED·워싱턴포스트 보도를 직접 읽고, 정부와 기업의 주장을 비교해 보세요.",
+      "why_now": "미국 정부 명령으로 상용 AI 모델이 전 세계에서 회수된 첫 사례의 전말이 처음으로 체계적으로 공개된 날이다.",
+      "source_url": "https://aitoolsrecap.com/Blog/ai-news-june-19-2026",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "fable5-ban-sk-telecom-amazon-two-step-escalation",
+      "tags": ["Fable5", "수출통제", "SK텔레콤", "AI규제", "국가안보", "앤트로픽"],
+      "entities": ["Anthropic", "SK Telecom", "White House", "Amazon", "Claude Fable 5", "Claude Mythos 5", "WIRED", "Washington Post"],
+      "related": [
+        "https://llmbase.ai/news/sk-telecom-china-ties-trigger-anthropic-claude-mythos-export-controls/",
+        "https://www.koreajoongangdaily.com/business/white-house-officials-pin-anthropic-ai-export-block-on-korean-telecom-report/12726842"
+      ],
+      "follow_up_of": "anthropic-fable-mythos-restore-talks",
+      "source_published_at": "2026-06-19"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "앤트로픽 서울 사무소 공식 개소 — 삼성·LG·네이버·넥슨·한화 동시 파트너십 발표",
+      "tldr": "앤트로픽이 한국에 아시아 세 번째 거점을 열며 한국 대기업 6곳과 동시에 파트너십을 맺었다. Fable 5 차단 논란이 드리운 그늘 속에서도 한국 시장 공세를 이어갔다.",
+      "summary": "앤트로픽이 6월 17~18일 서울 여의도에서 공식 기자간담회를 열고, 한국을 아시아태평양 세 번째 거점(도쿄·벵갈루루에 이어)으로 삼았습니다. 한국 AI 생태계와의 파트너십 발표가 줄줄이 이어졌습니다. 네이버(한국 최대 포털·클라우드)는 엔지니어링 조직 전체에 Claude Code를 도입했고, 게임 기업 넥슨은 라이브 서비스 게임 개발에 Claude Code를 적용했습니다. 삼성SDS는 삼성전자 전반에 Claude Cowork와 Claude Code를, LG CNS는 수천 명 직원에서 시작해 LG그룹 전체로 Claude를 확장할 계획입니다. 한화솔루션은 AWS Bedrock을 통해 Claude를 글로벌로 활용하고, 채널 솔루션 기업 채널코프는 23만 개 기업 고객이 사용하는 '채널톡'에 Claude를 연결했습니다. 과학기술정보통신부와는 AI 안전·사이버보안 협력 MOU도 체결했으며, KAIST·고려대·연세대·포스텍 등 주요 대학 연구자 최대 60명에게 Claude 접근권을 제공합니다. Fable 5 차단의 직접 원인으로 지목된 SK텔레콤의 본거지 한국에서 앤트로픽 국제 담당 임원이 직접 '며칠 안에 복구를 자신한다'고 밝힌 자리이기도 했습니다.",
+      "key_points": [
+        "서울 사무소: 아시아 세 번째 거점, 초대 법인장 최기영",
+        "네이버 엔지니어링 전체·넥슨 게임 개발·삼성SDS·LG CNS·한화솔루션·채널코프 동시 파트너십",
+        "과기부 MOU: 한국어 AI 안전 평가 + 사이버보안 정보 교환",
+        "주요 4개 대학 연구자 최대 60명 Claude 접근권 제공 — AI 안전·정렬 연구 지원"
+      ],
+      "what_you_get": "한국 대기업들이 AI를 어떤 규모로 실제 도입하고 있는지, 그리고 앤트로픽이 한국을 글로벌 전략에서 어떻게 위치시키는지를 공식 발표 기준으로 볼 수 있습니다.",
+      "action": "기업·연구기관에 속해 있다면 앤트로픽 파트너 네트워크나 MOU 세부 내용을 공식 공지에서 확인해 보세요.",
+      "why_now": "Fable 5 차단이라는 악재 속에서도 앤트로픽이 한국에 직접 뿌리를 내렸다는 신호다. 한국이 글로벌 AI 시장 경쟁의 지정학적 핵심으로 부상하는 흐름을 보여준다.",
+      "source_url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "anthropic-seoul-office-korean-enterprise-wave",
+      "tags": ["앤트로픽", "서울", "한국AI", "기업파트너십", "ClaudeCode", "삼성", "네이버"],
+      "entities": ["Anthropic", "NAVER", "Samsung SDS", "LG CNS", "Nexon", "Hanwha Solutions", "Channel Corp", "과학기술정보통신부", "KAIST"],
+      "related": [
+        "https://www.koreatimes.co.kr/amp/business/tech-science/20260618/anthropic-opens-seoul-office-to-expand-ties-with-korean-ai-ecosystem",
+        "https://dig.watch/updates/anthropic-south-korea-ai-safety-seoul-office"
+      ],
+      "follow_up_of": "anthropic-fable-mythos-restore-talks",
+      "source_published_at": "2026-06-18"
+    },
+    {
+      "category": "community",
+      "position": 1,
+      "title": "백악관 '탈옥 완전 차단해야 Fable 5 복구 허용' — 보안 전문가 '현재 기술로는 불가능'",
+      "tldr": "트럼프 행정부가 Fable 5 복구의 조건으로 AI 탈옥(안전장치 우회)의 완전한 차단을 요구했지만, 사이버보안 전문가들은 어떤 회사도 지금 기술로 충족할 수 없는 조건이라고 반박한다.",
+      "summary": "미국 행정부가 앤트로픽에 제시한 Fable 5 복구 조건은 '모든 AI 모델을 사전에 검사해 탈옥(jailbreak, AI 안전장치를 우회하는 방법)을 발견하고 제거한 뒤 정부에 보고하라'는 것이었습니다. 보안 연구자들은 이를 완전히 없애는 것은 현재 어떤 AI 기술로도 불가능하다고 설명합니다. AI 안전은 '완전히 해결된 상태'가 아니라, 새롭게 등장하는 공격 기법에 맞서 여러 겹의 방어를 지속적으로 쌓아 가는 과정이기 때문입니다. 앤트로픽도 Fable 5 출시 문서에서 '완벽한 탈옥 방지는 현재 어떤 사업자에게도 가능하지 않다'고 명시했습니다. 데이비드 색스(David Sacks) 대통령 AI 자문위원회 공동의장은 앤트로픽에 '탈옥을 고치든지 아니면 모델을 자진 철수하라'는 최후통첩을 보냈고 앤트로픽 CEO 다리오 아모데이는 두 조건을 모두 거부한 것으로 전해집니다. 앤트로픽 국제 담당 임원은 서울에서 '며칠 안에 복구를 자신한다'고 밝혔는데, 전문가들은 이것이 양측이 '탈옥 100% 제거' 대신 현실적인 '검사·보고 체계'를 절충안으로 협상 중이라는 신호로 읽습니다.",
+      "key_points": [
+        "백악관 요구: Fable 5 복구 전 탈옥 완전 제거 + 정부 사전 보고 의무",
+        "전문가 반박: 새 탈옥 기법은 계속 등장하며, 완전 제거는 현재 어떤 AI 기업도 달성 불가능",
+        "앤트로픽 공식 출시 문서에도 '완벽한 탈옥 방지 불가' 명시",
+        "실제 협상 방향: 불가능한 '전면 제거' 대신 '감시·보고 체계'라는 절충안으로 향한다는 관측"
+      ],
+      "what_you_get": "AI 모델이 왜 완벽히 안전해지기 어려운지, 그 기술적 한계가 정부 규제와 어떻게 충돌하는지에 대한 보안 전문가들의 진단.",
+      "action": "Fable 5를 업무에 사용 중이거나 사용 계획이 있다면, 공식 복구 발표를 앤트로픽 뉴스룸(anthropic.com/news)에서 직접 확인하세요.",
+      "why_now": "기술적으로 달성 불가능한 조건이 복구의 전제가 된다면 차단이 무기한 연장될 수 있다는 점에서, 이 논쟁의 결론이 전 세계 AI 규제의 선례가 된다.",
+      "source_url": "https://www.techtimes.com/articles/318668/20260618/fable-5-export-ban-day-six-anthropic-opens-seoul-office-vows-models-back-days.htm",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "white-house-zero-jailbreak-demand-vs-security-experts",
+      "tags": ["AI규제", "Fable5", "사이버보안", "수출통제", "데이비드색스"],
+      "entities": ["Anthropic", "White House", "David Sacks", "Dario Amodei", "Chris Ciauri"],
+      "related": [
+        "https://llmbase.ai/news/white-house-demands-anthropic-block-all-claude-fable-5-jailbreaks/",
+        "https://explainx.ai/blog/when-will-fable-5-be-available-again-2026"
+      ],
+      "follow_up_of": "anthropic-fable-mythos-restore-talks",
+      "source_published_at": "2026-06-18"
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "Fable 5 환불 신청 마감은 오늘 자정 — 유료 이용자가 확인해야 할 것",
+      "tldr": "6월 9~14일 사이 Fable 5 유료 플랜을 구매했다면 환불 신청 기한이 오늘(6/20) 자정에 끝난다.",
+      "summary": "6월 12일 Fable 5가 갑자기 전 세계에서 중단되면서 유료 이용자들도 피해를 입었습니다. 앤트로픽은 6월 9~14일 사이 Fable 5 접근이 포함된 유료 플랜(Pro·Max·Team·Enterprise)으로 업그레이드한 고객에게 사용 비율에 따라 환불을 제공하고 있는데, 그 신청 기한이 오늘(6월 20일) 자정에 마감됩니다. 기한 내에 앤트로픽 고객 지원에 신청하지 않으면 환불 기회를 잃을 수 있습니다. 추가로 눈여겨볼 점이 있습니다. Fable 5 출시 직후 유료 구독자에게 무료로 제공되던 이용 기간이 6월 22일 종료됩니다. 만약 22일까지 Fable 5가 복구되지 않는다면, 이후 복구됐을 때 사용하려면 별도 크레딧이 필요할 수 있습니다. 앤트로픽은 이 무료 기간 연장 여부를 아직 발표하지 않았습니다.",
+      "key_points": [
+        "환불 대상: 6월 9~14일 Pro·Max·Team·Enterprise 플랜 업그레이드 고객",
+        "환불 마감: 오늘(6/20) 자정 — 앤트로픽 고객 지원에 직접 신청 필요",
+        "6월 22일: 유료 구독자 무료 이용 기간 종료 — 복구 시 별도 크레딧 필요 가능성",
+        "앤트로픽은 무료 기간 연장 여부 아직 미발표"
+      ],
+      "what_you_get": "환불 자격이 있는 Fable 5 유료 이용자라면 오늘 안에 고객 지원에 연락해야 한다는 것.",
+      "action": "Fable 5 유료 이용자라면 지금 바로 앤트로픽 고객 지원(support.anthropic.com)에 접속해 환불 신청 여부를 확인하세요. 마감은 오늘 자정입니다.",
+      "source_url": "https://techjacksolutions.com/ai-brief/fable-5-refund-window-closes-june-20-what-anthropics-billing/",
+      "source_name": "news",
+      "score": 6,
+      "story_slug": "fable5-refund-deadline-june-20",
+      "tags": ["Fable5", "환불", "구독", "앤트로픽"],
+      "entities": ["Anthropic", "Claude Fable 5"],
+      "related": [
+        "https://explainx.ai/blog/when-will-fable-5-be-available-again-2026",
+        "https://techjacksolutions.com/ai-brief/ai-models-news-fable-5-refund-window-closes-june-20-what-pro/"
+      ],
+      "follow_up_of": "anthropic-fable-mythos-restore-talks",
+      "source_published_at": "2026-06-19"
+    },
+    {
+      "category": "business",
+      "position": 3,
+      "title": "샘 올트먼, 한국 방문 전격 취소 — 둘째 딸 탄생, 삼성·네이버 회동 연기",
+      "tldr": "오픈AI CEO 샘 올트먼이 둘째 딸 탄생으로 한국 방문을 취소했다. 앤트로픽이 서울 사무소를 열고 대기업 계약을 싹쓸이한 주에, 오픈AI는 경쟁사 핵심 시장에서 자리를 비웠다.",
+      "summary": "오픈AI CEO 샘 올트먼은 삼성·네이버·카카오 등 한국 주요 기업 경영진과의 회동을 위해 한국 방문을 계획했지만, 둘째 딸의 탄생으로 방문을 취소했다고 한국중앙일보가 전했습니다. 새 방문 일정은 아직 잡히지 않았습니다. 타이밍이 공교롭습니다. 앤트로픽이 서울 사무소를 개소하고 삼성·LG·네이버 등과 대규모 계약을 체결한 바로 그 주에, 오픈AI는 한국에 경영진을 보내지 못하게 됐습니다. 특히 네이버는 이번 주 Claude Code를 전사 도입한다고 발표했는데, 이는 한국 최대 기술 기업이 오픈AI가 아닌 앤트로픽 제품을 선택했다는 의미이기도 합니다. 물론 개인 사정으로 인한 취소라 전략적 실패로 보기는 어렵지만, 이번 주 한국 AI 시장에서 앤트로픽이 오픈AI보다 훨씬 강한 인상을 남긴 것은 사실입니다.",
+      "key_points": [
+        "샘 올트먼 방한 취소 이유: 둘째 딸 탄생(개인 사정)",
+        "예정 회동: 삼성·네이버·카카오 — 새 일정 미확정",
+        "같은 주: 앤트로픽이 서울 사무소 개설 + 네이버·삼성·LG 대규모 계약 체결"
+      ],
+      "what_you_get": "한국이 글로벌 AI 기업들의 핵심 경쟁 무대로 부상 중이며, 이번 주 앤트로픽이 오픈AI에 앞서 한국 시장에서 유리한 발판을 마련했다는 맥락.",
+      "action": null,
+      "why_now": "오픈AI와 앤트로픽이 한국 시장 주도권을 놓고 경쟁하는 가운데, 엇갈린 타이밍이 한 주의 경쟁 구도를 바꿔놓은 사례다.",
+      "source_url": "https://www.koreajoongangdaily.com/business/anthropic-confident-of-reenabling-mythos-fable-5-access-in-coming-days-executive/12727522",
+      "source_name": "news",
+      "score": 6,
+      "story_slug": "altman-korea-trip-cancelled-daughter-born",
+      "tags": ["오픈AI", "한국", "샘올트먼", "AI경쟁", "앤트로픽"],
+      "entities": ["OpenAI", "Sam Altman", "Samsung", "NAVER", "Kakao", "Anthropic"],
+      "related": [],
+      "source_published_at": "2026-06-18"
+    }
+  ]
+}

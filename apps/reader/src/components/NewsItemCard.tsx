@@ -5,6 +5,7 @@ import type { DailyItem } from "@/types/news.types";
 import { colors, fonts } from "@/lib/theme";
 import { OptionalField } from "@/components/OptionalField";
 import { Bullets } from "@/components/Bullets";
+import { ArticleBlocks } from "@/components/ArticleBlocks";
 import { SourceLine } from "@/components/SourceLine";
 import { MetaFooter } from "@/components/MetaFooter";
 
@@ -37,10 +38,16 @@ export function NewsItemCard({ item, index }: Props): ReactElement {
 
       <Text style={styles.summary}>{item.summary}</Text>
 
-      <Bullets label="핵심 포인트" points={item.key_points} />
-      <OptionalField label="얻는 것" value={item.what_you_get} />
-      <OptionalField label="왜 지금" value={item.why_now} />
-      <OptionalField label="지금 할 일" value={item.action} tone="action" />
+      {item.blocks.length > 0 ? (
+        <ArticleBlocks blocks={item.blocks} />
+      ) : (
+        <>
+          <Bullets label="핵심 포인트" points={item.key_points} />
+          <OptionalField label="얻는 것" value={item.what_you_get} />
+          <OptionalField label="왜 지금" value={item.why_now} />
+          <OptionalField label="지금 할 일" value={item.action} tone="action" />
+        </>
+      )}
 
       <SourceLine
         sourceName={item.source_name}

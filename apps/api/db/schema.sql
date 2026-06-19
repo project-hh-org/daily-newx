@@ -42,6 +42,9 @@ create table if not exists public.daily_items (
   position      integer not null default 0,      -- 카테고리 내 정렬 순서
   title         text not null,
   summary       text not null,                   -- 요약 문단
+  -- 자유 본문 블록 (heading|paragraph|bullets|quote|stat|callout|image). 신규 글은 이걸 사용.
+  blocks        jsonb not null default '[]',
+  -- (레거시, 호환용) 옛 고정 필드 — 신규 글은 비우고 blocks 사용
   key_points    jsonb not null default '[]',     -- 핵심 포인트 불릿 (string[])
   what_you_get  text,                            -- "얻는 것"
   action        text,                            -- "지금 할 일" (적용 액션, 없으면 null)

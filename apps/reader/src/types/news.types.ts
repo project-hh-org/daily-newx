@@ -17,6 +17,40 @@ export type TimelineAxis = z.infer<typeof timelineAxisSchema>;
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "YYYY-MM-DD");
 
+// 자유 본문 블록 (apps/api 와 동기화). 신규 글은 이걸 사용, 옛 글은 비어 있음.
+export const blockSchema = z.discriminatedUnion("type", [
+  z.object({ type: z.literal("heading"), text: z.string() }),
+  z.object({ type: z.literal("paragraph"), text: z.string() }),
+  z.object({
+    type: z.literal("bullets"),
+    label: z.string().nullable().default(null),
+    items: z.array(z.string()).default([]),
+  }),
+  z.object({
+    type: z.literal("quote"),
+    text: z.string(),
+    cite: z.string().nullable().default(null),
+  }),
+  z.object({
+    type: z.literal("stat"),
+    value: z.string(),
+    label: z.string().nullable().default(null),
+  }),
+  z.object({
+    type: z.literal("callout"),
+    label: z.string().nullable().default(null),
+    text: z.string(),
+  }),
+  z.object({
+    type: z.literal("image"),
+    url: z.string().url(),
+    alt: z.string().nullable().default(null),
+    caption: z.string().nullable().default(null),
+    credit: z.string().nullable().default(null),
+  }),
+]);
+export type Block = z.infer<typeof blockSchema>;
+
 // 호 안의 항목. id 는 실제 API 응답엔 있으나 번들 fixture(인제스트 원본)엔 없어 nullable.
 export const dailyItemSchema = z.object({
   id: z.string().nullable().default(null),
@@ -24,6 +58,7 @@ export const dailyItemSchema = z.object({
   position: z.number().int().nonnegative().default(0),
   title: z.string().min(1),
   summary: z.string().min(1),
+  blocks: z.array(blockSchema).default([]),
   key_points: z.array(z.string()).default([]),
   what_you_get: z.string().nullable().default(null),
   action: z.string().nullable().default(null),

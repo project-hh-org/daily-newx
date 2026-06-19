@@ -16,12 +16,47 @@ export const httpUrlSchema = z
   .url()
   .refine((u) => /^https?:\/\//i.test(u), "http(s) URL 만 허용");
 
+// 자유 본문 블록 — 기사마다 자유롭게 조합(없어도 됨). 신규 글은 이걸 사용.
+export const blockSchema = z.discriminatedUnion("type", [
+  z.object({ type: z.literal("heading"), text: z.string().min(1) }),
+  z.object({ type: z.literal("paragraph"), text: z.string().min(1) }),
+  z.object({
+    type: z.literal("bullets"),
+    label: z.string().nullable().default(null),
+    items: z.array(z.string().min(1)).min(1),
+  }),
+  z.object({
+    type: z.literal("quote"),
+    text: z.string().min(1),
+    cite: z.string().nullable().default(null),
+  }),
+  z.object({
+    type: z.literal("stat"),
+    value: z.string().min(1),
+    label: z.string().nullable().default(null),
+  }),
+  z.object({
+    type: z.literal("callout"),
+    label: z.string().nullable().default(null),
+    text: z.string().min(1),
+  }),
+  z.object({
+    type: z.literal("image"),
+    url: httpUrlSchema,
+    alt: z.string().nullable().default(null),
+    caption: z.string().nullable().default(null),
+    credit: z.string().nullable().default(null),
+  }),
+]);
+export type Block = z.infer<typeof blockSchema>;
+
 // 개별 항목 — source_url 필수(출처 없는 항목 거부)
 export const dailyItemSchema = z.object({
   category: newsCategorySchema,
   position: z.number().int().min(0).default(0),
   title: z.string().min(1),
   summary: z.string().min(1),
+  blocks: z.array(blockSchema).default([]),
   key_points: z.array(z.string().min(1)).default([]),
   what_you_get: z.string().nullable().default(null),
   action: z.string().nullable().default(null),

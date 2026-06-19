@@ -8,6 +8,7 @@ import { categoryLabel } from "@/lib/categories";
 import { colors, fonts, MAX_READING } from "@/lib/theme";
 import { OptionalField } from "@/components/OptionalField";
 import { Bullets } from "@/components/Bullets";
+import { ArticleBlocks } from "@/components/ArticleBlocks";
 import { SourceLine } from "@/components/SourceLine";
 import { MetaFooter } from "@/components/MetaFooter";
 import { LoadingView, ErrorView, NotFoundView } from "@/components/StateViews";
@@ -53,10 +54,16 @@ export function ArticleScreen({ id }: Props): ReactElement {
 
         <Text style={styles.summary}>{a.summary}</Text>
 
-        <Bullets label="핵심 포인트" points={a.key_points} />
-        <OptionalField label="얻는 것" value={a.what_you_get} />
-        <OptionalField label="왜 지금" value={a.why_now} />
-        <OptionalField label="지금 할 일" value={a.action} tone="action" />
+        {a.blocks.length > 0 ? (
+          <ArticleBlocks blocks={a.blocks} />
+        ) : (
+          <>
+            <Bullets label="핵심 포인트" points={a.key_points} />
+            <OptionalField label="얻는 것" value={a.what_you_get} />
+            <OptionalField label="왜 지금" value={a.why_now} />
+            <OptionalField label="지금 할 일" value={a.action} tone="action" />
+          </>
+        )}
 
         <SourceLine
           sourceName={a.source_name}

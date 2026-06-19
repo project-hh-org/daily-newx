@@ -1,0 +1,24 @@
+version: 1
+applications:
+  - appRoot: apps/reader
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            # 모노레포: 의존성은 레포 루트(yarn workspaces)에서 설치
+            - cd ../..
+            - nvm install 20.19.4 && nvm use 20.19.4
+            - corepack enable
+            - yarn install --frozen-lockfile
+            - cd apps/reader
+        build:
+          commands:
+            - npx expo export -p web
+      artifacts:
+        # appRoot(apps/reader) 기준 상대경로
+        baseDirectory: dist
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - ../../node_modules/**/*
