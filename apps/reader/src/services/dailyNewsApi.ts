@@ -4,10 +4,15 @@ import {
   dailyPayloadSchema,
   articleSchema,
   timelineResponseSchema,
+  issuesResponseSchema,
+  facetsResponseSchema,
   type DailyPayload,
   type Article,
   type TimelineResponse,
   type TimelineAxis,
+  type IssueSummary,
+  type Facet,
+  type FacetKind,
 } from "@/types/news.types";
 
 export class NotFoundError extends Error {
@@ -55,4 +60,16 @@ export async function fetchTimeline(
   const url = `${API_BASE}/api/timeline/${axis}/${encodeURIComponent(value)}`;
   const json = await getJson(url, `${axis}:${value}`);
   return timelineResponseSchema.parse(json);
+}
+
+/** 게시된 호 목록 (아카이브). */
+export async function fetchIssues(): Promise<IssueSummary[]> {
+  const json = await getJson(`${API_BASE}/api/issues`, "issues");
+  return issuesResponseSchema.parse(json).issues;
+}
+
+/** distinct tags/entities + 개수 (주제/주체 리스트). */
+export async function fetchFacets(kind: FacetKind): Promise<Facet[]> {
+  const json = await getJson(`${API_BASE}/api/facets/${kind}`, `facets:${kind}`);
+  return facetsResponseSchema.parse(json).facets;
 }

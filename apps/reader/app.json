@@ -6,7 +6,6 @@
     "orientation": "portrait",
     "scheme": "dailynewx",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": false,
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -23,7 +22,8 @@
       "output": "single"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-status-bar"
     ],
     "extra": {
       "router": {

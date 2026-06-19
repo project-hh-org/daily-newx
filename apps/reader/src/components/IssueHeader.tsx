@@ -1,9 +1,10 @@
 import type { ReactElement } from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import type { DailyIssue, NewsCategory } from "@/types/news.types";
 import type { CategoryMeta } from "@/lib/categories";
 import { isoToLabel } from "@/lib/date";
 import { useUiStore } from "@/store/uiStore";
+import { colors, fonts } from "@/lib/theme";
 
 type Props = {
   issue: DailyIssue;
@@ -17,34 +18,21 @@ export function IssueHeader({ issue, availableCategories }: Props): ReactElement
 
   return (
     <View>
-      {/* 마스트헤드 */}
-      <View className="border-b-2 border-ink pb-4 dark:border-[#ECE6DA]">
-        <Text className="font-sans text-[11px] uppercase tracking-kicker text-ink-muted dark:text-[#8C8475]">
+      <View style={styles.masthead}>
+        <Text style={styles.kicker}>
           매일의 LLM 뉴스{issue.issue_no !== null ? `   ·   제 ${issue.issue_no} 호` : ""}
         </Text>
-        <Text className="mt-2 font-serif text-[40px] leading-[44px] text-ink dark:text-[#ECE6DA]">
-          {isoToLabel(issue.issue_date)}
-        </Text>
+        <Text style={styles.date}>{isoToLabel(issue.issue_date)}</Text>
       </View>
 
       {issue.intro !== null && issue.intro.trim().length > 0 && (
-        <Text className="mt-5 font-serif text-lead text-ink-soft dark:text-[#C9C1B2]">
-          {issue.intro}
-        </Text>
+        <Text style={styles.intro}>{issue.intro}</Text>
       )}
 
       {availableCategories.length > 1 && (
-        <View className="mt-6 flex-row flex-wrap items-center gap-x-4 gap-y-1.5">
+        <View style={styles.filterRow}>
           <Pressable onPress={() => setActiveCategory(null)} accessibilityRole="button">
-            <Text
-              className={
-                activeCategory === null
-                  ? "font-sans text-[13px] text-accent underline"
-                  : "font-sans text-[13px] text-ink-muted dark:text-[#8C8475]"
-              }
-            >
-              전체
-            </Text>
+            <Text style={activeCategory === null ? styles.filterActive : styles.filter}>전체</Text>
           </Pressable>
           {availableCategories.map((c) => {
             const active = activeCategory === c.key;
@@ -54,15 +42,7 @@ export function IssueHeader({ issue, availableCategories }: Props): ReactElement
                 onPress={() => toggleCategory(c.key as NewsCategory)}
                 accessibilityRole="button"
               >
-                <Text
-                  className={
-                    active
-                      ? "font-sans text-[13px] text-accent underline"
-                      : "font-sans text-[13px] text-ink-muted dark:text-[#8C8475]"
-                  }
-                >
-                  {c.label}
-                </Text>
+                <Text style={active ? styles.filterActive : styles.filter}>{c.label}</Text>
               </Pressable>
             );
           })}
@@ -71,3 +51,13 @@ export function IssueHeader({ issue, availableCategories }: Props): ReactElement
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  masthead: { borderBottomWidth: 2, borderBottomColor: colors.ink, paddingBottom: 16 },
+  kicker: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: colors.inkMuted },
+  date: { marginTop: 8, fontFamily: fonts.serif, fontSize: 40, lineHeight: 44, color: colors.ink },
+  intro: { marginTop: 20, fontFamily: fonts.serif, fontSize: 19, lineHeight: 31, color: colors.inkSoft },
+  filterRow: { marginTop: 24, flexDirection: "row", flexWrap: "wrap", alignItems: "center", columnGap: 16, rowGap: 6 },
+  filter: { fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
+  filterActive: { fontFamily: fonts.sans, fontSize: 13, color: colors.accent, textDecorationLine: "underline" },
+});

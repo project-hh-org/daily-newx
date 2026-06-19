@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
-import { View, Text, Pressable, Linking } from "react-native";
+import { View, Text, Pressable, Linking, StyleSheet } from "react-native";
 import { formatSourceDate } from "@/lib/date";
+import { colors, fonts } from "@/lib/theme";
 
 type Props = {
   sourceName: string;
@@ -33,31 +34,23 @@ export function SourceLine({
     publishedAt !== null && publishedAt !== undefined && publishedAt.length > 0;
 
   return (
-    <View className="mt-5 border-t border-rule pt-3 dark:border-[#2A251F]">
-      <View className="flex-row flex-wrap items-baseline gap-x-2 gap-y-1">
-        <Text className="font-sans text-[13px] text-ink-muted dark:text-[#8C8475]">
-          출처
-        </Text>
+    <View style={styles.wrap}>
+      <View style={styles.row}>
+        <Text style={styles.label}>출처</Text>
         <Pressable onPress={() => openUrl(sourceUrl)} accessibilityRole="link">
-          <Text className="font-sans text-[13px] text-accent underline">
+          <Text style={styles.link}>
             {sourceName} · {hostOf(sourceUrl)}
           </Text>
         </Pressable>
-        {hasPublished && (
-          <Text className="font-sans text-[13px] text-ink-muted dark:text-[#8C8475]">
-            · 원문 {formatSourceDate(publishedAt)}
-          </Text>
-        )}
+        {hasPublished && <Text style={styles.meta}>· 원문 {formatSourceDate(publishedAt)}</Text>}
       </View>
 
       {relatedItems.length > 0 && (
-        <View className="mt-1.5 flex-row flex-wrap items-baseline gap-x-2 gap-y-1">
-          <Text className="font-sans text-[13px] text-ink-muted dark:text-[#8C8475]">
-            관련
-          </Text>
+        <View style={[styles.row, styles.relatedRow]}>
+          <Text style={styles.label}>관련</Text>
           {relatedItems.map((r, i) => (
             <Pressable key={i} onPress={() => openUrl(r)} accessibilityRole="link">
-              <Text className="font-sans text-[13px] text-accent underline">{hostOf(r)}</Text>
+              <Text style={styles.link}>{hostOf(r)}</Text>
             </Pressable>
           ))}
         </View>
@@ -65,3 +58,12 @@ export function SourceLine({
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  wrap: { marginTop: 20, borderTopWidth: 1, borderTopColor: colors.rule, paddingTop: 12 },
+  row: { flexDirection: "row", flexWrap: "wrap", alignItems: "baseline", columnGap: 8, rowGap: 4 },
+  relatedRow: { marginTop: 6 },
+  label: { fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
+  link: { fontFamily: fonts.sans, fontSize: 13, color: colors.accent, textDecorationLine: "underline" },
+  meta: { fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
+});

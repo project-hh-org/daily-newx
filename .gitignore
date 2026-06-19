@@ -21,3 +21,9 @@ web-build/
 *.orig.*
 .metro-health-check*
 expo-env.d.ts
+
+# Apple / 시크릿 (절대 커밋 금지)
+*.p8
+AuthKey_*.p8
+*.mobileprovision
+*.p12

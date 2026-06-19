@@ -1,7 +1,8 @@
 import type { ReactElement } from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import type { DailyItem } from "@/types/news.types";
+import { colors, fonts } from "@/lib/theme";
 import { OptionalField } from "@/components/OptionalField";
 import { Bullets } from "@/components/Bullets";
 import { SourceLine } from "@/components/SourceLine";
@@ -12,7 +13,7 @@ type Props = {
   index: number; // 흐름 내 1-기반 순번
 };
 
-/** 항목 카드 — 종이 surface 박스로 아티클을 명확히 구분. 값 있는 선택필드만. */
+/** 항목 카드 — 종이 surface 박스로 아티클을 구분. 값 있는 선택필드만. */
 export function NewsItemCard({ item, index }: Props): ReactElement {
   const router = useRouter();
   const ordinal = String(index).padStart(2, "0");
@@ -23,24 +24,18 @@ export function NewsItemCard({ item, index }: Props): ReactElement {
   };
 
   return (
-    <View className="rounded-xl border border-rule bg-[#FFFDF8] px-5 py-5 dark:border-[#2A251F] dark:bg-[#1B1714]">
-      <Text className="font-serif text-sm text-accent">{ordinal}</Text>
+    <View style={styles.card}>
+      <Text style={styles.ordinal}>{ordinal}</Text>
 
       <Pressable onPress={openArticle} disabled={articleId === null} accessibilityRole="link">
-        <Text className="mt-1 font-serif text-2xl leading-8 text-ink dark:text-[#ECE6DA]">
-          {item.title}
-        </Text>
+        <Text style={styles.title}>{item.title}</Text>
       </Pressable>
 
       {item.tldr !== null && item.tldr.trim().length > 0 && (
-        <Text className="mt-2.5 font-serif text-lead text-ink dark:text-[#ECE6DA]">
-          {item.tldr}
-        </Text>
+        <Text style={styles.tldr}>{item.tldr}</Text>
       )}
 
-      <Text className="mt-2.5 font-sans text-body text-ink-soft dark:text-[#C9C1B2]">
-        {item.summary}
-      </Text>
+      <Text style={styles.summary}>{item.summary}</Text>
 
       <Bullets label="핵심 포인트" points={item.key_points} />
       <OptionalField label="얻는 것" value={item.what_you_get} />
@@ -58,3 +53,18 @@ export function NewsItemCard({ item, index }: Props): ReactElement {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  card: {
+    borderWidth: 1,
+    borderColor: colors.rule,
+    backgroundColor: colors.card,
+    borderRadius: 12,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+  },
+  ordinal: { fontFamily: fonts.serif, fontSize: 14, color: colors.accent },
+  title: { marginTop: 4, fontFamily: fonts.serif, fontSize: 24, lineHeight: 32, color: colors.ink },
+  tldr: { marginTop: 10, fontFamily: fonts.serif, fontSize: 19, lineHeight: 30, color: colors.ink },
+  summary: { marginTop: 10, fontFamily: fonts.sans, fontSize: 16, lineHeight: 27, color: colors.inkSoft },
+});

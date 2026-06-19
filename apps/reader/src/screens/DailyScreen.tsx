@@ -1,28 +1,22 @@
 import { useMemo, type ReactElement } from "react";
-import { ScrollView, View, Text } from "react-native";
+import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { DailyItem, NewsCategory } from "@/types/news.types";
 import { CATEGORY_ORDER, type CategoryMeta } from "@/lib/categories";
 import { compactToIso, isoToLabel } from "@/lib/date";
+import { colors, fonts, MAX_READING } from "@/lib/theme";
 import { useDailyIssue } from "@/hooks/useDailyIssue";
 import { useUiStore } from "@/store/uiStore";
 import { IssueHeader } from "@/components/IssueHeader";
 import { NewsItemCard } from "@/components/NewsItemCard";
-import {
-  LoadingView,
-  ErrorView,
-  EmptyView,
-  NotFoundView,
-} from "@/components/StateViews";
+import { LoadingView, ErrorView, EmptyView, NotFoundView } from "@/components/StateViews";
 import { NotFoundError } from "@/services/dailyNewsApi";
 
 type Props = {
   compactDate: string;
 };
 
-function groupByCategory(
-  items: readonly DailyItem[],
-): Record<NewsCategory, DailyItem[]> {
+function groupByCategory(items: readonly DailyItem[]): Record<NewsCategory, DailyItem[]> {
   const groups: Record<NewsCategory, DailyItem[]> = {
     headline: [],
     release: [],
@@ -44,22 +38,15 @@ export function DailyScreen({ compactDate }: Props): ReactElement {
   const activeCategory = useUiStore((s) => s.activeCategory);
   const query = useDailyIssue(compactDate);
 
-  const grouped = useMemo(
-    () => groupByCategory(query.data?.items ?? []),
-    [query.data],
-  );
+  const grouped = useMemo(() => groupByCategory(query.data?.items ?? []), [query.data]);
 
   const availableCategories: CategoryMeta[] = useMemo(
     () => CATEGORY_ORDER.filter((c) => grouped[c.key].length > 0),
     [grouped],
   );
 
-  // 단일 흐름: 카테고리 우선순위 → position 순으로 평탄화. (필터 적용)
   const flatItems: DailyItem[] = useMemo(() => {
-    const cats =
-      activeCategory === null
-        ? CATEGORY_ORDER.map((c) => c.key)
-        : [activeCategory];
+    const cats = activeCategory === null ? CATEGORY_ORDER.map((c) => c.key) : [activeCategory];
     return cats.flatMap((key) => grouped[key]);
   }, [grouped, activeCategory]);
 
@@ -77,16 +64,16 @@ export function DailyScreen({ compactDate }: Props): ReactElement {
 
   return (
     <ScrollView
-      className="flex-1 bg-paper dark:bg-[#14110E]"
+      style={styles.scroll}
       contentContainerStyle={{ paddingTop: insets.top + 28, paddingBottom: insets.bottom + 56 }}
     >
-      <View className="mx-auto w-full max-w-reading px-5">
+      <View style={styles.column}>
         <IssueHeader issue={issue} availableCategories={availableCategories} />
 
         {flatItems.length === 0 ? (
           <EmptyView />
         ) : (
-          <View className="mt-10 gap-5">
+          <View style={styles.list}>
             {flatItems.map((item, i) => (
               <NewsItemCard key={item.id ?? `${item.source_url}-${i}`} item={item} index={i + 1} />
             ))}
@@ -94,22 +81,27 @@ export function DailyScreen({ compactDate }: Props): ReactElement {
         )}
 
         {issue.outro !== null && issue.outro.trim().length > 0 && (
-          <View className="mt-14">
-            <Text className="mb-4 text-center font-serif text-base text-ink-muted dark:text-[#8C8475]">
-              · · ·
-            </Text>
-            <Text className="font-serif text-lead text-ink-soft dark:text-[#C9C1B2]">
-              {issue.outro}
-            </Text>
+          <View style={styles.outroWrap}>
+            <Text style={styles.divider}>· · ·</Text>
+            <Text style={styles.outro}>{issue.outro}</Text>
           </View>
         )}
 
-        <View className="mt-14 border-t border-rule pt-5 dark:border-[#2A251F]">
-          <Text className="text-center font-sans text-[11px] uppercase tracking-kicker text-ink-muted dark:text-[#8C8475]">
-            매일의 LLM 뉴스   ·   {label}
-          </Text>
+        <View style={styles.colophon}>
+          <Text style={styles.colophonText}>매일의 LLM 뉴스   ·   {label}</Text>
         </View>
       </View>
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  scroll: { flex: 1, backgroundColor: colors.paper },
+  column: { width: "100%", maxWidth: MAX_READING, marginHorizontal: "auto", paddingHorizontal: 20 },
+  list: { marginTop: 40, gap: 20 },
+  outroWrap: { marginTop: 56 },
+  divider: { marginBottom: 16, textAlign: "center", fontFamily: fonts.serif, fontSize: 16, color: colors.inkMuted },
+  outro: { fontFamily: fonts.serif, fontSize: 19, lineHeight: 31, color: colors.inkSoft },
+  colophon: { marginTop: 56, borderTopWidth: 1, borderTopColor: colors.rule, paddingTop: 20 },
+  colophonText: { textAlign: "center", fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: colors.inkMuted },
+});

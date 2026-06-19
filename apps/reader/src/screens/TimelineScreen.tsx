@@ -1,14 +1,11 @@
 import type { ReactElement } from "react";
-import { ScrollView, View, Text, Pressable } from "react-native";
+import { ScrollView, View, Text, Pressable, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
-import {
-  newsCategorySchema,
-  type Article,
-  type TimelineAxis,
-} from "@/types/news.types";
+import { newsCategorySchema, type Article, type TimelineAxis } from "@/types/news.types";
 import { isoToLabel } from "@/lib/date";
 import { categoryLabel } from "@/lib/categories";
+import { colors, fonts, MAX_READING } from "@/lib/theme";
 import { useTimeline } from "@/hooks/useDailyIssue";
 import { LoadingView, ErrorView, NotFoundView } from "@/components/StateViews";
 import { NotFoundError } from "@/services/dailyNewsApi";
@@ -32,33 +29,19 @@ function displayValue(axis: TimelineAxis, value: string): string {
   return value;
 }
 
-function TimelineEntry({
-  item,
-  showDate,
-}: {
-  item: Article;
-  showDate: boolean;
-}): ReactElement {
+function TimelineEntry({ item, showDate }: { item: Article; showDate: boolean }): ReactElement {
   const router = useRouter();
   return (
     <View>
-      {showDate && (
-        <Text className="mb-3 mt-8 font-sans text-[11px] uppercase tracking-kicker text-ink-muted dark:text-[#8C8475]">
-          {isoToLabel(item.issue_date)}
-        </Text>
-      )}
+      {showDate && <Text style={styles.dateHead}>{isoToLabel(item.issue_date)}</Text>}
       <Pressable
         onPress={() => router.push(`/article/${item.id}`)}
         accessibilityRole="link"
-        className="border-t border-rule pt-4 dark:border-[#2A251F]"
+        style={styles.entry}
       >
-        <Text className="font-serif text-xl leading-7 text-ink dark:text-[#ECE6DA]">
-          {item.title}
-        </Text>
+        <Text style={styles.entryTitle}>{item.title}</Text>
         {item.tldr !== null && item.tldr.trim().length > 0 && (
-          <Text className="mt-1.5 font-sans text-[15px] leading-6 text-ink-muted dark:text-[#8C8475]">
-            {item.tldr}
-          </Text>
+          <Text style={styles.entryTldr}>{item.tldr}</Text>
         )}
       </Pressable>
     </View>
@@ -83,32 +66,22 @@ export function TimelineScreen({ axis, value }: Props): ReactElement {
 
   return (
     <ScrollView
-      className="flex-1 bg-paper dark:bg-[#14110E]"
+      style={styles.scroll}
       contentContainerStyle={{ paddingTop: insets.top + 24, paddingBottom: insets.bottom + 56 }}
     >
-      <View className="mx-auto w-full max-w-reading px-5">
+      <View style={styles.column}>
         <Pressable onPress={() => router.push("/")} accessibilityRole="link">
-          <Text className="font-sans text-[12px] uppercase tracking-kicker text-accent">
-            ‹ 오늘의 호
-          </Text>
+          <Text style={styles.crumb}>‹ 오늘의 호</Text>
         </Pressable>
 
-        <View className="mt-4 border-b-2 border-ink pb-4 dark:border-[#ECE6DA]">
-          <Text className="font-sans text-[11px] uppercase tracking-kicker text-ink-muted dark:text-[#8C8475]">
-            타임라인 · {AXIS_LABEL[axis]}
-          </Text>
-          <Text className="mt-2 font-serif text-[34px] leading-[40px] text-ink dark:text-[#ECE6DA]">
-            {displayValue(axis, value)}
-          </Text>
-          <Text className="mt-2 font-sans text-sm text-ink-muted dark:text-[#8C8475]">
-            {items.length}건 · 최신순
-          </Text>
+        <View style={styles.masthead}>
+          <Text style={styles.kicker}>타임라인 · {AXIS_LABEL[axis]}</Text>
+          <Text style={styles.title}>{displayValue(axis, value)}</Text>
+          <Text style={styles.count}>{items.length}건 · 최신순</Text>
         </View>
 
         {items.length === 0 ? (
-          <Text className="mt-10 text-center font-serif text-base text-ink-muted dark:text-[#8C8475]">
-            아직 모인 항목이 없습니다.
-          </Text>
+          <Text style={styles.empty}>아직 모인 항목이 없습니다.</Text>
         ) : (
           items.map((item) => {
             const showDate = item.issue_date !== lastDate;
@@ -120,3 +93,18 @@ export function TimelineScreen({ axis, value }: Props): ReactElement {
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  scroll: { flex: 1, backgroundColor: colors.paper },
+  column: { width: "100%", maxWidth: MAX_READING, marginHorizontal: "auto", paddingHorizontal: 20 },
+  crumb: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", color: colors.accent },
+  masthead: { marginTop: 16, borderBottomWidth: 2, borderBottomColor: colors.ink, paddingBottom: 16 },
+  kicker: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: colors.inkMuted },
+  title: { marginTop: 8, fontFamily: fonts.serif, fontSize: 34, lineHeight: 40, color: colors.ink },
+  count: { marginTop: 8, fontFamily: fonts.sans, fontSize: 14, color: colors.inkMuted },
+  dateHead: { marginTop: 32, marginBottom: 12, fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: colors.inkMuted },
+  entry: { borderTopWidth: 1, borderTopColor: colors.rule, paddingTop: 16 },
+  entryTitle: { fontFamily: fonts.serif, fontSize: 20, lineHeight: 28, color: colors.ink },
+  entryTldr: { marginTop: 6, fontFamily: fonts.sans, fontSize: 15, lineHeight: 24, color: colors.inkMuted },
+  empty: { marginTop: 40, textAlign: "center", fontFamily: fonts.serif, fontSize: 16, color: colors.inkMuted },
+});

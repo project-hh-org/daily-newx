@@ -1,4 +1,2 @@
-/// <reference types="nativewind/types" />
-
-// global.css 등 CSS import 를 tsc 가 인식하도록.
-declare module "*.css";
+// NativeWind 제거됨 — StyleSheet 사용. (파일 삭제가 환경상 막혀 빈 모듈로 유지)
+export {};

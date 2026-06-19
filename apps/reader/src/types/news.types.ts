@@ -69,3 +69,31 @@ export const timelineResponseSchema = z.object({
   items: z.array(articleSchema),
 });
 export type TimelineResponse = z.infer<typeof timelineResponseSchema>;
+
+// 호 목록 (아카이브)
+export const issueSummarySchema = z.object({
+  issue_date: isoDate,
+  issue_no: z.number().int().positive().nullable().default(null),
+  intro: z.string().nullable().default(null),
+});
+export type IssueSummary = z.infer<typeof issueSummarySchema>;
+
+export const issuesResponseSchema = z.object({
+  issues: z.array(issueSummarySchema),
+});
+
+// facets (주제/주체 리스트)
+export const facetKindSchema = z.enum(["tag", "entity"]);
+export type FacetKind = z.infer<typeof facetKindSchema>;
+
+export const facetSchema = z.object({
+  value: z.string(),
+  count: z.number().int().nonnegative(),
+});
+export type Facet = z.infer<typeof facetSchema>;
+
+export const facetsResponseSchema = z.object({
+  kind: facetKindSchema,
+  facets: z.array(facetSchema),
+});
+export type FacetsResponse = z.infer<typeof facetsResponseSchema>;

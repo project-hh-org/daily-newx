@@ -5,6 +5,12 @@
         "projectId": "aaffaa07-2378-4eee-b242-93d98a19d8fc"
       }
     },
-    "owner": "project-hh"
+    "owner": "project-hh",
+    "ios": {
+      "bundleIdentifier": "com.projecthh.dailynewx",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    }
   }
 }

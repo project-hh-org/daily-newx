@@ -8,7 +8,7 @@
       "developmentClient": true,
       "distribution": "internal",
       "node": "24.13.1",
-      "ios": { "simulator": true },
+      "ios": { "simulator": true, "image": "latest" },
       "env": {
         "EXPO_PUBLIC_API_BASE": "https://daily-newx.vercel.app",
         "EXPO_PUBLIC_USE_FIXTURE": "0"
@@ -17,6 +17,7 @@
     "preview": {
       "distribution": "internal",
       "node": "24.13.1",
+      "ios": { "image": "latest" },
       "env": {
         "EXPO_PUBLIC_API_BASE": "https://daily-newx.vercel.app",
         "EXPO_PUBLIC_USE_FIXTURE": "0"
@@ -25,6 +26,7 @@
     "production": {
       "autoIncrement": true,
       "node": "24.13.1",
+      "ios": { "image": "latest" },
       "env": {
         "EXPO_PUBLIC_API_BASE": "https://daily-newx.vercel.app",
         "EXPO_PUBLIC_USE_FIXTURE": "0"
@@ -32,6 +34,10 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "ascAppId": "6781562829"
+      }
+    }
   }
 }

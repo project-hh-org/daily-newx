@@ -131,3 +131,50 @@ export async function getTimeline(
   if (error) throw new Error("daily_items 타임라인 조회 실패: " + error.message);
   return data ?? [];
 }
+
+// 호 목록: GET /api/issues — 게시된 호를 일자 내림차순으로.
+export async function getIssuesList(): Promise<unknown[]> {
+  const supabase = getServiceClient();
+  let query = supabase.from("daily_issues").select("issue_date, issue_no, intro");
+  if (!includeDrafts()) query = query.eq("status", "published");
+  const { data, error } = await query.order("issue_date", { ascending: false });
+  if (error) throw new Error("daily_issues 목록 조회 실패: " + error.message);
+  return data ?? [];
+}
+
+export type FacetKind = "tag" | "entity";
+
+export function isFacetKind(v: string): v is FacetKind {
+  return v === "tag" || v === "entity";
+}
+
+export type Facet = { value: string; count: number };
+
+// distinct tags/entities + 개수: GET /api/facets/{kind}
+// jsonb 배열을 Node 에서 집계(소규모 데이터셋이라 충분).
+export async function getFacets(kind: FacetKind): Promise<Facet[]> {
+  const supabase = getServiceClient();
+  const drafts = includeDrafts();
+  const col = kind === "tag" ? "tags" : "entities";
+  const sel = drafts ? col : `${col}, daily_issues!inner(status)`;
+  let query = supabase.from("daily_items").select(sel);
+  if (!drafts) query = query.eq("daily_issues.status", "published");
+
+  const { data, error } = await query;
+  if (error) throw new Error("facets 조회 실패: " + error.message);
+
+  const counts = new Map<string, number>();
+  for (const row of (data ?? []) as unknown as Array<Record<string, unknown>>) {
+    const arr = row[col];
+    if (Array.isArray(arr)) {
+      for (const v of arr) {
+        if (typeof v === "string" && v.trim().length > 0) {
+          counts.set(v, (counts.get(v) ?? 0) + 1);
+        }
+      }
+    }
+  }
+  return Array.from(counts, ([value, count]) => ({ value, count })).sort(
+    (a, b) => b.count - a.count || a.value.localeCompare(b.value),
+  );
+}

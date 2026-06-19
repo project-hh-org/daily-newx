@@ -3,6 +3,8 @@ import {
   fetchDailyIssue,
   fetchArticle,
   fetchTimeline,
+  fetchIssues,
+  fetchFacets,
   NotFoundError,
 } from "@/services/dailyNewsApi";
 import type {
@@ -10,6 +12,9 @@ import type {
   Article,
   TimelineResponse,
   TimelineAxis,
+  IssueSummary,
+  Facet,
+  FacetKind,
 } from "@/types/news.types";
 
 const retryNon404 = (failureCount: number, error: Error): boolean => {
@@ -48,6 +53,24 @@ export function useTimeline(
     queryKey: ["timeline", axis, value] as const,
     queryFn: () => fetchTimeline(axis, value),
     enabled: value.length > 0,
+    staleTime: 5 * 60 * 1000,
+    retry: retryNon404,
+  });
+}
+
+export function useIssues(): UseQueryResult<IssueSummary[], Error> {
+  return useQuery<IssueSummary[], Error>({
+    queryKey: ["issues"] as const,
+    queryFn: () => fetchIssues(),
+    staleTime: 5 * 60 * 1000,
+    retry: retryNon404,
+  });
+}
+
+export function useFacets(kind: FacetKind): UseQueryResult<Facet[], Error> {
+  return useQuery<Facet[], Error>({
+    queryKey: ["facets", kind] as const,
+    queryFn: () => fetchFacets(kind),
     staleTime: 5 * 60 * 1000,
     retry: retryNon404,
   });

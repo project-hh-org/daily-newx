@@ -1,8 +1,9 @@
 import type { ReactElement } from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import type { NewsCategory } from "@/types/news.types";
 import { categoryLabel } from "@/lib/categories";
+import { colors, fonts } from "@/lib/theme";
 
 type Props = {
   category: NewsCategory;
@@ -10,63 +11,63 @@ type Props = {
   entities: readonly string[];
 };
 
+type Axis = "category" | "tag" | "entity";
+
+function MetaLinks({
+  label,
+  axis,
+  values,
+  onGo,
+}: {
+  label: string;
+  axis: Axis;
+  values: readonly string[];
+  onGo: (axis: Axis, value: string) => void;
+}): ReactElement {
+  return (
+    <View style={styles.linkRow}>
+      <Text style={styles.linkLabel}>{label}</Text>
+      {values.map((v, i) => (
+        <Pressable key={i} onPress={() => onGo(axis, v)} accessibilityRole="link">
+          <Text style={styles.link}>{v}</Text>
+        </Pressable>
+      ))}
+    </View>
+  );
+}
+
 /** 아티클 하단 메타 — 카테고리/주제/주체를 타임라인 링크로. */
 export function MetaFooter({ category, tags, entities }: Props): ReactElement {
   const router = useRouter();
-  const goTimeline = (axis: "category" | "tag" | "entity", value: string): void => {
+  const onGo = (axis: Axis, value: string): void => {
     router.push(`/timeline/${axis}/${encodeURIComponent(value)}`);
   };
   const ts = tags.filter((t) => t.trim().length > 0);
   const es = entities.filter((e) => e.trim().length > 0);
 
   return (
-    <View className="mt-5 gap-2 border-t border-rule pt-4 dark:border-[#2A251F]">
-      {/* 카테고리 — 하단 태그(클릭 시 카테고리 타임라인) */}
-      <View className="flex-row flex-wrap">
+    <View style={styles.wrap}>
+      <View style={styles.catRow}>
         <Pressable
-          onPress={() => goTimeline("category", category)}
+          onPress={() => onGo("category", category)}
           accessibilityRole="link"
-          className="rounded-sm border border-ink px-2 py-1 dark:border-[#ECE6DA]"
+          style={styles.catTag}
         >
-          <Text className="font-sans text-[11px] uppercase tracking-kicker text-ink dark:text-[#ECE6DA]">
-            {categoryLabel(category)}
-          </Text>
+          <Text style={styles.catText}>{categoryLabel(category)}</Text>
         </Pressable>
       </View>
-
-      {ts.length > 0 && (
-        <Text className="font-sans text-[13px] leading-6 text-ink-muted dark:text-[#8C8475]">
-          <Text className="font-semibold">주제  </Text>
-          {ts.map((t, i) => (
-            <Text key={i}>
-              {i > 0 ? "   ·   " : ""}
-              <Text
-                className="text-accent underline"
-                onPress={() => goTimeline("tag", t)}
-              >
-                {t}
-              </Text>
-            </Text>
-          ))}
-        </Text>
-      )}
-
-      {es.length > 0 && (
-        <Text className="font-sans text-[13px] leading-6 text-ink-muted dark:text-[#8C8475]">
-          <Text className="font-semibold">주체  </Text>
-          {es.map((e, i) => (
-            <Text key={i}>
-              {i > 0 ? "   ·   " : ""}
-              <Text
-                className="text-accent underline"
-                onPress={() => goTimeline("entity", e)}
-              >
-                {e}
-              </Text>
-            </Text>
-          ))}
-        </Text>
-      )}
+      {ts.length > 0 && <MetaLinks label="주제" axis="tag" values={ts} onGo={onGo} />}
+      {es.length > 0 && <MetaLinks label="주체" axis="entity" values={es} onGo={onGo} />}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  wrap: { marginTop: 20, borderTopWidth: 1, borderTopColor: colors.rule, paddingTop: 16, gap: 8 },
+  catRow: { flexDirection: "row", flexWrap: "wrap" },
+  catTag: { borderWidth: 1, borderColor: colors.ink, borderRadius: 3, paddingHorizontal: 8, paddingVertical: 4 },
+  catText: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1, color: colors.ink },
+  linkRow: { flexDirection: "row", flexWrap: "wrap", alignItems: "baseline", columnGap: 10, rowGap: 4 },
+  linkLabel: { fontFamily: fonts.sans, fontSize: 13, fontWeight: "600", color: colors.inkMuted },
+  link: { fontFamily: fonts.sans, fontSize: 13, color: colors.accent, textDecorationLine: "underline" },
+});

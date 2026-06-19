@@ -1,10 +1,11 @@
 import type { ReactElement } from "react";
-import { ScrollView, View, Text, Pressable } from "react-native";
+import { ScrollView, View, Text, Pressable, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import { useArticle } from "@/hooks/useDailyIssue";
 import { isoToLabel, isoToCompact } from "@/lib/date";
 import { categoryLabel } from "@/lib/categories";
+import { colors, fonts, MAX_READING } from "@/lib/theme";
 import { OptionalField } from "@/components/OptionalField";
 import { Bullets } from "@/components/Bullets";
 import { SourceLine } from "@/components/SourceLine";
@@ -33,33 +34,24 @@ export function ArticleScreen({ id }: Props): ReactElement {
 
   return (
     <ScrollView
-      className="flex-1 bg-paper dark:bg-[#14110E]"
+      style={styles.scroll}
       contentContainerStyle={{ paddingTop: insets.top + 24, paddingBottom: insets.bottom + 56 }}
     >
-      <View className="mx-auto w-full max-w-reading px-5">
-        {/* 브레드크럼: 이 호로 */}
+      <View style={styles.column}>
         <Pressable
           onPress={() => router.push(compact !== undefined ? `/daily/${compact}` : "/")}
           accessibilityRole="link"
         >
-          <Text className="font-sans text-[12px] uppercase tracking-kicker text-accent">
+          <Text style={styles.crumb}>
             ‹ {isoToLabel(a.issue_date)} · {categoryLabel(a.category)}
           </Text>
         </Pressable>
 
-        <Text className="mt-4 font-serif text-[30px] leading-[40px] text-ink dark:text-[#ECE6DA]">
-          {a.title}
-        </Text>
+        <Text style={styles.title}>{a.title}</Text>
 
-        {a.tldr !== null && a.tldr.trim().length > 0 && (
-          <Text className="mt-3 font-serif text-lead text-ink dark:text-[#ECE6DA]">
-            {a.tldr}
-          </Text>
-        )}
+        {a.tldr !== null && a.tldr.trim().length > 0 && <Text style={styles.tldr}>{a.tldr}</Text>}
 
-        <Text className="mt-4 font-sans text-body text-ink-soft dark:text-[#C9C1B2]">
-          {a.summary}
-        </Text>
+        <Text style={styles.summary}>{a.summary}</Text>
 
         <Bullets label="핵심 포인트" points={a.key_points} />
         <OptionalField label="얻는 것" value={a.what_you_get} />
@@ -78,3 +70,12 @@ export function ArticleScreen({ id }: Props): ReactElement {
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  scroll: { flex: 1, backgroundColor: colors.paper },
+  column: { width: "100%", maxWidth: MAX_READING, marginHorizontal: "auto", paddingHorizontal: 20 },
+  crumb: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", color: colors.accent },
+  title: { marginTop: 16, fontFamily: fonts.serif, fontSize: 30, lineHeight: 40, color: colors.ink },
+  tldr: { marginTop: 12, fontFamily: fonts.serif, fontSize: 19, lineHeight: 31, color: colors.ink },
+  summary: { marginTop: 16, fontFamily: fonts.sans, fontSize: 16, lineHeight: 27, color: colors.inkSoft },
+});

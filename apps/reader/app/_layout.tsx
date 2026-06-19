@@ -1,4 +1,3 @@
-import "../global.css";
 import { useState, type ReactElement } from "react";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
