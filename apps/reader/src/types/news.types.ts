@@ -170,3 +170,10 @@ export const facetsResponseSchema = z.object({
   facets: z.array(facetSchema),
 });
 export type FacetsResponse = z.infer<typeof facetsResponseSchema>;
+
+// 스토리 스레드 (follow_up_of / story_slug 클러스터)
+export const storyResponseSchema = z.object({
+  slug: z.string(),
+  items: z.array(articleSchema),
+});
+export type StoryResponse = z.infer<typeof storyResponseSchema>;

@@ -5,6 +5,7 @@ import {
   fetchTimeline,
   fetchIssues,
   fetchFacets,
+  fetchStory,
   NotFoundError,
 } from "@/services/dailyNewsApi";
 import type {
@@ -15,6 +16,7 @@ import type {
   IssueSummary,
   Facet,
   FacetKind,
+  StoryResponse,
 } from "@/types/news.types";
 
 const retryNon404 = (failureCount: number, error: Error): boolean => {
@@ -71,6 +73,16 @@ export function useFacets(kind: FacetKind): UseQueryResult<Facet[], Error> {
   return useQuery<Facet[], Error>({
     queryKey: ["facets", kind] as const,
     queryFn: () => fetchFacets(kind),
+    staleTime: 5 * 60 * 1000,
+    retry: retryNon404,
+  });
+}
+
+export function useStory(slug: string | null): UseQueryResult<StoryResponse, Error> {
+  return useQuery<StoryResponse, Error>({
+    queryKey: ["story", slug ?? ""] as const,
+    queryFn: () => fetchStory(slug ?? ""),
+    enabled: slug !== null && slug.length > 0,
     staleTime: 5 * 60 * 1000,
     retry: retryNon404,
   });

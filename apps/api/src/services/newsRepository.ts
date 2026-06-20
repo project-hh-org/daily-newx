@@ -144,6 +144,82 @@ export async function getIssuesList(): Promise<unknown[]> {
   return data ?? [];
 }
 
+// ── 어드민(인증 필요) ─────────────────────────────────────────
+// 어드민은 status 무관하게 전체를 본다(draft 포함).
+const ADMIN_ITEM_COLS =
+  "id, category, position, title, summary, blocks, key_points, what_you_get, action, why_now, source_url, source_name, score, story_slug, tldr, tags, entities, related, follow_up_of, source_published_at";
+
+export async function getIssueAdmin(issueDate: string): Promise<unknown | null> {
+  const supabase = getServiceClient();
+  const { data: issue, error: issueError } = await supabase
+    .from("daily_issues")
+    .select("issue_date, issue_no, intro, outro, status")
+    .eq("issue_date", issueDate)
+    .maybeSingle();
+  if (issueError) throw new Error("daily_issues(admin) 조회 실패: " + issueError.message);
+  if (!issue) return null;
+  const { data: items, error: itemsError } = await supabase
+    .from("daily_items")
+    .select(ADMIN_ITEM_COLS)
+    .eq("issue_date", issueDate)
+    .order("category", { ascending: true })
+    .order("position", { ascending: true });
+  if (itemsError) throw new Error("daily_items(admin) 조회 실패: " + itemsError.message);
+  return { issue, items: items ?? [] };
+}
+
+export async function updateItem(id: string, patch: Record<string, unknown>): Promise<void> {
+  const supabase = getServiceClient();
+  const { error } = await supabase.from("daily_items").update(patch).eq("id", id);
+  if (error) throw new Error("daily_items 수정 실패: " + error.message);
+}
+
+export async function deleteItem(id: string): Promise<void> {
+  const supabase = getServiceClient();
+  const { error } = await supabase.from("daily_items").delete().eq("id", id);
+  if (error) throw new Error("daily_items 삭제 실패: " + error.message);
+}
+
+export async function reorderItems(orders: ReadonlyArray<{ id: string; position: number }>): Promise<void> {
+  const supabase = getServiceClient();
+  for (const o of orders) {
+    const { error } = await supabase
+      .from("daily_items")
+      .update({ position: o.position })
+      .eq("id", o.id);
+    if (error) throw new Error("재정렬 실패: " + error.message);
+  }
+}
+
+export async function updateIssueMeta(
+  issueDate: string,
+  patch: Record<string, unknown>,
+): Promise<void> {
+  const supabase = getServiceClient();
+  const { error } = await supabase
+    .from("daily_issues")
+    .update(patch)
+    .eq("issue_date", issueDate);
+  if (error) throw new Error("daily_issues 수정 실패: " + error.message);
+}
+
+// 스토리 스레드: GET /api/story/{slug} — story_slug 또는 follow_up_of 가 slug 인 항목(일자 오름차순).
+export async function getStoryThread(slug: string): Promise<unknown[]> {
+  const supabase = getServiceClient();
+  const drafts = includeDrafts();
+  const sel = drafts ? ARTICLE_COLS : `${ARTICLE_COLS}, daily_issues!inner(status)`;
+  let query = supabase
+    .from("daily_items")
+    .select(sel)
+    .or(`story_slug.eq.${slug},follow_up_of.eq.${slug}`);
+  if (!drafts) query = query.eq("daily_issues.status", "published");
+  const { data, error } = await query
+    .order("issue_date", { ascending: true })
+    .order("position", { ascending: true });
+  if (error) throw new Error("스토리 스레드 조회 실패: " + error.message);
+  return data ?? [];
+}
+
 export type FacetKind = "tag" | "entity";
 
 export function isFacetKind(v: string): v is FacetKind {

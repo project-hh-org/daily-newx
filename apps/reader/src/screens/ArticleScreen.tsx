@@ -11,6 +11,7 @@ import { Bullets } from "@/components/Bullets";
 import { ArticleBlocks } from "@/components/ArticleBlocks";
 import { SourceLine } from "@/components/SourceLine";
 import { MetaFooter } from "@/components/MetaFooter";
+import { StoryThread } from "@/components/StoryThread";
 import { LoadingView, ErrorView, NotFoundView } from "@/components/StateViews";
 import { NotFoundError } from "@/services/dailyNewsApi";
 
@@ -73,6 +74,8 @@ export function ArticleScreen({ id }: Props): ReactElement {
         />
 
         <MetaFooter category={a.category} tags={a.tags} entities={a.entities} />
+
+        <StoryThread slug={a.story_slug ?? a.follow_up_of} currentId={a.id} />
       </View>
     </ScrollView>
   );

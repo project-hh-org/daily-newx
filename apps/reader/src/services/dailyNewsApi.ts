@@ -6,6 +6,7 @@ import {
   timelineResponseSchema,
   issuesResponseSchema,
   facetsResponseSchema,
+  storyResponseSchema,
   type DailyPayload,
   type Article,
   type TimelineResponse,
@@ -13,6 +14,7 @@ import {
   type IssueSummary,
   type Facet,
   type FacetKind,
+  type StoryResponse,
 } from "@/types/news.types";
 
 export class NotFoundError extends Error {
@@ -72,4 +74,10 @@ export async function fetchIssues(): Promise<IssueSummary[]> {
 export async function fetchFacets(kind: FacetKind): Promise<Facet[]> {
   const json = await getJson(`${API_BASE}/api/facets/${kind}`, `facets:${kind}`);
   return facetsResponseSchema.parse(json).facets;
+}
+
+/** 스토리 스레드 — 같은 이야기 흐름. */
+export async function fetchStory(slug: string): Promise<StoryResponse> {
+  const json = await getJson(`${API_BASE}/api/story/${encodeURIComponent(slug)}`, `story:${slug}`);
+  return storyResponseSchema.parse(json);
 }
