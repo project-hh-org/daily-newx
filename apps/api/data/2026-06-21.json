@@ -1,0 +1,583 @@
+{
+  "issue": {
+    "issue_date": "2026-06-21",
+    "issue_no": 6,
+    "intro": "Fable 5가 오프라인 9일째인 오늘, 그 사이 DeepSeek은 1조 6000억 파라미터 모델을 조용히 내놨고, Grok은 AWS에 상륙했다. 전 세계 개발자 97%는 이미 AI로 코드를 짜고, 세계 성인 10%는 AI 챗봇으로 뉴스를 읽는다. 주말이지만 AI 뉴스는 숨 고를 새가 없다.",
+    "outro": "다음 주 초를 주목하자. Fable 5 복구 여부는 여전히 불투명하고, Gemini 3.5 Pro의 6월 출시 마감까지 9일밖에 남지 않았다. 둘 중 하나는 이번 주 안에 결판이 난다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "Fable 5 금지 9일째: 환불 창구 닫히고, 무료 체험도 내일 끝난다",
+      "tldr": "미국 수출 통제로 Fable 5 오프라인 9일째. 환불 마감은 어제 지났고, 유료 구독자 무료 체험 기간도 6/22 종료 예정.",
+      "summary": "지난 6월 12일 미국 정부의 수출 통제 지시로 Claude Fable 5와 Mythos 5가 전 세계에서 차단된 지 오늘로 9일째입니다. 사용 크레딧 환불 신청 마감은 어제(6/20) 지났고, 유료 구독자(Pro·Max·Team·Enterprise)에게 제공하던 무료 체험 기간도 내일(6/22) 공식 종료됩니다. Anthropic 측은 '며칠 내 복구'를 자신했지만(6/18, 서울 오피스 행사), 현재까지 API는 여전히 오류를 반환하고 있습니다.",
+      "blocks": [
+        {
+          "type": "timeline",
+          "events": [
+            {
+              "date": "6/9",
+              "text": "Claude Fable 5 · Mythos 5 공식 출시"
+            },
+            {
+              "date": "6/12",
+              "text": "미국 수출 통제 지시 → Anthropic, 전 세계 접속 차단"
+            },
+            {
+              "date": "6/13",
+              "text": "David Sacks(백악관 AI 자문): '취약점 고치거나 직접 내려라' → Dario Amodei 거부"
+            },
+            {
+              "date": "6/18",
+              "text": "서울 오피스 오픈. Chris Ciauri 국제 담당: '며칠 내 복구 자신한다'"
+            },
+            {
+              "date": "6/20",
+              "text": "환불 신청 마감 경과 — 이 시점 이후 크레딧 환불 불가"
+            },
+            {
+              "date": "6/21",
+              "text": "현재: API 여전히 오류. isfable5back.org 복구 신호 없음"
+            },
+            {
+              "date": "6/22",
+              "text": "유료 구독자 무료 체험 기간 공식 종료 예정"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "백악관의 재출시 조건은 '모든 잠재적 탈옥(jailbreak·AI 안전장치를 우회하는 행위) 사전 차단'입니다. AI 보안 전문가들은 이것이 현재 기술로 불가능하다고 입을 모읍니다. Anthropic도 Fable 5 출시 문서에서 '완전한 탈옥 방지는 불가능하다'고 명시했습니다. 양측이 이 간극을 좁히지 못하면 모델은 무기한 오프라인 상태를 유지할 수 있습니다."
+        },
+        {
+          "type": "stat",
+          "value": "$110만+",
+          "label": "Polymarket에서 'Fable 5 복구' 예측 시장에 거래된 금액. 7/1 이전 복구 확률: 58~67%로 시장 평가"
+        },
+        {
+          "type": "callout",
+          "label": "현재 사용 가능한 모델",
+          "text": "Claude Opus 4.8, Sonnet 4.6, Haiku 4.5는 이번 차단과 무관하게 정상 작동 중입니다."
+        }
+      ],
+      "source_url": "https://www.anthropic.com/news/fable-mythos-access",
+      "source_name": "official-blog",
+      "score": 9,
+      "story_slug": "fable-5-ban-day-9-refund-deadline",
+      "tags": [
+        "Fable5",
+        "수출통제",
+        "Anthropic",
+        "AI규제",
+        "jailbreak"
+      ],
+      "entities": [
+        "Anthropic",
+        "Claude Fable 5",
+        "Claude Mythos 5",
+        "David Sacks",
+        "Dario Amodei",
+        "Chris Ciauri"
+      ],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-21"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "Gemini 3.5 Pro, 6월 마감 D-9 — 구글 CEO 약속 지킬까",
+      "tldr": "구글 CEO가 I/O에서 약속한 '6월 일반 출시', 9일 남았는데 여전히 일부 기업 고객에게만 제한 공개 중.",
+      "summary": "구글 CEO 순다르 피차이는 5월 19일 Google I/O에서 Gemini 3.5 Pro를 6월에 일반 출시하겠다고 약속했습니다. 오늘(6/21) 기준 9일이 남았지만 아직 Vertex AI 기업 고객 일부에게만 제한적으로 공개된 상태로, 일반 Gemini 앱·Google AI Studio·API에서는 아직 쓸 수 없습니다.",
+      "blocks": [
+        {
+          "type": "stat",
+          "value": "D-9",
+          "label": "구글 CEO '6월 일반 출시' 공약 마감까지 남은 날 (6/21 기준)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 3.5 Pro의 확인된 스펙은 상당합니다. 한 번에 처리할 수 있는 텍스트 양(컨텍스트 창)이 200만 토큰으로, 기존 Flash 모델의 두 배입니다. 책 수천 권을 한 번에 넣고 분석할 수 있는 수준입니다. 어려운 다단계 문제를 깊이 생각하는 'Deep Think(딥 씽크)' 추론 모드도 탑재됩니다."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "항목",
+            "Gemini 3.5 Flash",
+            "Gemini 3.5 Pro (예상)"
+          ],
+          "rows": [
+            [
+              "컨텍스트 창",
+              "100만 토큰",
+              "200만 토큰"
+            ],
+            [
+              "추론 심화 모드",
+              "없음",
+              "Deep Think 포함"
+            ],
+            [
+              "입력 가격(추정)",
+              "~$0.075/M 토큰",
+              "~$15/M 토큰"
+            ],
+            [
+              "출력 가격(추정)",
+              "~$0.30/M 토큰",
+              "~$60/M 토큰"
+            ],
+            [
+              "소비자 요금제",
+              "기본 포함",
+              "AI Ultra($250/월) 포함"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Google I/O 당일 발표 없이 넘어가자 개발자들 사이에서 탄식이 나왔고, 이번에도 6월을 놓치면 구글이 공식 일정 수정 발표를 해야 할 상황입니다."
+        }
+      ],
+      "source_url": "https://growwingassistant.com/ai-news/gemini-3-5-pro-release-date-june-2026-every-confirmed-spec-pricing-when-it-drops/",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "gemini-35-pro-june-deadline-d9",
+      "tags": [
+        "Gemini",
+        "구글",
+        "AI모델",
+        "출시일",
+        "멀티모달"
+      ],
+      "entities": [
+        "Google",
+        "Gemini 3.5 Pro",
+        "Sundar Pichai",
+        "Vertex AI"
+      ],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-21"
+    },
+    {
+      "category": "release",
+      "position": 2,
+      "title": "DeepSeek V4 프리뷰: 1조 6000억 파라미터, 처음으로 화웨이 칩으로 훈련",
+      "tldr": "중국 DeepSeek이 1.6조 파라미터 초대형 모델 공개. NVIDIA가 아닌 화웨이 Ascend 950 칩으로 훈련한 첫 주요 중국 AI 모델.",
+      "summary": "DeepSeek이 V4 시리즈 프리뷰를 공개했습니다. 핵심 모델 DeepSeek-V4-Pro는 파라미터 수가 1조 6000억 개인 초대형 혼합 전문가(MoE) 모델입니다. 미국의 중국 NVIDIA 칩 수출 규제 속에서 화웨이 Ascend 950 칩으로 훈련된 첫 주요 중국 프런티어 모델이라는 점에서 업계의 주목을 받고 있습니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "혼합 전문가 모델 (MoE, Mixture of Experts)",
+          "text": "하나의 거대한 AI 모델 안에 여러 '전문 팀'을 두고, 질문 유형에 따라 해당 팀만 작동시키는 구조. 전체를 항상 돌리지 않으므로 운영 비용을 낮출 수 있습니다. 1.6조 파라미터가 모두 동시에 활성화되는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "미국이 NVIDIA 고성능 GPU의 중국 수출을 막고 있는 상황에서, 화웨이 Ascend 950 칩으로 이 규모의 모델을 훈련했다는 것은 중국이 독자적인 AI 칩 생태계를 실전에 투입하기 시작했다는 신호로 해석됩니다. 미국 외교관계위원회(CFR) 분석에 따르면 V4는 현재 오픈소스 중 최고 수준이지만, 미국 최상위 폐쇄형 모델과의 격차는 여전히 존재하며 DeepSeek 자체 기술 보고서도 이를 인정했습니다."
+        },
+        {
+          "type": "bullets",
+          "label": "주요 특징",
+          "items": [
+            "오픈소스로 공개 — DeepSeek 웹사이트, 앱, API에서 바로 이용 가능",
+            "화웨이 Ascend 950 칩 훈련: 주요 중국 모델 중 NVIDIA 미사용 첫 사례",
+            "DeepSeek 핵심 인력이 텐센트·바이트댄스·샤오미 등으로 이탈 중이지만, 오픈소스 전략으로 글로벌 개발자 생태계 공략"
+          ]
+        }
+      ],
+      "source_url": "https://www.cfr.org/articles/deepseek-v4-signals-a-new-phase-in-the-u-s-china-ai-rivalry",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "deepseek-v4-huawei-ascend-moe-preview",
+      "tags": [
+        "DeepSeek",
+        "중국AI",
+        "오픈소스",
+        "화웨이",
+        "AI칩경쟁"
+      ],
+      "entities": [
+        "DeepSeek",
+        "Huawei Ascend",
+        "CFR"
+      ],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-20"
+    },
+    {
+      "category": "release",
+      "position": 3,
+      "title": "Grok 4.3, AWS에서 직접 쓴다 — 100만 토큰·최저 환각률 내세워",
+      "tldr": "xAI의 Grok 4.3이 Amazon Bedrock에 정식 상륙. AWS 계정만 있으면 별도 xAI 가입 없이 바로 사용 가능.",
+      "summary": "일론 머스크의 AI 회사 xAI가 만든 Grok 4.3이 Amazon Bedrock(AWS의 AI 모델 통합 서비스)에 정식으로 출시됐습니다. 100만 토큰 컨텍스트 창, 추론 강도 조절 기능이 특징이며, xAI는 '현재 출시 모델 중 최저 환각률'을 주장합니다. AWS 기업 고객은 별도 xAI 계정 없이 바로 사용할 수 있습니다.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "항목",
+            "Grok 4.3 (Bedrock)"
+          ],
+          "rows": [
+            [
+              "입력 가격",
+              "$1.25 / 100만 토큰"
+            ],
+            [
+              "출력 가격",
+              "$2.50 / 100만 토큰"
+            ],
+            [
+              "컨텍스트 창",
+              "100만 토큰"
+            ],
+            [
+              "추론 강도",
+              "없음 / 낮음 / 중간 / 높음 선택 가능"
+            ],
+            [
+              "모델 ID",
+              "xai.grok-4.3"
+            ]
+          ]
+        },
+        {
+          "type": "definition",
+          "term": "환각(Hallucination)",
+          "text": "AI가 없는 사실을 만들어 내거나 틀린 정보를 자신 있게 말하는 현상. xAI의 '최저 환각률' 주장은 독립 기관의 검증이 아직 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 Bedrock 출시는 xAI의 기업 시장 공략의 일환입니다. 6월 11일에는 MongoDB·Vercel·Sentry·Cloudflare 등 6개사가 참여하는 'Grok Build 플러그인 마켓플레이스'를 열었고, 6월 15일에는 최대 8개 병렬 코딩 세션을 관리하는 에이전트 대시보드도 출시했습니다. SpaceX의 Cursor 인수($600억, 6/16 SEC 제출) 이후 AI 코딩 시장 탈환이 xAI의 주된 공략 방향입니다."
+        }
+      ],
+      "source_url": "https://releasebot.io/updates/xai",
+      "source_name": "blog",
+      "score": 7,
+      "story_slug": "grok-43-amazon-bedrock-launch",
+      "tags": [
+        "Grok",
+        "xAI",
+        "AWS",
+        "Amazon Bedrock",
+        "AI모델"
+      ],
+      "entities": [
+        "xAI",
+        "Grok 4.3",
+        "Amazon Bedrock",
+        "Amazon Web Services"
+      ],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-20"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "ChatGPT, 60개 언어 발음 코치 됐다 — 월드컵 업데이트도 포함",
+      "tldr": "OpenAI가 ChatGPT에 60개 이상 언어 발음 안내 기능 추가. 텍스트와 음성으로 올바른 발음을 실시간으로 알려준다.",
+      "summary": "OpenAI가 ChatGPT에 새 업데이트를 적용했습니다. 이제 ChatGPT에게 단어나 문장의 발음을 물으면 60개 이상 언어로 텍스트와 오디오 안내를 받을 수 있습니다. 6월에 열리는 FIFA 월드컵에 맞춘 대화 기능도 함께 추가됐습니다.",
+      "blocks": [
+        {
+          "type": "bullets",
+          "label": "이번 업데이트 주요 내용",
+          "items": [
+            "60개+ 언어 발음 안내 — 텍스트와 오디오 동시 제공 (한국어 포함)",
+            "FIFA 월드컵 대화 업데이트 — 선수·팀·경기 관련 대화 기능 강화",
+            "연결 앱 제어 개선 — 어떤 외부 앱과 연동됐는지 더 세밀하게 설정 가능",
+            "채팅 정리·공유·노트 생성 개선, iOS 사진 업로드 속도 향상"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "발음 기능은 외국어 학습이나 낯선 지명·인명을 정확히 말해야 할 때 특히 유용합니다. OpenAI는 최근 건강 정보, 실시간 번역 등 일상 생활 밀착형 기능을 잇달아 추가하며 '범용 어시스턴트' 방향으로 ChatGPT를 발전시키고 있습니다."
+        }
+      ],
+      "source_url": "https://openai.com/news/",
+      "source_name": "official-blog",
+      "score": 6,
+      "story_slug": "chatgpt-pronunciation-60-languages-june2026",
+      "tags": [
+        "ChatGPT",
+        "OpenAI",
+        "업데이트",
+        "발음",
+        "언어"
+      ],
+      "entities": [
+        "OpenAI",
+        "ChatGPT"
+      ],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-19"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "미국 전력 규제 기관, AI 데이터센터 전력망 연결 규정 개혁 명령",
+      "tldr": "FERC가 미국 6개 광역 전력망 운영기관에 AI 데이터센터의 빠른 전력망 연결을 위한 규정 개혁안 제출을 공식 명령했다.",
+      "summary": "미국 연방에너지규제위원회(FERC)가 6월 18일 텍사스를 제외한 미국 6개 광역 전력망 운영기관 전체에 'AI 데이터센터가 전력망에 더 빠르고 합리적인 비용으로 연결될 수 있도록 기존 규정을 방어하거나 개혁안을 제출하라'는 공식 명령을 내렸습니다. 통상 수년이 걸리는 일반 규제 절차를 건너뛴 이례적 조치입니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "FERC (연방에너지규제위원회)",
+          "text": "미국 전기·천연가스 등 에너지 도매 거래와 전송을 규제하는 연방 독립 기관. 발전소나 데이터센터가 전력망에 연결할 때 필요한 절차와 비용을 결정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 데이터센터의 전력 수요가 폭발적으로 늘면서 기존 전력망 연결 대기 줄이 수년치에 달해 병목이 되고 있습니다. FERC 위원장 Laura Swett은 이를 '국가적 우선순위'라 칭하며 일반 규제 절차 대신 특정 기관을 직접 겨냥한 'Show Cause(소명 명령)' 방식으로 속도를 높였습니다."
+        },
+        {
+          "type": "stat",
+          "value": "4GW+",
+          "label": "Microsoft가 최근 18개월간 추가한 AI 인프라 전력 용량. CoreWeave는 2026년 말까지 1.7GW 목표"
+        },
+        {
+          "type": "paragraph",
+          "text": "한편 일리노이주는 AI 데이터센터 세금 혜택 제한 법안과 환경 보고 의무화 법안 두 건이 모두 의회를 통과하지 못했습니다. 주 정부와 연방 정부 사이에서 AI 인프라 비용을 누가 어떻게 부담할지를 두고 전국적 갈등이 커지고 있습니다."
+        }
+      ],
+      "source_url": "https://www.americanactionforum.org/insight/ferc-data-center-orders-accelerate-grid-connection/",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "ferc-ai-datacenter-grid-reform-order-june18",
+      "tags": [
+        "FERC",
+        "전력망",
+        "AI인프라",
+        "데이터센터",
+        "에너지정책"
+      ],
+      "entities": [
+        "FERC",
+        "Microsoft",
+        "CoreWeave",
+        "Laura Swett"
+      ],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-18"
+    },
+    {
+      "category": "paper",
+      "position": 1,
+      "title": "세계 성인 10%가 매주 AI 챗봇으로 뉴스 본다 — 신뢰도는 아직 낮아",
+      "tldr": "로이터 저널리즘 연구소: AI 챗봇 뉴스 이용자 전년 7%→10%로 증가. 그러나 신뢰도는 20%, 원문 클릭률도 저조.",
+      "summary": "영국 옥스퍼드 대학교 로이터 저널리즘 연구소가 발표한 '2026 디지털 뉴스 보고서'에 따르면, 전 세계 성인의 10%가 AI 챗봇을 주 1회 이상 뉴스 수단으로 사용하고 있습니다. 1년 전 7%에서 늘었습니다. 그러나 AI 뉴스 신뢰도는 전체 기준 20%에 불과하고, 원본 기사를 자주 클릭하는 이용자도 42%에 그칩니다.",
+      "blocks": [
+        {
+          "type": "stat",
+          "value": "10%",
+          "label": "AI 챗봇으로 매주 뉴스를 접하는 전 세계 성인 비율 (전년 7% → 10%, Reuters Institute 2026)"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "지표",
+            "수치"
+          ],
+          "rows": [
+            [
+              "AI를 주 뉴스 수단으로 쓰는 비율",
+              "1%"
+            ],
+            [
+              "18~24세 AI 뉴스 주간 이용률",
+              "17%"
+            ],
+            [
+              "55세 이상 AI 뉴스 주간 이용률",
+              "5%"
+            ],
+            [
+              "AI 뉴스 신뢰도 (전체 응답자)",
+              "20%"
+            ],
+            [
+              "AI 뉴스 신뢰도 (AI 사용자 한정)",
+              "44%"
+            ],
+            [
+              "원문 기사 자주 클릭",
+              "42%"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "AI가 뉴스를 요약해주지만 원문 방문은 줄어든다는 것은 언론사 입장에서 심각한 신호입니다. 같은 보고서의 AI 챗봇 웹 방문 점유율: ChatGPT 54.7%, Gemini 27.4%, Claude 8.2%(미국 내 12.5%), DeepSeek 4.1%, Grok 2.8% 순입니다."
+        }
+      ],
+      "source_url": "https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/emerging-uses-ai-chatbots-news-and-what-it-means-journalism",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "reuters-institute-ai-chatbot-news-10pct-2026",
+      "tags": [
+        "AI뉴스",
+        "미디어",
+        "챗봇",
+        "저널리즘",
+        "디지털뉴스"
+      ],
+      "entities": [
+        "Reuters Institute",
+        "ChatGPT",
+        "Gemini",
+        "Claude",
+        "DeepSeek"
+      ],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-18"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "Amazon, Sam Altman 전기 영화 '아티피셜' 배급 포기 — $500억 OpenAI 투자 탓?",
+      "tldr": "앤드류 가필드 주연, 거의 완성된 Sam Altman 전기 영화를 Amazon MGM이 포기. Amazon의 $500억 OpenAI 투자와의 충돌이 배경으로 지목.",
+      "summary": "루카 과디냐노 감독, 앤드류 가필드 주연으로 거의 완성된 OpenAI CEO Sam Altman 전기 영화 '아티피셜(Artificial)'을 Amazon MGM Studios가 배급하지 않겠다고 밝혔습니다. Amazon은 올해 2월 OpenAI에 $500억을 투자하는 장기 파트너십을 체결했는데, 영화가 Altman을 불리하게 묘사한다는 점이 충돌 배경으로 지목됩니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "영화 '아티피셜'은 2023년 Altman의 갑작스러운 해고와 복직 사건을 다룬 소셜 네트워크 스타일의 드라마입니다. 앤드류 가필드(Altman 역), 모니카 바르바로(Mira Murati 역), 유라 보리소프(Ilya Sutskever 역), 아이크 배린홀츠(Elon Musk 역)가 출연하며 SNL 출신 Simon Rich가 각본을 썼습니다. 시사회 반응은 호평이었다고 전해집니다."
+        },
+        {
+          "type": "quote",
+          "text": "우리는 '아티피셜'이 다른 스튜디오에 의해 배급될 때 더 잘 서비스될 것이라고 믿습니다.",
+          "cite": "Amazon MGM Studios 공식 입장"
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 CAA(영화 에이전시)가 다른 스튜디오들에 영화를 제안 중입니다. $500억 투자 파트너의 CEO를 불리하게 그린 영화를 직접 배급하기 어려운 상황이라는 해석이 지배적입니다. AI 시대에 자본과 콘텐츠가 충돌하는 이 장면, 영화보다 더 영화 같습니다."
+        }
+      ],
+      "source_url": "https://variety.com/2026/film/global/luca-guadagnino-sam-altman-movie-artificial-dropped-amazon-1236785830/",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "amazon-drops-sam-altman-film-artificial",
+      "tags": [
+        "OpenAI",
+        "Sam Altman",
+        "Amazon",
+        "영화",
+        "AI문화"
+      ],
+      "entities": [
+        "Amazon",
+        "OpenAI",
+        "Sam Altman",
+        "Luca Guadagnino",
+        "Andrew Garfield",
+        "Mira Murati"
+      ],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-20"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "개발자 97%가 AI 코딩 도구를 쓴다 — 관리 정책은 3분의 1만 갖춰",
+      "tldr": "Black Duck 2026 보안 연구: AI 코딩 도구 채택률 97%, Claude Code 채택률 63%. 그러나 AI 생성 코드 거버넌스 정책을 갖춘 조직은 33%에 불과.",
+      "summary": "보안 회사 Black Duck이 발표한 2026년 연구에 따르면 개발자의 97%가 AI 코딩 도구를 사용하고 있습니다. GitHub Copilot이 83%로 1위, Claude Code가 63%로 2위를 차지했습니다. 그러나 AI가 생성한 코드에 대한 검토 정책, 보안 검사, 지식재산권 관리 체계를 갖춘 조직은 3분의 1에 불과합니다.",
+      "blocks": [
+        {
+          "type": "stat",
+          "value": "97%",
+          "label": "2026년 기준 AI 코딩 도구를 사용하는 개발자 비율 (Black Duck 연구)"
+        },
+        {
+          "type": "prosCons",
+          "pros": [
+            "AI 코딩이 사실상 개발자 표준 도구로 자리 잡음",
+            "Claude Code는 출시 1년 미만에 63% 채택 — 빠른 성장",
+            "생산성 향상에 대한 체감도는 높음"
+          ],
+          "cons": [
+            "AI 생성 코드 검토 정책이 없는 조직 67%",
+            "코드 저작권·보안 취약점 스캔 체계 미비한 곳 다수",
+            "AI가 쓴 코드가 정책 없이 프로덕션에 직접 들어가는 상황"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 코딩 도구가 '있으면 좋은 것'에서 '없으면 뒤처지는 것'으로 바뀐 속도는 빠르지만, 조직의 관리 체계는 그 속도를 따라잡지 못하고 있습니다. AI가 짠 코드를 그대로 믿고 배포했다가 나중에 문제가 생기는 사례가 늘어날 것으로 전문가들은 우려합니다."
+        }
+      ],
+      "source_url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-21-2026",
+      "source_name": "news",
+      "score": 6,
+      "story_slug": "developers-97pct-ai-coding-governance-gap-2026",
+      "tags": [
+        "AI코딩",
+        "개발자",
+        "보안",
+        "거버넌스",
+        "Claude Code",
+        "GitHub Copilot"
+      ],
+      "entities": [
+        "Black Duck",
+        "GitHub Copilot",
+        "Claude Code"
+      ],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-21"
+    },
+    {
+      "category": "business",
+      "position": 4,
+      "title": "구글 DeepMind 인재 대이탈: 노벨상 수상자 앤트로픽으로, 트랜스포머 공동 발명자 OpenAI로",
+      "tldr": "같은 주에 구글 DeepMind에서 최상위 연구자 두 명이 경쟁사로 이적. AI 인재 전쟁의 새 전선.",
+      "summary": "AlphaFold로 2024년 노벨 화학상을 받은 존 점퍼(John Jumper)가 구글 DeepMind를 떠나 앤트로픽에 합류한다고 6월 20일 밝혔습니다. 공교롭게도 같은 주, 2017년 '어텐션 이즈 올 유 니드' 논문으로 트랜스포머 구조를 공동 발명한 노암 샤제르(Noam Shazeer)가 DeepMind를 나와 OpenAI에 합류했습니다. 한 주 안에 구글이 AI 역사에서 손꼽히는 연구자 두 명을 동시에 잃었습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "구글 DeepMind 역사상 가장 상징적인 두 인물이 같은 주에 경쟁사로 자리를 옮겼습니다. 한 명은 단백질 구조 예측 문제를 풀어 노벨상을 받은 과학자, 다른 한 명은 현대 AI의 근간이 된 트랜스포머를 설계한 엔지니어입니다."
+        },
+        {
+          "type": "table",
+          "headers": ["인물", "출발지", "행선지", "주요 업적"],
+          "rows": [
+            ["존 점퍼 (John Jumper)", "Google DeepMind (9년)", "Anthropic", "AlphaFold 팀 리드, 2024 노벨 화학상"],
+            ["노암 샤제르 (Noam Shazeer)", "Google DeepMind", "OpenAI", "'Attention Is All You Need' 공동 저자, 트랜스포머 공동 발명"]
+          ]
+        },
+        {
+          "type": "definition",
+          "term": "AlphaFold",
+          "text": "구글 DeepMind가 개발한 AI 모델로, 단백질의 3D 구조를 아미노산 서열만으로 예측합니다. 수십 년간 풀리지 않던 생물학 난제를 해결해 2024년 노벨 화학상을 받았습니다. 신약 개발 속도를 획기적으로 높이는 데 기여하고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "점퍼의 합류는 앤트로픽의 'AI for Science(과학용 AI)' 전략과 맞닿아 있습니다. 앤트로픽은 올해 초 앨런 연구소·하워드 휴스 의학 연구소와 파트너십을 체결하고 습식 실험실(wet lab)을 열었습니다. 노벨상 수상자의 영입으로 언어 모델 벤치마크가 아닌 과학 연구 분야에서의 신뢰도를 확보했다는 평가가 나옵니다."
+        },
+        {
+          "type": "quote",
+          "text": "데미스 허사비스(Demis Hassabis)는 박사 졸업 6개월 만에 나에게 AlphaFold 팀을 맡겼습니다. 그 신뢰와 DeepMind 팀 전체가 가르쳐준 것들, 잊지 못합니다.",
+          "cite": "존 점퍼, X(트위터) 이직 발표문 (2026-06-20)"
+        },
+        {
+          "type": "callout",
+          "label": "샤제르: 구글이 2.7조 원 들여 데려온 인물",
+          "text": "노암 샤제르는 2024년 8월 구글이 약 27억 달러(약 3.7조 원)를 투자해 Character.AI에서 다시 영입한 인물입니다. 2년도 채 안 돼 OpenAI로 이적했습니다. Sam Altman은 '10년 전부터 함께 일하고 싶었다'고 환영했습니다."
+        }
+      ],
+      "source_url": "https://techcrunch.com/2026/06/20/nobel-laureate-john-jumper-is-leaving-deepmind-for-rival-anthropic/",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "google-deepmind-talent-exodus-jumper-shazeer",
+      "tags": ["DeepMind", "Anthropic", "OpenAI", "인재이동", "노벨상", "AlphaFold", "트랜스포머"],
+      "entities": ["John Jumper", "Noam Shazeer", "Google DeepMind", "Anthropic", "OpenAI", "Demis Hassabis", "Sam Altman"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-20"
+    }
+  ]
+}

@@ -108,6 +108,34 @@ export default function AdminPage(): ReactElement {
     setMsg(res.ok ? "호 저장됨" : `호 저장 실패 (HTTP ${res.status})`);
   };
 
+  const move = async (item: AdminItem, dir: -1 | 1): Promise<void> => {
+    if (data === null) return;
+    const sameCat = data.items
+      .filter((i) => i.category === item.category)
+      .sort((a, b) => a.position - b.position);
+    const idx = sameCat.findIndex((i) => i.id === item.id);
+    const j = idx + dir;
+    const a = sameCat[idx];
+    const b = sameCat[j];
+    if (a === undefined || b === undefined) return;
+    const pa = a.position;
+    const pb = b.position;
+    setItem(a.id, { position: pb });
+    setItem(b.id, { position: pa });
+    setMsg("재정렬 중…");
+    const res = await fetch(`/api/admin/reorder`, {
+      method: "POST",
+      headers: auth({ "content-type": "application/json" }),
+      body: JSON.stringify({
+        orders: [
+          { id: a.id, position: pb },
+          { id: b.id, position: pa },
+        ],
+      }),
+    });
+    setMsg(res.ok ? "재정렬됨" : `재정렬 실패 (HTTP ${res.status})`);
+  };
+
   const setItem = (id: string, patch: Partial<AdminItem>): void => {
     setData((d) =>
       d === null
@@ -176,12 +204,14 @@ export default function AdminPage(): ReactElement {
             </div>
           </section>
 
-          {data.items.map((it) => (
+          {[...data.items]
+            .sort((a, b) => a.category.localeCompare(b.category) || a.position - b.position)
+            .map((it) => (
             <section
               key={it.id}
               style={{ border: "1px solid #ddd", borderRadius: 8, padding: 16, marginTop: 12 }}
             >
-              <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+              <div style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "center" }}>
                 <select value={it.category} onChange={(e) => setItem(it.id, { category: e.target.value })}>
                   {CATEGORIES.map((c) => (
                     <option key={c} value={c}>
@@ -196,6 +226,12 @@ export default function AdminPage(): ReactElement {
                   style={{ width: 70 }}
                   title="position (정렬 순서)"
                 />
+                <button onClick={() => void move(it, -1)} title="위로">
+                  ▲
+                </button>
+                <button onClick={() => void move(it, 1)} title="아래로">
+                  ▼
+                </button>
               </div>
               <input
                 value={it.title}

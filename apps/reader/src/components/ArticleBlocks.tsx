@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { View, Text, Image, Pressable, Linking, StyleSheet } from "react-native";
+import { View, Text, Image, Pressable, Linking, ScrollView, StyleSheet } from "react-native";
 import type { Block } from "@/types/news.types";
 import { colors, fonts } from "@/lib/theme";
 
@@ -109,26 +109,28 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
     case "table": {
       if (block.rows.length === 0) return null;
       return (
-        <View style={styles.table}>
-          {block.headers.length > 0 && (
-            <View style={[styles.tr, styles.trHead]}>
-              {block.headers.map((h, i) => (
-                <Text key={i} style={[styles.cell, styles.cellHead]}>
-                  {h}
-                </Text>
-              ))}
-            </View>
-          )}
-          {block.rows.map((row, ri) => (
-            <View key={ri} style={styles.tr}>
-              {row.map((c, ci) => (
-                <Text key={ci} style={styles.cell}>
-                  {c}
-                </Text>
-              ))}
-            </View>
-          ))}
-        </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View style={styles.table}>
+            {block.headers.length > 0 && (
+              <View style={[styles.tr, styles.trHead]}>
+                {block.headers.map((h, i) => (
+                  <Text key={i} style={[styles.cell, styles.cellHead]}>
+                    {h}
+                  </Text>
+                ))}
+              </View>
+            )}
+            {block.rows.map((row, ri) => (
+              <View key={ri} style={styles.tr}>
+                {row.map((c, ci) => (
+                  <Text key={ci} style={styles.cell}>
+                    {c}
+                  </Text>
+                ))}
+              </View>
+            ))}
+          </View>
+        </ScrollView>
       );
     }
     case "prosCons": {
@@ -241,7 +243,7 @@ const styles = StyleSheet.create({
   table: { borderWidth: 1, borderColor: colors.rule, borderRadius: 8, overflow: "hidden" },
   tr: { flexDirection: "row", borderTopWidth: 1, borderTopColor: colors.rule },
   trHead: { borderTopWidth: 0, backgroundColor: colors.card },
-  cell: { flex: 1, paddingHorizontal: 10, paddingVertical: 8, fontFamily: fonts.sans, fontSize: 13, lineHeight: 18, color: colors.inkSoft },
+  cell: { width: 130, paddingHorizontal: 10, paddingVertical: 8, fontFamily: fonts.sans, fontSize: 13, lineHeight: 18, color: colors.inkSoft },
   cellHead: { fontWeight: "600", color: colors.ink },
   pcWrap: { borderWidth: 1, borderColor: colors.rule, borderRadius: 10, padding: 14 },
   pcConsGap: { marginTop: 12 },
