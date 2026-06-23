@@ -21,7 +21,10 @@ export function ListRow({ title, subtitle, meta, onPress }: Props): ReactElement
           </Text>
         )}
       </View>
-      {meta !== undefined && <Text style={styles.meta}>{meta}</Text>}
+      <View style={styles.right}>
+        {meta !== undefined && <Text style={styles.meta}>{meta}</Text>}
+        <Text style={styles.chevron}>›</Text>
+      </View>
     </Pressable>
   );
 }
@@ -29,14 +32,16 @@ export function ListRow({ title, subtitle, meta, onPress }: Props): ReactElement
 const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
-    alignItems: "baseline",
-    gap: 12,
+    alignItems: "center",
+    gap: 14,
     borderTopWidth: 1,
     borderTopColor: colors.rule,
     paddingVertical: 16,
   },
   main: { flex: 1 },
-  title: { fontFamily: fonts.serif, fontSize: 20, lineHeight: 27, color: colors.ink },
+  title: { fontFamily: fonts.serif, fontSize: 18, lineHeight: 25, color: colors.ink },
   subtitle: { marginTop: 4, fontFamily: fonts.sans, fontSize: 14, lineHeight: 21, color: colors.inkMuted },
-  meta: { fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
+  right: { flexDirection: "row", alignItems: "center", gap: 10 },
+  meta: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 0.3, color: colors.inkMuted },
+  chevron: { fontFamily: fonts.sans, fontSize: 18, color: colors.inkMuted },
 });

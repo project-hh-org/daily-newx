@@ -64,7 +64,8 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
     case "quote":
       return (
         <View style={styles.quote}>
-          <Text style={styles.quoteText}>“{block.text}”</Text>
+          <Text style={styles.quoteMark}>“</Text>
+          <Text style={styles.quoteText}>{block.text}</Text>
           {!!block.cite && <Text style={styles.quoteCite}>— {block.cite}</Text>}
         </View>
       );
@@ -85,8 +86,12 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
     case "definition":
       return (
         <View style={styles.def}>
-          <Text style={styles.defTerm}>{block.term}</Text>
-          <Text style={styles.defText}>{block.text}</Text>
+          <View style={styles.defBar} />
+          <View style={styles.defBody}>
+            <Text style={styles.defKicker}>용어</Text>
+            <Text style={styles.defTerm}>{block.term}</Text>
+            <Text style={styles.defText}>{block.text}</Text>
+          </View>
         </View>
       );
     case "divider":
@@ -212,26 +217,30 @@ export function ArticleBlocks({ blocks }: Props): ReactElement | null {
 }
 
 const styles = StyleSheet.create({
-  wrap: { marginTop: 12, gap: 12 },
-  heading: { marginTop: 6, fontFamily: fonts.serif, fontSize: 20, lineHeight: 28, color: colors.ink },
-  paragraph: { fontFamily: fonts.sans, fontSize: 16, lineHeight: 27, color: colors.inkSoft },
+  wrap: { marginTop: 14, gap: 16 },
+  heading: { marginTop: 8, fontFamily: fonts.serif, fontSize: 21, lineHeight: 30, color: colors.ink },
+  paragraph: { fontFamily: fonts.sans, fontSize: 16, lineHeight: 28, color: colors.inkSoft },
   label: { fontFamily: fonts.sans, fontSize: 12, fontWeight: "600", color: colors.inkMuted },
   listWrap: { gap: 6 },
   list: { gap: 8 },
   row: { flexDirection: "row", gap: 12 },
-  dash: { fontFamily: fonts.serif, color: colors.accent },
-  num: { fontFamily: fonts.serif, color: colors.accent, minWidth: 16 },
+  dash: { fontFamily: fonts.serif, color: colors.inkMuted },
+  num: { fontFamily: fonts.serif, color: colors.spot, minWidth: 16 },
   rowText: { flex: 1, fontFamily: fonts.sans, fontSize: 16, lineHeight: 26, color: colors.inkSoft },
-  quote: { borderLeftWidth: 2, borderLeftColor: colors.rule, paddingLeft: 16 },
-  quoteText: { fontFamily: fonts.serif, fontSize: 19, lineHeight: 30, color: colors.ink },
-  quoteCite: { marginTop: 6, fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
-  stat: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.rule, borderRadius: 12, paddingVertical: 18, paddingHorizontal: 18, borderLeftWidth: 3, borderLeftColor: colors.accent },
-  statValue: { fontFamily: fonts.serif, fontSize: 40, lineHeight: 46, color: colors.accent },
-  statLabel: { marginTop: 4, fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
+  quote: {},
+  quoteMark: { fontFamily: fonts.serif, fontSize: 44, lineHeight: 40, color: colors.spot },
+  quoteText: { fontFamily: fonts.serif, fontSize: 21, lineHeight: 31, color: colors.ink },
+  quoteCite: { marginTop: 8, fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
+  stat: { borderTopWidth: 1, borderBottomWidth: 1, borderColor: colors.rule, paddingVertical: 18 },
+  statValue: { fontFamily: fonts.serif, fontSize: 40, lineHeight: 46, color: colors.ink },
+  statLabel: { marginTop: 6, fontFamily: fonts.sans, fontSize: 13, lineHeight: 20, color: colors.inkSoft },
   callout: { borderLeftWidth: 2, borderLeftColor: colors.accent, paddingLeft: 16 },
   calloutLabel: { fontFamily: fonts.sans, fontSize: 12, fontWeight: "600", color: colors.accent },
   calloutText: { marginTop: 4, fontFamily: fonts.sans, fontSize: 16, lineHeight: 26, color: colors.ink },
-  def: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.rule, borderRadius: 10, padding: 14 },
+  def: { flexDirection: "row", gap: 14 },
+  defBar: { width: 3, borderRadius: 2, backgroundColor: colors.spot },
+  defBody: { flex: 1 },
+  defKicker: { fontFamily: fonts.sans, fontSize: 11, fontWeight: "700", letterSpacing: 1.2, color: colors.inkMuted, marginBottom: 4 },
   defTerm: { fontFamily: fonts.serif, fontSize: 16, color: colors.ink },
   defText: { marginTop: 4, fontFamily: fonts.sans, fontSize: 15, lineHeight: 24, color: colors.inkSoft },
   divider: { textAlign: "center", fontFamily: fonts.serif, fontSize: 16, color: colors.inkMuted },

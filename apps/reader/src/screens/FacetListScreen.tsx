@@ -36,7 +36,7 @@ export function FacetListScreen({ kind }: Props): ReactElement {
           kicker="둘러보기"
           title={KIND_LABEL[kind]}
           subtitle={`${facets.length}개`}
-          crumb={{ label: "홈", onPress: () => router.push("/") }}
+          crumb={{ label: "오늘", onPress: () => router.push("/") }}
         />
         {facets.length === 0 ? (
           <Text style={styles.empty}>아직 모인 항목이 없습니다.</Text>

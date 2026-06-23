@@ -30,7 +30,7 @@ export function ArchiveScreen(): ReactElement {
           kicker="아카이브"
           title="지난 호"
           subtitle={`${issues.length}개 호`}
-          crumb={{ label: "홈", onPress: () => router.push("/") }}
+          crumb={{ label: "오늘", onPress: () => router.push("/") }}
         />
         {issues.length === 0 ? (
           <Text style={styles.empty}>게시된 호가 아직 없습니다.</Text>

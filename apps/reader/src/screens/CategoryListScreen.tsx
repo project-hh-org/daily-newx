@@ -21,7 +21,7 @@ export function CategoryListScreen(): ReactElement {
           kicker="둘러보기"
           title="카테고리"
           subtitle={`${CATEGORY_ORDER.length}개 분류`}
-          crumb={{ label: "홈", onPress: () => router.push("/") }}
+          crumb={{ label: "오늘", onPress: () => router.push("/") }}
         />
         <View style={styles.list}>
           {CATEGORY_ORDER.map((c) => (

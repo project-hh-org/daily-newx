@@ -23,7 +23,7 @@ export function HomeScreen(): ReactElement {
         <ScreenHeader
           kicker="매일의 LLM 뉴스"
           title="데일리 LLM 뉴스"
-          subtitle="매일 10시, 하루치 LLM 업데이트·연구·산업 이슈를 출처와 함께."
+          subtitle="오늘의 LLM 소식"
         />
         <View style={styles.nav}>
           <ListRow title="오늘 호" meta={todayLabel} onPress={() => router.push(`/daily/${today}`)} />

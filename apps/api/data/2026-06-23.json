@@ -1,0 +1,242 @@
+{
+  "issue": {
+    "issue_date": "2026-06-23",
+    "issue_no": 8,
+    "intro": "오늘 뉴스의 공통 주제는 '책임'입니다. 앤트로픽은 Fable 5 수출 통제 이후 처음으로 구체적인 출구 카드를 꺼냈고, 오픈AI는 AI가 만든 보안 구멍을 AI로 메우겠다고 선언했습니다. 오픈소스 진영에서는 63억 달러짜리 컴퓨팅 계약이 체결됐고, AI 기업들이 자신을 규제할 의원 선출에 수천만 달러를 쏟아붓고 있다는 사실도 공개됐습니다.",
+    "outro": "앤트로픽의 신분증 인증이 7월 8일 Fable 5 복원의 첫 단추가 될지 주목됩니다. 오픈AI의 'Patch the Planet'이 일회성 행사로 끝날지, 지속적인 오픈소스 보안 인프라로 자리 잡을지도 이번 달 안에 윤곽이 드러날 것 같습니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "앤트로픽, 7월 8일부터 클로드 사용자에게 신분증·셀카 인증 요구 가능",
+      "tldr": "Fable 5 수출 통제 이후 첫 구체적 출구 — 신분증·생체정보 수집 체계가 7월 8일 공식화된다.",
+      "summary": "앤트로픽이 6월 22일 개정 공지한 개인정보처리방침에 따르면, 7월 8일부터 클로드 Free·Pro·Max 구독자에게 정부 발급 신분증과 실시간 셀카를 요구할 수 있게 됩니다. 인증 파트너는 Persona Identities이며, 생체 정보는 앤트로픽이 아닌 Persona 서버에 보관됩니다. AI 챗봇 서비스 중 소비자 단계에서 생체 인증을 공식 정책으로 채택한 것은 앤트로픽이 처음입니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "앤트로픽이 공개한 새 방침에는 세 가지 데이터가 포함됩니다: ① 정부 발급 신분증 이미지와 기재 내용(신분증 번호, 생년월일 등), ② 사진·영상 형태의 셀카, ③ 얼굴 기하학적 정보(Facial Geometry Template). 이 정보는 Persona Identities가 보관하며, 앤트로픽은 이의신청 처리 등 필요 시 Persona 플랫폼을 통해 열람할 수 있습니다."
+        },
+        {
+          "type": "definition",
+          "term": "얼굴 기하학적 정보(Facial Geometry Template)",
+          "text": "눈·코·입 등 얼굴 특징 간 거리와 비율을 수치화한 데이터입니다. 사진 자체가 아닌 수학적 좌표값을 저장하며, 고유한 신원 식별에 쓰입니다. 원본 사진 복원이 어렵지만, 개인 식별에는 충분합니다."
+        },
+        {
+          "type": "callout",
+          "label": "적용 대상 구분",
+          "text": "Free·Pro·Max 구독자만 해당. Team·Enterprise·API 플랜은 적용 제외. 4월 14일부터 일부 사용 사례에서 이미 시범 운영 중이었으며, 이번에 정책으로 공식화됐습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "배경에는 6월 12일 발동된 미국 정부의 Fable 5·Mythos 5 수출 통제 지시가 있습니다. '외국인에게만 차단'을 구현하려면 국적 인증이 필요하고, 신분증 인증 인프라가 그 메커니즘으로 쓰일 가능성이 높다는 해석이 나옵니다. OpenAI의 ChatGPT, Google의 Gemini는 현재 소비자 단계에서 신분증을 요구하지 않습니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://techcrunch.com/2026/06/22/anthropic-says-claude-may-want-to-see-your-id/",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "anthropic-id-verification-july-8",
+      "tags": ["앤트로픽", "개인정보", "신원인증", "Fable5", "수출통제", "생체정보"],
+      "entities": ["Anthropic", "Claude", "Persona Identities", "TechCrunch"],
+      "related": [
+        "https://support.claude.com/en/articles/14328960-identity-verification-on-claude",
+        "https://cyberinsider.com/anthropic-to-introduce-age-and-id-checks-for-claude-users-on-july-8/"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-22"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "오픈AI, AI로 오픈소스 취약점 자동 발견·수정 — 'Patch the Planet' 1주 만에 수백 개 버그",
+      "tldr": "GPT-5.5-Cyber가 cURL·Python·Go 등 핵심 오픈소스를 스스로 감사해 64개 PR을 제출했다.",
+      "summary": "오픈AI가 보안 전문 기업 Trail of Bits, 버그바운티 플랫폼 HackerOne, AI 보안 스타트업 Calif와 함께 'Patch the Planet' 이니셔티브를 출범했습니다. GPT-5.5-Cyber가 오픈소스 프로젝트의 취약점을 자동 탐지해 전문가 검토 후 수정 PR을 제출하는 방식이며, 출범 첫 주에 19개 프로젝트에서 수백 개의 버그가 발견됐습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "오픈AI의 Daybreak 사이버보안 부문 첫 번째 공개 프로젝트인 'Patch the Planet'은 오픈소스 유지관리자의 부담을 줄이기 위해 설계됐습니다. AI가 취약점을 발견하면 유지관리자에게 바로 전달하는 것이 아니라, 보안 엔지니어가 먼저 검토하고 수정 패치까지 함께 작성해 책임 공개(Responsible Disclosure) 방식으로 제출합니다."
+        },
+        {
+          "type": "bullets",
+          "label": "초기 참여 프로젝트",
+          "items": [
+            "cURL — 웹 데이터 전송의 사실상 표준 라이브러리",
+            "Python(CPython), Go — 가장 널리 쓰이는 프로그래밍 언어 런타임",
+            "pyca/cryptography, Sigstore — 암호화·코드 서명 라이브러리",
+            "aiohttp, freenginx, NATS Server — 네트워킹·메시징 인프라"
+          ]
+        },
+        {
+          "type": "stat",
+          "value": "수백 건+",
+          "label": "출범 1주간 발견 버그 수 — 64개 PR·51개 이슈 제출, 다수 조율 중"
+        },
+        {
+          "type": "paragraph",
+          "text": "'AI가 사이버보안 위협을 키운다'는 비판에 대한 정면 돌파로 포지셔닝된 이니셔티브입니다. 참여 프로젝트에는 ChatGPT Pro 구독권, Codex Security 스캐너 접근권, API 크레딧이 제공됩니다. 더 레지스터는 'AI broke cybersecurity, now it wants AI to fix it'이라는 제목으로 냉소적인 시각을 실었습니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://openai.com/index/patch-the-planet/",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "openai-patch-the-planet",
+      "tags": ["오픈AI", "오픈소스", "사이버보안", "GPT-5.5", "취약점", "버그바운티"],
+      "entities": ["OpenAI", "Trail of Bits", "HackerOne", "Calif", "cURL", "Python"],
+      "related": [
+        "https://blog.trailofbits.com/2026/06/22/introducing-patch-the-planet/",
+        "https://techcrunch.com/2026/06/22/openai-launches-new-initiative-to-help-find-and-patch-open-source-bugs/",
+        "https://www.theregister.com/security/2026/06/23/openai-yoo-hoo-look-over-here-we-do-that-security-stuff-too/5259842"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-22"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "오픈소스 AI 스타트업 Reflection AI, SpaceX Colossus 2와 최대 63억 달러 컴퓨팅 계약",
+      "tldr": "엔비디아가 투자한 Reflection이 일론 머스크 SpaceX에서 GB300 칩을 월 1.5억 달러에 빌린다.",
+      "summary": "엔비디아의 투자를 받은 오픈소스 AI 스타트업 Reflection AI가 SpaceX의 Colossus 2 데이터센터와 최대 63억 달러 규모의 컴퓨팅 공급 계약을 체결했습니다. 7월 1일부터 월 1억 5,000만 달러를 지불하며 최신 GB300 칩에 접근하며, 초기 3개월 후 90일 통보로 계약을 종료할 수 있습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Reflection AI는 구글 DeepMind 출신의 미샤 라스킨(Gemini 보상 모델 책임자)과 이오아니스 안토노글루(AlphaGo 공동 개발자)가 2024년 창업한 스타트업입니다. '미국의 DeepSeek'을 목표로 내세우며 2025년 10월 20억 달러를 조달했고, 현재 기업가치는 약 200억 달러로 평가됩니다. 팀원은 약 60명이며 대부분 OpenAI·DeepMind 출신입니다."
+        },
+        {
+          "type": "stat",
+          "value": "$6.3B",
+          "label": "총 계약 규모 (월 $150M × 2029년까지, 90일 해지 조항 포함)"
+        },
+        {
+          "type": "definition",
+          "term": "GB300 (블랙웰 울트라)",
+          "text": "엔비디아의 최신 AI 가속기 칩. H100의 후속 아키텍처인 블랙웰의 고성능 버전으로, 대규모 언어 모델 훈련에 최적화되어 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "구조적으로 흥미로운 점이 있습니다. 엔비디아가 Reflection에 8억 달러를 투자했고, Reflection은 그 자금으로 엔비디아 칩을 SpaceX를 통해 임대합니다. 엔비디아가 고객(SpaceX)에게 칩을 팔고, 그 고객이 엔비디아 피투자사에 다시 빌려주는 순환 구조입니다. Reflection은 아직 모델을 공개 출시한 적이 없어 '200억 달러짜리 아직-미출시' 회사라는 꼬리표가 붙어 있습니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://www.cnbc.com/2026/06/22/spacex-ai-colossus-data-center-reflection.html",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "reflection-ai-spacex-compute-deal",
+      "tags": ["Reflection AI", "SpaceX", "엔비디아", "컴퓨팅", "오픈소스AI", "인프라"],
+      "entities": ["Reflection AI", "SpaceX", "Nvidia", "Misha Laskin", "Ioannis Antonoglou"],
+      "related": [
+        "https://techcrunch.com/2026/06/22/spacex-inks-compute-deal-with-reflection-ai-an-open-source-ai-lab/",
+        "https://www.axios.com/2026/06/22/open-source-ai-gets-more-compute-from-spacex"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-22"
+    },
+    {
+      "category": "community",
+      "position": 1,
+      "title": "AI 대리전, 미국 의회 선거판까지 — 오픈AI·앤트로픽 진영 4,330만 달러 투입",
+      "tldr": "AI 기업들이 자신을 규제할 의원 선출에 수천만 달러를 직접 쏟아붓는 규모가 공개됐다.",
+      "summary": "미국 중간선거를 앞두고 AI 기업 관련 슈퍼팩들이 연방의회 경선에 총 4,330만 달러를 집행한 사실이 FEC 공시 자료 분석으로 드러났습니다. 오픈AI 계열은 '규제 최소화' 노선, 앤트로픽 계열은 '안전 규제 지지' 노선에 각각 수천만 달러를 쏟으며 이념적 대리전을 벌이고 있습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "NPR이 6월 22일 보도한 내용에 따르면, AI 관련 슈퍼팩(정치자금 단체)들이 이번 선거 주기 동안 연방의원 경선에 4,330만 달러(약 590억 원)를 집행했습니다. 비영리 단체 OpenSecrets가 FEC(연방선거위원회) 공시 자료를 분석한 결과입니다."
+        },
+        {
+          "type": "prosCons",
+          "pros": [
+            "오픈AI 계열 'Leading the Future': $75M 모금, $23.5M 집행. '중국의 AI 우위를 허용하는 정책에 반대'를 핵심 메시지로. A16Z·그렉 브록만이 주요 재원."
+          ],
+          "cons": [
+            "앤트로픽 계열 'Public First Action': $20M 기여. '연방 차원 조율 없이 주(州) 단위 규제를 차단하는 시도에 반대.' 안전 규제 지지 후보 중심으로 집행."
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "로비 지출도 급증",
+          "text": "앤트로픽의 2026년 1분기 로비 지출은 전년 동기 대비 4배 이상 증가. 오픈AI는 약 2배. 2025년 오픈AI·메타·구글·엔비디아 4개사 합산 로비 지출은 $50.9M."
+        },
+        {
+          "type": "paragraph",
+          "text": "6월 23일에는 두 진영이 수천만 달러를 쏟아부은 레이스 중 일부 경선 예비투표가 치러집니다. 두 회사는 투자·인재·고객 모두에서 경쟁하면서 규제 이념까지 정반대를 취하고 있어, 이 대리전이 의회 구성에 실제로 영향을 미치는지 이번 주가 첫 번째 시험대입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://www.npr.org/2026/06/22/nx-s1-5856359/ai-anthropic-congress-spending-openai-midterms-election",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "ai-midterm-election-spending-2026",
+      "tags": ["정치", "규제", "오픈AI", "앤트로픽", "미국선거", "로비", "슈퍼팩"],
+      "entities": ["OpenAI", "Anthropic", "Leading the Future", "Public First Action", "Greg Brockman", "Andreessen Horowitz", "OpenSecrets"],
+      "related": [
+        "https://www.wypr.org/2026-06-22/an-ai-proxy-war-could-reshape-congress-before-congress-reshapes-ai"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-22"
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "EU AI법 고위험 AI 분류 지침 초안 의견수렴 오늘 마감 — 이해관계자 요청으로 7월 23일까지 연장",
+      "tldr": "167쪽짜리 초안을 한 달 더 검토할 시간이 생겼다. 8월 전면 시행은 그래도 다가오고 있다.",
+      "summary": "유럽 집행위원회가 EU AI법 고위험 AI 분류 지침 초안의 의견수렴을 오늘(6월 23일) 종료할 예정이었으나, 이해관계자 요청으로 7월 23일까지 한 달 연장됐습니다. 법적 구속력은 없지만 167쪽 분량의 이 지침은 기업이 자사 AI 제품의 고위험 여부를 판단하는 실질적 기준이며, EU 시장에 AI 제품을 판매하는 한국 기업도 동일하게 적용됩니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "EU AI법(AI Act)은 2024년 8월 발효됐습니다. 집행위가 5월 19일 발표한 고위험 AI 분류 지침 초안은 167쪽 분량으로, 교육·고용·사법·법 집행 등의 분야에 적용되는 AI가 '고위험'에 해당하는지 판단하는 구체적 기준을 담고 있습니다. 법적 구속력은 없지만 기업·규제 당국·법원이 공통으로 참조하는 사실상의 기준이 됩니다."
+        },
+        {
+          "type": "definition",
+          "term": "고위험 AI(High-Risk AI)",
+          "text": "EU AI법 제6조가 정의하는 카테고리입니다. 교육, 고용, 필수 서비스, 법 집행, 이민, 사법, 민주적 과정에 영향을 주는 AI 시스템을 포함하며, 투명성 의무, 인간 감독, 이력 로그 보존 등 엄격한 규정이 적용됩니다."
+        },
+        {
+          "type": "timeline",
+          "events": [
+            {"date": "2024-08-01", "text": "EU AI법 발효"},
+            {"date": "2025-08-02", "text": "AI 리터러시·거버넌스 조항 적용 시작"},
+            {"date": "2026-05-19", "text": "고위험 분류 지침 초안 발표 (167쪽), 의견수렴 개시"},
+            {"date": "2026-06-23", "text": "의견수렴 당초 마감일 → 7월 23일로 연장 결정"},
+            {"date": "2026-08-02", "text": "고위험 AI 시스템 조항 전면 시행 예정"},
+            {"date": "2026-12-31", "text": "최종 지침 확정 예정"},
+            {"date": "2027-12-02", "text": "Annex III 고위험 시스템 유예기간 종료 (Digital Omnibus 개정 기준)"}
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "8월 전면 시행을 앞두고 의견수렴 연장은 기업들에게 추가 준비 시간을 주는 셈입니다. EU에서 AI 제품을 판매하거나 EU 기업과 협력하는 한국 스타트업·대기업 모두 자사 제품의 고위험 해당 여부를 8월 전에 점검해야 합니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://digital-strategy.ec.europa.eu/en/consultations/targeted-consultation-draft-guidelines-classification-high-risk-artificial-intelligence-systems",
+      "source_name": "official-blog",
+      "score": 7,
+      "story_slug": "eu-ai-act-high-risk-consultation-june-2026",
+      "tags": ["EU AI법", "규제", "고위험AI", "유럽", "컴플라이언스"],
+      "entities": ["European Commission", "EU AI Act"],
+      "related": [
+        "https://www.globalpolicywatch.com/2026/06/eu-ai-act-update-the-european-commission-publishes-draft-guidelines-on-hrais/",
+        "https://www.jonesday.com/en/insights/2026/06/draft-eu-guidelines-clarify-when-ai-systems-are-highrisk-under-the-ai-act"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-23"
+    }
+  ]
+}
