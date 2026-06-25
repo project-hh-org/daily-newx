@@ -1,0 +1,22 @@
+name: iOS release
+
+# main 에 push 되면 iOS 프로덕션 빌드 후 TestFlight 자동 제출.
+# (GitHub 연결 필요: expo.dev → 프로젝트 → GitHub → Connect)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_ios:
+    type: build
+    params:
+      platform: ios
+      profile: production
+
+  submit_ios:
+    needs: [build_ios]
+    type: submit
+    params:
+      platform: ios
+      profile: production

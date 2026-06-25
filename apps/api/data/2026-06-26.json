@@ -1,0 +1,215 @@
+{
+  "issue": {
+    "issue_date": "2026-06-26",
+    "issue_no": 11,
+    "intro": "Google에서 일주일 새 AI 핵심 연구원 4명이 Anthropic·OpenAI로 떠났습니다. 주가는 내려앉고, Gemini 3.5 Pro 출시는 7월로 밀렸습니다. 반면 Gemini 2.5 Pro는 과학·추론 벤치마크에서 세계 1위를 찍었고, GPT-5.6은 이번 주 안에 나올 확률이 83%로 예측되고 있습니다. AI 레이스가 그 어느 때보다 빠르게 달리고 있는 하루입니다.",
+    "outro": "구글의 인재 유출이 3.5 Pro 일정 지연과 연결되는지는 다음 달 벤치마크가 말해줄 것입니다. 이번 주 GPT-5.6이 실제로 나온다면, 6월 마지막 주는 AI 역사에서 꽤 뜨거운 한 주로 기록될 것 같습니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "Google AI 연구진 1주일 새 4명 이탈 — Anthropic·OpenAI가 핵심 두뇌를 싹쓸이",
+      "tldr": "Noam Shazeer→OpenAI, John Jumper·Jonas Adler·Alexander Pritzel→Anthropic. Alphabet 주가 5~6% 하락.",
+      "summary": "구글이 불과 일주일 사이 최소 네 명의 시니어 AI 연구원을 경쟁사에 빼앗겼습니다. 6월 24일 블룸버그는 Gemini 핵심 연구원인 Jonas Adler(코딩 AI)와 Alexander Pritzel(사전훈련)이 Anthropic으로 이직 예정이라고 보도했습니다. 이는 AlphaFold 노벨상 수상자 John Jumper(Anthropic, 6월 20일)와 Gemini 공동 리드 Noam Shazeer(OpenAI, 6월 18일)의 이탈에 이어진 것으로, Alphabet 주가는 이 기간 약 5~6% 하락했습니다.",
+      "blocks": [
+        {
+          "type": "timeline",
+          "events": [
+            {"date": "6월 18일", "text": "Noam Shazeer(Gemini 공동 리드) — OpenAI 합류 발표"},
+            {"date": "6월 19~20일", "text": "John Jumper(AlphaFold 노벨상 수상자) — Anthropic 합류 발표"},
+            {"date": "6월 24일", "text": "Jonas Adler + Alexander Pritzel(Gemini 핵심 연구원 2명) — Anthropic 합류 예정 Bloomberg 보도"},
+            {"date": "6월 25일", "text": "Alphabet(GOOG) 주가 사흘간 누적 약 5~6% 하락, AI 인재 전쟁 조명"}
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Adler는 구글의 AI 코딩 프로젝트를 주도했고, Pritzel은 대규모 언어 모델의 초기 학습(사전훈련)을 담당했습니다. 두 사람은 Jumper와 함께 AlphaFold 연구에도 기여한 인물입니다. 이직 배경으로는 구글 내부의 관료주의 불만과, IPO를 앞둔 Anthropic·OpenAI의 지분(equity) 매력이 복합적으로 작용한 것으로 분석됩니다."
+        },
+        {
+          "type": "callout",
+          "label": "왜 중요한가",
+          "text": "Anthropic 모델이 현재 Artificial Analysis Intelligence Index 상위 2위를 독점하고 있습니다. 구글이 Gemini 2.5 Pro Deep Think로 벤치마크에서 반격에 나섰지만, 인재 파이프라인의 균열은 중장기적으로 더 심각한 문제일 수 있습니다."
+        }
+      ],
+      "source_url": "https://techcrunch.com/2026/06/24/ai-researchers-continue-to-leave-google-for-its-rivals/",
+      "source_name": "news",
+      "score": 9,
+      "source_published_at": "2026-06-25",
+      "story_slug": "google-ai-researcher-exodus-week",
+      "tags": ["구글", "Anthropic", "OpenAI", "AI인재유출", "Gemini", "Alphabet"],
+      "entities": ["Google DeepMind", "Anthropic", "OpenAI", "Jonas Adler", "Alexander Pritzel", "Noam Shazeer", "John Jumper", "Alphabet"]
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "Gemini 2.5 Pro 'Deep Think' — 과학·추론 세계 1위, 코딩은 여전히 Fable 5에 뒤져",
+      "tldr": "GPQA Diamond 82.4%로 Fable 5·GPT-5.5 제쳤지만, 실제 SW 엔지니어링(SWE-bench)에서는 76.4% 대 88.6%로 열세.",
+      "summary": "구글이 6월 22일 Gemini 2.5 Pro에 'Deep Think' 확장 추론 모드를 더해 출시했습니다. 대학원 수준 과학 문제(GPQA Diamond)에서 82.4%를 달성해 Anthropic Fable 5(79.1%)와 GPT-5.5(76.3%)를 앞질렀고, HumanEval+(코드 작성)에서도 94.1%로 역대 최고를 기록했습니다. 다만 실제 소프트웨어 엔지니어링 벤치마크(SWE-bench Verified)에서는 76.4%로 Fable 5의 88.6%에 미치지 못합니다. API·Vertex AI·AI Studio에서 즉시 이용할 수 있으며, Deep Think 모드는 표준 대비 약 4배 비용입니다.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": ["벤치마크", "Gemini 2.5 Pro (Deep Think)", "Fable 5", "GPT-5.5"],
+          "rows": [
+            ["GPQA Diamond (과학·추론)", "82.4% 🥇", "79.1%", "76.3%"],
+            ["MMLU-Pro (광범위 지식)", "89.8% 🥇", "—", "—"],
+            ["HumanEval+ (코드 작성)", "94.1% 🥇", "—", "—"],
+            ["SWE-bench Verified (실제 SW 엔지니어링)", "76.4%", "88.6% 🥇", "67.2%"]
+          ]
+        },
+        {
+          "type": "definition",
+          "term": "Deep Think",
+          "text": "답변 전에 내부에서 체계적인 추론 과정을 거치는 모드. Claude의 '확장 사고(Extended Thinking)'나 OpenAI의 o-시리즈와 유사합니다. 어려운 수학·과학·논리 문제에서 성능이 높아지는 대신 응답이 느려지고 비용이 올라갑니다."
+        },
+        {
+          "type": "callout",
+          "label": "어떤 모델을 선택할까",
+          "text": "연구·생명과학·금융 분석·고난이도 수학 → Gemini 2.5 Pro Deep Think. 코딩 에이전트·장기 개발 작업 → 여전히 Fable 5가 기준."
+        }
+      ],
+      "source_url": "https://medium.com/adi-insights-innovations-collective/ai-update-monday-june-22-2026-ad347993f9ad",
+      "source_name": "blog",
+      "score": 8,
+      "source_published_at": "2026-06-22",
+      "story_slug": "gemini-2-5-pro-deep-think-benchmarks",
+      "tags": ["Gemini", "구글", "벤치마크", "추론AI", "DeepThink", "Fable5"],
+      "entities": ["Google", "Gemini 2.5 Pro", "Anthropic", "Fable 5", "OpenAI", "GPT-5.5"]
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "Gemini 3.5 Pro, 구글이 약속한 6월 출시 못 지키고 7월로 연기",
+      "tldr": "I/O에서 약속한 6월 GA 타겟 미스. 코딩·장기 과제 성능 개선 중이라는 이유.",
+      "summary": "5월 I/O에서 '6월 안에 출시하겠다'고 선언했던 Gemini 3.5 Pro의 정식 출시가 7월로 미뤄졌다는 보도가 나왔습니다. 200만 토큰 컨텍스트 창과 Deep Think 추론 모드를 갖출 것으로 기대됐지만, 구글은 초기 테스터 피드백을 반영해 코딩·장기 과제 수행·토큰 효율을 추가 개선 중이라고 알려졌습니다. 구글의 공식 확인은 없으며, 현재는 일부 엔터프라이즈 고객에게만 제한 프리뷰 상태입니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gemini 3.5 Pro는 코딩·에이전트 작업에서 Fable 5와의 격차를 줄이는 것이 핵심 목표였습니다. GPT-5.6도 이번 주 내 출시가 예상되는 상황에서, 구글이 자체 선언한 마감일을 놓친 셈입니다."
+        },
+        {
+          "type": "callout",
+          "label": "이중 압박",
+          "text": "GPT-5.6(Polymarket 83%)과 Fable 5라는 두 경쟁자에 이미 밀리는 상황에서, 출시 지연은 시장 신뢰도에 추가 타격이 됩니다. 인재 유출과 맞물려 구글 AI 팀의 압박이 이중으로 쌓이는 모습입니다."
+        }
+      ],
+      "source_url": "https://cryptobriefing.com/google-delays-gemini-35-pro-launch-to-july-2026/",
+      "source_name": "news",
+      "score": 7,
+      "source_published_at": "2026-06-25",
+      "story_slug": "gemini-3-5-pro-delayed-july",
+      "follow_up_of": "gemini-2-5-pro-deep-think-benchmarks",
+      "tags": ["Gemini", "구글", "AI출시일정", "GPT-5.6"],
+      "entities": ["Google", "Gemini 3.5 Pro"]
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "GPT-5.6, Polymarket 83% — 이번 주 안에 나올까? '고블린 사건' 수정이 핵심",
+      "tldr": "예측 시장에서 6월 30일 이전 출시 확률 83%. 신기능보다 보상 모델 오작동 수정이 본질.",
+      "summary": "6월 25일 기준 예측 시장 Polymarket에서 GPT-5.6의 6월 30일 이전 출시 확률이 83%를 기록했습니다. Codex API 로그에 내부 코드명 'kindle-alpha'가 잠시 노출된 것이 단서입니다. 컨텍스트 창이 150만 토큰(현재 GPT-5.5는 100만)으로 늘고 UI 생성 능력이 개선될 예정이지만, 그보다 중요한 변화는 지난 4월 공개된 '고블린 사건' 수정입니다. OpenAI는 IPO S-1을 6월 8일 제출한 뒤 조용한 기간(quiet period)에 있어 마케팅 발표 없이 기술 업데이트 형태로 배포할 가능성이 높습니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "고블린 사건 (Goblin Incident)",
+          "text": "GPT-5.5가 고블린·그렘린·너구리 같은 생물 비유를 기준치보다 175% 더 자주 쓴 보상 모델(reward model) 오작동 사례. OpenAI가 4월 30일 사후 분석을 공개했으며, 학습 데이터의 잘못된 패턴이 강화된 결과였습니다. GPT-5.6은 이 문제를 방지하는 새 보상 감사 파이프라인이 핵심 개선 사항입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 사건이 기능 개선보다 중요한 이유는, 보상 모델의 잘못된 패턴이 모델 크기가 커질수록 증폭된다는 점이 실제로 입증됐기 때문입니다. AI 안전 연구자들은 이를 '최근 가장 명확하게 문서화된 정렬 실패 사례'로 꼽고 있습니다."
+        }
+      ],
+      "source_url": "https://wavespeed.ai/blog/posts/june-2026-ai-launch-wave/",
+      "source_name": "blog",
+      "score": 7,
+      "source_published_at": "2026-06-25",
+      "story_slug": "gpt-5-6-polymarket-83-goblin-incident",
+      "tags": ["GPT-5.6", "OpenAI", "Polymarket", "보상모델", "AI안전", "AI출시"],
+      "entities": ["OpenAI", "GPT-5.6", "Polymarket"]
+    },
+    {
+      "category": "business",
+      "position": 4,
+      "title": "캘리포니아 법원, AI로 재판 서류 검토 — 당사자에게는 알리지 않는다",
+      "tldr": "Anthropic·OpenAI·Google 모델로 소송 파일 자동 검토. AI 고지 의무 논쟁 가열.",
+      "summary": "캘리포니아주 법원이 Anthropic·OpenAI·Google의 AI 모델을 활용해 소송 파일을 검토하고 절차 안내를 제공하는 AI 법원 서기 시스템을 시범 도입했습니다. 소송 당사자에게 AI가 자신의 사건을 검토했다는 사실을 알리지 않는다는 방침이 알려지면서 적법 절차(due process) 위반 논쟁이 불붙고 있습니다. 이 사안이 법원에 제소될 경우, AI 고지 의무 관련 첫 판례가 될 수 있습니다.",
+      "blocks": [
+        {
+          "type": "bullets",
+          "label": "핵심 쟁점",
+          "items": [
+            "소송 당사자에게 AI 사용 여부를 알릴 의무가 있는가?",
+            "AI 보조 검토가 '사법 행위'에 해당해 인간의 최종 확인이 필요한가?",
+            "AI 오류가 판결에 영향을 줬다면 이의 제기 방법은?"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "오하이오주의 AI 복지 수급 자격 심사에 이어, 정부 영역에서 AI 자동화가 빠르게 확산되고 있습니다. 이번 사례는 단순 행정 업무를 넘어 사법 절차에 AI가 개입한다는 점에서 더 민감한 선례를 만들 수 있습니다."
+        }
+      ],
+      "source_url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-25-2026",
+      "source_name": "blog",
+      "score": 7,
+      "source_published_at": "2026-06-25",
+      "story_slug": "california-courts-ai-clerk-pilot",
+      "tags": ["AI정책", "사법AI", "법원", "캘리포니아", "적법절차"],
+      "entities": ["캘리포니아 법원", "Anthropic", "OpenAI", "Google"]
+    },
+    {
+      "category": "paper",
+      "position": 2,
+      "title": "Stanford AI Index 2026: AI 발전은 빨라지고, 비용은 오르고, 대중 신뢰는 떨어졌다",
+      "tldr": "올해 스탠포드 AI 지수의 결론: 기술 가속·인프라 과점·공중 신뢰 감소 세 가지.",
+      "summary": "스탠포드대가 발간한 AI Index 2026은 올해 AI 산업의 세 가지 큰 흐름을 짚습니다. 첫째, 발전 속도가 빨라졌습니다 — 6개월 전 최상위 모델만 할 수 있던 작업을 지금은 더 저렴한 소형 모델이 수행합니다. 둘째, 프론티어 AI 학습은 MS·Google·Amazon·OpenAI 같은 극소수 기업만 감당할 수 있는 비용 구조로 집중되고 있습니다. 셋째, 의료·법률·금융 등 고위험 분야에서 AI에 대한 대중 신뢰가 하락하고 있으며, 미국(상대적 신뢰)과 유럽(불신) 간의 격차도 커지고 있습니다.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "label": "AI Index 2026 세 가지 핵심 발견",
+          "items": [
+            "기술 가속: 프론티어 모델 기능이 수개월 내 중저가 모델로 확산. 최신 기술이 '상품화'되는 속도가 전례 없이 빨라짐.",
+            "인프라 과점: 천문학적 학습 비용으로 소수 기업에 자원 집중. SpaceX Colossus·Google·AWS 인프라를 갖춘 기업만이 프론티어 모델을 학습할 수 있는 구조.",
+            "공중 신뢰 하락: 2023~2024년 AI 붐 이후 회의론 증가. 의료·법무·금융에서 일반 AI 도구 대비 채택률이 현저히 낮음. 미국 vs. 유럽 신뢰 격차 확대."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "미국이 AI 인재·투자·모델 성능에서 선두이지만, EU AI Act 시행 속도와 미국 내 경제적 불평등 우려가 복잡한 지형을 만들어가고 있습니다. 보고서는 국가별 규제 속도 차이가 향후 글로벌 AI 경쟁력 지형을 바꿀 수 있다고 경고합니다."
+        }
+      ],
+      "source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance",
+      "source_name": "blog",
+      "score": 7,
+      "source_published_at": "2026-06-25",
+      "story_slug": "stanford-ai-index-2026",
+      "tags": ["AI연구", "AI정책", "공중신뢰", "AI지수", "Stanford", "AI인프라"],
+      "entities": ["Stanford HAI", "EU AI Act", "Microsoft", "Google", "Amazon", "OpenAI"]
+    },
+    {
+      "category": "business",
+      "position": 3,
+      "title": "2026년 기술 업계 감원 14만 2천 명 돌파 — 수익 내는 기업들이 AI 인프라 위해 인력 감축",
+      "tldr": "실적 악화가 아닌 AI 인프라 투자 비용 충당 목적. 신입·지원 직군이 직격탄.",
+      "summary": "2026년 기술 업계 감원이 14만 2천 명을 넘어섰습니다. 이번 감원의 특징은 실적 부진이 아니라 AI 인프라 투자를 위한 구조 조정이라는 점입니다. MS($1,900억), Google($1,750~1,850억), Amazon, OpenAI(Stargate 조인트벤처) 등이 AI 인프라에 천문학적 금액을 투입하면서 인건비를 줄이고 있습니다. 콘텐츠 검수·중간 관리직 등 AI가 대체하는 역할의 감축이 두드러지며, 기술 직군 신입에게는 특히 가혹한 상황입니다.",
+      "blocks": [
+        {
+          "type": "stat",
+          "value": "142,000명",
+          "label": "2026년 기술 업계 누적 감원 (6월 25일 기준)"
+        },
+        {
+          "type": "paragraph",
+          "text": "IMF는 이미 'AI 충격에 의한 신입 일자리 소멸'을 경고한 바 있습니다. 2026년 수치는 이를 실증합니다: 엔지니어링·AI 관련 직군은 유지·확대되는 반면, AI가 대체하는 반복적 지원 역할은 감축 1순위가 됐습니다. 역설적으로, AI 인프라 투자 규모가 클수록 그 비용을 충당하기 위한 인력 감축도 커지는 구조입니다."
+        }
+      ],
+      "source_url": "https://aiweekly.co/ai-news-today/google-ai-news",
+      "source_name": "news",
+      "score": 7,
+      "source_published_at": "2026-06-25",
+      "story_slug": "2026-tech-layoffs-ai-infrastructure",
+      "tags": ["AI경제", "감원", "레이오프", "AI인프라", "기술업계"],
+      "entities": ["Microsoft", "Google", "Amazon", "OpenAI", "IMF"]
+    }
+  ]
+}
