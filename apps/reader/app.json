@@ -2,7 +2,7 @@
   "expo": {
     "name": "브리핑 LLM",
     "slug": "daily-newx",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "orientation": "portrait",
     "scheme": "dailynewx",
     "userInterfaceStyle": "automatic",

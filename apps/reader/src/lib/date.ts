@@ -6,6 +6,14 @@
 const ISO_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
 const COMPACT_RE = /^(\d{4})(\d{2})(\d{2})$/;
 
+/** 발행 루틴 시각(로컬, 24h). 루틴 변경 시 이 값만 바꾸면 됨. */
+export const PUBLISH_HOUR = 9;
+
+/** 지금이 당일 정식 발행 시각 이전인지(로컬 기준). */
+export function isBeforePublishTime(now: Date = new Date()): boolean {
+  return now.getHours() < PUBLISH_HOUR;
+}
+
 export function compactToIso(compact: string): string | undefined {
   const m = compact.match(COMPACT_RE);
   if (!m) return undefined;

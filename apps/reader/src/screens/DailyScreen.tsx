@@ -3,7 +3,7 @@ import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { DailyItem, NewsCategory } from "@/types/news.types";
 import { CATEGORY_ORDER } from "@/lib/categories";
-import { compactToIso, isoToLabel } from "@/lib/date";
+import { compactToIso, isoToLabel, PUBLISH_HOUR } from "@/lib/date";
 import { colors, fonts, MAX_READING } from "@/lib/theme";
 import { useDailyIssue } from "@/hooks/useDailyIssue";
 import { useUiStore } from "@/store/uiStore";
@@ -16,6 +16,7 @@ import { NotFoundError } from "@/services/dailyNewsApi";
 
 type Props = {
   compactDate: string;
+  notice?: string; // 발행 전/없음 등 상단 안내 배너
 };
 
 function groupByCategory(items: readonly DailyItem[]): Record<NewsCategory, DailyItem[]> {
@@ -35,7 +36,7 @@ function groupByCategory(items: readonly DailyItem[]): Record<NewsCategory, Dail
   return groups;
 }
 
-export function DailyScreen({ compactDate }: Props): ReactElement {
+export function DailyScreen({ compactDate, notice }: Props): ReactElement {
   const insets = useSafeAreaInsets();
   const activeCategory = useUiStore((s) => s.activeCategory);
   const query = useDailyIssue(compactDate);
@@ -72,6 +73,12 @@ export function DailyScreen({ compactDate }: Props): ReactElement {
       contentContainerStyle={{ paddingTop: insets.top + 28, paddingBottom: insets.bottom + 56 }}
     >
       <View style={styles.column}>
+        {notice !== undefined && (
+          <View style={styles.notice}>
+            <Text style={styles.noticeText}>{notice}</Text>
+          </View>
+        )}
+
         <IssueHeader issue={issue} />
 
         {flatItems.length === 0 ? (
@@ -98,7 +105,9 @@ export function DailyScreen({ compactDate }: Props): ReactElement {
         )}
 
         <View style={styles.colophon}>
-          <Text style={styles.colophonText}>daily-newx · 매일 오전 10시 발행 · 원문 출처 표기</Text>
+          <Text style={styles.colophonText}>
+            daily-newx · 매일 오전 {PUBLISH_HOUR}시 발행 · 원문 출처 표기
+          </Text>
         </View>
       </View>
     </ScrollView>
@@ -108,6 +117,8 @@ export function DailyScreen({ compactDate }: Props): ReactElement {
 const styles = StyleSheet.create({
   scroll: { flex: 1, backgroundColor: colors.paper },
   column: { width: "100%", maxWidth: MAX_READING, marginHorizontal: "auto", paddingHorizontal: 20 },
+  notice: { marginBottom: 20, backgroundColor: colors.spotTint, borderRadius: 8, paddingHorizontal: 14, paddingVertical: 12 },
+  noticeText: { fontFamily: fonts.sans, fontSize: 13, lineHeight: 19, color: colors.spot },
   tocHead: { marginTop: 32, marginBottom: 2, flexDirection: "row", alignItems: "baseline", justifyContent: "space-between" },
   tocLabel: { fontFamily: fonts.sans, fontSize: 11, fontWeight: "700", letterSpacing: 1.2, color: colors.inkMuted },
   tocCount: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 0.5, color: colors.inkMuted },

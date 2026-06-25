@@ -12,6 +12,7 @@
     "typecheck:api": "yarn workspace daily-news-api typecheck",
     "reader": "yarn workspace reader start -c",
     "reader:web": "yarn workspace reader web -c",
+    "reader:ios": "yarn workspace reader ios -c",
     "typecheck:reader": "yarn workspace reader typecheck",
     "typecheck": "yarn typecheck:api && yarn typecheck:reader"
   },

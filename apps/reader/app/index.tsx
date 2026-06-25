@@ -1,8 +1,7 @@
 import type { ReactElement } from "react";
-import { DailyScreen } from "@/screens/DailyScreen";
-import { todayCompact } from "@/lib/date";
+import { TodayScreen } from "@/screens/TodayScreen";
 
-// IA: 첫 페이지 = 오늘 호 목차. 섹션(카테고리·주제·주체·지난 호)은 마스트헤드 메뉴로.
+// IA: 첫 페이지 = 오늘 호 목차(없으면 발행 예정/없음 안내 + 최신 호 폴백).
 export default function Index(): ReactElement {
-  return <DailyScreen compactDate={todayCompact()} />;
+  return <TodayScreen />;
 }
