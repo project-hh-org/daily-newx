@@ -7,6 +7,7 @@ import { isoToLabel } from "@/lib/date";
 import { categoryLabel } from "@/lib/categories";
 import { colors, fonts, MAX_READING } from "@/lib/theme";
 import { useTimeline } from "@/hooks/useDailyIssue";
+import { useBackOr } from "@/hooks/useBackOr";
 import { LoadingView, ErrorView, NotFoundView } from "@/components/StateViews";
 import { NotFoundError } from "@/services/dailyNewsApi";
 
@@ -50,7 +51,7 @@ function TimelineEntry({ item, showDate }: { item: Article; showDate: boolean })
 
 export function TimelineScreen({ axis, value }: Props): ReactElement {
   const insets = useSafeAreaInsets();
-  const router = useRouter();
+  const backOr = useBackOr();
   const query = useTimeline(axis, value);
 
   if (query.isPending) return <LoadingView />;
@@ -70,7 +71,7 @@ export function TimelineScreen({ axis, value }: Props): ReactElement {
       contentContainerStyle={{ paddingTop: insets.top + 24, paddingBottom: insets.bottom + 56 }}
     >
       <View style={styles.column}>
-        <Pressable onPress={() => router.push("/")} accessibilityRole="link">
+        <Pressable onPress={() => backOr("/")} accessibilityRole="link">
           <Text style={styles.crumb}>‹ 오늘의 호</Text>
         </Pressable>
 

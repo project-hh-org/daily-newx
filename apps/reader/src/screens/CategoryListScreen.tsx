@@ -6,10 +6,12 @@ import { CATEGORY_ORDER } from "@/lib/categories";
 import { colors, MAX_READING } from "@/lib/theme";
 import { ScreenHeader } from "@/components/ScreenHeader";
 import { ListRow } from "@/components/ListRow";
+import { useBackOr } from "@/hooks/useBackOr";
 
 export function CategoryListScreen(): ReactElement {
   const insets = useSafeAreaInsets();
   const router = useRouter();
+  const backOr = useBackOr();
 
   return (
     <ScrollView
@@ -21,7 +23,7 @@ export function CategoryListScreen(): ReactElement {
           kicker="둘러보기"
           title="카테고리"
           subtitle={`${CATEGORY_ORDER.length}개 분류`}
-          crumb={{ label: "오늘", onPress: () => router.push("/") }}
+          crumb={{ label: "오늘", onPress: () => backOr("/") }}
         />
         <View style={styles.list}>
           {CATEGORY_ORDER.map((c) => (

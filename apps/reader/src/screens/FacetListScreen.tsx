@@ -8,6 +8,7 @@ import { useFacets } from "@/hooks/useDailyIssue";
 import { ScreenHeader } from "@/components/ScreenHeader";
 import { ListRow } from "@/components/ListRow";
 import { LoadingView, ErrorView } from "@/components/StateViews";
+import { useBackOr } from "@/hooks/useBackOr";
 
 type Props = {
   kind: FacetKind; // tag | entity
@@ -18,6 +19,7 @@ const KIND_LABEL: Record<FacetKind, string> = { tag: "주제", entity: "주체" 
 export function FacetListScreen({ kind }: Props): ReactElement {
   const insets = useSafeAreaInsets();
   const router = useRouter();
+  const backOr = useBackOr();
   const query = useFacets(kind);
 
   if (query.isPending) return <LoadingView />;
@@ -36,7 +38,7 @@ export function FacetListScreen({ kind }: Props): ReactElement {
           kicker="둘러보기"
           title={KIND_LABEL[kind]}
           subtitle={`${facets.length}개`}
-          crumb={{ label: "오늘", onPress: () => router.push("/") }}
+          crumb={{ label: "오늘", onPress: () => backOr("/") }}
         />
         {facets.length === 0 ? (
           <Text style={styles.empty}>아직 모인 항목이 없습니다.</Text>

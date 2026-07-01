@@ -1,8 +1,8 @@
 import type { ReactElement } from "react";
 import { ScrollView, View, Text, Pressable, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
 import { useArticle } from "@/hooks/useDailyIssue";
+import { useBackOr } from "@/hooks/useBackOr";
 import { isoToLabel, isoToCompact } from "@/lib/date";
 import { categoryLabel } from "@/lib/categories";
 import { colors, fonts, MAX_READING } from "@/lib/theme";
@@ -21,7 +21,7 @@ type Props = {
 
 export function ArticleScreen({ id }: Props): ReactElement {
   const insets = useSafeAreaInsets();
-  const router = useRouter();
+  const backOr = useBackOr();
   const query = useArticle(id);
 
   if (query.isPending) return <LoadingView />;
@@ -41,7 +41,7 @@ export function ArticleScreen({ id }: Props): ReactElement {
     >
       <View style={styles.column}>
         <Pressable
-          onPress={() => router.push(compact !== undefined ? `/daily/${compact}` : "/")}
+          onPress={() => backOr(compact !== undefined ? `/daily/${compact}` : "/")}
           accessibilityRole="link"
         >
           <Text style={styles.crumb}>

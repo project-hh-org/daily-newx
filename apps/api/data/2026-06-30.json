@@ -1,0 +1,340 @@
+{
+  "issue": {
+    "issue_date": "2026-06-30",
+    "issue_no": 15,
+    "intro": "6월의 마지막 날, AI 업계는 한 주간의 지각변동을 정리하는 중입니다. GPT-5.6 공개, Mythos 5 부분 복원, 구글 연구원 줄이탈까지 숨 가쁘게 달려온 이번 주의 끝에, 오늘은 Anthropic이 제약·바이오 분야를 향해 정면 돌파를 선언하는 날입니다. 동시에 '마음껏 쓰게 하던' 기업 AI 예산 문화가 무너지고 있다는 신호가 곳곳에서 나오고 있습니다.",
+    "outro": "7월에는 Gemini 3.5 Pro 출시, GPT-5.6 일반 공개, Fable 5 복원 여부, Anthropic-DOD 소송 진행까지 굵직한 변수가 한꺼번에 기다리고 있습니다. 어느 하나가 터져도 판이 바뀔 수 있는 달입니다. 잘 쫓아오세요.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "Anthropic, 오늘 'AI for Science' 생중계 — 노벨상 수상자와 제약사 CEO가 한자리에",
+      "tldr": "신약 개발·임상 연구에 Claude가 어떻게 쓰이는지, 바이오·제약 최고위 임원들이 직접 발표",
+      "summary": "Anthropic이 오늘(6월 30일) 오전 10시(PDT) 온라인 행사 'The Briefing: AI for Science'를 개최합니다. 노바티스·BMS·Genentech 등 글로벌 제약사 CEO들과 연구 리더들이 참여해 Claude를 실제 연구 현장에서 어떻게 활용하는지 공개합니다. AlphaFold 공동 개발자이자 2024 노벨 화학상 수상자인 John Jumper가 DeepMind를 떠나 Anthropic에 합류한 배경도 이 흐름의 일부입니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic이 오늘 오전 10시(미 태평양 시간, PDT / 한국 시간 7월 1일 새벽 2시)에 'The Briefing: AI for Science'를 온라인 생중계로 진행합니다. 행사는 낮 12시 20분(PDT)까지 약 2시간 20분 동안 이어지며, 제약·바이오 분야에서 Claude를 활용한 실제 성과가 공개될 예정입니다."
+        },
+        {
+          "type": "bullets",
+          "label": "발표자 라인업",
+          "items": [
+            "Vas Narasimhan — 노바티스(Novartis) CEO, Anthropic 이사회 멤버",
+            "Chris Boerner — BMS(Bristol Myers Squibb) CEO",
+            "Aviv Regev — Genentech(로슈 산하) R&D 총괄 EVP",
+            "Lotte Bjerre Knudsen — Novo Nordisk 출신 생명과학 혁신 전문가"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "단순한 제품 시연이 아닙니다. 연구 타임라인을 '몇 주→몇 시간'으로 줄이고 있다는 제약사·연구기관의 실제 경험이 공개됩니다. AlphaFold를 개발해 노벨 화학상을 받은 John Jumper가 지난 6월 20일 DeepMind를 떠나 Anthropic에 합류한 것도 이 전략적 행보와 연결됩니다."
+        },
+        {
+          "type": "callout",
+          "label": "시청 방법",
+          "text": "anthropic.com/events/the-briefing-ai-for-science-virtual-event — 오늘 6월 30일 10:00 AM PDT 생중계. 행사 종료 후 다시보기도 같은 페이지에서 제공 예정입니다."
+        }
+      ],
+      "source_url": "https://www.anthropic.com/events/the-briefing-ai-for-science-virtual-event",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "anthropic-ai-for-science-event-2026-06-30",
+      "tags": ["과학AI", "제약바이오", "Anthropic", "라이프사이언스", "John Jumper"],
+      "entities": ["Anthropic", "Novartis", "Bristol Myers Squibb", "Genentech", "Novo Nordisk", "John Jumper"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-30"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "Gemini 3.5 Pro, 6월 출시 약속 어기고 7월로 — 구글 I/O 공약 두 번째 불이행",
+      "tldr": "\"다음 달까지 기다려달라\" 했지만 6월이 지나갔다, 7월 목표 공식화",
+      "summary": "지난 5월 Google I/O에서 순다르 피차이가 '다음 달(6월) 출시'를 약속했던 Gemini 3.5 Pro가 일반 공개 없이 6월을 넘겼습니다. 코딩·장기 작업 성능 미흡이 원인으로 알려졌으며, 7월 GA를 새 목표로 삼고 있습니다. 구글 연구원 4명 이탈과 함께 Gemini 모멘텀에 의문이 커지고 있습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "5월 19일 Google I/O에서 순다르 피차이가 직접 'Give us until next month to get it to you'라고 말하며 청중의 탄식을 자아낸 Gemini 3.5 Pro가, 결국 6월을 넘기고 7월로 밀렸습니다. 공식 발표 없이 6월이 끝나는 이례적인 상황입니다."
+        },
+        {
+          "type": "stat",
+          "value": "2M 토큰",
+          "label": "Gemini 3.5 Pro 예고 컨텍스트 창 — 현재 대부분 모델의 4~50배"
+        },
+        {
+          "type": "definition",
+          "term": "Deep Think",
+          "text": "Gemini 3.5 Pro에 탑재 예정인 고급 추론 모드. 어려운 수학·과학 문제를 더 오래 생각하고 풀도록 설계됩니다. 월 $250 Ultra 요금제에서만 이용 가능할 것으로 예상됩니다."
+        },
+        {
+          "type": "callout",
+          "label": "경쟁 압박",
+          "text": "Gemini 3.5 Pro가 7월에 출시될 때, 시장에는 이미 GPT-5.6 Sol이 Terminal-Bench 2.1에서 91.9%라는 신기록을 세운 상태입니다. 단순 출시보다 '얼마나 뛰어난가'가 더 중요해진 상황입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "내부 관계자 보도에 따르면 코딩과 장기 복잡 과제 처리 성능을 추가 개선 중이며, Google은 구체적인 일정을 공개하지 않고 있습니다. 6월 중 Gemini 핵심 연구원 4명이 Anthropic·OpenAI로 이탈한 사실도 이 지연과 무관하지 않다는 시각이 있습니다."
+        }
+      ],
+      "source_url": "https://cryptobriefing.com/google-delays-gemini-35-pro-launch-to-july-2026/",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "gemini-35-pro-delayed-july-2026",
+      "tags": ["Google", "Gemini", "모델출시", "지연"],
+      "entities": ["Google DeepMind", "Gemini 3.5 Pro", "Sundar Pichai"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-29"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "'토큰맥싱' 시대 저물다 — Uber, 4개월 만에 연간 AI 예산 소진하고 상한 도입",
+      "tldr": "AI를 마음껏 쓰게 하던 기업들이 일제히 지출 한도를 두기 시작했다",
+      "summary": "기업들이 AI 사용량을 무제한 허용하던 '토큰맥싱(tokenmaxxing)' 전략을 접고 있습니다. Uber는 직원 1인당 월 $1,500 한도를 설정했고(연간 예산을 4개월 만에 소진한 뒤), AI 스타트업 Lindy는 Claude에서 DeepSeek으로 100% 전환해 수백만 달러를 절감했다고 밝혔습니다. AI 애널리스트들은 이를 OpenAI·Anthropic 성장세의 변곡점으로 봅니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "토큰맥싱 (Tokenmaxxing)",
+          "text": "기업이 직원들에게 AI(LLM) 사용량을 최대화하도록 독려하는 전략. 비용 최적화보다 AI 활용도 극대화를 우선합니다. 초기 AI 도입기에 유행했지만, 인프라 비용이 예산을 초과하면서 역풍을 맞고 있습니다."
+        },
+        {
+          "type": "quote",
+          "text": "우리는 DeepSeek으로 전환했고, 비용 곡선이 바닥으로 추락했습니다. 회사 생존의 문제였습니다.",
+          "cite": "Flo Crivello, Lindy CEO (CNBC 인터뷰)"
+        },
+        {
+          "type": "bullets",
+          "label": "기업별 대응",
+          "items": [
+            "Uber: 직원 1인당 월 $1,500(약 200만원) 상한, 초과 사용은 별도 신청 필요",
+            "Lindy: Claude API → DeepSeek V4-Pro 100% 전환, 연간 수백만 달러 절감",
+            "OpenAI: 6월 초 기업 고객 대상 지출 분석 도구·한도 설정 기능 출시",
+            "Anthropic: 8월부터 조직·개인 단위 지출 한도 설정 기능 제공"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "D.A. Davidson 분석가 Gil Luria는 '현재 OpenAI·Anthropic의 성장률은 역사상 가장 빠른 시점이자, 앞으로 가장 느려질 출발점이기도 하다'고 말했습니다. 기업 AI 예산의 약 95%가 여전히 최상급 프론티어 모델에 몰려 있어 효율화 여지가 큽니다. '어드바이저 모델' 기법(대부분의 요청은 저렴한 모델이 처리하고, 어려운 것만 최고 모델로 에스컬레이션)이 주목받고 있습니다."
+        }
+      ],
+      "source_url": "https://www.cnbc.com/2026/06/26/openai-anthropic-new-ai-spending-reality-as-users-shift-to-efficiency.html",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "enterprise-tokenmaxxing-ends-efficiency-era",
+      "tags": ["AI비용", "기업AI", "효율화", "DeepSeek", "토큰맥싱"],
+      "entities": ["Uber", "Lindy", "OpenAI", "Anthropic", "DeepSeek"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-26"
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "Mythos 5 부분 복원 세부 — 약 100개 기관만 허용, 나머지 개발자는 수출 허가 필요",
+      "tldr": "누가 Mythos 5를 쓸 수 있고, 누가 못 쓰는지 — Annex A 범위 정리",
+      "summary": "6월 27일 미국 상무부 루트닉 장관 서한으로 Mythos 5 접근이 일부 허용됐지만, 범위는 좁습니다. '핵심 인프라 방어 기관' 등 약 100개 기관(Annex A)만 수출 허가 없이 이용 가능하며, 일반 개발자·Claude 구독자는 여전히 접근 불가 상태입니다. Fable 5는 모든 대상에 전면 금지가 유지됩니다.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "label": "Annex A 접근 허용 대상 (3개 범주)",
+          "items": [
+            "Anthropic 미국 법인 및 그 외국 국적 직원",
+            "미국 정부 민간 기관 및 국립연구소",
+            "에너지·금융·의료·통신 등 핵심 인프라 방어 기업 (약 100개)"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "여전히 사용 불가인 대상",
+          "text": "Claude Pro/Max/Team/Enterprise 일반 구독자, 모든 일반 API 개발자, 해외(한국 포함) 기업·개발자 → 수출 허가 없이는 Mythos 5 불가. Fable 5는 위 Annex A 대상도 포함해 전면 금지."
+        },
+        {
+          "type": "timeline",
+          "events": [
+            {"date": "6월 12일", "text": "상무부 수출 통제, Fable 5·Mythos 5 전 세계 비활성화"},
+            {"date": "6월 26~27일", "text": "루트닉 장관 서한 발송 → Annex A 기관에 Mythos 5 복원 허용"},
+            {"date": "7월 8일 예정", "text": "Anthropic 신분증 인증 정책 시행 → 미국 시민 우선 복원 경로 열릴 가능성"},
+            {"date": "8월 1일 예정", "text": "행정명령 60일 기한 — NSA·재무부·CISA의 프론티어 AI 접근 프레임워크 완성 목표"}
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "한국을 포함한 해외 개발자에게는 '수출 허가'라는 새로운 변수가 생겼습니다. 과거에는 단순히 API 키를 발급받으면 됐던 것이 이제 미국 정부 승인이 필요한 영역으로 진입하고 있습니다."
+        }
+      ],
+      "source_url": "https://www.cnbc.com/2026/06/26/us-government-anthropic-claude-mythos5-ai.html",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "mythos5-partial-restoration-annex-a-details",
+      "tags": ["Anthropic", "Mythos5", "AI규제", "수출통제", "미국정부"],
+      "entities": ["Anthropic", "US Commerce Department", "Howard Lutnick"],
+      "related": [],
+      "follow_up_of": "us-government-gates-gpt56-mythos5",
+      "source_published_at": "2026-06-27"
+    },
+    {
+      "category": "community",
+      "position": 1,
+      "title": "오늘이 원래 콜로라도 AI 소비자보호법 발효일 — 하지만 이미 연기되고 대폭 약화됐다",
+      "tldr": "미국 최초 포괄적 AI 소비자보호법, 시행 전에 사실상 해체됨",
+      "summary": "미국 콜로라도주 AI 소비자보호법(SB 24-205)의 원래 발효일이 오늘(6월 30일)이었습니다. 그러나 5월 14일 주지사 Polis가 개정법(SB 189)에 서명하며 발효를 2027년 1월로 연기했고, '알고리즘 차별 방지 의무'와 '위험 평가 의무' 등 핵심 조항이 삭제됐습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "오늘은 미국 최초 포괄적 AI 소비자보호법이 효력을 발휘했어야 할 날이지만, 현실은 달랐습니다. 2024년 통과된 콜로라도 SB 24-205는 채용·대출·의료 등 중요 결정에 쓰이는 '고위험 AI 시스템'의 편향 방지와 투명성을 기업에 의무화하는 법이었습니다."
+        },
+        {
+          "type": "prosCons",
+          "pros": [
+            "원래 법(SB 24-205): 알고리즘 차별 방지 의무",
+            "배치자의 위험 관리 프로그램 및 영향 평가 의무",
+            "AG(주 법무장관)에 보고 의무",
+            "AI 사용 소비자 통보 의무"
+          ],
+          "cons": [
+            "개정 후(SB 189, 2027년 1월 발효): 위험 기반 규제 틀 삭제",
+            "차별 방지 의무 및 배치자 위험 관리 의무 제거",
+            "특정 자동화 의사결정 도구에 대한 공개·투명성 의무만 남음"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "이 흐름은 AI 규제의 미국식 딜레마를 보여줍니다. '소비자를 보호하자'는 취지로 시작한 법이 업계 로비와 주 경제 경쟁력 우려로 약화되는 패턴입니다. 연방 차원의 AI 규제가 없는 상황에서 주(州)별 접근은 파편화될 수밖에 없습니다."
+        }
+      ],
+      "source_url": "https://www.troutmanprivacy.com/2026/05/colorado-legislature-passes-bill-to-repeal-and-replace-colorado-ai-act/",
+      "source_name": "blog",
+      "score": 6,
+      "story_slug": "colorado-ai-law-effective-date-passed-delayed",
+      "tags": ["AI규제", "콜로라도", "소비자보호", "미국정책"],
+      "entities": ["Colorado", "Governor Jared Polis"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-30"
+    },
+    {
+      "category": "business",
+      "position": 3,
+      "title": "GPT-5.6 Terra, Claude Sonnet 4.6보다 입력 17% 저렴 — OpenAI의 정밀 가격 압박",
+      "tldr": "Sol은 최강 성능, Terra는 Sonnet 동급에 더 싼 가격, Luna는 DeepSeek급 단가",
+      "summary": "OpenAI가 GPT-5.6의 가격 구조를 공개했습니다. 중간 등급 Terra($2.50/$15 per 1M 토큰)는 Anthropic Sonnet 4.6($3/$15)보다 입력 기준 17% 저렴하며, 구글 Gemini 3.5 Flash와도 정면 경쟁합니다. 아직 일반 공개 전이지만, 수 주 내 API 개방 시 기업 워크로드 이동이 시작될 수 있습니다.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": ["모델", "입력(1M 토큰)", "출력(1M 토큰)", "비고"],
+          "rows": [
+            ["GPT-5.6 Sol", "$5", "$30", "최고 성능, 정부 파트너 우선 제공"],
+            ["GPT-5.6 Terra", "$2.50", "$15", "GPT-5.5급 성능, Sonnet 4.6 직접 경쟁"],
+            ["GPT-5.6 Luna", "$1", "$6", "빠르고 저렴, 요약·초안 등 대량 처리용"],
+            ["Claude Sonnet 4.6", "$3", "$15", "현재 많은 기업의 기본 모델"],
+            ["Gemini 3.5 Flash", "$1.50", "$9", "구글 속도 특화"],
+            ["DeepSeek V4-Pro", "$0.44", "$0.87", "중국산 저가 오픈소스"]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Terra의 구조가 흥미롭습니다. 입력 $2.50은 Sonnet 4.6($3)보다 17% 저렴하고, 출력 $15는 동일합니다. 실질적으로는 약 8~9% 총비용 절감 효과. OpenAI가 '같은 성능, 더 낮은 입력 단가'라는 메시지를 Anthropic의 메인 수익원인 Sonnet 계층을 향해 조준한 셈입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "새로운 네이밍 체계도 주목할 부분입니다. Sol·Terra·Luna는 모델 버전이 올라가도 유지되는 '등급 이름(capability tier)'으로, 개발자 입장에서는 매번 모델명을 바꾸지 않아도 됩니다. GPT-5.6 이후 GPT-5.7이 나오더라도 'Sol·Terra·Luna' 구조가 유지될 계획입니다."
+        },
+        {
+          "type": "callout",
+          "label": "지금 바로 할 것은?",
+          "text": "아직 일반 이용 불가. 프로덕션 코드는 버전 고정 엔드포인트(예: gpt-5.5-latest 대신 특정 버전 명시)를 사용하고, 일반 공개 후 Terra를 직접 테스트해보는 것이 안전합니다."
+        }
+      ],
+      "source_url": "https://openai.com/index/previewing-gpt-5-6-sol/",
+      "source_name": "official-blog",
+      "score": 7,
+      "story_slug": "gpt56-pricing-terra-vs-sonnet-competitive-analysis",
+      "tags": ["OpenAI", "GPT-5.6", "AI가격", "Anthropic", "가격경쟁"],
+      "entities": ["OpenAI", "Anthropic", "Google"],
+      "related": [],
+      "follow_up_of": "us-government-gates-gpt56-mythos5",
+      "source_published_at": "2026-06-26"
+    },
+    {
+      "category": "business",
+      "position": 4,
+      "title": "구글, 6월에만 Gemini 핵심 연구원 4명 잃었다 — AlphaFold부터 사전 훈련 담당까지",
+      "tldr": "DeepMind 인재 이탈이 연속으로 이어지며 Gemini 3.5 Pro 지연과 맞물렸다",
+      "summary": "구글 DeepMind가 6월 한 달에 Gemini 관련 핵심 연구원 4명을 잃었습니다. Gemini 공동 리드 Noam Shazeer는 OpenAI로, AlphaFold 개발자 John Jumper·AI 코딩 담당 Jonas Adler·사전 훈련 담당 Alexander Pritzel은 Anthropic으로 이적했습니다. Jumper 이직 발표 하루에만 Alphabet 시가총액이 약 $2,450억 증발했습니다.",
+      "blocks": [
+        {
+          "type": "timeline",
+          "events": [
+            {"date": "6월 초", "text": "Noam Shazeer(Gemini 공동 리드) → OpenAI 합류"},
+            {"date": "6월 19~20일", "text": "John Jumper(AlphaFold, 2024 노벨 화학상) → Anthropic 합류 발표. 당일 Alphabet 주가 6% 급락, 시가총액 약 $2,450억 증발"},
+            {"date": "6월 24일", "text": "Jonas Adler(AI 코딩 연구), Alexander Pritzel(사전 훈련) → 모두 Anthropic으로 확인"}
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "업계 분석가들은 구글이 2023년 DeepMind와 Google Brain을 합병한 뒤 관료화·의사결정 속도 저하로 최상위 연구자들이 더 민첩한 환경을 선호하게 됐다고 분석합니다. 실제로 여러 벤치마크에서 Gemini가 GPT·Claude에 밀리고, 3.5 Pro도 출시가 지연되면서 'DeepMind가 AI 선두 그룹에서 멀어지고 있다'는 시각이 나오고 있습니다."
+        },
+        {
+          "type": "callout",
+          "label": "구글의 반격은?",
+          "text": "구글 DeepMind에는 여전히 수천 명의 연구자가 있습니다. 하지만 단 한 달에 상징적인 이름들을 연속으로 잃은 건 드문 일입니다. Gemini 3.5 Pro가 7월에 강력한 성능으로 나와야 이 서사를 바꿀 수 있습니다."
+        }
+      ],
+      "source_url": "https://techcrunch.com/2026/06/24/ai-researchers-continue-to-leave-google-for-its-rivals/",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "google-deepmind-talent-exodus-june-2026",
+      "tags": ["Google", "DeepMind", "인재이탈", "Anthropic", "OpenAI"],
+      "entities": ["Google DeepMind", "Noam Shazeer", "John Jumper", "Jonas Adler", "Alexander Pritzel", "Anthropic", "OpenAI"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-24"
+    },
+    {
+      "category": "paper",
+      "position": 1,
+      "title": "Anthropic 경제 지수 6월호 — 사용자 35% \"내년엔 AI가 내 업무 대부분\"",
+      "tldr": "9,700명 실제 이용자 데이터가 보여준 AI 확산 현실과 기술 격차",
+      "summary": "Anthropic이 6월 26일 발표한 경제 지수 보고서(6호)에서 응답자 35% 이상이 '12개월 내 AI가 자신의 업무 대부분이나 거의 전부를 처리할 것'이라 답했습니다. 약 9,700명의 실제 사용 데이터를 연계한 설문은, 경험 있는 AI 사용자와 초보자의 성과 격차가 점점 벌어지고 있음도 보여줍니다.",
+      "blocks": [
+        {
+          "type": "stat",
+          "value": "35%+",
+          "label": "12개월 내 AI가 업무 대부분 처리할 것이라 예상한 응답자 비율 (약 9,700명 설문)"
+        },
+        {
+          "type": "stat",
+          "value": "49%",
+          "label": "업무의 최소 25% 이상을 이미 Claude로 처리하는 직종 비율 — 이전 보고서와 비슷하게 정체 상태"
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서에서 가장 흥미로운 발견은 '기술 격차'입니다. 경험 많은 사용자는 AI를 '개선 도구'로 씁니다(출력물을 다듬고, 피드백을 주며, 최종 판단은 자신이 합니다). 초보자는 AI에 통째로 맡깁니다. 결과의 질은 경험자 쪽이 훨씬 낫고, 이 격차는 좁혀지지 않고 오히려 벌어지고 있습니다."
+        },
+        {
+          "type": "bullets",
+          "label": "주목할 만한 발견들",
+          "items": [
+            "API(전문 워크플로우)에서는 '자동화(AI가 혼자 처리)'가 '협업(인간+AI 같이)'을 처음으로 역전",
+            "claude.ai(일반 사용)에서는 아직 협업이 우세",
+            "AI의 영향을 가장 과소평가하는 집단이 실제로는 가장 노출된 집단이라는 역설",
+            "10명 중 6명은 내년 AI 업무 비중이 올해보다 높을 것으로 예상"
+          ]
+        }
+      ],
+      "source_url": "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "source_name": "official-blog",
+      "score": 7,
+      "story_slug": "anthropic-economic-index-june-2026-cadences",
+      "tags": ["AI경제", "Anthropic", "AI활용현황", "미래일자리", "노동시장"],
+      "entities": ["Anthropic"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-26"
+    }
+  ]
+}

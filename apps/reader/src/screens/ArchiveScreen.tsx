@@ -8,10 +8,12 @@ import { useIssues } from "@/hooks/useDailyIssue";
 import { ScreenHeader } from "@/components/ScreenHeader";
 import { ListRow } from "@/components/ListRow";
 import { LoadingView, ErrorView } from "@/components/StateViews";
+import { useBackOr } from "@/hooks/useBackOr";
 
 export function ArchiveScreen(): ReactElement {
   const insets = useSafeAreaInsets();
   const router = useRouter();
+  const backOr = useBackOr();
   const query = useIssues();
 
   if (query.isPending) return <LoadingView />;
@@ -30,7 +32,7 @@ export function ArchiveScreen(): ReactElement {
           kicker="아카이브"
           title="지난 호"
           subtitle={`${issues.length}개 호`}
-          crumb={{ label: "오늘", onPress: () => router.push("/") }}
+          crumb={{ label: "오늘", onPress: () => backOr("/") }}
         />
         {issues.length === 0 ? (
           <Text style={styles.empty}>게시된 호가 아직 없습니다.</Text>

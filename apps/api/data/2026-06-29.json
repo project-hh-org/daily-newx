@@ -1,0 +1,212 @@
+{
+  "issue": {
+    "issue_date": "2026-06-29",
+    "issue_no": 14,
+    "intro": "미국 정부가 AI 최전선 모델들에 직접 손을 얹은 지 한 달이 가까워집니다. GPT-5.6은 출시 이틀 만에 정부 승인 파트너 전용이 됐고, Mythos 5는 16일째 일반 접근이 막혀 있습니다. 규제 파도가 높아지는 사이, 오픈소스 로컬 모델로 눈길을 돌리는 사람들도 부쩍 늘었습니다.",
+    "outro": "내일(6월 30일) Anthropic이 'AI for Science' 이벤트를 엽니다. AlphaFold를 만들었던 John Jumper가 합류 후 처음 무대에 선다면, AI가 실험실 안에서 어디까지 가고 있는지 좀 더 선명하게 보일 것 같습니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "미국 정부, GPT-5.6과 Mythos 5 동시 제한 — \"이제 OpenAI vs Anthropic 구도는 없다\"",
+      "tldr": "두 AI 회사의 최신 모델이 모두 미국 정부의 승인 없이는 출시 불가. '경쟁자끼리 싸우는 것'보다 '함께 규제를 이겨내는 것'이 2026년 하반기의 진짜 과제가 됐다.",
+      "summary": "OpenAI의 GPT-5.6 Sol·Terra·Luna가 출시 이틀 만에 정부 승인 파트너에게만 제한됐고, Anthropic의 Mythos 5는 6월 12일부터 16일째 일반 접근이 막혀 있습니다. TechCrunch 사설이 '이제 OpenAI vs Anthropic 구도는 의미를 잃었다, 두 회사가 동일한 정부 승인 문제에 직면했다'고 정리한 하루였습니다. Fable 5 복구 일정은 아직 불명확합니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "미국 정부가 AI 최전선 모델들의 출시를 사전에 통제하는 관행이 이번 주에도 이어졌습니다. OpenAI는 GPT-5.6 3종(Sol·Terra·Luna)을 정부 승인 파트너에게만 제한했고, Anthropic의 Mythos 5는 6월 12일부터 일반 공개가 차단된 채 미국 핵심 인프라 운영 기관에만 부분 복구된 상태입니다. Fable 5는 아직도 복구 날짜가 없습니다."
+        },
+        {
+          "type": "table",
+          "headers": ["모델", "현재 상태", "제한 기간", "접근 경로"],
+          "rows": [
+            ["Mythos 5 (Anthropic)", "부분 복구", "16일+", "미국 핵심 인프라 기관만"],
+            ["Fable 5 (Anthropic)", "전면 제한", "16일+", "한정 조건부 이용 가능"],
+            ["GPT-5.6 Sol/Terra/Luna (OpenAI)", "제한 출시", "2일", "정부 승인 파트너 전용"]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "TechCrunch 사설은 이 상황을 명확하게 정리했습니다. '두 회사가 정확히 같은 위치에서 정확히 같은 문제에 직면해 있다. 이건 한 쪽이 다른 쪽에 한 짓이 아니라, 비공식 사전 승인 절차라는 구조적 문제다.' OpenAI는 '이런 방식이 장기 기본값이 돼서는 안 된다'고 공식 입장을 밝혔습니다."
+        },
+        {
+          "type": "definition",
+          "term": "트러스티드 파트너 (Trusted Partner)",
+          "text": "미국 정부가 AI 모델의 안보 검토를 마친 뒤 접근을 허가한 기관이나 기업. 현재 GPT-5.6의 경우 정부가 고객사 한 곳씩 개별 승인하는 방식으로 운영 중입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://www.techtimes.com/articles/319213/20260628/claude-fable-5-still-offline-us-clears-mythos-5-critical-infrastructure.htm",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "us-government-ai-restriction-gpt56-mythos5-june28",
+      "tags": ["AI규제", "OpenAI", "Anthropic", "GPT-5.6", "Mythos5", "Fable5", "미국정부", "수출통제"],
+      "entities": ["OpenAI", "Anthropic", "미국 상무부", "TechCrunch"],
+      "related": [
+        "https://techcrunch.com/2026/06/26/openai-limits-gpt-5-6-rollout-after-government-request-says-restrictions-shouldnt-be-the-norm/",
+        "https://www.axios.com/2026/06/27/anthropic-fable-5-return-soon",
+        "https://www.semafor.com/article/06/27/2026/us-releases-powerful-anthropic-model-mythos-to-some-us-companies"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-28"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "내일 Anthropic 'AI for Science' 이벤트 — AlphaFold 공동 개발자 John Jumper 첫 무대",
+      "tldr": "6월 30일 오전 10시(PST) Anthropic의 생명과학 AI 이벤트. 노벨상 수상자 John Jumper가 합류 후 처음 공개 발언할 가능성이 높다.",
+      "summary": "Anthropic이 내일(6월 30일) '더 브리핑: 과학을 위한 AI' 이벤트를 온라인으로 생중계합니다. Anthropic 리더십, 제약사 경영진, 바이오텍 연구기관이 함께 AI가 과학 연구에 어떻게 활용되는지 발표합니다. 특히 AlphaFold로 2024년 노벨 화학상을 수상한 John Jumper의 첫 공개 등장이 기대됩니다. Anthropic은 최근 바이러스 검색 정확도를 16.9%에서 92.8%로 끌어올린 VirBench 연구도 공개한 바 있습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic이 6월 30일 오전 10시(PST, 한국 시간 6월 30일 밤 11시) 'The Briefing: AI for Science'를 온라인으로 생중계합니다. 단순 제품 발표가 아니라, AI 에이전트가 실제 제약·바이오 연구에서 어떻게 활용되는지를 구체적으로 다루는 자리입니다."
+        },
+        {
+          "type": "callout",
+          "label": "주목 포인트: John Jumper",
+          "text": "2024년 AlphaFold로 노벨 화학상을 수상한 John Jumper가 6월 19일 Google DeepMind를 떠나 Anthropic에 합류했습니다. DeepMind에서 9년을 보낸 그가 이 이벤트에서 처음 공개 발언을 할 것으로 예상됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic이 최근 발표한 VirBench 연구가 이번 이벤트의 배경입니다. 40개 병원체의 바이러스 유전자 검색 120개를 물었을 때, 표준 검색 방식으로는 AI 정확도가 16.9%에 불과했지만, 전용 결정론적 검색 도구를 붙이자 92.8%로 뛰었습니다. '더 좋은 모델보다 더 좋은 도구'라는 교훈이 이 이벤트의 핵심 메시지가 될 전망입니다."
+        },
+        {
+          "type": "timeline",
+          "events": [
+            {"date": "2026-06-02", "text": "Anthropic, VirBench 연구 '생물학 에이전트 기반 마련' 논문 발표"},
+            {"date": "2026-06-19", "text": "John Jumper, Anthropic 합류 공식 발표"},
+            {"date": "2026-06-30", "text": "The Briefing: AI for Science 이벤트 (오전 10시 PST)"}
+          ]
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://www.anthropic.com/events/the-briefing-ai-for-science-virtual-event",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "anthropic-ai-for-science-event-john-jumper-june30",
+      "tags": ["Anthropic", "AI과학", "JohnJumper", "AlphaFold", "바이오테크", "VirBench", "생명과학"],
+      "entities": ["Anthropic", "John Jumper", "Google DeepMind", "Bristol Myers Squibb", "HHMI"],
+      "related": ["https://www.cnbc.com/2026/06/19/john-jumper-to-leave-google-deepmind-for-anthropic.html"],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-28"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "Anthropic, Claude Opus 4.7 빠른 모드 7월 24일 공식 종료 — 지금 확인하세요",
+      "tldr": "7월 24일부터 Opus 4.7에 speed:\"fast\" 파라미터가 오류를 반환한다. 26일 남았다.",
+      "summary": "Anthropic이 Claude Opus 4.7의 빠른(fast) 모드를 7월 24일에 종료한다고 밝혔습니다. 이후 speed:\"fast\" 파라미터로 Opus 4.7을 호출하면 오류가 반환됩니다. 5월 28일 출시된 Opus 4.8이 코딩·에이전트·전문 업무 전 영역에서 성능과 속도 모두 앞서기 때문에 기능 손실 없이 이전할 수 있습니다.",
+      "blocks": [
+        {
+          "type": "callout",
+          "label": "⏰ 마감: 2026-07-24 (26일 남음)",
+          "text": "API 또는 Claude Code에서 claude-opus-4-7 + speed:\"fast\" 조합을 사용 중이라면 지금 모델 설정을 확인하세요. 마감 후엔 해당 호출이 에러를 반환합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 4.7 빠른 모드는 2025년부터 제공됐지만, 5월 28일 출시된 Claude Opus 4.8이 모든 측면에서 이를 대체합니다. 마이그레이션 경로는 간단합니다: claude-opus-4-7을 claude-opus-4-8로 바꾸면 됩니다. Anthropic은 빠른 모드(fast mode)를 Opus 4.8에서도 동일하게 지원합니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://aitoolsrecap.com/Blog/ai-news-june-28-2026#opus-47-deprecation",
+      "source_name": "blog",
+      "score": 7,
+      "story_slug": "opus-47-fast-mode-deprecation-july24-2026",
+      "tags": ["Anthropic", "Claude", "API", "모델이전", "Opus4.7", "Opus4.8"],
+      "entities": ["Anthropic"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-28"
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "리드 호프만 — \"xAI는 완전한 재앙, Cursor는 이미 정점 지났다\"",
+      "tldr": "LinkedIn 공동창업자·Anthropic 투자자 호프만이 Fortune 인터뷰에서 xAI와 Cursor에 날 선 평가를 내렸다.",
+      "summary": "LinkedIn 공동창업자이자 Anthropic 주요 투자자인 리드 호프만(Reid Hoffman)이 Fortune 인터뷰에서 xAI를 '완전한 재앙', SpaceX의 Cursor 인수($60B)를 '역량이 아닌 부재의 증거'라고 표현했습니다. 2026년 5월까지 xAI 원년 공동창업자 11명 전원이 회사를 떠났고, Cursor는 Claude Code·Codex에 밀려 성장세가 꺾인 상태라고 진단했습니다.",
+      "blocks": [
+        {
+          "type": "quote",
+          "text": "Cursor는 한때 밝게 빛났지만, 지금은 수평선 너머로 사라져가는 것 같다.",
+          "cite": "리드 호프만, Fortune 인터뷰, 2026.06.28"
+        },
+        {
+          "type": "paragraph",
+          "text": "호프만의 발언은 두 사건을 배경으로 합니다. 첫째, xAI는 2025년부터 원년 멤버가 연달아 이탈해 2026년 5월에는 공동창업자 11명 전원이 모두 회사를 떠났습니다. 둘째, SpaceX는 6월 16일 Cursor 모회사 Anysphere를 전액 자사 주식으로 600억 달러에 인수했는데, 발표 직후 SPCX 주가가 한 세션에서 16% 폭락했습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "호프만이 Anthropic의 투자자라는 점은 중립적 관찰자가 아님을 의미합니다. 그러나 xAI 공동창업자 전원 이탈과 Cursor 성장 둔화 데이터는 그의 평가와 별개로 사실에 기반합니다. 그는 같은 인터뷰에서 Claude Code와 Codex를 '충분히 언급되지 않지만 강력한 도구'로 꼽았습니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://aitoolsrecap.com/Blog/ai-news-june-28-2026#reid-hoffman-xai",
+      "source_name": "blog",
+      "score": 7,
+      "story_slug": "reid-hoffman-xai-trainwreck-cursor-peaked-june28",
+      "tags": ["xAI", "Cursor", "SpaceX", "Anthropic", "AI경쟁", "인수합병"],
+      "entities": ["Reid Hoffman", "xAI", "Cursor", "SpaceX", "Anysphere", "Anthropic"],
+      "related": [
+        "https://techcrunch.com/2026/06/16/spacex-to-acquire-cursor-for-60b-in-stock-days-after-blockbuster-ipo/"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-28"
+    },
+    {
+      "category": "community",
+      "position": 1,
+      "title": "\"로컬 모델, 이제 진짜 쓸 만하다\" — HN 오늘의 화제",
+      "tldr": "2022년형 맥에서 Gemma 4를 돌려 프론티어 모델의 75% 수준에 도달했다는 글이 HN을 달구고 있다.",
+      "summary": "데이터 과학자 비키 보이키스(Vicki Boykis)의 '로컬 모델, 이제 쓸 만하다' 글이 오늘 해커뉴스 상위권에 올라 수십 개의 실사용 경험 댓글이 달리고 있습니다. 2022년형 M2 맥(64GB)에서 Gemma 4 / Qwen3.6-27B를 활용해 에이전트 코딩이 프론티어 모델의 75% 수준에 도달했다는 것이 핵심 주장입니다. 정부의 모델 접근 제한과 구독 비용 상승이 맞물리면서 로컬 실행에 대한 관심이 더 실용적인 이유로 높아지고 있습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "비키 보이키스는 세 가지가 동시에 바뀌었다고 요약합니다: 모델 품질이 크게 올랐고(Qwen3.6-27B, Gemma 4), 실행 도구가 성숙했으며(llama.cpp, Ollama, LM Studio), 소비자 하드웨어가 충분해졌습니다(맥 스튜디오, AMD Strix Halo, 고성능 GPU)."
+        },
+        {
+          "type": "bullets",
+          "label": "HN 댓글에서 나온 실사용 경험",
+          "items": [
+            "2×RTX 3090에서 Qwen3.6-27B: 500~1000 tok/s 프리필, 60 tok/s 출력, 220K 컨텍스트 가능",
+            "12GB VRAM으로도 Gemma 4 / Qwen3.5 MoE를 Q4/Q5에서 30~40 tps 실행 가능",
+            "장점: 속도 제한 없음, 데이터 행선지 투명, 구독료 대비 1~2년이면 본전",
+            "한계: 복잡한 툴 호출 시 JSON 환각 발생, SOTA 대비 품질 격차는 여전히 존재"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "최전선 모델들의 정부 제한과 구독 요금 인상이 맞물리면서 '로컬 실행이 현실적인 대안인가'라는 질문이 단순한 기술 호기심을 넘어서고 있습니다. 한 HN 댓글은 '월 구독비를 24개월 합산하면 로컬 셋업 초기 비용보다 비쌀 수 있다'는 계산을 내놓기도 했습니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://news.ycombinator.com/item?id=48555993",
+      "source_name": "hn-algolia",
+      "score": 8,
+      "story_slug": "local-models-good-now-hn-june29",
+      "tags": ["로컬AI", "오픈소스", "Qwen", "Gemma", "llama.cpp", "Ollama", "로컬추론"],
+      "entities": ["Hacker News", "Vicki Boykis", "Qwen", "Gemma", "llama.cpp", "Ollama"],
+      "related": [
+        "https://vickiboykis.com/2026/06/15/running-local-models-is-good-now/"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-29"
+    }
+  ]
+}

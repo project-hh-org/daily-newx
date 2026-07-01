@@ -1,0 +1,267 @@
+{
+  "issue": {
+    "issue_date": "2026-06-27",
+    "issue_no": 12,
+    "intro": "오늘은 미국 정부가 최신 AI 모델의 배포를 직접 통제하기 시작한 하루로 기록됩니다. GPT-5.6은 정부가 심사한 20개 파트너에만 배포됐고, 한쪽에선 막혔던 Anthropic의 Mythos 5가 100곳 이상에 풀렸습니다. 그 사이 중국 Zhipu의 오픈소스 모델은 규제 바깥에서 조용히 미국 최상위 AI와의 성능 격차를 좁혔습니다. 에이전트 AI가 지식노동을 실제로 어떻게 바꾸는지 대규모 데이터로 입증한 논문도 나왔습니다.",
+    "outro": "정부가 AI 모델 배포의 병목이 되는 구조가 굳어질수록, 규제 바깥에 있는 오픈소스 모델의 매력은 더 커질 수 있습니다. 내일은 GPT-5.6 Sol 접근 범위가 어떻게 넓어질지, 그리고 기업 AI 지출 합리화 움직임이 얼마나 더 빠르게 퍼져나갈지 주목할 만합니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "OpenAI GPT-5.6 Sol, 미국 정부 심사 통과한 20곳에만 배포 — '이 방식이 기본이 되면 안 된다'",
+      "tldr": "OpenAI가 새 모델을 공개했지만, 미국 정부가 고객을 한 명씩 심사해 배포를 결정하는 첫 사례가 됐다.",
+      "summary": "OpenAI가 최신 모델 GPT-5.6 시리즈를 공개했지만, 미국 정부의 요청으로 정부가 직접 심사한 약 20개 파트너에게만 먼저 배포됐습니다. CEO 샘 알트먼은 6월 26일 내부 Q&A에서 이를 공개하며 '이 방식이 기본값이 되어선 안 된다'고 우려를 표명했습니다. '복잡한 작업용 Sol', '일상 시나리오용 Terra', '저비용 대규모 처리용 Luna' 세 버전으로 구성됩니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI가 6월 26일 GPT-5.6 시리즈를 발표했습니다. 복잡한 작업용 'Sol', 일상적 시나리오용 'Terra', 저비용 대규모 처리용 'Luna' 세 가지 버전입니다. 그런데 출시 방식이 이례적입니다. 미국 정부가 개별 고객을 심사해 승인한 약 20곳에만 제한 공개됐습니다."
+        },
+        {
+          "type": "quote",
+          "text": "이런 방식의 정부 접근 절차가 장기적인 기본값이 되어선 안 된다고 생각합니다. 이는 가장 좋은 도구를 필요한 사용자·개발자·사이버 방어자·글로벌 파트너들에게서 막아버리기 때문입니다.",
+          "cite": "샘 알트먼, OpenAI CEO (6월 26일 내부 Q&A)"
+        },
+        {
+          "type": "callout",
+          "label": "배경: 트럼프 AI 행정명령",
+          "text": "6월 2일 트럼프 대통령이 서명한 AI 행정명령이 계기입니다. 이 명령은 '프런티어 AI 모델'을 배포 전 정부가 최대 30일간 먼저 검토할 수 있는 자발적 체계를 만들도록 했는데, GPT-5.6이 그 첫 적용 사례가 됐습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "알트먼은 '모든 게 잘 진행되면 두어 주 뒤 더 넓게 공개할 것'이라고 밝혔습니다. OpenAI의 공식 성명도 이 같은 통제가 영구화되어선 안 된다는 점을 강조했습니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://techcrunch.com/2026/06/26/openai-limits-gpt-5-6-rollout-after-government-request-says-restrictions-shouldnt-be-the-norm/",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "gpt-5-6-sol-us-government-limited-release",
+      "tldr": "OpenAI가 새 모델을 공개했지만, 미국 정부가 고객을 한 명씩 심사해 배포를 결정하는 첫 사례가 됐다.",
+      "tags": ["GPT-5.6", "OpenAI", "미국AI규제", "프런티어모델", "샘알트먼"],
+      "entities": ["OpenAI", "샘 알트먼", "트럼프 행정부", "미국 정부"],
+      "related": ["https://openai.com/index/previewing-gpt-5-6-sol/"],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-26"
+    },
+    {
+      "category": "headline",
+      "position": 2,
+      "title": "미 정부, 차단했던 Anthropic Mythos 5 일부 풀어 — 100개 이상 미국 기관 배포 허용",
+      "tldr": "정부가 직접 막았던 Anthropic 최상위 모델이 선별된 미국 기관에 다시 풀렸다.",
+      "summary": "이달 초 외국인 접근이 차단됐던 Anthropic의 Mythos 5 모델이 6월 26~27일 100개 이상 미국 기업·정부 기관에 배포 허용됐습니다. 미 정부가 심사 후 선별적으로 접근을 허용하는 방식으로, GPT-5.6과 동일한 구도입니다. AI 모델 배포를 정부가 직접 관리하는 체계가 자리를 잡아가고 있습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic의 최상위 모델 Mythos 5는 이달 초 미국 정부의 명령으로 외국인 접근이 차단됐습니다. 사이버보안 위험이 우려됐기 때문입니다. 미국 정보기관과의 공동 테스트(프로젝트 Glasswing)에서 이 모델이 고도의 시스템 취약점을 빠르게 찾아냈다는 평가가 나온 후였습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그런데 6월 26~27일 미 정부가 이 결정을 일부 되돌렸습니다. CNN과 CNBC, Semafor 등의 보도에 따르면 100곳 이상의 미국 기업·정부 기관에 Mythos 5 접근이 허용됐습니다."
+        },
+        {
+          "type": "callout",
+          "label": "Mythos 5란?",
+          "text": "Anthropic이 2026년 공개한 최상위 AI 모델로, 미국 정보기관과의 테스트(프로젝트 Glasswing)에서 단시간 내 고도 사이버 취약점을 발견하는 능력을 보여줬습니다. 그 강력한 성능 때문에 먼저 제한됐고, 이제 제한적으로 다시 풀리고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-5.6이 제한 배포되고 Mythos 5가 제한적으로 해제되는 흐름이 같은 날 동시에 진행됐습니다. 두 사례 모두 '정부 심사 → 선별 배포'라는 같은 방식입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://www.cnbc.com/2026/06/26/us-government-anthropic-claude-mythos5-ai.html",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "anthropic-mythos5-partial-us-release",
+      "tags": ["Anthropic", "Mythos5", "AI규제", "미국정부", "사이버보안"],
+      "entities": ["Anthropic", "미국 정부", "트럼프 행정부"],
+      "related": [
+        "https://edition.cnn.com/2026/06/26/tech/anthropic-mythos-release",
+        "https://www.semafor.com/article/06/27/2026/us-releases-powerful-anthropic-model-mythos-to-some-us-companies"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-26"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "중국 Zhipu GLM-5.2, 미국 최상위 AI 바로 아래 성능 — 오픈소스로 누구나 무료 이용",
+      "tldr": "미국 AI 모델들이 규제에 묶이는 사이, 중국 오픈소스 모델이 조용히 성능 격차를 좁혔다.",
+      "summary": "중국 AI 스타트업 Zhipu(즈푸)의 GLM-5.2가 주요 AI 성능 지수에서 Claude Opus 4.6을 앞서며 GPT-5.5와 4점 차이에 불과합니다. 가격은 Anthropic Opus 4.8의 5분의 1 수준이고, MIT 라이선스로 누구나 무료로 내려받아 쓸 수 있습니다. CNBC가 6월 26일 집중 보도했습니다.",
+      "blocks": [
+        {
+          "type": "stat",
+          "value": "Anthropic Opus 4.8의 5분의 1",
+          "label": "GLM-5.2 운영 비용 수준"
+        },
+        {
+          "type": "table",
+          "headers": ["모델", "Artificial Analysis 점수", "라이선스"],
+          "rows": [
+            ["GPT-5.5 (OpenAI)", "55", "상용(유료)"],
+            ["GLM-5.2 (Zhipu)", "51", "MIT (무료)"],
+            ["Gemini 3.5 Flash (Google)", "50", "상용"],
+            ["Claude Opus 4.6 (Anthropic)", "47", "상용"]
+          ]
+        },
+        {
+          "type": "definition",
+          "term": "오픈소스 AI 모델(Open-weight model)",
+          "text": "모델 가중치(AI가 학습한 파라미터 값)가 공개돼 누구나 자신의 컴퓨터나 서버에 내려받아 무료로 실행할 수 있는 AI입니다. ChatGPT처럼 호출할 때마다 요금이 발생하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GLM-5.2는 7,530억 개의 파라미터를 가진 초대형 모델이지만, 실제로 토큰당 작동하는 파라미터는 400억 개로 줄어드는 '혼합 전문가(MoE)' 구조를 씁니다. 덕분에 성능을 유지하면서 처리 비용을 낮출 수 있습니다. 100만 토큰 문맥창도 지원합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "타이밍도 의미심장합니다. 미국 정부가 Anthropic Mythos 5와 OpenAI GPT-5.6 접근을 통제하는 바로 그 시점에, 아무 제한 없이 전 세계에 공개됐습니다. 일부 연구자는 GLM-5.2가 GPT-5.5·Opus 4.8의 불법 '증류'일 가능성을 제기하기도 했습니다. Zhipu 측은 이를 부인했습니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://www.cnbc.com/2026/06/26/china-zhipu-z-ai-open-source-anthropic-openai.html",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "zhipu-glm-52-open-source-frontier",
+      "tags": ["Zhipu", "GLM-5.2", "오픈소스AI", "중국AI", "MoE", "오픈웨이트"],
+      "entities": ["Zhipu AI", "Z.ai", "OpenAI", "Anthropic", "Google"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-26"
+    },
+    {
+      "category": "paper",
+      "position": 1,
+      "title": "Codex 실사용 데이터로 입증된 에이전트 AI 전환 — 6개월 만에 사용량 56배, 법무팀도 ChatGPT 대신 Codex",
+      "tldr": "법무·재무팀도 ChatGPT 대신 Codex가 주력 도구가 됐다. 에이전트 AI가 지식노동 방식을 실제로 바꾸고 있다는 대규모 데이터가 나왔다.",
+      "summary": "OpenAI 연구팀이 Codex 실사용 데이터를 분석한 논문을 arXiv에 공개했습니다. 2025년 11월 대비 2026년 6월 연구 부서 사용량은 56배, 고객지원 32배, 엔지니어링 27배 증가했습니다. 법무·재무·채용 같은 비기술 부서도 이제 ChatGPT보다 Codex를 더 많이 씁니다. OpenAI는 같은 날 '에이전트가 어떻게 일을 바꾸는가' 공식 블로그도 냈습니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "에이전트 AI(Agentic AI)",
+          "text": "질문에 답하는 챗봇을 넘어, 사용자 대신 실제로 작업을 수행하는 AI입니다. 코드 작성, 파일 검색, 웹 탐색, 긴 멀티스텝 작업 등을 자율적으로 처리합니다. Codex(OpenAI), Claude Code(Anthropic) 등이 대표 사례입니다."
+        },
+        {
+          "type": "timeline",
+          "events": [
+            {"date": "2025년 11월", "text": "Codex 출시, 주로 개발자 대상"},
+            {"date": "2026년 4월", "text": "법무·재무·채용팀, ChatGPT 대신 Codex를 주력 AI 도구로 전환"},
+            {"date": "2026년 6월", "text": "주간 활성 사용자 500만 명 돌파, 비개발자 비율 20%"}
+          ]
+        },
+        {
+          "type": "stat",
+          "value": "80.6%",
+          "label": "개인 Codex 사용자 중 '30분 이상 걸릴 작업'을 AI에 맡긴 비율 (2026년 5월 기준)"
+        },
+        {
+          "type": "paragraph",
+          "text": "논문이 주목하는 건 규모보다 작업의 깊이입니다. 2026년 5월 기준 개인 사용자의 80.6%가 '30분 이상 걸릴 복잡한 작업'을 한 번 이상 맡겼고, 25.6%는 '8시간 이상 걸릴 작업'도 위임했습니다. AI가 '보조 도구'를 넘어 실질적인 '업무 수행자'로 쓰이기 시작한 것입니다."
+        },
+        {
+          "type": "callout",
+          "label": "논문 정보",
+          "text": "제목: 'The Shift to Agentic AI: Evidence from Codex'. 저자: Drew Johnston, David Holtz 외 4명 (OpenAI·UC Berkeley 등). arXiv:2606.26959, 2026년 6월 25일 제출."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://arxiv.org/abs/2606.26959",
+      "source_name": "arxiv",
+      "score": 8,
+      "story_slug": "agentic-ai-shift-codex-evidence",
+      "tags": ["Codex", "에이전트AI", "OpenAI", "AI업무전환", "arXiv", "지식노동"],
+      "entities": ["OpenAI", "Drew Johnston", "David Holtz"],
+      "related": ["https://openai.com/index/how-agents-are-transforming-work/"],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-25"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "'AI 마구 쓸수록 좋다' 시대 끝 — 기업들 비용 효율화로 방향 전환",
+      "tldr": "AI에 돈을 아낌없이 쏟던 기업들이 이제 ROI를 묻기 시작했다. Uber는 사용 등급을 제한하고, Lindy는 아예 Claude에서 DeepSeek으로 갈아탔다.",
+      "summary": "한때 직원들에게 AI를 마음껏 쓰도록 독려하던 기업들이 비용 대비 성과를 요구하기 시작했습니다. CNBC는 6월 26일 이를 '토큰맥싱의 종말'이라고 표현했습니다. 이 변화는 OpenAI·Anthropic의 폭발적 성장을 떠받친 공식에 균열을 낼 수 있습니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "토큰맥싱(tokenmaxxing)",
+          "text": "'토큰'은 AI가 처리하는 텍스트 단위입니다. '토큰맥싱'은 비용 걱정 없이 직원들에게 최고급 AI를 무제한 사용하도록 독려하는 기업 전략을 가리키는 신조어입니다."
+        },
+        {
+          "type": "bullets",
+          "label": "이미 방향을 튼 기업 사례",
+          "items": [
+            "Uber: AI 도구 사용을 등급제로 전환. 기본 등급은 월 1,500달러(약 200만 원) 상한. 더 높은 등급은 별도 승인 필요",
+            "Lindy(AI 스타트업): Anthropic Claude 사용을 완전히 끊고 DeepSeek으로 전환. CEO가 비용 곡선이 극적으로 줄었다고 직접 밝힘"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "이 변화는 OpenAI·Anthropic에 잠재적 리스크입니다. 두 회사 모두 기업 고객의 '마구 쓰기' 문화에 힘입어 기업 가치 1조 달러에 근접했습니다. 분석가들은 지출 합리화가 본격화되기 전에 두 회사가 IPO를 서두르는 것과 무관하지 않을 수 있다고 봅니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://www.cnbc.com/2026/06/26/openai-anthropic-new-ai-spending-reality-as-users-shift-to-efficiency.html",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "enterprise-ai-tokenmaxxing-era-ends",
+      "tags": ["AI비용", "기업AI전략", "OpenAI", "Anthropic", "DeepSeek", "ROI", "IPO"],
+      "entities": ["OpenAI", "Anthropic", "Uber", "Lindy", "DeepSeek"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-26"
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "정부가 AI 모델 출시 열쇠를 쥐다 — 'Anthropic 대 OpenAI' 구도보다 더 큰 변화",
+      "tldr": "두 회사를 경쟁자로 보는 시각이 무색해졌다. 정부 승인 없이 최상위 모델을 배포할 수 없는 구조가 만들어지고 있다.",
+      "summary": "2주 전에는 Anthropic 모델이, 이번엔 OpenAI 모델이 미국 정부 심사를 통과해야만 배포될 수 있게 됐습니다. TechCrunch는 이제 'Anthropic 대 OpenAI'라는 경쟁 구도가 아니라 '두 회사 대 정부 통제'가 더 핵심 이슈라고 6월 26일 분석했습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic의 Fable·Mythos가 먼저 제한됐을 때, 업계 일부는 OpenAI가 정부에 로비해 경쟁사를 억누른 것이라 해석했습니다. 반대로 Anthropic이 안전 규제를 활용해 시장에서 유리한 위치를 점하려 한다는 시각도 있었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그런데 OpenAI의 GPT-5.6도 같은 방식으로 묶이자, 이 해석들이 흔들립니다. TechCrunch는 '지금 일어나는 일은 한 회사에 유리한 게 아니다. 정부 승인 절차가 모든 프런티어 모델의 기본 출시 요건으로 굳어진다면, 그 비용은 업계 전체가 치른다'고 지적합니다."
+        },
+        {
+          "type": "callout",
+          "label": "두 회사의 같은 입장",
+          "text": "OpenAI와 Anthropic 모두 '이 방식이 기본값이 되어선 안 된다'는 공식 입장을 냈습니다. 두 회사가 서로 다른 사안에서 처음으로 사실상 같은 편에 선 셈입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://techcrunch.com/2026/06/26/its-not-about-anthropic-vs-openai-anymore/",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "us-government-ai-model-control-new-normal",
+      "tags": ["AI규제", "OpenAI", "Anthropic", "미국정부", "프런티어AI정책"],
+      "entities": ["OpenAI", "Anthropic", "트럼프 행정부"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-26"
+    }
+  ]
+}

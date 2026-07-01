@@ -1,0 +1,324 @@
+{
+  "issue": {
+    "issue_date": "2026-06-28",
+    "issue_no": 13,
+    "intro": "TechCrunch가 오늘 명확한 분석을 내놨습니다. 'OpenAI 대 Anthropic' 구도는 이제 끝났습니다. 두 회사는 같은 자리에서, 같은 문제를 마주하고 있습니다 — 공식 프레임워크 없이 개별 모델 배포를 결정하는 미국 정부. 그 사이 AI 노벨상 수상자 존 점퍼가 이틀 뒤 Anthropic 무대에 처음으로 오르고, 세계 최초의 고위험 AI 의무 규제는 시행 이틀 전에 소리 없이 더 약한 법으로 교체됐습니다.",
+    "outro": "월요일(6월 30일)은 두 가지를 챙겨야 합니다. Anthropic의 AI for Science 이벤트(오전 10시 PST) — 존 점퍼의 첫 공식 발언과 생물학 AI 에이전트 전략이 나옵니다. 그리고 콜로라도 AI법의 '공식 시행일' — 단, 그 법은 이미 더 약한 버전으로 교체돼 실질 시행은 2027년입니다. 정부·AI 기업·규제 사이의 관계는 아직도 초안 단계입니다. 가장 어려운 챕터는 하반기에 쓰일 것 같습니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "TechCrunch: 'OpenAI vs Anthropic 구도 끝' — 두 AI 랩, 동일한 정부 통제 문제 직면",
+      "tldr": "두 AI 선두 기업 모두 같은 정부의 비공식 배포 거부권 아래 놓였다. 이 구도에선 승자가 없다.",
+      "summary": "TechCrunch가 분석 기사를 통해 선언했습니다. OpenAI와 Anthropic의 '라이벌' 구도는 이제 무의미하다고. 두 회사 모두 공식 프레임워크 없이 모델 배포를 개별 심사하는 미국 정부의 비공식 거부권 앞에 서 있습니다. Mythos 5는 16일 넘게 일반 공개되지 않고 있고, GPT-5.6은 출시 이틀 만에 정부 승인 파트너에게만 제한됐습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "TechCrunch는 현 시점 AI 산업 구도를 이렇게 정리했습니다. 'OpenAI 대 Anthropic'은 틀린 프레임입니다. 두 회사는 정확히 같은 자리에서, 정확히 같은 문제를 앞에 두고 있습니다. 미국 정부가 공식 심사 체계 없이 개별 모델의 배포 여부를 사실상 결정하고 있기 때문입니다."
+        },
+        {
+          "type": "table",
+          "headers": ["모델", "현 상태", "제한 기간", "접근 경로"],
+          "rows": [
+            ["Mythos 5 (Anthropic)", "부분 복원", "16일 이상", "미국 핵심 인프라 운영자만. 일반 공개 일정 없음"],
+            ["Fable 5 일반판 (Anthropic)", "제한 중", "16일 이상", "유료($10/$50/M) + 국적 통제. 완전 개방 아님"],
+            ["GPT-5.6 Sol/Terra/Luna (OpenAI)", "제한 미리보기", "2일", "정부 승인 파트너만. 알트먼 '몇 주 안에' 예고"]
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "공식 프레임워크가 없다는 게 핵심",
+          "text": "트럼프 대통령이 6월 2일 서명한 AI 행정명령은 프런티어 모델의 '자발적 사전 검토' 체계를 만들도록 했지만 구체적 절차는 담지 않았습니다. 그 결과 지금처럼 정부가 임시방편으로 개별 모델을 막거나 여는 상황이 반복되고 있습니다. TechCrunch는 이 상황이 두 랩 모두에게, 그리고 이들에 의존하는 수백만 개발자에게도 재앙이 될 수 있다고 경고합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "The Information 보도에 따르면 정부는 GPT-5.6 배포를 '고객별로 한 명씩' 승인하는 방식을 취하고 있습니다. 알트먼은 '몇 주 안에 일반 공개'를 예고했지만, Mythos 5도 처음엔 같은 말이 나왔습니다 — 지금은 16일째 일반 공개 없이 제한 중입니다. 해결책은 하나입니다. 트럼프 행정명령이 구상했지만 실현하지 못한 공식 사전 검토 체계를 빠르게 만드는 것입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://techcrunch.com/2026/06/26/its-not-about-anthropic-vs-openai-anymore/",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "openai-anthropic-same-government-control-june-2026",
+      "tags": ["OpenAI", "Anthropic", "미국AI규제", "GPT-5.6", "Mythos5", "프런티어모델", "트럼프AI행정명령"],
+      "entities": ["OpenAI", "Anthropic", "미국 정부", "트럼프 행정부", "샘 알트먼"],
+      "related": [
+        "https://techcrunch.com/2026/06/26/openai-limits-gpt-5-6-rollout-after-government-request-says-restrictions-shouldnt-be-the-norm/",
+        "https://www.anthropic.com/news/fable-mythos-access",
+        "https://techcrunch.com/2026/06/25/the-white-house-is-asking-openai-to-slow-roll-the-release-of-its-new-model-over-safety-concerns/"
+      ],
+      "follow_up_of": "gpt-5-6-sol-us-government-limited-release",
+      "source_published_at": "2026-06-26"
+    },
+    {
+      "category": "headline",
+      "position": 2,
+      "title": "이틀 뒤 Anthropic 'AI for Science' 이벤트 — 노벨상 수상자 존 점퍼 첫 공식 무대",
+      "tldr": "AlphaFold로 노벨화학상을 받은 존 점퍼가 Anthropic 합류 후 처음 공식 발언한다. 6월 30일 오전 10시 PST.",
+      "summary": "Anthropic이 6월 30일 'The Briefing: AI for Science' 이벤트를 라이브 스트리밍합니다. Anthropic 리더십, 제약사 임원, 생명과학 연구기관이 참여하며, AlphaFold로 2024 노벨화학상을 공동 수상한 존 점퍼의 Anthropic 합류 후 첫 공식 발언이 예상됩니다. Anthropic은 VirBench 연구를 통해 생물학 AI 에이전트의 정확도 문제를 정면으로 제기한 바 있습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic이 6월 30일 월요일 오전 10시(PST) 온라인 이벤트 'The Briefing: AI for Science'를 엽니다. Anthropic 리더십, 제약사 임원, 바이오텍 창업자, 연구기관이 함께 Claude가 실제 과학 현장에서 어떻게 쓰이는지를 공개합니다."
+        },
+        {
+          "type": "callout",
+          "label": "핵심 관전 포인트: 존 점퍼의 첫 등장",
+          "text": "2024년 노벨화학상 수상자이자 AlphaFold 공동 개발자 존 점퍼(John Jumper)가 Anthropic 합류 후 처음으로 공식 무대에 섭니다. 점퍼는 6월 19일 Google DeepMind를 떠나 Anthropic으로 이직한다고 밝혔습니다. AI가 과학 분야에서 실제로 무엇을 할 수 있는지에 대한 그의 첫 발언이 나올 가능성이 높습니다."
+        },
+        {
+          "type": "heading",
+          "text": "배경: VirBench 연구가 보여준 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "이벤트의 맥락을 이해하려면 Anthropic이 6월 초 발표한 'Paving the Way for Agents in Biology' 연구가 중요합니다. 120개의 바이러스 서열 검색 질의(VirBench, 40개 병원체 대상)로 AI 에이전트의 생물학 데이터 정확도를 측정했습니다."
+        },
+        {
+          "type": "stat",
+          "value": "16.9% → 92.8%",
+          "label": "Claude Sonnet 4 바이러스 서열 검색 정확도: 도구 없을 때 vs. 결정론적 도구(gget virus) 사용 시"
+        },
+        {
+          "type": "paragraph",
+          "text": "결론은 명쾌했습니다. 더 스마트한 모델보다 더 정확한 데이터 인프라가 먼저입니다. 결정론적 도구를 붙이면 저렴한 모델로도 값비싼 모델 이상의 결과를 냅니다. Anthropic은 알렌연구소·HHMI와 파트너십을 맺고 생물학 특화 습식 실험실도 열었습니다. 6월 30일 이벤트는 이 흐름을 집약하는 자리입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://www.anthropic.com/events/the-briefing-ai-for-science-virtual-event",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "anthropic-ai-for-science-event-john-jumper-june-30",
+      "tags": ["Anthropic", "존 점퍼", "AI과학", "AlphaFold", "VirBench", "생물학AI", "노벨상"],
+      "entities": ["Anthropic", "존 점퍼", "Google DeepMind", "알렌연구소", "HHMI", "Bristol Myers Squibb"],
+      "related": [
+        "https://www.anthropic.com/research/agents-in-biology",
+        "https://techcrunch.com/2026/06/20/nobel-laureate-john-jumper-is-leaving-deepmind-for-rival-anthropic/"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-28"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "Claude Opus 4.7 fast mode 7월 24일 종료 — API 사용자 4주 안에 마이그레이션해야",
+      "tldr": "claude-opus-4-7에 speed:fast를 쓰는 API·Claude Code 사용자는 7월 24일 전에 Opus 4.8로 전환해야 한다.",
+      "summary": "Anthropic이 Claude Opus 4.7의 fast mode 지원을 7월 24일부로 종료한다고 발표했습니다. 이후 speed:\"fast\" 파라미터로 claude-opus-4-7을 호출하면 오류가 반환됩니다. 마이그레이션 대상은 claude-opus-4-8의 fast mode이며, 성능은 모든 차원에서 개선됐습니다.",
+      "blocks": [
+        {
+          "type": "callout",
+          "label": "지금 당장 확인할 것 (D-26)",
+          "text": "API 또는 Claude Code에서 model: \"claude-opus-4-7\"를 speed: \"fast\"와 함께 사용 중이라면 7월 24일 전에 claude-opus-4-8로 마이그레이션하세요. 기한이 지나면 해당 요청은 오류를 반환합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 종료는 5월 28일 Opus 4.8 출시 이후 Anthropic이 모델 라인업을 정리하는 흐름의 일부입니다. Opus 4.8이 코딩·에이전트·전문 작업 전반에서 더 나은 성능을 보이므로, 기능 삭제가 아닌 일반적인 구세대 지원 종료입니다."
+        },
+        {
+          "type": "numbered",
+          "label": "마이그레이션 체크리스트",
+          "items": [
+            "API 요청에서 model: \"claude-opus-4-7\" + speed: \"fast\" 조합 검색",
+            "model을 \"claude-opus-4-8\"로 교체 (fast mode 파라미터는 동일하게 유지)",
+            "Claude Code 사용자라면 /model 명령 또는 ANTHROPIC_MODEL 환경 변수 확인",
+            "7월 24일 이전 프로덕션 배포 완료"
+          ]
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://platform.claude.com/docs/en/release-notes/overview",
+      "source_name": "official-blog",
+      "score": 6,
+      "story_slug": "claude-opus-47-fast-mode-deprecated-july-24",
+      "tags": ["Claude", "Anthropic", "API", "모델지원종료", "Opus4.8", "ClaudeCode"],
+      "entities": ["Anthropic"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-28"
+    },
+    {
+      "category": "release",
+      "position": 2,
+      "title": "Claude Code 업데이트 — 원격 MCP 5분 행업 수정, 전체화면 마우스 제어 옵션 추가",
+      "tldr": "원격 MCP 도구 호출이 응답 없이 5분간 멈추던 버그가 수정됐다. 자동화 파이프라인 사용자에게 직접적인 개선.",
+      "summary": "Claude Code 최신 업데이트(6월 27일)가 배포됐습니다. 원격 MCP 도구 호출이 5분간 응답 없이 멈추는 버그를 수정해 오류를 즉시 반환하도록 했습니다. 전체화면 모드에서 마우스 입력을 비활성화하는 환경 변수가 추가됐고, macOS 음성 받아쓰기와 훅 식별자 매칭 버그도 수정됐습니다.",
+      "blocks": [
+        {
+          "type": "bullets",
+          "label": "주요 변경 사항",
+          "items": [
+            "원격 MCP 도구 호출 5분 행업 버그 수정 — 이제 응답 없으면 오류 즉시 반환, 다음 단계로 진행",
+            "CLAUDE_CODE_DISABLE_MOUSE_CLICKS 환경 변수 추가 — 전체화면 모드에서 마우스 클릭·드래그·호버 비활성화 (스크롤은 유지)",
+            "macOS에서 기본 입력 장치 변경 후 음성 받아쓰기가 무음을 캡처하는 버그 수정",
+            "하이픈 포함 훅 식별자(code-reviewer, mcp__brave-search 등)가 substring 매칭으로 오작동하던 버그 수정 — 이제 정확히 일치",
+            "조직 설정으로 모델 제한 시 모델 선택기에 '조직 설정으로 제한됨' 메시지 표시"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "원격 MCP 행업 수정이 가장 영향 범위가 큽니다. 에이전트가 외부 MCP 도구를 호출했을 때 응답이 없으면 5분을 기다려야 했는데, 이제 오류를 즉시 반환해 다음 단계로 넘어갑니다. Claude Code를 자동화 파이프라인이나 원격 에이전트 세션에 연결해 쓰는 개발자에게 직접적인 개선입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://github.com/anthropics/claude-code/releases",
+      "source_name": "github-releases",
+      "score": 5,
+      "story_slug": "claude-code-update-june-27-remote-mcp-fix",
+      "tags": ["ClaudeCode", "Anthropic", "MCP", "릴리스", "버그수정", "자동화"],
+      "entities": ["Anthropic"],
+      "related": ["https://code.claude.com/docs/en/changelog"],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-27"
+    },
+    {
+      "category": "community",
+      "position": 1,
+      "title": "리드 호프만: \"xAI는 완전 실패작, Cursor는 이미 정점 지났다\" — SpaceX 인수는 AI 부재의 증거",
+      "tldr": "Anthropic 투자자 호프만이 경쟁사를 날카롭게 비판했다. 이해충돌은 있지만 지적은 구체적이다.",
+      "summary": "LinkedIn 공동창업자이자 Anthropic 투자자인 리드 호프만이 포춘과의 인터뷰에서 AI 경쟁 구도를 날카롭게 분석했습니다. 2026년 5월까지 xAI의 공동창업자 11명 전원이 떠났고, SpaceX의 Cursor 60B 달러 인수는 'AI 역량 부재의 증거'라고 했습니다. Cursor도 이미 정점을 지났다는 진단을 내놨습니다.",
+      "blocks": [
+        {
+          "type": "quote",
+          "text": "Cursor는 몇 달 전 이미 가장 빛났고, 지금은 지평선 너머로 사라지고 있는 것 같습니다.",
+          "cite": "리드 호프만, LinkedIn 공동창업자·Anthropic 투자자 (Fortune 인터뷰)"
+        },
+        {
+          "type": "paragraph",
+          "text": "호프만은 세 가지 포인트를 꺼냈습니다. 첫째, xAI: 2026년 5월까지 공동창업자 11명 전원이 퇴사했습니다. 2월 Tony Wu를 시작으로 이어진 연쇄 이탈로, 대표 모델 Grok은 벤치마크에서 경쟁자에 뒤처진다는 비판이 이어지고 있습니다. 둘째, SpaceX의 Cursor 인수($60B 올스톡): '이는 AI 역량의 증거가 아니라 부재의 증거'라고 했습니다. SpaceX를 'IAC(인터넷 시대 배리 딜러의 인수합병 기업)의 AI 버전'이라고 표현했습니다. 셋째, Cursor의 미래: Claude Code와 Codex가 자리를 잠식하면서 독립 AI 코딩 IDE의 프리미엄이 흔들리고 있습니다."
+        },
+        {
+          "type": "callout",
+          "label": "이해충돌 공시",
+          "text": "호프만은 Anthropic의 투자자입니다. xAI, SpaceX를 비판하는 발언은 그의 포트폴리오와 직접적인 이해관계가 있습니다. 분석의 논리는 날카롭지만, 중립적 관찰자의 시각으로 받아들이기 어렵습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 시장도 SpaceX 딜에 의구심을 드러냈습니다. Cursor 인수 발표(6월 16일) 후 SpaceX가 $20B 채권 발행도 추가 발표하면서 SPCX 주가는 3거래일 만에 23% 하락, $600B 이상의 시가총액이 증발했습니다. IPO 당일 매수한 주주들에게 Cursor 딜의 실질 가치는 이미 대폭 줄어든 상태입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://fortune.com/2026/06/24/reid-hoffman-spacex-musk-openai-anthropic-gen-z-mistake/",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "reid-hoffman-xai-train-wreck-cursor-peaked-june-2026",
+      "tags": ["리드호프만", "xAI", "Cursor", "SpaceX", "Anthropic", "AI경쟁구도", "SPCX"],
+      "entities": ["리드 호프만", "xAI", "Elon Musk", "SpaceX", "Anysphere(Cursor)", "Anthropic", "OpenAI"],
+      "related": [
+        "https://www.cnbc.com/2026/06/16/spacex-spcx-cursor-acquisition-ipo.html",
+        "https://www.bloomberg.com/news/articles/2026-06-22/spacex-shares-poised-to-slide-again-as-us-market-reopens"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-24"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "Goldman Sachs: AI가 미국 일자리 월 1만 1천 개 삭제 — 데이터센터 건설이 완충, Z세대는 직격탄",
+      "tldr": "AI의 일자리 삭제 속도가 줄었지만 데이터센터 건설 덕분이라 지속성이 불확실하다. Z세대 진입 직종 피해가 크다.",
+      "summary": "Goldman Sachs의 정기 AI 일자리 추적 지수에 따르면 2026년 6월 현재 AI는 미국에서 월 순 1만 1천 개의 일자리를 없애고 있습니다. 4월의 1만 6천 개보다 줄었지만, 이는 AI 확산이 느려진 게 아니라 데이터센터 건설 붐이 월 9천 개의 새 일자리를 만들고 있기 때문입니다. 30세 미만 취업자의 타격은 평균보다 심각합니다.",
+      "blocks": [
+        {
+          "type": "stat",
+          "value": "月 -11,000",
+          "label": "2026년 6월 Goldman Sachs 추산: AI로 인한 미국 순 일자리 감소 수 (4월의 -16,000에서 개선)"
+        },
+        {
+          "type": "paragraph",
+          "text": "수치가 4월보다 개선된 이유는 데이터센터 건설 붐입니다. 2022년 이후 데이터센터 건설은 21만 2천 개의 일자리를 만들었고, 지금도 월 9천 개씩 신규 일자리가 나오고 있습니다. 건설 현장의 일자리가 화이트칼라의 손실을 일부 상쇄하는 구조입니다. Goldman Sachs는 이 완충이 영구적이지 않을 수 있다고 경고합니다 — 데이터센터 건설 투자는 유한하기 때문입니다."
+        },
+        {
+          "type": "definition",
+          "term": "왜 Z세대가 집중 타격을 받나",
+          "text": "AI 도입률이 높은 산업(마케팅, 그래픽 디자인, 고객서비스, 문서 처리, 소프트웨어)에서 신입·주니어 직군이 가장 먼저 자동화됩니다. 이 직군이 Z세대의 주 진입로이기 때문입니다. 2026년 기준 대졸 취업자 실업률은 3.6%(2019년)에서 5.6%로 상승했고, 기업 입사 지원의 35%가 '최소 3년 이상 경력 요구', 45%는 자동화 서류 탈락 시스템을 사용합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "AI가 일자리를 빼앗는다는 내러티브에 이견도 있습니다. 리드 호프만은 'AI 탓으로 돌려지는 감원 중 상당수는 글로벌 불확실성과 투자 계획의 어려움이 진짜 원인'이라고 봤습니다. 단, Goldman Sachs는 반박 근거를 함께 제시했습니다. 'AI를 명시적 이유로 든 기업들의 감원이 4월 한 달에만 2만 1,900명'이라는 수치입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://fortune.com/2026/06/01/how-many-jobs-is-ai-destroying-goldman-sachs-11000-per-month-gen-z-economy/",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "goldman-sachs-ai-jobs-11000-monthly-gen-z-june-2026",
+      "tags": ["AI일자리", "GoldmanSachs", "Z세대", "고용", "데이터센터", "경제", "자동화"],
+      "entities": ["Goldman Sachs", "리드 호프만"],
+      "related": [
+        "https://aninews.in/news/business/ai-unlikely-to-trigger-job-apocalypse-it-may-create-uneven-workforce-disruption-goldman-sachs-report20260626104252/"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-26"
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "콜로라도 AI법, 6월 30일 시행 이틀 전 소리 없이 교체 — 2027년까지 유예·요건 대폭 약화",
+      "tldr": "미국 최초의 고위험 AI 의무 규제가 시행 직전 더 약한 법으로 대체됐다. 실질 시행은 2027년 1월 1일.",
+      "summary": "6월 30일은 미국 콜로라도 주 AI 소비자보호법(SB24-205)의 시행 예정일이었습니다. 그런데 주지사가 5월 14일 수정법안(SB 189)에 서명하면서 시행일이 2027년 1월 1일로 연기됐고, 법의 핵심 요건도 대폭 약화됐습니다. 고위험 AI 시스템에 대한 차별 방지 의무와 위험 관리 프로그램 요건이 삭제됐습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "6월 30일(월요일)은 원래 미국 최초의 고위험 AI 규제법이 실제로 적용되는 날이었습니다. 2024년 입법 당시 'EU AI법과 유사한 미국 최초의 주 단위 AI 규제'로 주목받았습니다. 그런데 시행 이틀 전인 지금, 그 법은 이미 더 약한 버전으로 교체돼 있습니다."
+        },
+        {
+          "type": "prosCons",
+          "pros": [
+            "AI 사용 시 이해관계자에게 공개할 의무는 일부 유지",
+            "일부 자동화 의사결정 기술에 대한 투명성 조항 남아 있음"
+          ],
+          "cons": [
+            "고위험 AI 시스템의 알고리즘 차별 방지 '주의 의무' 삭제",
+            "배포자의 위험 관리 프로그램 및 영향 평가 의무 삭제",
+            "콜로라도 법무장관에 대한 보고 의무 삭제",
+            "실질 시행은 2027년 1월 1일로 18개월 미뤄짐"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "왜 이 법이 세계에서 주목받았나",
+          "text": "콜로라도법의 6월 30일 시행은 미국에서 처음으로 고위험 AI 시스템에 실질적 의무를 부과하는 사례가 될 뻔했습니다. 콜로라도 주민에게 서비스하는 기업 전체에 적용되는 AI 편향 방지 의무, 미국 최초 사례였습니다. 법이 약화되면서 그 이정표는 2027년으로 미뤄졌습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "법이 약화된 배경엔 기업들의 거센 반발과 연방 규제와의 충돌 우려가 있었습니다. 콜로라도 법무장관도 2026년 4월 기업에 더 많은 준비 시간을 주기 위해 자발적으로 시행을 유예하겠다고 발표했습니다. 미국에서 강력한 AI 규제가 얼마나 어려운지를 보여주는 사례입니다."
+        }
+      ],
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null,
+      "source_url": "https://www.techtimes.com/articles/318956/20260623/colorado-ai-law-hits-june-30-deadline-without-bias-audits-here-what-consumers-keep.htm",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "colorado-ai-act-june-30-replaced-weaker-law",
+      "tags": ["AI규제", "콜로라도AI법", "미국AI정책", "알고리즘차별", "SB24-205"],
+      "entities": ["콜로라도 주", "Jared Polis 주지사", "콜로라도 법무장관"],
+      "related": [
+        "https://www.alstonprivacy.com/compliance-deadline-for-colorado-ai-act-delayed-until-june-30-2026/",
+        "https://leg.colorado.gov/bills/sb24-205"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-06-23"
+    }
+  ]
+}
