@@ -3,6 +3,12 @@
     "name": "브리핑 LLM",
     "slug": "daily-newx",
     "version": "0.1.1",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/aaffaa07-2378-4eee-b242-93d98a19d8fc"
+    },
     "orientation": "portrait",
     "scheme": "dailynewx",
     "userInterfaceStyle": "automatic",
