@@ -1,11 +1,12 @@
 name: iOS release
 
-# main 에 push 되면 iOS 프로덕션 빌드 후 TestFlight 자동 제출.
-# (GitHub 연결 필요: expo.dev → 프로젝트 → GitHub → Connect)
+# 네이티브 릴리스용: 'ios-v*' 태그 push 시에만 풀 빌드 + TestFlight 제출.
+# (JS-only 변경은 빌드 대신 OTA(eas update)로 반영 — yarn ship 사용)
+# 예) git tag ios-v0.1.2 && git push origin ios-v0.1.2
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'ios-v*'
 
 jobs:
   build_ios:

@@ -14,7 +14,8 @@
     "reader:web": "yarn workspace reader web -c",
     "reader:ios": "yarn workspace reader ios -c",
     "typecheck:reader": "yarn workspace reader typecheck",
-    "typecheck": "yarn typecheck:api && yarn typecheck:reader"
+    "typecheck": "yarn typecheck:api && yarn typecheck:reader",
+    "ship": "bash scripts/ship.sh"
   },
   "engines": {
     "node": ">=20.19.0"
