@@ -4,7 +4,6 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as Notifications from "expo-notifications";
-import { refreshReminders } from "@/services/notifications";
 import { registerPushToken } from "@/services/pushRegistration";
 
 export default function RootLayout(): ReactElement {
@@ -18,7 +17,6 @@ export default function RootLayout(): ReactElement {
   );
 
   useEffect(() => {
-    void refreshReminders();
     void registerPushToken();
 
     // 푸시 탭 → 해당 호로 이동.

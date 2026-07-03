@@ -16,7 +16,7 @@ git push
 
 # OTA: production 채널 빌드에 JS 반영 (리빌드 없음)
 cd "$ROOT/apps/reader"
-eas update --branch production --message "$MSG" --non-interactive
+eas update --branch production --environment production --message "$MSG" --non-interactive
 
 echo "✅ git push + OTA(production) 완료: $MSG"
 echo "   ↳ 웹은 Amplify 자동 재배포, iOS/설치앱은 다음 실행 시 JS 갱신."

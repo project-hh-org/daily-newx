@@ -1,4 +1,4 @@
-import { useEffect, useMemo, type ReactElement } from "react";
+import { useMemo, type ReactElement } from "react";
 import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { DailyItem, NewsCategory } from "@/types/news.types";
@@ -7,8 +7,6 @@ import { compactToIso, isoToLabel, PUBLISH_HOUR } from "@/lib/date";
 import { colors, fonts, MAX_READING } from "@/lib/theme";
 import { useDailyIssue } from "@/hooks/useDailyIssue";
 import { useUiStore } from "@/store/uiStore";
-import { markRead } from "@/services/readState";
-import { refreshReminders } from "@/services/notifications";
 import { IssueHeader } from "@/components/IssueHeader";
 import { NewsItemCard } from "@/components/NewsItemCard";
 import { LoadingView, ErrorView, EmptyView, NotFoundView } from "@/components/StateViews";
@@ -47,13 +45,6 @@ export function DailyScreen({ compactDate, notice }: Props): ReactElement {
     const cats = activeCategory === null ? CATEGORY_ORDER.map((c) => c.key) : [activeCategory];
     return cats.flatMap((key) => grouped[key]);
   }, [grouped, activeCategory]);
-
-  // 이 호를 열람하면 읽음 처리하고 그날 리마인더를 취소(재계산).
-  useEffect(() => {
-    if (query.data !== undefined) {
-      void markRead(compactDate).then(() => refreshReminders());
-    }
-  }, [query.data, compactDate]);
 
   const iso = compactToIso(compactDate);
   const label = iso !== undefined ? isoToLabel(iso) : compactDate;

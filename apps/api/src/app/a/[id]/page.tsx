@@ -1,0 +1,125 @@
+import type { Metadata } from "next";
+import type { ReactElement } from "react";
+import { notFound } from "next/navigation";
+import { getArticleById } from "@/services/newsRepository";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+// 공유(unfurl)용 SSR 페이지. SPA 리더는 크롤러가 메타를 못 읽으므로,
+// 공유 링크는 이 Vercel 페이지로 — per-article OG/트위터 카드 + 읽을 수 있는 최소 본문.
+type ArticleLike = {
+  id: string;
+  issue_date: string;
+  category: string;
+  title: string;
+  summary: string;
+  tldr: string | null;
+  source_name: string;
+  source_url: string;
+};
+
+const SELF_BASE = process.env.NEXT_PUBLIC_SELF_BASE ?? "https://daily-newx.vercel.app";
+const READER_BASE = process.env.NEXT_PUBLIC_READER_BASE ?? "https://daily-newx.project-hh.com";
+
+const CATEGORY_LABEL: Record<string, string> = {
+  headline: "헤드라인",
+  release: "릴리스 · 제품",
+  paper: "연구 · 논문",
+  community: "커뮤니티",
+  business: "산업 · 비즈니스",
+};
+
+async function load(id: string): Promise<ArticleLike | null> {
+  return (await getArticleById(id)) as ArticleLike | null;
+}
+
+function dek(a: ArticleLike): string {
+  const t = a.tldr && a.tldr.trim().length > 0 ? a.tldr : a.summary;
+  return t.length > 160 ? `${t.slice(0, 157)}…` : t;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const a = await load(params.id);
+  if (!a) return { title: "브리핑 LLM" };
+  const description = dek(a);
+  return {
+    metadataBase: new URL(SELF_BASE),
+    title: `${a.title} · 브리핑 LLM`,
+    description,
+    openGraph: {
+      type: "article",
+      siteName: "브리핑 LLM",
+      title: a.title,
+      description,
+      url: `/a/${a.id}`,
+    },
+    twitter: { card: "summary_large_image", title: a.title, description },
+  };
+}
+
+export default async function SharePage({
+  params,
+}: {
+  params: { id: string };
+}): Promise<ReactElement> {
+  const a = await load(params.id);
+  if (!a) notFound();
+
+  const readerUrl = `${READER_BASE}/article/${a.id}`;
+  const kicker = CATEGORY_LABEL[a.category] ?? a.category;
+
+  return (
+    <main
+      style={{
+        maxWidth: 640,
+        margin: "0 auto",
+        padding: "48px 24px",
+        fontFamily: "Pretendard, -apple-system, system-ui, sans-serif",
+        color: "#15161A",
+        background: "#F2F0E9",
+        minHeight: "100vh",
+      }}
+    >
+      <p style={{ fontSize: 12, letterSpacing: 1.2, color: "#22324F", fontWeight: 700, margin: 0 }}>
+        {kicker}
+      </p>
+      <h1 style={{ fontSize: 30, lineHeight: 1.3, margin: "10px 0 0", color: "#15161A" }}>
+        {a.title}
+      </h1>
+      {a.tldr && a.tldr.trim().length > 0 && (
+        <p style={{ fontSize: 18, lineHeight: 1.6, color: "#34353A", marginTop: 12 }}>{a.tldr}</p>
+      )}
+      <p style={{ fontSize: 16, lineHeight: 1.7, color: "#34353A", marginTop: 16 }}>{a.summary}</p>
+
+      <p style={{ fontSize: 13, color: "#8B8A86", marginTop: 24 }}>
+        출처 · {a.source_name}
+      </p>
+
+      <div style={{ borderTop: "2px solid #15161A", marginTop: 32, paddingTop: 20 }}>
+        <a
+          href={readerUrl}
+          style={{
+            display: "inline-block",
+            padding: "10px 18px",
+            background: "#22324F",
+            color: "#F2F0E9",
+            borderRadius: 8,
+            textDecoration: "none",
+            fontSize: 14,
+            fontWeight: 700,
+          }}
+        >
+          브리핑 LLM에서 계속 읽기 →
+        </a>
+        <p style={{ fontSize: 12, color: "#8B8A86", marginTop: 16 }}>
+          daily-newx · 매일 오전 9시 발행
+        </p>
+      </div>
+    </main>
+  );
+}

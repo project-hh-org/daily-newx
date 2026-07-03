@@ -1,8 +1,9 @@
 import type { ReactElement } from "react";
-import { ScrollView, View, Text, Pressable, StyleSheet } from "react-native";
+import { ScrollView, View, Text, Pressable, Share, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useArticle } from "@/hooks/useDailyIssue";
 import { useBackOr } from "@/hooks/useBackOr";
+import { API_BASE } from "@/services/config";
 import { isoToLabel, isoToCompact } from "@/lib/date";
 import { categoryLabel } from "@/lib/categories";
 import { colors, fonts, MAX_READING } from "@/lib/theme";
@@ -34,6 +35,11 @@ export function ArticleScreen({ id }: Props): ReactElement {
 
   const compact = isoToCompact(a.issue_date);
 
+  const onShare = (): void => {
+    const url = `${API_BASE}/a/${a.id}`;
+    void Share.share({ url, message: `${a.title}\n${url}` });
+  };
+
   return (
     <ScrollView
       style={styles.scroll}
@@ -56,6 +62,10 @@ export function ArticleScreen({ id }: Props): ReactElement {
         {a.tldr !== null && a.tldr.trim().length > 0 && <Text style={styles.tldr}>{a.tldr}</Text>}
 
         <Text style={styles.summary}>{a.summary}</Text>
+
+        <Pressable onPress={onShare} accessibilityRole="button" accessibilityLabel="공유하기" hitSlop={8} style={styles.shareBtn}>
+          <Text style={styles.shareText}>공유하기 ↗</Text>
+        </Pressable>
 
         {a.blocks.length > 0 ? (
           <ArticleBlocks blocks={a.blocks} />
@@ -90,4 +100,6 @@ const styles = StyleSheet.create({
   title: { marginTop: 16, fontFamily: fonts.serif, fontSize: 30, lineHeight: 40, color: colors.ink },
   tldr: { marginTop: 12, fontFamily: fonts.serif, fontSize: 19, lineHeight: 31, color: colors.ink },
   summary: { marginTop: 16, fontFamily: fonts.sans, fontSize: 16, lineHeight: 27, color: colors.inkSoft },
+  shareBtn: { marginTop: 16, alignSelf: "flex-start" },
+  shareText: { fontFamily: fonts.sans, fontSize: 13, fontWeight: "600", color: colors.spot },
 });
