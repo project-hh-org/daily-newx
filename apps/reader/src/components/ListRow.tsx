@@ -12,7 +12,12 @@ type Props = {
 /** 인덱스/리스트 공용 행 — 제목(+부제) 좌측, 메타(개수 등) 우측, 상단 헤어라인. */
 export function ListRow({ title, subtitle, meta, onPress }: Props): ReactElement {
   return (
-    <Pressable onPress={onPress} accessibilityRole="link" style={styles.row}>
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="link"
+      accessibilityLabel={meta !== undefined ? `${title}, ${meta}` : title}
+      style={styles.row}
+    >
       <View style={styles.main}>
         <Text style={styles.title}>{title}</Text>
         {subtitle !== undefined && subtitle.length > 0 && (

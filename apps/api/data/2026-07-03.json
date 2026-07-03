@@ -1,0 +1,262 @@
+{
+  "issue": {
+    "issue_date": "2026-07-03",
+    "issue_no": 18,
+    "intro": "미국 독립기념일 전날인 오늘, 업계 리더들은 각자의 AI 세계 질서를 내놨습니다. 샘 올트먼은 FT를 통해 AI 국제 포럼 구상을 공개했고, Anthropic은 수치로 시장 주도권을 증명했습니다. Google은 개발자가 영상을 말로 편집하게 해주는 API를 열었고, 맥용 AI 에이전트로 파일 자동화 시대를 선언했습니다.",
+    "outro": "AI 거버넌스 논의가 블로그를 넘어 국제정치 무대로 올라왔습니다. 미국 독립기념일 연휴가 끝나고 나면, 이 제안들이 실제 협상 테이블에 오를지 지켜볼 만합니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "샘 올트먼 \"AI에도 IAEA 같은 국제기구를\" — 미국 주도 글로벌 안전 포럼 제안",
+      "tldr": "OpenAI CEO가 원자력 국제기구를 모델 삼아 AI 국제 안전 포럼을 FT에 제안했다. 미 정부에 회사 지분 5% 제공도 검토 중.",
+      "summary": "샘 올트먼 OpenAI CEO가 파이낸셜 타임스 기고문에서 '미국이 주도하는 AI 국제 포럼' 설립을 공식 제안했습니다. 항공 안전·국제 금융 기준·원자력 국제기구(IAEA)처럼 AI 역량과 위험을 독립적으로 평가하고, 규범을 따르는 국가와 기업에게만 기술을 제공하는 구조입니다. 동시에 OpenAI가 미 정부에 지분 5%를 제공하는 방안도 논의 중인 것으로 알려졌습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "올트먼은 기고에서 미국이 AI 기준 설정의 중심에 서지 않으면 다른 나라가 그 자리를 차지할 것이라고 주장했습니다. G7 정상회의(6월 17일)에서 트럼프 대통령과 AI 경영진들이 논의한 '미국 주도 AI 질서' 구상의 연장선입니다."
+        },
+        {
+          "type": "bullets",
+          "label": "제안된 포럼의 세 가지 역할",
+          "items": [
+            "AI 역량과 위험에 대한 독립적·전문적 분석 제공",
+            "국제 표준 설정 및 동맹국과의 기술 공유 메커니즘 운영",
+            "규범을 따르지 않는 국가·기업의 접근 제한"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "논란의 지분 제안",
+          "text": "OpenAI가 미 정부에 회사 지분 5%를 제공하는 방안이 검토 중이라고 전해졌습니다. OpenAI 최근 기업가치(8,520억 달러) 기준으로 약 426억 달러 규모입니다. 트럼프 행정부의 정치적 지지를 확보하기 위한 포석이라는 분석이 나옵니다."
+        }
+      ],
+      "source_url": "https://fortune.com/2026/07/02/sam-altman-new-world-order-ai-openai-google-anthropic/",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "sam-altman-ai-international-forum-ft",
+      "tags": ["AI거버넌스", "OpenAI", "샘올트먼", "규제", "국제포럼"],
+      "entities": ["OpenAI", "Sam Altman", "Financial Times", "IAEA", "G7"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-02"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "Anthropic, OpenAI 매출 공식 추월 — $47B ARR, Claude Code가 코딩 시장 54% 장악",
+      "tldr": "Anthropic이 처음으로 OpenAI의 연환산 매출을 추월했다. Claude Code가 핵심 성장 동력.",
+      "summary": "Anthropic의 연환산 매출(ARR)이 최소 35% 이상 OpenAI를 앞서는 것으로 파악됩니다. 공개된 $47B ARR 기준으로, Claude Code는 AI 코딩 도구 시장에서 54%의 점유율을 기록 중입니다. 두 회사의 수익 구조는 정반대입니다.",
+      "blocks": [
+        {
+          "type": "stat",
+          "value": "$47B",
+          "label": "Anthropic 연환산 매출(ARR) — 15개월 만에 $1B에서 47배 성장"
+        },
+        {
+          "type": "table",
+          "headers": ["구분", "Anthropic", "OpenAI"],
+          "rows": [
+            ["주요 매출원", "기업·개발자 API (85%)", "ChatGPT 소비자 구독 (85%)"],
+            ["AI 코딩 시장 점유", "54% (Claude Code)", "~20%대"],
+            ["흑자 전환 목표", "2029년", "2030년"]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 ChatGPT 유료 구독이 매출 대부분을 차지하지만, ChatGPT의 월간 방문자 비율이 처음으로 생성형 AI 전체 시장 과반 아래로 내려갔습니다. Anthropic은 단가가 높은 API 중심 구조여서, 같은 사용자 수라도 훨씬 높은 매출로 이어집니다."
+        }
+      ],
+      "source_url": "https://www.theinformation.com/newsletters/the-briefing/anthropic-likely-generating-least-35-revenue-openai",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "anthropic-overtakes-openai-revenue-47b-arr",
+      "tags": ["Anthropic", "OpenAI", "매출", "Claude Code", "AI시장"],
+      "entities": ["Anthropic", "OpenAI", "Claude Code", "ChatGPT", "The Information"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-02"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "Gemini Omni Flash, 개발자 API 공개 — 영상을 말로 편집하는 시대 열렸다",
+      "tldr": "Google의 영상 생성·편집 모델이 개발자 API로 공개됐다. 텍스트로 '이 장면만 고쳐줘'라고 하면 된다.",
+      "summary": "Google DeepMind가 Gemini Omni Flash를 Google AI Studio와 Gemini API를 통해 개발자에게 개방했습니다. 텍스트·이미지·영상을 혼합 입력받아 영상을 생성하고, 대화 방식으로 특정 부분만 수정할 수 있습니다. 720p 화질, 클립당 최대 10초, $0.10/초 기준으로 제공됩니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "기존 영상 생성 도구는 '텍스트 한 줄 → 영상 출력'의 일회성 구조였습니다. Gemini Omni Flash는 이를 바꿉니다. 영상을 보며 \"3초~5초 구간 배경음악 빼줘\"나 \"화면 왼쪽 인물 제거해줘\" 같은 자연어 명령으로 특정 부분만 정밀하게 수정할 수 있습니다."
+        },
+        {
+          "type": "numbered",
+          "label": "핵심 사양",
+          "items": [
+            "720p 해상도, 클립당 최대 10초 생성",
+            "텍스트·이미지·영상 혼합 입력 지원",
+            "다중 턴(multi-turn) 대화형 편집",
+            "API 가격: 출력 영상 1초당 $0.10",
+            "Google AI Studio, Gemini API, Flow, Enterprise Agent Platform 지원"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "현재 제한",
+          "text": "오디오 레퍼런스 입력 및 장면 연장(scene continuation) 미지원. 10초 이상 긴 영상 생성은 추후 업데이트 예정."
+        }
+      ],
+      "source_url": "https://venturebeat.com/technology/googles-gemini-omni-flash-hits-the-api-turning-enterprise-video-production-into-a-conversation",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "gemini-omni-flash-developer-api-launch",
+      "tags": ["Google", "GeminiOmniFlash", "영상생성", "API", "영상편집"],
+      "entities": ["Google", "Google DeepMind", "Gemini Omni Flash", "Google AI Studio"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-02"
+    },
+    {
+      "category": "release",
+      "position": 2,
+      "title": "Gemini Spark, 맥 앱으로 — 로컬 파일 자동화하는 AI 에이전트 상륙",
+      "tldr": "Google의 AI 에이전트 Gemini Spark가 맥에서 쓸 수 있게 됐다. 로컬 파일도 건드린다.",
+      "summary": "Google의 AI 에이전트 Gemini Spark가 macOS용 앱으로 출시됐습니다. 클라우드 문서뿐 아니라 맥에 저장된 로컬 파일도 자동으로 정리·변환할 수 있습니다. 예를 들어 다운로드 폴더의 PDF를 카테고리별 폴더로 분류하거나, 로컬 인보이스에서 숫자를 뽑아 구글 시트 예산표를 만드는 작업을 자동화할 수 있습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gemini Spark는 구글이 올해 공개한 맥용 AI 에이전트로, 이번에 로컬 파일 접근 기능이 추가되며 대폭 강화됐습니다. 기존 Gemini 데스크톱 앱에 통합되는 방식이며, Canva·Dropbox·Instacart·OpenTable·Zillow 등 서드파티 앱 연동도 지원합니다."
+        },
+        {
+          "type": "bullets",
+          "label": "이번에 추가된 기능",
+          "items": [
+            "로컬 파일 자동 분류·변환 (Mac에 저장된 파일 직접 접근)",
+            "Google Tasks·Google Keep 연동",
+            "관심 주제 실시간 추적 기능",
+            "Canva, Dropbox 등 서드파티 앱 연결"
+          ]
+        },
+        {
+          "type": "definition",
+          "term": "에이전트(Agent)란?",
+          "text": "사용자가 직접 클릭·입력하지 않아도 AI가 스스로 여러 단계의 작업을 수행하는 방식을 말합니다. 단순 질문 답변을 넘어, 파일을 열고·읽고·분류하고·다른 앱에 붙여넣는 과정 전체를 AI가 처리합니다."
+        },
+        {
+          "type": "callout",
+          "label": "현재 이용 조건",
+          "text": "미국 내 Google AI Ultra 구독자 한정 베타. Apple Silicon Mac + macOS Sequoia 15.0 이상 필요."
+        }
+      ],
+      "source_url": "https://techcrunch.com/2026/07/01/gemini-spark-googles-agentic-assistant-is-now-available-on-mac/",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "gemini-spark-mac-local-file-agent",
+      "tags": ["Google", "GeminiSpark", "AI에이전트", "맥앱", "파일자동화"],
+      "entities": ["Google", "Gemini Spark", "Apple", "macOS"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-02"
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "Fable 5 수출통제 해제 뒷얘기 — 연구 읽은 전문가는 \"위협 과장됐다\"",
+      "tldr": "정부가 Fable 5를 안보 위협으로 지목했지만, 해당 연구를 직접 검토한 독립 전문가는 평가에 의문을 제기했다.",
+      "summary": "미국 정부가 Fable 5를 19일간 수출 제한한 근거는 '특정 보안 취약점'이었습니다. 그런데 그 연구 자료를 실제로 검토한 독립 전문가는 정부의 위협 심각성 평가에 동의하지 않는다고 밝혔습니다. AI 모델에 대한 안보 평가 절차에 투명성과 독립적 검증이 필요하다는 목소리가 나왔습니다.",
+      "blocks": [
+        {
+          "type": "timeline",
+          "events": [
+            {"date": "2026-06-12", "text": "미 정부, Fable 5·Mythos 5 수출 제한 명령 — 이유: 미공개 보안 취약점"},
+            {"date": "2026-06-30", "text": "상무부, 수출통제 해제 통보 — 조건: 99%+ 차단 분류기, 정부 협력 약속"},
+            {"date": "2026-07-01", "text": "Anthropic, 글로벌 접근 복구 시작"},
+            {"date": "2026-07-02", "text": "독립 전문가 \"연구를 직접 읽었는데 위협 심각성에 동의 안 해\" 보도"}
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "핵심 쟁점은 두 가지입니다. 첫째, 해당 취약점이 실제로 배포된 모델에서 재현 가능했는지 여부입니다. 둘째, Anthropic 직원들조차 19일간 자사 모델에 접근하지 못했는데, 그게 비례적인 조치였냐는 문제입니다. AI 모델에 대한 정부 안보 평가가 어떤 기준으로 이뤄지는지 공개되지 않는다는 점이 투명성 논란의 배경입니다."
+        }
+      ],
+      "source_url": "https://easternherald.com/2026/07/02/anthropic-fable-5-restored-us-export-controls-fix-code-jailbreak/",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "fable5-export-control-expert-dissent",
+      "tags": ["Anthropic", "Fable5", "AI규제", "수출통제", "AI안보"],
+      "entities": ["Anthropic", "Claude Fable 5", "미국 상무부"],
+      "related": [],
+      "follow_up_of": "claude-fable5-mythos5-global-restored",
+      "source_published_at": "2026-07-02"
+    },
+    {
+      "category": "paper",
+      "position": 1,
+      "title": "arXiv: 에이전트가 긴 작업 중 컨텍스트를 스스로 정리 — Self-GC 제안",
+      "tldr": "LLM 에이전트가 긴 작업 도중 어떤 정보를 유지할지 스스로 결정하게 만드는 방법론.",
+      "summary": "복잡한 작업을 오래 수행하는 AI 에이전트는 컨텍스트 창(기억 공간)이 금방 꽉 차는 문제가 있습니다. Self-GC 논문은 에이전트가 스스로 \"지금 어떤 정보가 남은 작업에 필요한가\"를 평가해 불필요한 내용을 압축·제거하게 하는 방법을 제안합니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "컨텍스트 창(Context Window)",
+          "text": "LLM이 한 번에 처리·기억할 수 있는 텍스트의 최대 길이입니다. 이 한계를 넘으면 오래된 내용이 잘려나가 에이전트가 이전 단계에서 한 일을 '잊어버리는' 문제가 생깁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Self-GC(Self-Governing Context)는 에이전트 자체에 '정보 가치 평가 모듈'을 추가합니다. 이미 완료된 하위 단계의 세부 내용, 반복되는 도구 출력, 중복 정보를 실시간으로 줄이고 핵심만 남깁니다. 외부 메모리 없이 컨텍스트 창 안에서만 이를 처리한다는 점이 특징입니다."
+        },
+        {
+          "type": "bullets",
+          "label": "핵심 아이디어",
+          "items": [
+            "에이전트가 직접 각 정보의 현재 관련성(relevance)을 점수화",
+            "낮은 점수의 정보를 요약·압축해 공간 확보",
+            "같은 컨텍스트 창 크기에서 더 긴 작업 처리 가능"
+          ]
+        }
+      ],
+      "source_url": "https://arxiv.org/abs/2607.00871",
+      "source_name": "arxiv",
+      "score": 6,
+      "story_slug": "self-gc-context-management-long-horizon-agents",
+      "tags": ["arXiv", "AI에이전트", "컨텍스트", "LLM연구", "장기작업"],
+      "entities": [],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-02"
+    },
+    {
+      "category": "paper",
+      "position": 2,
+      "title": "arXiv: 에이전트 자기진화, 언제 멈춰도 안전 보장 — Anytime-Valid Certificates",
+      "tldr": "AI 에이전트가 실행 중 스스로 개선되면서도, 멈추는 시점마다 통계적으로 안전성이 보장되는 방법.",
+      "summary": "AI 에이전트가 배포된 후에도 계속 자기 개선을 하면 효율적이지만, 그 과정의 안전성을 검증하기가 어렵습니다. 이 논문은 에이전트가 진화하는 도중 어느 시점에서도 신뢰 구간 내 성능 보장을 제공하는 '언제든 유효한 인증서' 프레임워크를 제안합니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "기존의 AI 안전 평가는 대개 '학습이 끝난 시점'의 스냅샷을 기준으로 합니다. 문제는 에이전트가 실행 중에도 적응·개선될 때 언제까지 그 보장이 유효한지 알 수 없다는 점입니다."
+        },
+        {
+          "type": "definition",
+          "term": "Anytime-Valid Certificate(언제든 유효한 인증서)",
+          "text": "에이전트가 실행되는 어느 시점에 검사하더라도(학습을 멈추지 않아도) 통계적으로 유효한 성능 보장을 제공하는 개념입니다. 순차적 가설 검정(sequential hypothesis testing) 이론을 기반으로 합니다."
+        },
+        {
+          "type": "callout",
+          "label": "왜 중요한가",
+          "text": "에이전트가 자율적으로 더 많은 영역에서 활동할수록, '지금 이 에이전트는 안전한가'를 실시간으로 판단할 수단이 필요합니다. 이 연구는 그 판단을 통계적으로 엄밀하게 가능하게 합니다."
+        }
+      ],
+      "source_url": "https://arxiv.org/abs/2607.00913",
+      "source_name": "arxiv",
+      "score": 6,
+      "story_slug": "anytime-valid-certificates-self-evolving-agents",
+      "tags": ["arXiv", "AI에이전트", "AI안전", "자기진화", "LLM연구"],
+      "entities": [],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-02"
+    }
+  ]
+}

@@ -2,8 +2,8 @@
   "issue": {
     "issue_date": "2026-07-01",
     "issue_no": 16,
-    "intro": "Anthropic이 하루에 두 개의 제품을 동시에 내놓은 날입니다. Claude Sonnet 5는 에이전트 AI의 경제적 진입 장벽을 낮추고, Claude Science는 과학 연구의 속도 자체를 바꾸겠다고 선언합니다. 6월의 마지막 날 — 경쟁사들이 줄줄이 출시 약속을 지키지 못한 가운데, Anthropic이 실제 제품 두 개를 내놓으며 반기를 마감했습니다.",
-    "outro": "Gemini 3.5 Pro는 7월로 넘어갔고, GPT-5.6은 아직 정부 검증 파트너만 씁니다. Claude Sonnet 5가 무료·프로 사용자의 기본 모델이 된 지금, 7월의 관전 포인트는 하나입니다 — 경쟁사들이 과연 따라잡을 수 있을까?",
+    "intro": "Anthropic이 하루에 세 개의 굵직한 소식을 내놓은 날입니다. Claude Sonnet 5와 Claude Science의 동시 출시, 그리고 18일간 멈췄던 Fable 5의 복귀까지. 6월의 마지막 날 — 경쟁사들이 줄줄이 출시 약속을 지키지 못한 가운데, Anthropic이 반기를 압도적으로 마감했습니다.",
+    "outro": "Gemini 3.5 Pro는 7월로 넘어갔고, GPT-5.6은 아직 정부 검증 파트너만 씁니다. Claude Sonnet 5가 무료·프로 사용자의 기본 모델이 된 데다, 20일간 멈췄던 Fable 5까지 오늘부터 전면 재개됩니다. 7월의 관전 포인트는 하나입니다 — 경쟁사들이 과연 따라잡을 수 있을까?",
     "status": "published"
   },
   "items": [
@@ -50,6 +50,55 @@
       "tags": ["Claude", "Anthropic", "에이전트AI", "모델출시", "가격"],
       "entities": ["Anthropic", "Claude Sonnet 5", "Claude Opus 4.8", "Claude Code"],
       "related": ["https://www.anthropic.com/claude-sonnet-5-system-card", "https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/"],
+      "source_published_at": "2026-06-30",
+      "key_points": [],
+      "what_you_get": null,
+      "action": null,
+      "why_now": null
+    },
+    {
+      "category": "headline",
+      "position": 2,
+      "title": "20일 만에 돌아온 Fable 5 — 수출 통제 해제, 7월 1일부터 전 세계 재배포",
+      "tldr": "미국 정부가 6월 30일 Fable 5·Mythos 5 수출 통제를 전격 해제. Anthropic이 개선된 사이버 안전장치와 업계 공통 '탈옥 심각도 기준'을 공개하며 7월 1일(오늘)부터 전면 재배포.",
+      "summary": "6월 12일 미국 정부의 수출 통제 명령으로 전 세계 이용이 중단됐던 Claude Fable 5와 Mythos 5가 18일 만에 돌아옵니다. 미국 상무부 장관 Howard Lutnick이 6월 30일 통제 해제를 발표하면서 Anthropic은 즉시 재배포 계획을 공개했습니다. 문제가 됐던 Amazon 연구진의 탈옥 기법은 보완된 새 안전 분류기로 99% 이상 차단되며, 미국 상무부 CAISI의 독립 검증을 마쳤습니다. Amazon·Microsoft·Google과 함께 업계 공통 '탈옥 심각도 평가 기준'도 함께 발표했습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "6월 12일 미국 정부의 수출 통제 명령은 발령과 동시에 효력을 발휘했고, Anthropic은 국적 실시간 확인 수단이 없다는 이유로 Fable 5와 Mythos 5 접속을 전 세계 사용자에게 일괄 차단했습니다. 18일 후인 6월 30일, 미국 상무부 장관 Howard Lutnick이 통제 해제를 공식 발표했습니다."
+        },
+        {
+          "type": "callout",
+          "label": "7월 1일(오늘)부터 이용 가능",
+          "text": "Claude.ai, Claude Code, Claude Cowork, API 전 채널에서 전 세계 이용 가능. Pro·Max·Team·엔터프라이즈 선택 플랜은 7월 7일까지 주간 사용량 한도의 최대 50%를 Fable 5로 기본 포함. 이후 사용 크레딧으로 전환. AWS·Google Cloud·Microsoft Foundry는 최대한 빨리 복구 예정. 표준 엔터프라이즈는 크레딧 활성화 필요."
+        },
+        {
+          "type": "paragraph",
+          "text": "통제의 계기가 된 Amazon 연구진의 보고서는 Fable 5를 특정 방식으로 유도해 소프트웨어 취약점 식별 코드를 만들게 하는 기법을 담고 있었습니다. Anthropic이 조사한 결과, 같은 기법으로 Claude Haiku 4.5, Sonnet 4.6, Opus 4.8, GPT-5.4, GPT-5.5, Kimi K2.7 등 훨씬 약한 모델들도 동일한 결과를 냈습니다. Fable 5만의 고유한 공격 능력이 아니었다는 결론입니다."
+        },
+        {
+          "type": "bullets",
+          "label": "새 사이버 안전장치",
+          "items": [
+            "개선된 안전 분류기: 문제 기법을 99% 이상 차단, 미국 상무부 CAISI 독립 검증 완료",
+            "차단 발생 시 사용자에게 알림 → Opus 4.8으로 자동 전환",
+            "부작용: 일부 정상 코딩·디버깅 요청도 오분류될 수 있음 (거짓 양성 소폭 증가)"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "업계 공통 '탈옥 심각도 기준' 초안 공개",
+          "text": "Anthropic·Amazon·Microsoft·Google 공동 추진. 탈옥을 ① 기존 도구 대비 능력 증가폭 ② 적용 범위(좁음 vs 보편) ③ 무기화 난이도 ④ 기법 공개 정도 — 네 기준으로 점수화하는 공통 언어 구축 목표. HackerOne에 Fable 5 전용 사이버 탈옥 신고 프로그램도 개설."
+        }
+      ],
+      "source_url": "https://www.anthropic.com/news/redeploying-fable-5",
+      "source_name": "official-blog",
+      "score": 10,
+      "story_slug": "fable-5-redeployment-export-control-lifted",
+      "tags": ["Fable5", "Anthropic", "수출통제", "AI규제", "사이버보안", "정책"],
+      "entities": ["Anthropic", "Claude Fable 5", "Claude Mythos 5", "Howard Lutnick", "Amazon", "Microsoft", "Google", "CAISI"],
+      "related": ["https://x.com/howardlutnick/status/2072100729603452965", "https://hackerone.com/anthropic-cyber-jailbreak/"],
+      "follow_up_of": null,
       "source_published_at": "2026-06-30",
       "key_points": [],
       "what_you_get": null,

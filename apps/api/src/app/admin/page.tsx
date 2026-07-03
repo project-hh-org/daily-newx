@@ -9,7 +9,11 @@ type AdminItem = {
   title: string;
   summary: string;
   tldr: string | null;
+  blocks: unknown[];
 };
+
+const BLOCK_TYPES =
+  "heading·paragraph·bullets·numbered·quote·stat·callout·definition·table·timeline·prosCons·code·embed·image·divider";
 type AdminIssue = {
   issue_date: string;
   issue_no: number | null;
@@ -34,6 +38,9 @@ export default function AdminPage(): ReactElement {
   const [date, setDate] = useState(todayIso());
   const [data, setData] = useState<AdminData | null>(null);
   const [msg, setMsg] = useState("");
+  // 항목별 blocks JSON 편집 초안(id → JSON 문자열)과 원본(변경분만 저장 판단용).
+  const [blocksDraft, setBlocksDraft] = useState<Record<string, string>>({});
+  const [blocksOrig, setBlocksOrig] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const saved = typeof window !== "undefined" ? window.localStorage.getItem(TOKEN_KEY) : null;
@@ -60,13 +67,48 @@ export default function AdminPage(): ReactElement {
       }
       const json = (await res.json()) as AdminData;
       setData(json);
+      const drafts: Record<string, string> = {};
+      for (const it of json.items) {
+        drafts[it.id] = JSON.stringify(it.blocks ?? [], null, 2);
+      }
+      setBlocksDraft(drafts);
+      setBlocksOrig(drafts);
       setMsg(`불러옴 — ${json.items.length}건`);
     } catch (e) {
       setMsg(e instanceof Error ? e.message : "에러");
     }
   }, [date, token, auth]);
 
+  const formatBlocks = (id: string): void => {
+    const draft = blocksDraft[id] ?? "[]";
+    try {
+      const pretty = JSON.stringify(JSON.parse(draft), null, 2);
+      setBlocksDraft((d) => ({ ...d, [id]: pretty }));
+      setMsg("블록 포맷됨");
+    } catch {
+      setMsg("블록 JSON 오류 — 포맷할 수 없습니다");
+    }
+  };
+
   const patchItem = async (item: AdminItem): Promise<void> => {
+    // blocks 는 변경됐을 때만 포함(미변경 항목의 불필요한 재검증 방지).
+    const draft = blocksDraft[item.id];
+    let blocks: unknown[] | undefined;
+    if (draft !== undefined && draft !== blocksOrig[item.id]) {
+      let parsed: unknown;
+      try {
+        parsed = JSON.parse(draft);
+      } catch {
+        setMsg("블록 JSON 파싱 실패 — 형식을 확인하세요");
+        return;
+      }
+      if (!Array.isArray(parsed)) {
+        setMsg("블록은 JSON 배열이어야 합니다");
+        return;
+      }
+      blocks = parsed;
+    }
+
     setMsg("저장 중…");
     const res = await fetch(`/api/admin/item/${item.id}`, {
       method: "PATCH",
@@ -77,9 +119,18 @@ export default function AdminPage(): ReactElement {
         tldr: item.tldr,
         category: item.category,
         position: item.position,
+        ...(blocks !== undefined ? { blocks } : {}),
       }),
     });
-    setMsg(res.ok ? "저장됨" : `저장 실패 (HTTP ${res.status})`);
+    if (res.ok) {
+      if (blocks !== undefined) {
+        setBlocksOrig((o) => ({ ...o, [item.id]: draft }));
+      }
+      setMsg("저장됨");
+    } else {
+      const j = (await res.json().catch(() => ({}))) as { error?: string };
+      setMsg(`저장 실패 (HTTP ${res.status})${j.error ? ` — ${j.error}` : ""}`);
+    }
   };
 
   const removeItem = async (id: string): Promise<void> => {
@@ -253,6 +304,26 @@ export default function AdminPage(): ReactElement {
                 rows={3}
                 style={{ width: "100%", marginBottom: 6 }}
               />
+              <details style={{ marginBottom: 6 }}>
+                <summary style={{ cursor: "pointer", fontSize: 13, color: "#555" }}>
+                  본문 블록 (blocks) — {Array.isArray(it.blocks) ? it.blocks.length : 0}개
+                  {blocksDraft[it.id] !== blocksOrig[it.id] ? " · 수정됨" : ""}
+                </summary>
+                <textarea
+                  value={blocksDraft[it.id] ?? ""}
+                  onChange={(e) => setBlocksDraft((d) => ({ ...d, [it.id]: e.target.value }))}
+                  spellCheck={false}
+                  rows={12}
+                  placeholder='[{"type":"paragraph","text":"..."}]'
+                  style={{ width: "100%", marginTop: 6, fontFamily: "monospace", fontSize: 12 }}
+                />
+                <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 4 }}>
+                  <button type="button" onClick={() => formatBlocks(it.id)}>
+                    포맷
+                  </button>
+                  <span style={{ fontSize: 11, color: "#999" }}>type: {BLOCK_TYPES}</span>
+                </div>
+              </details>
               <div style={{ display: "flex", gap: 8 }}>
                 <button onClick={() => void patchItem(it)}>저장</button>
                 <button onClick={() => void removeItem(it.id)} style={{ color: "#b23a24" }}>

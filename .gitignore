@@ -27,3 +27,5 @@ expo-env.d.ts
 AuthKey_*.p8
 *.mobileprovision
 *.p12
+.vercel
+.env*

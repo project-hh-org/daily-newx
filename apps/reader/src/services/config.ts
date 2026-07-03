@@ -10,3 +10,6 @@ export const API_BASE: string =
   typeof apiBase === "string" && apiBase.length > 0 ? apiBase : "http://localhost:4000";
 
 export const USE_FIXTURE: boolean = useFixture === "1";
+
+// EAS 프로젝트 ID(공개값, app.json extra.eas.projectId 와 동일) — Expo 푸시 토큰 발급용.
+export const EAS_PROJECT_ID = "aaffaa07-2378-4eee-b242-93d98a19d8fc";

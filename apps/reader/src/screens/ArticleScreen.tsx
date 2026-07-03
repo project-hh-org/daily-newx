@@ -43,6 +43,8 @@ export function ArticleScreen({ id }: Props): ReactElement {
         <Pressable
           onPress={() => backOr(compact !== undefined ? `/daily/${compact}` : "/")}
           accessibilityRole="link"
+          accessibilityLabel="돌아가기"
+          hitSlop={8}
         >
           <Text style={styles.crumb}>
             ‹ {isoToLabel(a.issue_date)} · {categoryLabel(a.category)}

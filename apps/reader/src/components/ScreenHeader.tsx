@@ -14,7 +14,12 @@ export function ScreenHeader({ kicker, title, subtitle, crumb }: Props): ReactEl
   return (
     <View>
       {crumb !== undefined && (
-        <Pressable onPress={crumb.onPress} accessibilityRole="link">
+        <Pressable
+          onPress={crumb.onPress}
+          accessibilityRole="link"
+          accessibilityLabel={`${crumb.label}(으)로 돌아가기`}
+          hitSlop={8}
+        >
           <Text style={styles.crumb}>‹ {crumb.label}</Text>
         </Pressable>
       )}

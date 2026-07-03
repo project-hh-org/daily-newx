@@ -37,7 +37,13 @@ export function IssueHeader({ issue }: Props): ReactElement {
 
       <View style={styles.nav}>
         {SECTIONS.map((s) => (
-          <Pressable key={s.label} onPress={() => router.push(s.href)} accessibilityRole="link">
+          <Pressable
+            key={s.label}
+            onPress={() => router.push(s.href)}
+            accessibilityRole="link"
+            accessibilityLabel={`${s.label} 보기`}
+            hitSlop={8}
+          >
             <Text style={styles.navItem}>{s.label}</Text>
           </Pressable>
         ))}

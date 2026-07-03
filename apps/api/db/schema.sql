@@ -111,3 +111,22 @@ create policy "public read items" on public.daily_items
   );
 -- service_role 은 RLS 우회 → API 서버에서만 insert/update/delete.
 -- anon/authenticated 쓰기 정책은 의도적으로 두지 않음.
+
+-- ------------------------------------------------------------
+-- 4) 푸시 토큰 — 발행 시점 브로드캐스트 대상(Expo push token).
+--    등록/조회/삭제는 모두 API(service_role) 경유. 공개 접근 없음.
+-- ------------------------------------------------------------
+create table if not exists public.push_tokens (
+  token       text primary key,                 -- ExponentPushToken[...]
+  platform    text,                              -- ios | android
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now()
+);
+
+drop trigger if exists trg_push_tokens_touch on public.push_tokens;
+create trigger trg_push_tokens_touch
+  before update on public.push_tokens
+  for each row execute function public.touch_updated_at();
+
+alter table public.push_tokens enable row level security;
+-- 공개 정책 없음 → anon 접근 불가, service_role(API)만 사용.

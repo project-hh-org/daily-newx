@@ -34,6 +34,8 @@ export function NewsItemCard({ item, index }: Props): ReactElement {
       onPress={openArticle}
       disabled={articleId === null}
       accessibilityRole="link"
+      accessibilityLabel={`${categoryLabel(item.category)}, ${item.title}`}
+      accessibilityHint={articleId !== null ? "아티클 열기" : undefined}
       style={styles.row}
     >
       <View style={styles.inner}>

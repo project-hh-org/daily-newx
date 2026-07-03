@@ -71,7 +71,12 @@ export function TimelineScreen({ axis, value }: Props): ReactElement {
       contentContainerStyle={{ paddingTop: insets.top + 24, paddingBottom: insets.bottom + 56 }}
     >
       <View style={styles.column}>
-        <Pressable onPress={() => backOr("/")} accessibilityRole="link">
+        <Pressable
+          onPress={() => backOr("/")}
+          accessibilityRole="link"
+          accessibilityLabel="오늘의 호로 돌아가기"
+          hitSlop={8}
+        >
           <Text style={styles.crumb}>‹ 오늘의 호</Text>
         </Pressable>
 
