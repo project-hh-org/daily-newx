@@ -123,7 +123,7 @@ export default function AdminPage(): ReactElement {
       }),
     });
     if (res.ok) {
-      if (blocks !== undefined) {
+      if (blocks !== undefined && draft !== undefined) {
         setBlocksOrig((o) => ({ ...o, [item.id]: draft }));
       }
       setMsg("저장됨");
