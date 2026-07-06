@@ -130,3 +130,27 @@ create trigger trg_push_tokens_touch
 
 alter table public.push_tokens enable row level security;
 -- 공개 정책 없음 → anon 접근 불가, service_role(API)만 사용.
+
+-- ------------------------------------------------------------
+-- 5) 도구 업데이트 — 루틴이 매일 생성하는 "선택 도구별 최신 소식".
+--    읽기는 공개(anon), 쓰기는 service_role(=루틴/API)만.
+-- ------------------------------------------------------------
+create table if not exists public.tool_updates (
+  id           uuid primary key default gen_random_uuid(),
+  tool_key     text not null,                    -- toolCatalog key (claude|codex|cursor ...)
+  update_date  date not null,                    -- 소식 날짜(최신성 필터용)
+  title        text not null,
+  summary      text not null,
+  url          text not null check (url ~ '^https?://'),
+  created_at   timestamptz not null default now(),
+  unique (tool_key, url)                          -- 같은 링크 중복 방지(멱등)
+);
+
+create index if not exists idx_tool_updates_key_date
+  on public.tool_updates (tool_key, update_date desc);
+
+alter table public.tool_updates enable row level security;
+drop policy if exists "public read tool_updates" on public.tool_updates;
+create policy "public read tool_updates" on public.tool_updates
+  for select using (true);
+-- service_role 이 insert/update/delete (루틴/API).

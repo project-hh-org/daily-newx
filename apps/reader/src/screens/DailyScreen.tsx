@@ -8,6 +8,7 @@ import { colors, fonts, MAX_READING } from "@/lib/theme";
 import { useDailyIssue } from "@/hooks/useDailyIssue";
 import { useUiStore } from "@/store/uiStore";
 import { IssueHeader } from "@/components/IssueHeader";
+import { ToolsBanner } from "@/components/ToolsBanner";
 import { NewsItemCard } from "@/components/NewsItemCard";
 import { LoadingView, ErrorView, EmptyView, NotFoundView } from "@/components/StateViews";
 import { NotFoundError } from "@/services/dailyNewsApi";
@@ -71,6 +72,8 @@ export function DailyScreen({ compactDate, notice }: Props): ReactElement {
         )}
 
         <IssueHeader issue={issue} />
+
+        <ToolsBanner />
 
         {flatItems.length === 0 ? (
           <EmptyView />

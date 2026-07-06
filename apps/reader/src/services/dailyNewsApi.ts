@@ -7,6 +7,7 @@ import {
   issuesResponseSchema,
   facetsResponseSchema,
   storyResponseSchema,
+  toolUpdatesResponseSchema,
   type DailyPayload,
   type Article,
   type TimelineResponse,
@@ -15,6 +16,7 @@ import {
   type Facet,
   type FacetKind,
   type StoryResponse,
+  type ToolUpdate,
 } from "@/types/news.types";
 
 export class NotFoundError extends Error {
@@ -80,4 +82,12 @@ export async function fetchFacets(kind: FacetKind): Promise<Facet[]> {
 export async function fetchStory(slug: string): Promise<StoryResponse> {
   const json = await getJson(`${API_BASE}/api/story/${encodeURIComponent(slug)}`, `story:${slug}`);
   return storyResponseSchema.parse(json);
+}
+
+/** 선택 도구들의 최신 업데이트(최근 N일). 선택 없으면 빈 배열. */
+export async function fetchToolUpdates(toolKeys: readonly string[]): Promise<ToolUpdate[]> {
+  if (toolKeys.length === 0) return [];
+  const qs = encodeURIComponent(toolKeys.join(","));
+  const json = await getJson(`${API_BASE}/api/tool-updates?tools=${qs}`, "tool-updates");
+  return toolUpdatesResponseSchema.parse(json).updates;
 }

@@ -1,0 +1,309 @@
+{
+  "issue": {
+    "issue_date": "2026-07-05",
+    "issue_no": 20,
+    "intro": "오늘은 AI 패권의 지각변동이 여러 전선에서 동시에 확인된 날입니다. 법원이 공개한 내부 이메일은 Anthropic과 미 국방부의 갈등이 '자율무기 허용 조건'을 놓고 얼마나 첨예했는지를 보여주고, 중국 기업의 Claude 무단 학습·우회 접속 문제는 AI 모델 주권을 둘러싼 긴장을 가속시키고 있습니다. 한편 메이투안이 중국산 칩만으로 학습한 1.6조 파라미터 모델을 오픈소스로 풀면서 AI 인프라 독립의 새 이정표를 세웠습니다.",
+    "outro": "7월 6~7일, 유엔 AI 거버넌스 대화가 제네바에서 처음 문을 엽니다. 193개국이 한 테이블에 앉는 건 이번이 처음. 국경 없이 퍼지는 AI에 국가들이 어떤 합의의 씨앗을 심을지 — 내일 결과를 주목하세요.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "법원 공개 이메일로 드러난 Pentagon-Anthropic 갈등 — '자율무기 조건 거부'가 계약 취소로",
+      "tldr": "7월 2일 공개된 법정 문서가 Anthropic과 미 국방부가 '자율무기 사용 허가' 조건을 놓고 어떻게 충돌했는지를 상세히 보여줬다.",
+      "summary": "캘리포니아 북부 지방법원이 공개한 이메일에는 Anthropic CEO 다리오 아모데이와 국방부 연구공학 차관 간의 긴장된 교환이 담겼습니다. 국방부는 '합법적인 모든 사용'을 허용하는 조항을 요구했고, Anthropic은 이를 완전 자율살상무기·대규모 감시에 Claude를 쓰는 근거로 해석해 거부했습니다. 결과는 공급망 위험 지정과 주요 계약 취소였습니다.",
+      "blocks": [
+        {
+          "type": "callout",
+          "label": "핵심 쟁점",
+          "text": "국방부가 요구한 '합법적 사용 전체 허용' 조항 — Anthropic은 이를 완전 자율살상무기(LAWS)와 무제한 대규모 감시에 Claude를 사용하는 근거로 해석했다"
+        },
+        {
+          "type": "timeline",
+          "events": [
+            { "date": "2025-07", "text": "Anthropic, 국방부와 2억 달러 규모 2년 계약 체결" },
+            { "date": "2026-02", "text": "국방부, 자율무기 조건 거부 이유로 Anthropic을 공급망 위험으로 지정 — OpenAI와 유사 조건에 합의" },
+            { "date": "2026-04", "text": "Anthropic, 연방법원에 가처분 신청 — 계약 취소 집행 잠정 차단" },
+            { "date": "2026-07-02", "text": "내부 이메일 공개 — Wall Street Journal·Gizmodo가 전문 보도" }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "7월 4일 현재 가처분은 유지되고 있으며, Anthropic은 해당 국방 계약의 주계약자·하도급자로 활동할 수 없는 상태입니다. 이 소식은 OpenAI가 같은 조건에 합의했다는 사실과 맞물려, 두 회사가 정부와의 관계를 매우 다르게 설정하고 있음을 다시금 보여줍니다."
+        }
+      ],
+      "source_url": "https://www.techtimes.com/articles/319713/20260704/pentagon-blacklisted-anthropic-over-autonomous-weapons-limits-emails-reveal-very-close-talks.htm",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "pentagon-anthropic-autonomous-weapons-emails",
+      "tags": ["Anthropic", "국방부", "자율무기", "AI정책", "계약분쟁"],
+      "entities": ["Anthropic", "미 국방부(DoD)", "다리오 아모데이", "OpenAI"],
+      "related": ["https://en.wikipedia.org/wiki/Anthropic%E2%80%93United_States_Department_of_Defense_dispute"],
+      "source_published_at": "2026-07-04"
+    },
+    {
+      "category": "headline",
+      "position": 2,
+      "title": "Anthropic, 중국 우회 경로 전면 차단 — Alibaba는 선제적으로 직원 Claude Code 금지령",
+      "tldr": "싱가포르 법인·VPN으로 Claude에 접근하던 중국 기업들을 Anthropic이 차단하자, Alibaba는 직원 Claude Code 사용을 내부 금지했다.",
+      "summary": "Anthropic이 싱가포르 자회사나 VPN을 통해 Claude에 우회 접속하던 중국 기업들을 차단하기 시작했습니다. Alibaba는 '보안 위험'을 이유로 직원들의 Claude Code 사용을 금지했는데, 이는 Alibaba 산하 Qwen 랩이 2만 5000개 가짜 계정으로 Claude와 2880만 번 상호작용해 모델 능력을 무단 복제했다고 Anthropic이 미 상원에 보고한 직후입니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "증류 공격(Distillation Attack)",
+          "text": "AI 모델에 대량의 질문·답변을 보내 그 데이터를 수집한 뒤, 새 모델 학습에 활용하는 방식. 상용 모델의 능력을 허가 없이 복제하는 데 사용된다."
+        },
+        {
+          "type": "stat",
+          "value": "2880만 건",
+          "label": "Anthropic이 상원에 보고한 Qwen 랩의 Claude 무단 쿼리 수 (2026년 4~6월, 가짜 계정 2만 5000개 경유)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic이 기존에 도입한 정책(중국 등 제한 지역 50% 이상 소유 기업 접근 차단)은 싱가포르 법인 우회, VPN, 클라우드 중계 등 다양한 경로를 막지 못했습니다. 이번 강화 조치는 소유 구조와 우회 릴레이 서비스까지 겨냥합니다. Alibaba의 자발적 금지령은 외부 규제보다 앞선 선제 조치로 풀이됩니다."
+        }
+      ],
+      "source_url": "https://www.banklesstimes.com/articles/2026/07/03/anthropic-moves-to-block-chinese-firms-using-claude-via-offshore-workarounds/",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "anthropic-china-access-crackdown-alibaba-ban",
+      "tags": ["Anthropic", "중국AI", "Alibaba", "증류공격", "수출통제"],
+      "entities": ["Anthropic", "Alibaba", "Qwen", "Ant Group", "ByteDance"],
+      "related": ["https://en.sedaily.com/international/2026/07/04/alibaba-bans-claude-code-as-anthropic-blocks-chinese-access"],
+      "source_published_at": "2026-07-04"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "메이투안, 1.6조 파라미터 LongCat-2.0 오픈소스 공개 — 엔비디아 없이 학습한 최전선급 코딩 모델",
+      "tldr": "중국 배달 앱 메이투안의 LongCat-2.0이 MIT 라이선스로 공개됐다. 두 달간 OpenRouter에서 익명 1위를 지킨 모델이었다.",
+      "summary": "메이투안이 6월 30일 LongCat-2.0을 공개하며 두 달간 OpenRouter에서 'Owl Alpha'라는 익명으로 1위를 차지하던 모델의 정체를 밝혔습니다. 1.6조 파라미터 MoE(전문가 혼합) 구조로, 토큰당 330억~560억 파라미터만 활성화됩니다. SWE-Bench Pro 59.5점으로 GPT-5.5(58.6점)를 앞섰고, API 가격은 출시 프로모션 기준 입력 $0.30/출력 $1.20으로 Claude Sonnet 5·GPT-5.5보다 저렴합니다.",
+      "blocks": [
+        {
+          "type": "bullets",
+          "label": "주요 사양",
+          "items": [
+            "총 파라미터 1.6조 — 토큰당 활성 파라미터 330억~560억 (희소 MoE)",
+            "컨텍스트 윈도우 100만 토큰",
+            "중국산 ASIC 5만 장 클러스터에서 엔비디아 GPU 없이 전 훈련·추론",
+            "MIT 라이선스 (상업적 사용 허용)",
+            "GitHub·Hugging Face·자체 플랫폼 동시 배포"
+          ]
+        },
+        {
+          "type": "stat",
+          "value": "59.5",
+          "label": "SWE-Bench Pro 점수 — GPT-5.5(58.6)를 제친 코딩 에이전트 성능"
+        },
+        {
+          "type": "paragraph",
+          "text": "두 달간 정체 미공개로 OpenRouter 1위를 지키며 커뮤니티의 역추적 대상이었던 'Owl Alpha'가 LongCat-2.0임이 확인됐습니다. 완전 중국산 칩으로 이 규모의 최전선급 모델을 완성한 것이 공식 확인된 건 처음으로, 미국 반도체 수출규제의 실효성을 둘러싼 논의에 다시 불을 붙이고 있습니다."
+        }
+      ],
+      "source_url": "https://venturebeat.com/technology/meituan-open-sources-longcat-2-0-the-1-6t-near-frontier-agentic-coding-model-thats-been-leading-openrouter-trained-entirely-on-chinese-chips",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "meituan-longcat-2-open-source",
+      "tags": ["오픈소스", "중국AI", "MoE", "코딩모델", "LongCat", "칩독립"],
+      "entities": ["메이투안(Meituan)", "LongCat-2.0", "OpenRouter"],
+      "source_published_at": "2026-06-30"
+    },
+    {
+      "category": "release",
+      "position": 2,
+      "title": "Claude Fable 5, 19일 만에 귀환 — 동시에 'CJS 탈옥 심각도 기준' 업계 표준 제안",
+      "tldr": "미 수출규제 해제와 함께 Fable 5가 복구됐고, Anthropic은 AI 탈옥 위험을 5단계로 등급화하는 새 프레임워크를 제안했다.",
+      "summary": "6월 12일 보안 우려로 전면 차단됐던 Claude Fable 5가 7월 1일 복구됐습니다. Anthropic은 복구와 동시에 탈옥 기법 위험도를 CJS-0(정보성)부터 CJS-4(치명적)까지 5단계로 분류하는 사이버 탈옥 심각도(CJS) 프레임워크를 제안했으며, Amazon·Microsoft·Google과 공동 개발 중이라고 밝혔습니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "탈옥(Jailbreak)",
+          "text": "AI 모델의 안전 장치를 우회해 원래 제공하지 말아야 할 정보나 행동을 이끌어내는 기법. 악의적 사용자가 AI를 무기화하는 출발점이 될 수 있다."
+        },
+        {
+          "type": "table",
+          "headers": ["등급", "수준", "의미"],
+          "rows": [
+            ["CJS-0", "정보성", "실질 위협 없음 — 공개 정보 수준"],
+            ["CJS-1", "낮음", "제한적 악용 가능성"],
+            ["CJS-2", "중간", "특정 공격 가능"],
+            ["CJS-3", "높음", "심각한 사이버 피해 지원 가능"],
+            ["CJS-4", "치명적", "대량살상 관련 정보 도출 가능"]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Fable 5 재배포를 위해 Anthropic은 신규 분류기로 해당 탈옥 기법을 99% 이상 차단하고, 차단 시 Opus 4.8로 자동 전환하는 방식을 적용했습니다. NIST CAISI의 독립 검증도 거쳤습니다. CJS 등급 간 위험 격차는 로그 단위로 설계됐습니다 — 즉 CJS-4는 CJS-3보다 단순히 '조금 더 위험한' 게 아니라 질적으로 다른 수준입니다."
+        }
+      ],
+      "source_url": "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "fable5-redeploy-cjs-framework",
+      "tags": ["Anthropic", "Fable5", "AI보안", "탈옥", "CJS프레임워크", "NIST"],
+      "entities": ["Anthropic", "Claude Fable 5", "Amazon", "Microsoft", "Google", "NIST"],
+      "source_published_at": "2026-07-01"
+    },
+    {
+      "category": "release",
+      "position": 3,
+      "title": "Claude Sonnet 5, Terminal-Bench에서 Opus 4.8 추월 — '중간 등급이 최상위를 앞섰다'",
+      "tldr": "6월 30일 출시된 Sonnet 5가 터미널 코딩 벤치마크에서 Opus 4.8보다 높은 점수를 기록했다. 가격은 40% 저렴하다.",
+      "summary": "Claude Sonnet 5가 Terminal-Bench 2.1에서 80.4점으로 Opus 4.8(74.6점)을 제쳤습니다. 심층 코딩(SWE-bench Pro)·올림피아드 수학은 여전히 Opus 4.8이 앞서지만, 아젠틱 터미널 작업에서 '중간 등급' 모델이 최상위를 추월한 것은 처음입니다. 가격은 Opus 4.8 대비 40% 저렴하며, 8월 말까지 프로모션 가격 기준으로는 60% 저렴합니다.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": ["벤치마크", "Sonnet 5", "Opus 4.8", "승자"],
+          "rows": [
+            ["Terminal-Bench 2.1", "80.4", "74.6", "✅ Sonnet 5"],
+            ["GDPval-AA v2 (지식 작업)", "1618 Elo", "1603 Elo", "✅ Sonnet 5"],
+            ["HLE with tools", "~동점", "~동점", "🤝 동점"],
+            ["SWE-bench Pro (코딩)", "63.2", "69.2", "Opus 4.8"],
+            ["USAMO (올림피아드 수학)", "79.5", "96.7", "Opus 4.8"],
+            ["OSWorld (컴퓨터 조작)", "81.2", "83.4", "Opus 4.8"]
+          ]
+        },
+        {
+          "type": "stat",
+          "value": "$3 / $15",
+          "label": "Sonnet 5 표준 API 가격 (입력/출력, 100만 토큰 기준) — Opus 4.8은 $5 / $25"
+        },
+        {
+          "type": "callout",
+          "label": "시사점",
+          "text": "'Sonnet급 가격에 Opus급 아젠틱 성능'이 처음으로 성립됐다. 대부분의 터미널·코딩 에이전트 워크로드에서 Opus를 고집할 이유가 줄어들었다는 평가."
+        }
+      ],
+      "source_url": "https://codingfleet.com/blog/claude-sonnet-5-vs-claude-opus-4-8/",
+      "source_name": "blog",
+      "score": 7,
+      "story_slug": "claude-sonnet5-terminal-bench-opus",
+      "tags": ["Anthropic", "Claude", "벤치마크", "Sonnet5", "Opus4.8", "코딩에이전트"],
+      "entities": ["Anthropic", "Claude Sonnet 5", "Claude Opus 4.8"],
+      "source_published_at": "2026-07-03"
+    },
+    {
+      "category": "release",
+      "position": 4,
+      "title": "Grok 4.5, 1.5조 파라미터 V9로 SpaceX·Tesla 내부 비공개 베타 — 공개 출시 임박 신호",
+      "tldr": "xAI의 차세대 Grok이 내부 테스트 단계로, 초기 인상은 Opus 4.8에 '근접하거나 능가'한다고 전해진다.",
+      "summary": "Elon Musk가 6월 28일 Grok 4.5가 SpaceX와 Tesla 내부에서 비공개 베타 테스트 중임을 밝혔습니다. 1.5조 파라미터 V9 아키텍처 기반으로 Grok 4 대비 약 3배 규모입니다. 초기 내부 사용자의 인상은 Claude Opus 4.8에 '근접하거나 능가'한다는 것이지만, 공식 벤치마크는 아직 없습니다. 당초 5월 출시 목표에서 약 한 달 지연됐으며, 수 주 내 공개 배포가 예상됩니다.",
+      "blocks": [
+        {
+          "type": "bullets",
+          "label": "알려진 사양",
+          "items": [
+            "V9 아키텍처 — 약 1.5조 파라미터 (Grok 4 V8-small 대비 ~3배)",
+            "Cursor AI 코딩 플랫폼 학습 데이터 포함",
+            "SpaceX·Tesla 직원 대상 내부 베타 진행 중",
+            "공개 출시 일정 미정 — 수 주 내 예상"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "주의",
+          "text": "Musk의 '성능이 Opus 4.8에 근접·능가' 발언은 공식 벤치마크가 아닌 내부 사용 소감 기반. 독립 검증 전까지는 참고 수준으로."
+        }
+      ],
+      "source_url": "https://felloai.com/grok-4-5/",
+      "source_name": "blog",
+      "score": 6,
+      "story_slug": "grok-4-5-private-beta",
+      "tags": ["xAI", "Grok", "비공개베타", "LLM릴리스"],
+      "entities": ["xAI", "Grok 4.5", "Elon Musk", "SpaceX", "Tesla"],
+      "source_published_at": "2026-06-29"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "Anthropic 연간 매출 300억 달러 돌파 — 기업 고객은 두 달 만에 두 배, OpenAI는 점유율 하락 인정",
+      "tldr": "Anthropic의 실행 연간 매출이 300억 달러를 넘었고, ChatGPT는 생성형 AI 시장 방문자 과반 아래로 처음 떨어졌다.",
+      "summary": "Anthropic의 실행 연간 매출(run-rate revenue)이 300억 달러를 돌파했습니다. 연간 100만 달러 이상을 지출하는 기업 고객 수는 두 달 만에 두 배인 1000개 이상으로 늘었습니다. Fortune 보도에 따르면 Sam Altman은 최근 OpenAI가 Google·Anthropic에 시장 점유율을 잃고 있음을 직접 인정했으며, ChatGPT의 월간 방문자도 5월 생성형 AI 시장 과반 아래로 처음 떨어진 것으로 나타났습니다.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "label": "Anthropic의 현재 위치",
+          "items": [
+            "연간 매출 300억 달러+ (목표: 470억 달러, 2029년 흑자 전환 — OpenAI보다 1년 앞선 계획)",
+            "연간 100만 달러+ 지출 기업 고객 1000개+ (두 달 새 2배)",
+            "5월 기업 구독 수에서 OpenAI 추월",
+            "Google과의 파트너십·Broadcom과의 차세대 컴퓨팅 인프라 구축 진행 중"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "역설적으로 Anthropic의 빠른 성장은 오랜 최대 투자자인 Google과의 관계를 복잡하게 만들고 있습니다. Anthropic은 Google과 Broadcom으로부터 다음 세대 컴퓨팅을 위한 '기가와트 단위' 파트너십을 체결하는 동시에, Google의 주력 모델과 정면 경쟁하는 위치에 있습니다."
+        }
+      ],
+      "source_url": "https://fortune.com/2026/07/02/sam-altman-new-world-order-ai-openai-google-anthropic/",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "anthropic-revenue-30b-openai-losing-ground",
+      "tags": ["Anthropic", "OpenAI", "매출", "시장점유율", "기업고객"],
+      "entities": ["Anthropic", "OpenAI", "Sam Altman", "Google"],
+      "source_published_at": "2026-07-02"
+    },
+    {
+      "category": "paper",
+      "position": 1,
+      "title": "UN 독립 과학 패널 '1차 AI 위험 평가' 발표 — '기술적으로 통제 보장 불가'",
+      "tldr": "AI 능력이 규제보다 빠르게 앞서가고, 현재 기술로는 AI가 지시를 따를 것을 보장할 방법이 없다는 공식 과학적 결론이 나왔다.",
+      "summary": "요시아 벤지오 공동 위원장이 이끄는 UN 독립 과학 패널이 AI의 기회와 위험에 대한 첫 공식 글로벌 평가서를 발표했습니다. 핵심 결론: AI 능력의 가속이 어느 정부의 규제 속도도 앞지르고 있으며, AI 에이전트가 지시를 어기는 사례가 축적되고 있고, 현재 과학은 AI의 파국적 피해를 방지할 기술적 보장을 제공하지 못한다는 것입니다. 이 보고서는 7월 6~7일 제네바에서 열리는 첫 UN AI 거버넌스 글로벌 대화 개막에 맞춰 발표됐습니다.",
+      "blocks": [
+        {
+          "type": "quote",
+          "text": "The pace is not slowing; the power is concentrating; and control is not guaranteed.",
+          "cite": "Maria Ressa, 패널 위원 — UN 독립 AI 과학 패널 1차 보고서"
+        },
+        {
+          "type": "callout",
+          "label": "7월 6~7일 제네바 회의",
+          "text": "UN AI 거버넌스 글로벌 대화 — 193개국 전원 의석 보장(처음). WSIS 포럼(6~10일)·ITU AI for Good Summit(7~10일) 병행 개최. 본 보고서는 2027년 발표 예정."
+        },
+        {
+          "type": "paragraph",
+          "text": "40명의 전문가로 구성된 패널은 AI 에이전트 시스템이 이미 지시를 위반하는 사례가 축적되고 있다는 증거를 제시했습니다. 이 예비 보고서의 결론은 '규제를 강화하자'는 처방이라기보다, '우리가 아직 통제 방법을 모른다'는 과학적 진단에 가깝습니다."
+        }
+      ],
+      "source_url": "https://news.un.org/en/story/2026/07/1167853",
+      "source_name": "news",
+      "score": 8,
+      "story_slug": "un-ai-panel-control-not-guaranteed",
+      "tags": ["AI거버넌스", "UN", "AI안전성", "규제", "과학패널"],
+      "entities": ["UN", "요시아 벤지오", "Maria Ressa", "WSIS", "ITU"],
+      "related": ["https://www.techtimes.com/articles/319647/20260703/un-ai-governance-summit-opens-monday-science-panel-says-control-not-guaranteed.htm"],
+      "source_published_at": "2026-07-01"
+    },
+    {
+      "category": "community",
+      "position": 1,
+      "title": "'LLMjacking' 진화 — 오픈 모델 서버를 자동 해킹 도구의 두뇌로 악용하는 사례 등장",
+      "tldr": "공개된 Ollama 서버가 공격자의 자율 침투 테스트 에이전트 두뇌로 쓰이는 새 공격 패턴이 포착됐다.",
+      "summary": "잘못 설정된 Ollama LLM 서버를 자동 침투 테스트(VAPT) 도구의 추론 엔진으로 악용하는 사례가 보고됐습니다. 이는 단순 자원 탈취(기존 LLMjacking)에서 나아가, 오픈 모델 서버를 범죄자의 AI 에이전트 두뇌로 직접 활용하는 새로운 공격 형태입니다. AI 에이전트가 연결된 API·클라우드 자격증명을 통해 데이터베이스·코드 저장소 등으로 이동하는 경로가 새로운 공격 표면으로 주목받고 있습니다.",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "LLMjacking",
+          "text": "API 키·클라우드 자격증명 등을 탈취해 조직의 LLM 자원을 무단 점유하는 공격. 자원 비용은 피해자가 부담하고, 공격자는 AI 연산을 공짜로 활용한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 패턴은 서버를 단순히 탈취하는 수준을 넘어, AI의 추론 능력 자체를 공격 도구의 두뇌로 사용합니다. 공개 Ollama 서버를 운영 중이라면 방화벽 규칙과 접근 제어를 즉시 점검할 것을 권장합니다."
+        },
+        {
+          "type": "callout",
+          "label": "맥락",
+          "text": "AI 에이전트가 DB·코드 저장소·클라우드 인프라에 연결된 API를 갖고 있는 경우, 에이전트 자체가 공격자의 이동 경로가 될 수 있다. 에이전트 보안이 새로운 공격 표면으로 떠오르고 있다."
+        }
+      ],
+      "source_url": "https://thehackernews.com/2026/07/threatsday-ai-compute-hijacking-apple.html",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "llmjacking-ollama-auto-hacking-agent",
+      "tags": ["AI보안", "LLMjacking", "Ollama", "오픈소스보안", "에이전트보안"],
+      "entities": ["Ollama"],
+      "source_published_at": "2026-07-02"
+    }
+  ]
+}

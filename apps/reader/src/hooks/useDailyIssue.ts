@@ -6,6 +6,7 @@ import {
   fetchIssues,
   fetchFacets,
   fetchStory,
+  fetchToolUpdates,
   NotFoundError,
 } from "@/services/dailyNewsApi";
 import type {
@@ -17,6 +18,7 @@ import type {
   Facet,
   FacetKind,
   StoryResponse,
+  ToolUpdate,
 } from "@/types/news.types";
 
 const retryNon404 = (failureCount: number, error: Error): boolean => {
@@ -73,6 +75,19 @@ export function useFacets(kind: FacetKind): UseQueryResult<Facet[], Error> {
   return useQuery<Facet[], Error>({
     queryKey: ["facets", kind] as const,
     queryFn: () => fetchFacets(kind),
+    staleTime: 5 * 60 * 1000,
+    retry: retryNon404,
+  });
+}
+
+export function useToolUpdates(
+  toolKeys: readonly string[],
+): UseQueryResult<ToolUpdate[], Error> {
+  const sorted = [...toolKeys].sort();
+  return useQuery<ToolUpdate[], Error>({
+    queryKey: ["tool-updates", sorted.join(",")] as const,
+    queryFn: () => fetchToolUpdates(sorted),
+    enabled: sorted.length > 0,
     staleTime: 5 * 60 * 1000,
     retry: retryNon404,
   });

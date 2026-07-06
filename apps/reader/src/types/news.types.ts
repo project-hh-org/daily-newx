@@ -129,6 +129,21 @@ export const dailyPayloadSchema = z.object({
 });
 export type DailyPayload = z.infer<typeof dailyPayloadSchema>;
 
+// 도구별 최신 업데이트(루틴이 매일 생성) — "내 도구" 화면용.
+export const toolUpdateSchema = z.object({
+  id: z.string().nullable().default(null),
+  tool_key: z.string().min(1),
+  update_date: isoDate,
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  url: z.string().url(),
+});
+export type ToolUpdate = z.infer<typeof toolUpdateSchema>;
+
+export const toolUpdatesResponseSchema = z.object({
+  updates: z.array(toolUpdateSchema),
+});
+
 // 단건/타임라인 항목 — id 보장 + 자기 issue_date 포함.
 export const articleSchema = dailyItemSchema.extend({
   id: z.string().min(1),

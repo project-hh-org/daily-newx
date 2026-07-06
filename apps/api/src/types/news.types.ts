@@ -139,3 +139,17 @@ export type IngestResult = {
   issue_date: string;
   items_upserted: number;
 };
+
+// ── 도구 업데이트(루틴이 매일 생성) ──────────────────────────
+export const toolUpdateIngestSchema = z.object({
+  tool_key: z.string().min(1),
+  update_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "YYYY-MM-DD"),
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  url: httpUrlSchema,
+});
+export type ToolUpdateIngest = z.infer<typeof toolUpdateIngestSchema>;
+
+export const toolUpdatesIngestSchema = z.object({
+  updates: z.array(toolUpdateIngestSchema),
+});
