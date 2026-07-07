@@ -2,8 +2,8 @@
   "issue": {
     "issue_date": "2026-07-06",
     "issue_no": 21,
-    "intro": "오늘은 AI가 실험실 안으로 들어가고, 외교 무대 위로 올라서는 날입니다. Anthropic이 과학자를 위한 워크벤치 'Claude Science'를 정식 출시하면서 제약·생명과학 시장에 발을 내딛었고, 193개국이 모이는 유엔 AI 거버넌스 대화가 제네바에서 막을 올렸습니다. 한편 Claude Code 내부에서 중국 사용자를 감지하는 코드가 발견되며 Alibaba의 전면 금지로 이어지는 등, AI 도구를 둘러싼 신뢰의 문제가 수면 위로 떠오른 하루이기도 합니다.",
-    "outro": "AI는 이제 연구실에서, 법원에서, 외교 테이블에서 동시에 논의됩니다. 이번 주 가장 큰 변수는 둘입니다. GPT-5.6의 일반 공개와 백악관 자발적 AI 표준 발표 — 두 사안 모두 이번 주 안에 결론이 날 전망입니다. 내일도 이 흐름을 이어서 봐드리겠습니다.",
+    "intro": "오늘은 AI가 실험실, 외교 무대, 구독 요금표를 동시에 흔든 날입니다. Anthropic이 과학자용 워크벤치 'Claude Science'를 출시했고, 유엔 193개국이 제네바에서 AI 거버넌스를 논의했습니다. 한편 Claude Code에서 중국 사용자 탐지 코드가 발견되어 알리바바가 사용 금지를 예고했습니다. 그리고 내일(7월 7일)부터 Anthropic의 최강 모델 Fable 5는 구독 혜택에서 빠져 유료 API로 전환됩니다. Microsoft 365는 Copilot 통합을 이유로 가격을 최대 42% 올렸고, GPT-5.5 Codex에서는 추론 성능 저하 이슈가 불거졌습니다.",
+    "outro": "오늘의 핵심 키워드는 '접근성과 비용'입니다. Fable이 유료로 전환되고, Microsoft가 AI 세금을 부과하고, OpenAI의 Sol Ultra가 Codex에 들어오는 이 시점에, AI 도구의 가격은 더 이상 뒷전이 아닙니다. 내일 Fable 5의 전환이 실제로 어떤 파장을 낳는지, GPT-5.6 일반 공개 시점이 언제가 될지 주목해보세요.",
     "status": "published"
   },
   "items": [
@@ -34,33 +34,17 @@
           "label": "Novartis CEO 추정: AI 도입 시 단축될 신약 개발 기간"
         },
         {
-          "type": "stat",
-          "value": "8% → 16%",
-          "label": "AI 안전성 예측으로 기대되는 임상 성공률 개선"
-        },
-        {
           "type": "paragraph",
-          "text": "이 발표는 Google DeepMind·OpenAI와 함께 세 회사가 AI 신약 개발 시장을 놓고 경쟁한다는 의미이기도 합니다. OpenAI도 같은 날 계산 생물학용 벤치마크 'GeneBench-Pro'를 공개했습니다(아래 별도 항목 참고)."
+          "text": "이 발표는 Google DeepMind·OpenAI와 함께 세 회사가 AI 신약 개발 시장을 놓고 경쟁한다는 의미이기도 합니다. OpenAI도 같은 날 계산 생물학용 벤치마크 'GeneBench-Pro'를 공개했습니다."
         }
       ],
       "source_url": "https://www.anthropic.com/news/claude-science-ai-workbench",
       "source_name": "official-blog",
       "score": 9,
       "story_slug": "anthropic-claude-science-drug-discovery",
-      "tags": [
-        "Claude Science",
-        "신약개발",
-        "생명과학",
-        "Anthropic",
-        "AI워크벤치"
-      ],
-      "entities": [
-        "Anthropic",
-        "John Jumper",
-        "Novartis"
-      ],
+      "tags": ["Claude Science", "신약개발", "생명과학", "Anthropic", "AI워크벤치"],
+      "entities": ["Anthropic", "John Jumper", "Novartis"],
       "related": [
-        "https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/",
         "https://pharmaphorum.com/news/anthropic-launches-claude-science-pharma-researchers"
       ],
       "source_published_at": "2026-07-05"
@@ -70,209 +54,83 @@
       "position": 1,
       "title": "GPT-5.6 Sol·Terra·Luna 미리보기 전모 공개 — 일반 공개 이번 주 가시권",
       "tldr": "Sol이 터미널 벤치마크 96.7%로 신기록, Terra는 GPT-5.5 성능을 절반 가격에 — 이번 주 일반 공개 전망.",
-      "summary": "OpenAI가 6월 26일 제한 공개한 GPT-5.6 세 모델(Sol·Terra·Luna)의 상세 스펙이 확인됐습니다. Sol은 명령줄 작업 평가 'Terminal-Bench 2.1'에서 96.7%를 기록해 기존 최고 기록을 경신했고, Terra는 GPT-5.5와 유사한 수준의 성능을 절반 비용으로 제공합니다. Sam Altman이 '2주 내 일반 공개'를 예고했고, 그 기한이 이번 주 안에 도래합니다. 현재는 미국 정부가 승인한 약 20개 파트너 기관만 접근 가능합니다.",
+      "summary": "OpenAI가 6월 26일 제한 공개한 GPT-5.6 세 모델(Sol·Terra·Luna)의 상세 스펙이 확인됐습니다. Sol은 명령줄 작업 평가 'Terminal-Bench 2.1'에서 96.7%를 기록해 기존 최고 기록을 경신했고, Terra는 GPT-5.5와 유사한 수준의 성능을 절반 비용으로 제공합니다. Sam Altman이 '2주 내 일반 공개'를 예고했고, 그 기한이 이번 주 안에 도래합니다.",
       "blocks": [
         {
           "type": "table",
-          "headers": [
-            "모델",
-            "포지션",
-            "주목 수치",
-            "가격(입력/출력, 1M 토큰)"
-          ],
+          "headers": ["모델", "포지션", "주목 수치", "가격(입력/출력, 1M 토큰)"],
           "rows": [
-            [
-              "GPT-5.6 Sol",
-              "최고 성능 플래그십",
-              "Terminal-Bench 2.1 96.7% (신기록)",
-              "$5 / $30"
-            ],
-            [
-              "GPT-5.6 Terra",
-              "일상 업무 밸런스형",
-              "GPT-5.5급 성능, 2배 저렴",
-              "$2.50 / $15"
-            ],
-            [
-              "GPT-5.6 Luna",
-              "속도·비용 최우선",
-              "세 모델 중 가장 빠르고 저렴",
-              "$1 / $6"
-            ]
+            ["GPT-5.6 Sol", "최고 성능 플래그십", "Terminal-Bench 2.1 96.7% (신기록)", "$5 / $30"],
+            ["GPT-5.6 Terra", "일상 업무 밸런스형", "GPT-5.5급 성능, 2배 저렴", "$2.50 / $15"],
+            ["GPT-5.6 Luna", "속도·비용 최우선", "세 모델 중 가장 빠르고 저렴", "$1 / $6"]
           ]
-        },
-        {
-          "type": "paragraph",
-          "text": "가장 주목할 변수는 Terra의 가격입니다. Claude Sonnet 5 도입가($2/$10)와 비교하면 Terra($2.50/$15)는 약간 비싸지만, 'GPT-5.5급 성능'이라는 포지션이 맞다면 동급 대비 절반 가격이라는 의미입니다. 일반 공개 시 Sonnet 5 vs Terra 구도가 기업 API 비용 비교의 핵심 축이 될 전망입니다."
         },
         {
           "type": "callout",
           "label": "Sol에 제한이 걸린 이유",
-          "text": "Sol의 Terminal-Bench 2.1 점수(96.7%)가 미국 정부의 비공개 사이버 보안 임계치를 넘어서, 정부가 배포 전 30일 검토를 요청했습니다. Fable 5가 겪은 20일 수출 통제와 같은 구조입니다."
+          "text": "Sol의 Terminal-Bench 2.1 점수(96.7%)가 미국 정부의 비공개 사이버 보안 임계치를 넘어서, 정부가 배포 전 30일 검토를 요청했습니다."
         },
         {
           "type": "paragraph",
-          "text": "Altman은 '2주 내 일반 공개'를 6월 26일에 언급했습니다. 해당 기한이 이번 주(7월 7~10일경)에 다가옵니다. 또한 OpenAI는 Sol을 초당 최대 750 토큰 처리 속도로 Cerebras 하드웨어 위에서 제공하는 옵션도 7월 중 선보일 예정입니다."
+          "text": "Altman은 '2주 내 일반 공개'를 6월 26일에 언급했습니다. 해당 기한이 이번 주(7월 7~10일경)에 다가옵니다."
         }
       ],
       "source_url": "https://openai.com/index/previewing-gpt-5-6-sol/",
       "source_name": "official-blog",
       "score": 9,
       "story_slug": "openai-gpt56-sol-terra-luna-details",
-      "tags": [
-        "GPT-5.6",
-        "OpenAI",
-        "모델출시",
-        "가격정책",
-        "벤치마크"
-      ],
-      "entities": [
-        "OpenAI",
-        "Sam Altman",
-        "Cerebras"
-      ],
+      "tags": ["GPT-5.6", "OpenAI", "모델출시", "가격정책", "벤치마크"],
+      "entities": ["OpenAI", "Sam Altman", "Cerebras"],
       "related": [
-        "https://www.datacamp.com/blog/gpt-5-6-sol-luna-terra",
-        "https://venturebeat.com/technology/openai-unveils-gpt-5-6-sol-terra-and-luna-models-but-only-accessible-to-limited-preview-partners-for-now-per-us-gov"
+        "https://www.datacamp.com/blog/gpt-5-6-sol-luna-terra"
       ],
       "source_published_at": "2026-07-05"
-    },
-    {
-      "category": "community",
-      "position": 1,
-      "title": "Claude Code 안에 중국 사용자 탐지 코드가 있었다 — 알리바바, 7월 10일부터 전면 금지",
-      "tldr": "스테가노그래피 기법으로 중국 사용자 여부를 감지해 숨겨 전송하는 코드 발견, 알리바바는 직원 사용 금지 조치.",
-      "summary": "보안 연구자들이 Claude Code 버전 2.1.91(4월 출시)부터 시스템 시간대·프록시 설정으로 중국 사용자를 탐지하고, 그 결과를 문장 부호를 미세하게 바꾸는 스테가노그래피 기법으로 몰래 전송하는 코드가 들어있었다고 공개했습니다. Anthropic은 '무단 재판매·모델 증류 방지 실험'이었다고 해명했지만, 알리바바는 7월 10일부터 Claude Code 사용을 전면 금지했습니다.",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Claude Code 2.1.91 버전부터 시스템 시간대가 중국이면 날짜 형식이 대시(-)에서 슬래시(/)로 바뀌고, 내부 프롬프트 일부 문장에서 아포스트로피(')가 세 가지 유사 유니코드 문자 중 하나로 교체된다는 사실이 발견됐습니다. 사람 눈에는 보이지 않지만 서버에서는 구별할 수 있는 방식입니다."
-        },
-        {
-          "type": "definition",
-          "term": "스테가노그래피(Steganography)란?",
-          "text": "정보를 다른 데이터 안에 숨겨 전송하는 기법입니다. 이번 경우에는 '텍스트의 특정 문자를 눈에 보이지 않는 유사 문자로 바꿔' 탐지 결과를 숨긴 셈입니다."
-        },
-        {
-          "type": "timeline",
-          "events": [
-            {
-              "date": "4월 2일",
-              "text": "Claude Code 2.1.91 출시 (해당 코드 포함 추정)"
-            },
-            {
-              "date": "6월 24일",
-              "text": "Anthropic, Alibaba의 대규모 증류 공격(2만5천 계정·2880만 대화) 미 상원에 고발"
-            },
-            {
-              "date": "6월 30일",
-              "text": "Reddit에서 역공학으로 탐지 코드 발견 주장 확산"
-            },
-            {
-              "date": "7월 1일",
-              "text": "Anthropic, '계정 남용 방지 실험'으로 해명, 제거 예정 밝힘"
-            },
-            {
-              "date": "7월 10일",
-              "text": "알리바바, 직원 Claude Code 사용 전면 금지 예고"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "text": "이 사건의 배경에는 Anthropic과 알리바바의 갈등이 있습니다. Anthropic은 6월 24일 알리바바 산하 Qwen AI 연구소가 2만5천여 개의 가짜 계정으로 2880만 번의 대화를 생성해 Claude의 역량을 무단으로 복제했다(모델 증류)고 미 상원에 서한을 보냈습니다. 알리바바는 이에 반박하지 않은 채 오히려 Claude Code 금지로 응수한 셈입니다."
-        },
-        {
-          "type": "callout",
-          "label": "논란의 핵심",
-          "text": "보안 침해와 정당한 안티어뷰즈 조치의 경계를 어떻게 볼 것인가입니다. Hacker News에서는 '설령 이유가 있더라도 사용자 동의 없는 환경 탐지는 옵트인이어야 한다'는 의견이 지배적이었습니다."
-        }
-      ],
-      "source_url": "https://thenextweb.com/news/alibaba-bans-claude-code-anthropic-tracking-chinese-users",
-      "source_name": "news",
-      "score": 9,
-      "story_slug": "claude-code-steganography-alibaba-ban",
-      "tags": [
-        "Claude Code",
-        "보안",
-        "알리바바",
-        "Anthropic",
-        "모델증류",
-        "스테가노그래피"
-      ],
-      "entities": [
-        "Anthropic",
-        "Alibaba",
-        "Qwen",
-        "Hacker News"
-      ],
-      "related": [
-        "https://www.tomshardware.com/tech-industry/artificial-intelligence/alibaba-bans-anthropics-claude-code-after-an-alleged-hidden-china-detection-backdoor-is-uncovered-employees-told-to-switch-to-qoder-as-the-rift-between-the-firms-widens",
-        "https://cybersecuritynews.com/alibaba-to-ban-claude-code/"
-      ],
-      "follow_up_of": "anthropic-alibaba-distillation",
-      "source_published_at": "2026-07-05"
-    },
-    {
-      "category": "business",
-      "position": 1,
-      "title": "유엔, 193개국 모아 AI 거버넌스 논의 시작 — 오늘·내일 제네바 개막",
-      "tldr": "유엔 최초의 범국가적 AI 거버넌스 대화가 오늘(7월 6~7일) 제네바에서 열렸습니다.",
-      "summary": "유엔 총회가 설립한 '글로벌 AI 거버넌스 대화'가 7월 6~7일 스위스 제네바 Palexpo에서 열립니다. 193개 유엔 회원국과 산업계·시민사회·학계가 참여하며, 이틀간 AI의 안전하고 공정한 활용 방향을 논의합니다. 구속력 있는 규범을 만드는 기구는 아니지만, 국제 AI 규범 형성에 중요한 '이정표 논의'가 될 전망입니다.",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "text": "이번 대화는 인터넷 거버넌스 포럼(IGF)을 모델로 설계됐습니다. 결론이 법적 구속력을 갖지는 않지만 공동의장 요약문이 나오고, AI 관련 공통 언어와 규범 초안이 형성되는 효과를 냅니다."
-        },
-        {
-          "type": "bullets",
-          "label": "참석 주요 인물",
-          "items": [
-            "요슈아 벤지오 (튜링상 수상, AI 안전 연구자)",
-            "레이 커즈와일, 스튜어트 러셀",
-            "폴 카가메 르완다 대통령, 알라르 카리스 에스토니아 대통령",
-            "마크 베니오프(Salesforce), 브래드 스미스(Microsoft), 워너 보겔스(AWS)"
-          ]
-        },
-        {
-          "type": "callout",
-          "label": "맥락: 왜 지금?",
-          "text": "각국에 40개 이상의 AI 거버넌스 지침이 존재하지만 서로 제각각이고, 실효성 검증도 드뭅니다. 미국의 Claude Fable 5 수출 통제(6월)와 OpenAI GPT-5.6 제한 배포가 보여주듯, AI의 지정학적 무기화가 현실화되는 시점에 전 지구적 조율 기구가 필요하다는 공감대가 이번 회의를 소집했습니다."
-        },
-        {
-          "type": "paragraph",
-          "text": "이번 대화는 같은 주 열리는 WSIS 포럼(7월 6~10일)·ITU AI for Good 글로벌 서밋(7월 7~10일)과 동시에 진행됩니다."
-        }
-      ],
-      "source_url": "https://www.un.org/global-dialogue-ai-governance/en",
-      "source_name": "official-blog",
-      "score": 8,
-      "story_slug": "un-global-dialogue-ai-governance-geneva-2026",
-      "tags": [
-        "AI거버넌스",
-        "유엔",
-        "국제정책",
-        "제네바",
-        "규제"
-      ],
-      "entities": [
-        "유엔",
-        "UNESCO",
-        "ITU",
-        "요슈아 벤지오"
-      ],
-      "source_published_at": "2026-07-06"
     },
     {
       "category": "release",
       "position": 2,
+      "title": "Fable 5, 내일부터 Max 구독에서 제외 — 유료 API 전환 'D-1'",
+      "tldr": "7월 7일부터 Claude Fable 5는 Max($200/월) 구독 범위를 벗어나 API 과금으로 전환됩니다.",
+      "summary": "Anthropic이 발표한 일정에 따라 7월 7일(내일)부터 Claude Fable 5는 Claude Max 구독(월 $200)에 포함되지 않습니다. 이후 Fable 5를 쓰려면 API를 직접 호출하고 토큰당 요금을 내야 합니다. 개발자들 사이에서 이 날을 '페이블팔립스(Fablepocalypse)'라고 부르며, 지금 막바지 활용에 나선 사람들이 많습니다.",
+      "blocks": [
+        {
+          "type": "callout",
+          "label": "얼마나 비싸지나?",
+          "text": "Fable 5의 API 요금은 입력 $15/1M 토큰, 출력 $75/1M 토큰으로 알려져 있습니다. 이전까지 Max 구독자는 월 $200에 무제한(한도 내)으로 쓸 수 있었으나, 이제는 각 요청마다 비용이 발생합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Simon Willison(sqlite-utils 개발자)은 마감 전날까지 Claude Code로 Fable 5를 활용해 오픈소스 프로젝트를 완성했습니다. 그가 쓴 세션의 추산 비용은 $149.25 — 구독 덕분에 이 비용을 직접 내지 않은 것입니다. 전환 이후 동일 작업을 반복하면 그대로 청구됩니다."
+        },
+        {
+          "type": "definition",
+          "term": "왜 전환하나?",
+          "text": "Anthropic은 'Fable 5를 더 많은 사람이 API를 통해 선택적으로 사용할 수 있게 재배포(redeploying)한다'는 취지를 밝혔습니다. 구독 고객층을 유지하되 Fable의 고비용 연산을 표준 구독 번들에서 분리하는 전략입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Max 구독자들은 전환 이후에도 Claude Sonnet 5(입력 $2/출력 $10, 1M 토큰)와 같은 다른 모델은 기존 방식대로 사용할 수 있습니다."
+        }
+      ],
+      "source_url": "https://www.anthropic.com/news/redeploying-fable-5",
+      "source_name": "official-blog",
+      "score": 9,
+      "story_slug": "fable5-paywall-july7-fablepocalypse",
+      "tags": ["Fable 5", "Anthropic", "요금정책", "Claude Max", "API"],
+      "entities": ["Anthropic"],
+      "related": ["https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/"],
+      "source_published_at": "2026-07-06"
+    },
+    {
+      "category": "release",
+      "position": 3,
       "title": "Grok 4.5, V9 아키텍처 기반 비공개 베타 — Grok 5는 Q3 출시 가능성 3%",
       "tldr": "1.5조 파라미터 V9 아키텍처 기반 Grok 4.5가 Tesla·SpaceX 내부 테스트 중, Grok 5는 한참 멀었습니다.",
-      "summary": "xAI가 1.5조 파라미터의 새 V9 아키텍처를 기반으로 한 Grok 4.5를 SpaceX·Tesla 내부 비공개 베타로 운용 중입니다. 훈련 데이터에 코딩 도구 Cursor의 데이터가 포함돼 코딩 성능이 크게 향상됐다는 평가입니다. Grok 5는 1.5GW 규모의 Colossus 2에서 훈련 중이며, Polymarket 3분기 출시 계약은 3% 확률로 마감됐습니다.",
+      "summary": "xAI가 1.5조 파라미터의 새 V9 아키텍처를 기반으로 한 Grok 4.5를 SpaceX·Tesla 내부 비공개 베타로 운용 중입니다. 훈련 데이터에 코딩 도구 Cursor의 데이터가 포함돼 코딩 성능이 크게 향상됐다는 평가입니다.",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "V9는 이전 V8-small 기반 Grok 4 계열 대비 파라미터가 약 3배(1.5조) 늘어난 완전히 새로운 아키텍처입니다. 5월 26일 훈련을 마쳤고, 6월 말 일론 머스크가 SpaceX·Tesla 내부 베타를 시작했다고 밝혔습니다. Cursor 데이터를 학습에 활용한 것이 특징입니다."
+          "text": "V9는 이전 V8-small 기반 Grok 4 계열 대비 파라미터가 약 3배(1.5조) 늘어난 완전히 새로운 아키텍처입니다. 5월 26일 훈련을 마쳤고, 6월 말 일론 머스크가 SpaceX·Tesla 내부 베타를 시작했다고 밝혔습니다."
         },
         {
           "type": "prosCons",
@@ -283,8 +141,7 @@
           ],
           "cons": [
             "일반 공개 일정 미발표",
-            "Grok 5는 Q4 2026조차 불확실",
-            "현재 최신 공개 모델은 Amazon Bedrock의 Grok 4.3 ($1.25/$2.50/M)"
+            "Grok 5는 Q4 2026조차 불확실"
           ]
         },
         {
@@ -297,19 +154,164 @@
       "source_name": "official-blog",
       "score": 7,
       "story_slug": "grok-45-v9-beta-grok5-timeline",
-      "tags": [
-        "Grok",
-        "xAI",
-        "V9",
-        "모델출시"
+      "tags": ["Grok", "xAI", "V9", "모델출시"],
+      "entities": ["xAI", "일론 머스크", "SpaceX", "Tesla", "Cursor"],
+      "source_published_at": "2026-07-05"
+    },
+    {
+      "category": "release",
+      "position": 4,
+      "title": "GPT-5.6 Sol Ultra, Codex에 통합 예정 — 가장 강력한 변종이 코딩 에이전트로",
+      "tldr": "GPT-5.6 중 최상위 모델 Sol Ultra가 OpenAI의 코딩 에이전트 Codex에 탑재될 예정이라는 소식이 HN에서 화제.",
+      "summary": "GPT-5.6 Sol의 최상위 변종 'Sol Ultra'가 OpenAI의 Codex(코딩 에이전트 플랫폼)에 통합될 것이라는 정보가 공개됐습니다. HN에서 183포인트를 받으며 빠르게 화제가 됐습니다. 현재 제한 공개 중인 Sol 계열이 코딩 에이전트의 두뇌로 들어온다면, Codex의 성능은 다시 한번 도약할 것으로 기대됩니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Sol Ultra는 Terminal-Bench 2.1에서 96.7%를 기록한 Sol 계열의 최상위 변종으로 알려져 있습니다. Codex는 지금까지 GPT-5.5를 기반으로 동작했는데, Sol Ultra로 업그레이드될 경우 복잡한 멀티스텝 코딩 작업에서 체감 성능 차이가 상당할 것으로 예상됩니다."
+        },
+        {
+          "type": "callout",
+          "label": "시장 맥락",
+          "text": "Claude Code(Fable 5 기반)가 내일부터 유료 전환되는 시점에, Codex가 Sol Ultra를 탑재하면 개발자들의 선택지 비교가 다시 달라집니다. Claude Code vs Codex Sol Ultra 구도가 이번 주 핵심 경쟁입니다."
+        }
       ],
-      "entities": [
-        "xAI",
-        "일론 머스크",
-        "SpaceX",
-        "Tesla",
-        "Cursor"
+      "source_url": "https://news.ycombinator.com/item?id=48799614",
+      "source_name": "hn-algolia",
+      "score": 8,
+      "story_slug": "gpt56-sol-ultra-codex-integration",
+      "tags": ["GPT-5.6", "Sol Ultra", "Codex", "OpenAI", "코딩에이전트"],
+      "entities": ["OpenAI"],
+      "follow_up_of": "openai-gpt56-sol-terra-luna-details",
+      "source_published_at": "2026-07-06"
+    },
+    {
+      "category": "release",
+      "position": 5,
+      "title": "Google Gemini 3.5 Pro, 이달 일반 공개 재확인 — 200만 토큰 컨텍스트 앞세워",
+      "tldr": "6월 출시 예고가 미뤄진 Gemini 3.5 Pro, Google이 7월 GA 재확인.",
+      "summary": "Google이 5월 I/O에서 발표한 Gemini 3.5 Pro의 일반 공개(GA)가 6월에서 7월로 한 차례 밀렸습니다. 현재 일부 Vertex AI 엔터프라이즈 고객 대상 제한 프리뷰 상태이며, Google이 7월 GA를 재확인했습니다. 최대 200만 토큰 컨텍스트 창이 주요 차별점입니다.",
+      "blocks": [
+        {
+          "type": "bullets",
+          "label": "주요 특징",
+          "items": [
+            "컨텍스트 창 2,000,000 토큰 — 대부분 경쟁 모델의 2배",
+            "문서·이미지·음성 멀티모달 통합 지원",
+            "Vertex AI 엔터프라이즈 고객 제한 프리뷰 진행 중"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Fable 5 유료 전환, Claude Sonnet 5 출시(6/30), GPT-5.6 제한 공개(6/26)에 이어 Gemini 3.5 Pro가 GA되면 이번 달은 프론티어 모델이 일제히 갱신되는 이례적인 달이 됩니다."
+        }
       ],
+      "source_url": "https://findskill.ai/blog/gemini-3-5-pro-release-date/",
+      "source_name": "news",
+      "score": 6,
+      "story_slug": "gemini-35-pro-july-ga",
+      "tags": ["Gemini", "Google", "모델출시", "컨텍스트창"],
+      "entities": ["Google", "Vertex AI"],
+      "source_published_at": "2026-07-05"
+    },
+    {
+      "category": "community",
+      "position": 1,
+      "title": "Claude Code 안에 중국 사용자 탐지 코드가 있었다 — 알리바바, 7월 10일부터 전면 금지",
+      "tldr": "스테가노그래피 기법으로 중국 사용자 여부를 감지해 숨겨 전송하는 코드 발견, 알리바바는 직원 사용 금지 조치.",
+      "summary": "보안 연구자들이 Claude Code 버전 2.1.91부터 시스템 시간대·프록시 설정으로 중국 사용자를 탐지하고, 그 결과를 문장 부호를 미세하게 바꾸는 스테가노그래피 기법으로 몰래 전송하는 코드가 들어있었다고 공개했습니다. Anthropic은 '무단 재판매·모델 증류 방지 실험'이었다고 해명했지만, 알리바바는 7월 10일부터 Claude Code 사용을 전면 금지했습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude Code 2.1.91 버전부터 시스템 시간대가 중국이면 날짜 형식이 대시(-)에서 슬래시(/)로 바뀌고, 내부 프롬프트 일부 문장에서 아포스트로피(')가 세 가지 유사 유니코드 문자 중 하나로 교체된다는 사실이 발견됐습니다."
+        },
+        {
+          "type": "definition",
+          "term": "스테가노그래피(Steganography)란?",
+          "text": "정보를 다른 데이터 안에 숨겨 전송하는 기법입니다. 이번 경우에는 '텍스트의 특정 문자를 눈에 보이지 않는 유사 문자로 바꿔' 탐지 결과를 숨긴 셈입니다."
+        },
+        {
+          "type": "timeline",
+          "events": [
+            {"date": "4월 2일", "text": "Claude Code 2.1.91 출시 (해당 코드 포함 추정)"},
+            {"date": "6월 24일", "text": "Anthropic, Alibaba의 대규모 증류 공격(2만5천 계정·2880만 대화) 미 상원에 고발"},
+            {"date": "6월 30일", "text": "Reddit에서 역공학으로 탐지 코드 발견 주장 확산"},
+            {"date": "7월 1일", "text": "Anthropic, '계정 남용 방지 실험'으로 해명, 제거 예정 밝힘"},
+            {"date": "7월 10일", "text": "알리바바, 직원 Claude Code 사용 전면 금지 예고"}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "논란의 핵심",
+          "text": "보안 침해와 정당한 안티어뷰즈 조치의 경계를 어떻게 볼 것인가입니다. Hacker News에서는 '설령 이유가 있더라도 사용자 동의 없는 환경 탐지는 옵트인이어야 한다'는 의견이 지배적이었습니다."
+        }
+      ],
+      "source_url": "https://thenextweb.com/news/alibaba-bans-claude-code-anthropic-tracking-chinese-users",
+      "source_name": "news",
+      "score": 9,
+      "story_slug": "claude-code-steganography-alibaba-ban",
+      "tags": ["Claude Code", "보안", "알리바바", "Anthropic", "모델증류", "스테가노그래피"],
+      "entities": ["Anthropic", "Alibaba", "Qwen", "Hacker News"],
+      "related": [
+        "https://www.tomshardware.com/tech-industry/artificial-intelligence/alibaba-bans-anthropics-claude-code-after-an-alleged-hidden-china-detection-backdoor-is-uncovered-employees-told-to-switch-to-qoder-as-the-rift-between-the-firms-widens"
+      ],
+      "follow_up_of": "anthropic-alibaba-distillation",
+      "source_published_at": "2026-07-05"
+    },
+    {
+      "category": "community",
+      "position": 2,
+      "title": "GPT-5.5 Codex, 추론 토큰 클러스터링이 성능 저하 유발 — GitHub 이슈 361포인트",
+      "tldr": "Codex에서 GPT-5.5 추론 토큰이 뭉쳐지는 현상이 성능 저하를 일으킨다는 GitHub 이슈가 큰 관심을 모았습니다.",
+      "summary": "OpenAI Codex GitHub 저장소에서 'GPT-5.5의 reasoning-token clustering이 성능 저하를 유발할 수 있다'는 이슈가 제기돼 Hacker News에서 361포인트를 받으며 크게 화제가 됐습니다. 특정 유형의 코딩 작업에서 모델이 이전보다 느리거나 부정확해진다는 사용자 경험들이 모였습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Reasoning token clustering은 모델이 내부 사고 과정(reasoning)을 수행할 때 토큰이 특정 패턴으로 묶이는 현상입니다. 이 클러스터링이 비효율적으로 발생하면 실제 코드 생성에 할당되는 주의(attention) 자원이 줄어들어 품질이 저하될 수 있습니다."
+        },
+        {
+          "type": "callout",
+          "label": "GPT-5.6 Sol Ultra 통합과의 연결",
+          "text": "GPT-5.5의 성능 이슈가 공개된 같은 날 GPT-5.6 Sol Ultra의 Codex 통합 계획도 나왔습니다. OpenAI가 이 문제를 인지하고 더 강력한 모델로 교체하는 방향을 택한 것일 수 있습니다."
+        }
+      ],
+      "source_url": "https://github.com/openai/codex/issues/30364",
+      "source_name": "github-releases",
+      "score": 8,
+      "story_slug": "gpt55-codex-reasoning-token-degradation",
+      "tags": ["GPT-5.5", "Codex", "OpenAI", "성능이슈", "추론토큰"],
+      "entities": ["OpenAI", "Hacker News"],
+      "source_published_at": "2026-07-05"
+    },
+    {
+      "category": "community",
+      "position": 3,
+      "title": "sqlite-utils 4.0rc2, Claude Fable가 $149 들여 완성 — '일몰 전 막판 질주'",
+      "tldr": "Simon Willison이 Fable 구독 종료 전 이틀 남겨두고 오픈소스 4.0 RC2를 AI와 함께 완성한 과정을 공개.",
+      "summary": "오픈소스 개발자 Simon Willison이 SQLite 유틸리티 라이브러리 sqlite-utils 4.0rc2를 Claude Fable 5와 함께 완성했습니다. 37번의 프롬프트와 34개 커밋, API 기준 $149.25 어치 작업으로 주요 버그 수정과 트랜잭션 모델 재설계를 마쳤습니다. Fable 5가 구독에서 빠지기 며칠 전의 '마감 질주'이기도 합니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Fable 5는 이번 RC에서 data-loss 버그(delete_where()가 커밋하지 않아 연결이 오염되는 문제)를 스스로 발견하고 수정했습니다. Willison은 'GPT-5.5로 최종 검토를 교차 진행한 것도 효과가 있었다'며 서로 다른 모델이 서로의 작업을 검토하는 방식을 추천했습니다."
+        },
+        {
+          "type": "stat",
+          "value": "$149.25",
+          "label": "Fable 5 구독 외 실제 API 비용 기준으로 추산된 이번 RC2 작업 비용"
+        },
+        {
+          "type": "callout",
+          "label": "내일부터는?",
+          "text": "7월 7일 Fable 5 유료 전환 이후 동일한 작업을 반복하면 $149.25가 그대로 청구됩니다. Willison은 'Max $200 구독이 정말 가치 있었다'고 남겼습니다."
+        }
+      ],
+      "source_url": "https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/",
+      "source_name": "blog",
+      "score": 7,
+      "story_slug": "sqlite-utils-4rc2-claude-fable",
+      "tags": ["Claude Fable", "오픈소스", "sqlite", "코딩에이전트", "AI비용"],
+      "entities": ["Simon Willison", "Anthropic"],
+      "related": ["https://github.com/simonw/sqlite-utils/pull/767"],
+      "follow_up_of": "fable5-paywall-july7-fablepocalypse",
       "source_published_at": "2026-07-05"
     },
     {
@@ -317,15 +319,11 @@
       "position": 1,
       "title": "OpenAI, 계산 생물학용 벤치마크 'GeneBench-Pro' 공개 — 생물학 벤치마크 경쟁 공식화",
       "tldr": "OpenAI가 AI 에이전트 계산 생물학 능력을 측정하는 벤치마크를 출시, Anthropic VirBench와 정면 경쟁.",
-      "summary": "OpenAI가 AI 에이전트가 계산 생물학 과제를 얼마나 잘 수행하는지 평가하는 연구용 벤치마크 'GeneBench-Pro'를 발표했습니다. 대표 문제는 오픈소스로 공개했습니다. Anthropic이 6월에 공개한 VirBench(AI 바이러스 연구 정확도 벤치마크)에 대한 직접적인 응수로, 생물학이 코딩에 이어 차세대 AI 벤치마크 전장이 됐음을 공식화했습니다.",
+      "summary": "OpenAI가 AI 에이전트가 계산 생물학 과제를 얼마나 잘 수행하는지 평가하는 연구용 벤치마크 'GeneBench-Pro'를 발표했습니다. Anthropic이 6월에 공개한 VirBench에 대한 직접적인 응수로, 생물학이 코딩에 이어 차세대 AI 벤치마크 전장이 됐음을 공식화했습니다.",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "GeneBench-Pro는 기존 GeneBench에서 난이도를 높인 버전입니다. AI 에이전트가 데이터에서 패턴을 발견할 때 '이게 생물학적 신호인지, 측정 노이즈인지'를 판단하는 불확실성 속 의사결정 능력을 집중 평가합니다."
-        },
-        {
-          "type": "paragraph",
-          "text": "Anthropic은 6월 VirBench를 발표하며 결정론적 도구 조합이 AI 생물학 정확도를 16.9%에서 92.8%로 끌어올릴 수 있음을 보였습니다. Claude Science 출시가 그 실용화 버전이라면, OpenAI의 GeneBench-Pro 공개는 '우리도 이 시장을 평가 기준부터 장악하겠다'는 선언입니다."
+          "text": "GeneBench-Pro는 AI 에이전트가 데이터에서 패턴을 발견할 때 '이게 생물학적 신호인지, 측정 노이즈인지'를 판단하는 불확실성 속 의사결정 능력을 집중 평가합니다."
         },
         {
           "type": "callout",
@@ -337,68 +335,78 @@
       "source_name": "news",
       "score": 7,
       "story_slug": "openai-genebench-pro-biology-benchmark",
-      "tags": [
-        "벤치마크",
-        "계산생물학",
-        "OpenAI",
-        "AI연구"
-      ],
-      "entities": [
-        "OpenAI",
-        "Anthropic"
-      ],
-      "related": [],
+      "tags": ["벤치마크", "계산생물학", "OpenAI", "AI연구"],
+      "entities": ["OpenAI", "Anthropic"],
       "follow_up_of": "anthropic-claude-science-drug-discovery",
       "source_published_at": "2026-07-05"
     },
     {
-      "category": "release",
-      "position": 3,
-      "title": "Google Gemini 3.5 Pro, 이달 일반 공개 재확인 — 200만 토큰 컨텍스트 앞세워",
-      "tldr": "6월 출시 예고가 미뤄진 Gemini 3.5 Pro, Google이 7월 GA 재확인.",
-      "summary": "Google이 5월 I/O에서 발표한 Gemini 3.5 Pro의 일반 공개(GA)가 6월에서 7월로 한 차례 밀렸습니다. 현재 일부 Vertex AI 엔터프라이즈 고객 대상 제한 프리뷰 상태이며, Google이 7월 GA를 재확인했습니다. 최대 200만 토큰 컨텍스트 창(Claude Opus 4.8의 2배 수준)이 주요 차별점입니다.",
+      "category": "paper",
+      "position": 2,
+      "title": "AI 튜터 Dartmouth 실험 — 0.71~1.30 표준편차 학습 효과, 역대 최고 수준",
+      "tldr": "Dartmouth 강의에서 AI 튜터가 0.71~1.30 SD 학습 향상 효과를 냈다는 연구가 HN 150포인트를 받으며 화제.",
+      "summary": "Dartmouth 대학교 수업에서 AI 튜터를 활용한 결과 학생 학습 효과가 통제 집단 대비 0.71~1.30 표준편차(SD) 향상됐다는 연구 결과가 발표됐습니다. 교육 분야에서 0.4 SD만 돼도 '의미 있는 효과'로 여기는 것을 감안하면 이 수치는 매우 높습니다. Hacker News에서 150포인트와 90개의 댓글이 달렸습니다.",
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Gemini 3.5 Pro는 5월 19일 I/O에서 발표됐고, 당초 6월 GA를 목표로 했으나 품질 개선을 이유로 7월로 일정이 조정됐습니다. Google은 구체적인 날짜를 공개하지 않고 있습니다."
+          "type": "definition",
+          "term": "표준편차(SD)란?",
+          "text": "교육 연구에서 학습 효과의 크기를 나타낼 때 쓰는 단위입니다. 0.2 SD는 '작은 효과', 0.5 SD는 '중간 효과', 0.8 SD 이상은 '큰 효과'로 분류됩니다. 1.0 SD를 넘는 효과는 교육 연구에서 드물게 나타납니다."
         },
         {
+          "type": "stat",
+          "value": "0.71 ~ 1.30 SD",
+          "label": "Dartmouth 강의에서 AI 튜터가 만들어낸 학습 향상 효과 (측정 방법에 따라 범위)"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 연구는 AI가 단순 정보 검색을 돕는 것을 넘어, 교사처럼 학생별 수준에 맞춰 반복 설명하고 피드백을 즉각 줄 때 나타나는 효과를 실증합니다. HN 댓글에서는 '인과관계인가, 상관관계인가', '교수를 대체할 수 있나' 등 다양한 논쟁이 벌어졌습니다."
+        }
+      ],
+      "source_url": "https://intextbooks.science.uu.nl/workshop2026/files/itb26_s1s2.pdf",
+      "source_name": "arxiv",
+      "score": 8,
+      "story_slug": "ai-tutor-dartmouth-sd-effect",
+      "tags": ["AI교육", "AI튜터", "연구", "학습효과", "Dartmouth"],
+      "entities": ["Dartmouth", "Hacker News"],
+      "related": ["https://news.ycombinator.com/item?id=48796817"],
+      "source_published_at": "2026-07-05"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "유엔, 193개국 모아 AI 거버넌스 논의 시작 — 오늘·내일 제네바 개막",
+      "tldr": "유엔 최초의 범국가적 AI 거버넌스 대화가 오늘(7월 6~7일) 제네바에서 열렸습니다.",
+      "summary": "유엔 총회가 설립한 '글로벌 AI 거버넌스 대화'가 7월 6~7일 스위스 제네바 Palexpo에서 열립니다. 193개 유엔 회원국과 산업계·시민사회·학계가 참여하며, 이틀간 AI의 안전하고 공정한 활용 방향을 논의합니다.",
+      "blocks": [
+        {
           "type": "bullets",
-          "label": "주요 특징",
+          "label": "참석 주요 인물",
           "items": [
-            "컨텍스트 창 2,000,000 토큰 — 대부분 경쟁 모델의 2배",
-            "문서·이미지·음성 멀티모달 통합 지원",
-            "Vertex AI 엔터프라이즈 고객 제한 프리뷰 진행 중"
+            "요슈아 벤지오 (튜링상 수상, AI 안전 연구자)",
+            "폴 카가메 르완다 대통령, 알라르 카리스 에스토니아 대통령",
+            "마크 베니오프(Salesforce), 브래드 스미스(Microsoft), 워너 보겔스(AWS)"
           ]
         },
         {
           "type": "callout",
-          "label": "경쟁 구도에서의 의미",
-          "text": "Fable 5 수출 통제 해제(7/1), Claude Sonnet 5 출시(6/30), GPT-5.6 제한 공개(6/26)에 이어 Gemini 3.5 Pro가 GA되면 이번 달은 프론티어 모델이 일제히 갱신되는 이례적인 달이 됩니다."
+          "label": "맥락: 왜 지금?",
+          "text": "각국에 40개 이상의 AI 거버넌스 지침이 존재하지만 서로 제각각이고, 실효성 검증도 드뭅니다. 미국의 수출 통제(6월)와 OpenAI GPT-5.6 제한 배포가 보여주듯, AI의 지정학적 무기화가 현실화되는 시점에 전 지구적 조율 기구가 필요하다는 공감대가 이번 회의를 소집했습니다."
         }
       ],
-      "source_url": "https://findskill.ai/blog/gemini-3-5-pro-release-date/",
-      "source_name": "news",
-      "score": 6,
-      "story_slug": "gemini-35-pro-july-ga",
-      "tags": [
-        "Gemini",
-        "Google",
-        "모델출시",
-        "컨텍스트창"
-      ],
-      "entities": [
-        "Google",
-        "Vertex AI"
-      ],
-      "source_published_at": "2026-07-05"
+      "source_url": "https://www.un.org/global-dialogue-ai-governance/en",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "un-global-dialogue-ai-governance-geneva-2026",
+      "tags": ["AI거버넌스", "유엔", "국제정책", "제네바", "규제"],
+      "entities": ["유엔", "UNESCO", "ITU", "요슈아 벤지오"],
+      "source_published_at": "2026-07-06"
     },
     {
       "category": "business",
       "position": 2,
       "title": "백악관, AI 자발적 모델 표준 이번 주 발표 예정 — 사이버 벤치마크 임계치 규정",
       "tldr": "미국이 AI 회사들과 협상 중인 자발적 모델 안전 기준 발표가 이번 주로 예정됐습니다.",
-      "summary": "파이낸셜타임스 등의 보도에 따르면 미국 정부가 주요 AI 기업들과 협의해 만든 자발적 AI 모델 표준 발표가 이번 주(7월 7~11일) 이루어질 전망입니다. 사이버 보안 벤치마크 임계치, 정부 사전 검토 기간, 모델 접근 규칙 등이 담길 것으로 알려졌습니다. 이 발표는 6월 2일 트럼프 대통령이 서명한 AI 행정명령의 후속 조치입니다.",
+      "summary": "파이낸셜타임스 등의 보도에 따르면 미국 정부가 주요 AI 기업들과 협의해 만든 자발적 AI 모델 표준 발표가 이번 주(7월 7~11일) 이루어질 전망입니다. 사이버 보안 벤치마크 임계치, 정부 사전 검토 기간, 모델 접근 규칙 등이 담길 것으로 알려졌습니다.",
       "blocks": [
         {
           "type": "paragraph",
@@ -414,60 +422,55 @@
       "source_name": "news",
       "score": 8,
       "story_slug": "whitehouse-voluntary-ai-standards-july-2026",
-      "tags": [
-        "AI정책",
-        "백악관",
-        "규제",
-        "미국",
-        "수출통제"
-      ],
-      "entities": [
-        "백악관",
-        "OpenAI",
-        "Anthropic",
-        "Google"
-      ],
+      "tags": ["AI정책", "백악관", "규제", "미국", "수출통제"],
+      "entities": ["백악관", "OpenAI", "Anthropic", "Google"],
       "source_published_at": "2026-07-06"
     },
     {
       "category": "business",
       "position": 3,
-      "title": "OpenAI $7300억 달러 가치로 IPO 준비 — Anthropic도 비공개 상장 신청",
-      "tldr": "두 회사 모두 IPO 준비에 들어간 상태, OpenAI는 9월 가능성도.",
-      "summary": "OpenAI가 약 $7300억 달러(약 1천조 원) 가치로 IPO를 위한 비밀 상장 신청을 준비 중이며, Anthropic도 비슷한 시기 비밀 신청을 마쳤다는 보도가 나왔습니다. OpenAI는 이르면 9월 공식 상장에 나설 수 있다는 전망입니다. Anthropic의 연간 반복 수익(ARR)은 $300억 달러를 돌파했습니다.",
+      "title": "Microsoft 365 가격 최대 42% 인상 — 코파일럿 통합으로 'AI 세금' 부과",
+      "tldr": "Microsoft 365 일부 플랜이 최대 42% 오른 새 요금제로 전환됐습니다. Copilot AI 기능 탑재가 이유입니다.",
+      "summary": "Microsoft 365의 새 요금제가 발효되며 일부 제품 가격이 최대 42% 올랐습니다. Microsoft는 '지속적인 혁신'을 이유로 들었지만, 업계에서는 Copilot AI 기능을 기본 탑재해 사실상 'AI 사용료'를 모든 구독자에게 전가한다는 비판이 나왔습니다. HN에서 36포인트를 받으며 기업 AI 비용 부담 논쟁에 불을 붙였습니다.",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "OpenAI와 Anthropic이 같은 시기에 IPO를 준비 중이라는 점은 AI 산업의 시장 성숙을 보여줍니다. GPT-5.6 제한 공개, Claude Sonnet 5 가격 책정 모두 공개 시장 투자자들에게 수익 성장 스토리를 보여주기 위한 포석이기도 합니다."
+          "text": "Microsoft는 Copilot을 Office 앱(Word, Excel, Teams 등)에 통합하고, 이를 Microsoft 365 구독의 기본 기능으로 포함시켰습니다. 사용 여부와 무관하게 Copilot을 쓰지 않는 사람도 가격 인상을 부담하게 되는 구조입니다."
         },
         {
+          "type": "callout",
+          "label": "기업 담당자들의 반응",
+          "text": "'AI 세금(AI tax)'이라는 표현이 Hacker News와 기업 IT 커뮤니티에서 확산됐습니다. 특히 'Copilot을 쓰든 안 쓰든 요금을 낸다'는 점에서 반발이 컸습니다. 대안으로 Google Workspace와 Notion AI로의 전환을 검토하는 기업들도 생겼다는 보고가 있습니다."
+        },
+        {
+          "type": "stat",
+          "value": "최대 42%",
+          "label": "Microsoft 365 일부 플랜의 가격 인상 폭"
+        }
+      ],
+      "source_url": "https://www.windowslatest.com/2026/07/05/microsoft-365-just-got-a-price-hike-over-continuous-innovation-but-copilot-is-the-ai-tax-on-businesses/",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "microsoft-365-price-hike-copilot-ai-tax",
+      "tags": ["Microsoft", "Copilot", "요금인상", "AI비용", "기업AI"],
+      "entities": ["Microsoft", "Copilot", "Google"],
+      "related": ["https://news.ycombinator.com/item?id=48798330"],
+      "source_published_at": "2026-07-05"
+    },
+    {
+      "category": "business",
+      "position": 4,
+      "title": "OpenAI $7300억 달러 가치로 IPO 준비 — Anthropic도 비공개 상장 신청",
+      "tldr": "두 회사 모두 IPO 준비에 들어간 상태, OpenAI는 9월 가능성도.",
+      "summary": "OpenAI가 약 $7300억 달러(약 1천조 원) 가치로 IPO를 위한 비밀 상장 신청을 준비 중이며, Anthropic도 비슷한 시기 비밀 신청을 마쳤다는 보도가 나왔습니다. OpenAI는 이르면 9월 공식 상장에 나설 수 있다는 전망입니다.",
+      "blocks": [
+        {
           "type": "table",
-          "headers": [
-            "구분",
-            "OpenAI",
-            "Anthropic"
-          ],
+          "headers": ["구분", "OpenAI", "Anthropic"],
           "rows": [
-            [
-              "추정 가치",
-              "$7300억",
-              "미공개"
-            ],
-            [
-              "ARR",
-              "미공개",
-              "$300억+ 돌파"
-            ],
-            [
-              "IPO 예상",
-              "이르면 2026년 9월",
-              "시기 미정"
-            ],
-            [
-              "최근 이슈",
-              "GPT-5.6 제한 공개",
-              "Fable5 복구·Claude Science"
-            ]
+            ["추정 가치", "$7300억", "미공개"],
+            ["ARR", "미공개", "$300억+ 돌파"],
+            ["IPO 예상", "이르면 2026년 9월", "시기 미정"]
           ]
         }
       ],
@@ -475,19 +478,33 @@
       "source_name": "news",
       "score": 7,
       "story_slug": "openai-anthropic-ipo-preparation-2026",
-      "tags": [
-        "OpenAI",
-        "Anthropic",
-        "IPO",
-        "투자",
-        "AI시장"
+      "tags": ["OpenAI", "Anthropic", "IPO", "투자", "AI시장"],
+      "entities": ["OpenAI", "Sam Altman", "Anthropic", "Dario Amodei"],
+      "source_published_at": "2026-07-05"
+    },
+    {
+      "category": "business",
+      "position": 5,
+      "title": "포드, AI 품질 검사 실패 후 인간 엔지니어 재고용 — 'AI 대체'의 현실",
+      "tldr": "Ford가 AI로 품질 검사를 자동화하려 했으나 실패, 해고했던 인간 엔지니어들을 다시 채용했습니다.",
+      "summary": "BBC 보도에 따르면 Ford가 품질 검사 공정에 AI를 도입해 엔지니어를 줄였다가, AI가 인간의 품질 기준을 충족하지 못하자 기존 인력을 재고용했습니다. AI가 제조 현장의 섬세한 품질 판단을 완전히 대체하기 어렵다는 실증 사례로 주목받았습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "자동차 제조 품질 검사는 '이건 합격, 저건 불합격'이라는 명확한 기준처럼 보이지만, 실제로는 수십 년 경험을 가진 검사자들의 암묵지(tacit knowledge)가 핵심입니다. AI는 훈련 데이터에서 본 결함 유형은 잘 찾지만, 새로운 유형의 결함이나 경계선 케이스에서 오판하는 경향이 있습니다."
+        },
+        {
+          "type": "callout",
+          "label": "맥락",
+          "text": "Zuckerberg가 'AI 에이전트 발전이 예상보다 느리다'고 직원들에게 말했다는 TechCrunch 보도(7/2)와 맞닿아 있습니다. 화이트칼라 소프트웨어 작업과 달리, 물리 세계의 판단·제어 작업은 AI 전환 속도가 더 느릴 수 있음을 보여주는 사례입니다."
+        }
       ],
-      "entities": [
-        "OpenAI",
-        "Sam Altman",
-        "Anthropic",
-        "Dario Amodei"
-      ],
+      "source_url": "https://www.bbc.com/news/articles/cgrkd41n2v9o",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "ford-rehires-engineers-ai-quality-failure",
+      "tags": ["AI한계", "제조업", "AI대체", "Ford", "품질검사"],
+      "entities": ["Ford", "BBC"],
       "source_published_at": "2026-07-05"
     }
   ]
