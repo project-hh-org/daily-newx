@@ -15,7 +15,7 @@ type Props = {
   kind: FacetKind; // tag | entity
 };
 
-const KIND_LABEL: Record<FacetKind, string> = { tag: "주제", entity: "주체" };
+const KIND_LABEL: Record<FacetKind, string> = { tag: "키워드", entity: "대상" };
 
 export function FacetListScreen({ kind }: Props): ReactElement {
   const router = useRouter();

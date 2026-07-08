@@ -13,8 +13,8 @@ type Props = {
 const SECTIONS: ReadonlyArray<{ label: string; href: Href }> = [
   { label: "내 도구", href: "/tools" },
   { label: "카테고리", href: "/categories" },
-  { label: "주제", href: "/topics" },
-  { label: "주체", href: "/entities" },
+  { label: "키워드", href: "/topics" },
+  { label: "대상", href: "/entities" },
   { label: "지난 브리핑", href: "/archive" },
   { label: "설정", href: "/settings" },
 ];

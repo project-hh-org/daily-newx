@@ -20,8 +20,8 @@ type Props = {
 
 const AXIS_LABEL: Record<TimelineAxis, string> = {
   category: "카테고리",
-  tag: "주제",
-  entity: "주체",
+  tag: "키워드",
+  entity: "대상",
 };
 
 function displayValue(axis: TimelineAxis, value: string): string {

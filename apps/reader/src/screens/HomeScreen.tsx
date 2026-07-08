@@ -19,8 +19,8 @@ export function HomeScreen(): ReactElement {
       <View style={{ marginTop: space.xxl }}>
         <ListRow title="오늘 브리핑" meta={todayLabel} onPress={() => router.push(`/daily/${today}`)} />
         <ListRow title="카테고리" subtitle="헤드라인·릴리스·연구·커뮤니티·산업" onPress={() => router.push("/categories")} />
-        <ListRow title="주제" subtitle="토픽 태그로 모아보기" onPress={() => router.push("/topics")} />
-        <ListRow title="주체" subtitle="등장 주체(기업·모델·인물)로 모아보기" onPress={() => router.push("/entities")} />
+        <ListRow title="키워드" subtitle="토픽 태그로 모아보기" onPress={() => router.push("/topics")} />
+        <ListRow title="대상" subtitle="기업·모델·인물로 모아보기" onPress={() => router.push("/entities")} />
         <ListRow title="지난 브리핑" subtitle="날짜별 아카이브" onPress={() => router.push("/archive")} />
       </View>
     </Screen>

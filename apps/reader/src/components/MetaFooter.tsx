@@ -41,7 +41,7 @@ function MetaLinks({
   );
 }
 
-/** 아티클 하단 메타 — 카테고리/주제/주체를 타임라인 링크로. */
+/** 아티클 하단 메타 — 카테고리/키워드/대상을 타임라인 링크로. */
 export function MetaFooter({ category, tags, entities }: Props): ReactElement {
   const router = useRouter();
   const c = useColors();
@@ -71,8 +71,8 @@ export function MetaFooter({ category, tags, entities }: Props): ReactElement {
           </Type>
         </Pressable>
       </View>
-      {ts.length > 0 && <MetaLinks label="주제" axis="tag" values={ts} onGo={onGo} />}
-      {es.length > 0 && <MetaLinks label="주체" axis="entity" values={es} onGo={onGo} />}
+      {ts.length > 0 && <MetaLinks label="키워드" axis="tag" values={ts} onGo={onGo} />}
+      {es.length > 0 && <MetaLinks label="대상" axis="entity" values={es} onGo={onGo} />}
     </View>
   );
 }
