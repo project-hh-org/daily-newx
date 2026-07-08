@@ -26,13 +26,13 @@ export function ArchiveScreen(): ReactElement {
     <Screen>
       <ScreenHeader
         kicker="아카이브"
-        title="지난 호"
-        subtitle={`${issues.length}개 호`}
+        title="지난 브리핑"
+        subtitle={`${issues.length}개 브리핑`}
         crumb={{ label: "오늘", onPress: () => backOr("/") }}
       />
       {issues.length === 0 ? (
         <Type variant="body" tone="inkMuted" style={{ marginTop: 40, textAlign: "center" }}>
-          게시된 호가 아직 없습니다.
+          게시된 브리핑이 아직 없습니다.
         </Type>
       ) : (
         <View style={{ marginTop: space.xl }}>
@@ -43,7 +43,7 @@ export function ArchiveScreen(): ReactElement {
                 key={issue.issue_date}
                 title={isoToLabel(issue.issue_date)}
                 subtitle={issue.intro ?? undefined}
-                meta={issue.issue_no !== null ? `제 ${issue.issue_no} 호` : undefined}
+                meta={issue.issue_no !== null ? `${issue.issue_no}번째 브리핑` : undefined}
                 onPress={() => router.push(compact !== undefined ? `/daily/${compact}` : "/")}
               />
             );

@@ -38,7 +38,7 @@ export function NotFoundView({ label }: { label: string }): ReactElement {
     <Centered>
       <Type variant="h1">{label}</Type>
       <Type variant="meta" tone="inkMuted" style={{ marginTop: space.sm, textAlign: "center" }}>
-        이 날짜의 호가 아직 게시되지 않았습니다.
+        이 날짜의 브리핑이 아직 게시되지 않았습니다.
       </Type>
     </Centered>
   );

@@ -39,7 +39,7 @@ export default function NotFound(): ReactElement {
         }}
       >
         <Type variant="label" tone="paper">
-          오늘 호로 →
+          오늘 브리핑으로 →
         </Type>
       </Pressable>
     </View>

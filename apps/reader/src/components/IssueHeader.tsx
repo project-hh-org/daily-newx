@@ -15,7 +15,7 @@ const SECTIONS: ReadonlyArray<{ label: string; href: Href }> = [
   { label: "카테고리", href: "/categories" },
   { label: "주제", href: "/topics" },
   { label: "주체", href: "/entities" },
-  { label: "지난 호", href: "/archive" },
+  { label: "지난 브리핑", href: "/archive" },
   { label: "설정", href: "/settings" },
 ];
 

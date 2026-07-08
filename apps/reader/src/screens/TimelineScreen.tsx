@@ -92,7 +92,7 @@ export function TimelineScreen({ axis, value }: Props): ReactElement {
         kicker={`타임라인 · ${AXIS_LABEL[axis]}`}
         title={displayValue(axis, value)}
         subtitle={`${items.length}건 · 최신순`}
-        crumb={{ label: "오늘의 호", onPress: () => backOr("/") }}
+        crumb={{ label: "오늘 브리핑", onPress: () => backOr("/") }}
       />
 
       {items.length === 0 ? (

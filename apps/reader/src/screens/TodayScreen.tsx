@@ -39,8 +39,8 @@ export function TodayScreen(): ReactElement {
   if (latest === undefined) return <EmptyView />;
 
   const notice = isBeforePublishTime()
-    ? `오늘 호는 오전 ${PUBLISH_HOUR}시에 발행 예정이에요. 우선 최신 호를 보여드릴게요.`
-    : "오늘 발행된 호가 아직 없어요. 우선 최신 호를 보여드릴게요.";
+    ? `오늘 브리핑은 오전 ${PUBLISH_HOUR}시에 발행 예정이에요. 우선 최신 브리핑을 보여드릴게요.`
+    : "오늘 발행된 브리핑이 아직 없어요. 우선 최신 브리핑을 보여드릴게요.";
 
   const latestCompact = isoToCompact(latest.issue_date) ?? today;
   return <DailyScreen compactDate={latestCompact} notice={notice} />;
