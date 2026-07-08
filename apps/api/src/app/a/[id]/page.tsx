@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import type { ReactElement } from "react";
 import { notFound } from "next/navigation";
 import { getArticleById } from "@/services/newsRepository";
+import { AppOpenButton } from "./AppOpenButton";
+
+const APP_INSTALL_URL = process.env.NEXT_PUBLIC_APP_INSTALL_URL ?? null;
+const APP_STORE_ID = process.env.NEXT_PUBLIC_APP_STORE_ID;
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -59,6 +63,10 @@ export async function generateMetadata({
       url: `/a/${a.id}`,
     },
     twitter: { card: "summary_large_image", title: a.title, description },
+    // iOS Safari 스마트 앱 배너(App Store ID 설정 시). 설치 시 앱으로 딥링크.
+    ...(APP_STORE_ID
+      ? { itunes: { appId: APP_STORE_ID, appArgument: `dailynewx://article/${a.id}` } }
+      : {}),
   };
 }
 
@@ -101,21 +109,25 @@ export default async function SharePage({
       </p>
 
       <div style={{ borderTop: "2px solid #15161A", marginTop: 32, paddingTop: 20 }}>
-        <a
-          href={readerUrl}
-          style={{
-            display: "inline-block",
-            padding: "10px 18px",
-            background: "#22324F",
-            color: "#F2F0E9",
-            borderRadius: 8,
-            textDecoration: "none",
-            fontSize: 14,
-            fontWeight: 700,
-          }}
-        >
-          브리핑 LLM에서 계속 읽기 →
-        </a>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+          <AppOpenButton deepLink={`dailynewx://article/${a.id}`} installUrl={APP_INSTALL_URL} />
+          <a
+            href={readerUrl}
+            style={{
+              display: "inline-block",
+              padding: "10px 18px",
+              background: "transparent",
+              color: "#22324F",
+              border: "1px solid #22324F",
+              borderRadius: 8,
+              textDecoration: "none",
+              fontSize: 14,
+              fontWeight: 700,
+            }}
+          >
+            웹에서 읽기 →
+          </a>
+        </div>
         <p style={{ fontSize: 12, color: "#8B8A86", marginTop: 16 }}>
           daily-newx · 매일 오전 9시 발행
         </p>

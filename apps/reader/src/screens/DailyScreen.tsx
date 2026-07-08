@@ -9,6 +9,7 @@ import { useDailyIssue } from "@/hooks/useDailyIssue";
 import { useUiStore } from "@/store/uiStore";
 import { IssueHeader } from "@/components/IssueHeader";
 import { ToolsBanner } from "@/components/ToolsBanner";
+import { AppInstallBanner } from "@/components/AppInstallBanner";
 import { NewsItemCard } from "@/components/NewsItemCard";
 import { LoadingView, ErrorView, EmptyView, NotFoundView } from "@/components/StateViews";
 import { NotFoundError } from "@/services/dailyNewsApi";
@@ -65,6 +66,8 @@ export function DailyScreen({ compactDate, notice }: Props): ReactElement {
       contentContainerStyle={{ paddingTop: insets.top + 28, paddingBottom: insets.bottom + 56 }}
     >
       <View style={styles.column}>
+        <AppInstallBanner />
+
         {notice !== undefined && (
           <View style={styles.notice}>
             <Text style={styles.noticeText}>{notice}</Text>

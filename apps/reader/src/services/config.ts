@@ -13,3 +13,8 @@ export const USE_FIXTURE: boolean = useFixture === "1";
 
 // EAS 프로젝트 ID(공개값, app.json extra.eas.projectId 와 동일) — Expo 푸시 토큰 발급용.
 export const EAS_PROJECT_ID = "aaffaa07-2378-4eee-b242-93d98a19d8fc";
+
+// 앱 설치 URL(App Store 또는 TestFlight 공개 링크). 미설정이면 설치 배너 숨김.
+const appInstall = process.env.EXPO_PUBLIC_APP_INSTALL_URL;
+export const APP_INSTALL_URL: string | null =
+  typeof appInstall === "string" && appInstall.length > 0 ? appInstall : null;
