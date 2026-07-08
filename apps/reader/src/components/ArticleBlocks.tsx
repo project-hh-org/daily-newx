@@ -1,11 +1,14 @@
 import type { ReactElement } from "react";
-import { View, Text, Image, Pressable, Linking, ScrollView, StyleSheet } from "react-native";
+import { View, Image, Pressable, Linking, ScrollView } from "react-native";
 import type { Block } from "@/types/news.types";
-import { colors, fonts } from "@/lib/theme";
+import { useColors, radius, space } from "@/lib/theme";
+import { Type } from "@/ui/Type";
 
 type Props = {
   blocks: readonly Block[];
 };
+
+const PRO_GREEN = "#2E7D5B";
 
 function hostOf(url: string): string {
   try {
@@ -22,22 +25,39 @@ function clean(arr: readonly string[]): string[] {
 }
 
 function BlockView({ block }: { block: Block }): ReactElement | null {
+  const c = useColors();
   switch (block.type) {
     case "heading":
-      return <Text style={styles.heading}>{block.text}</Text>;
+      return (
+        <Type variant="h1" style={{ marginTop: space.sm }}>
+          {block.text}
+        </Type>
+      );
     case "paragraph":
-      return <Text style={styles.paragraph}>{block.text}</Text>;
+      return (
+        <Type variant="body" tone="inkSoft">
+          {block.text}
+        </Type>
+      );
     case "bullets": {
       const items = clean(block.items);
       if (items.length === 0) return null;
       return (
-        <View style={styles.listWrap}>
-          {!!block.label && <Text style={styles.label}>{block.label}</Text>}
-          <View style={styles.list}>
+        <View style={{ gap: space.xs }}>
+          {!!block.label && (
+            <Type variant="label" tone="inkMuted">
+              {block.label}
+            </Type>
+          )}
+          <View style={{ gap: space.sm }}>
             {items.map((it, i) => (
-              <View key={i} style={styles.row}>
-                <Text style={styles.dash}>—</Text>
-                <Text style={styles.rowText}>{it}</Text>
+              <View key={i} style={{ flexDirection: "row", gap: space.md }}>
+                <Type variant="body" tone="inkMuted">
+                  —
+                </Type>
+                <Type variant="body" tone="inkSoft" style={{ flex: 1 }}>
+                  {it}
+                </Type>
               </View>
             ))}
           </View>
@@ -48,13 +68,21 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
       const items = clean(block.items);
       if (items.length === 0) return null;
       return (
-        <View style={styles.listWrap}>
-          {!!block.label && <Text style={styles.label}>{block.label}</Text>}
-          <View style={styles.list}>
+        <View style={{ gap: space.xs }}>
+          {!!block.label && (
+            <Type variant="label" tone="inkMuted">
+              {block.label}
+            </Type>
+          )}
+          <View style={{ gap: space.sm }}>
             {items.map((it, i) => (
-              <View key={i} style={styles.row}>
-                <Text style={styles.num}>{i + 1}</Text>
-                <Text style={styles.rowText}>{it}</Text>
+              <View key={i} style={{ flexDirection: "row", gap: space.md }}>
+                <Type variant="body" tone="accent" style={{ minWidth: space.lg }}>
+                  {i + 1}
+                </Type>
+                <Type variant="body" tone="inkSoft" style={{ flex: 1 }}>
+                  {it}
+                </Type>
               </View>
             ))}
           </View>
@@ -63,74 +91,118 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
     }
     case "quote":
       return (
-        <View style={styles.quote}>
-          <Text style={styles.quoteMark}>“</Text>
-          <Text style={styles.quoteText}>{block.text}</Text>
-          {!!block.cite && <Text style={styles.quoteCite}>— {block.cite}</Text>}
+        <View>
+          <Type variant="display" tone="accent" style={{ fontSize: 44, lineHeight: 40 }}>
+            “
+          </Type>
+          <Type variant="h1">{block.text}</Type>
+          {!!block.cite && (
+            <Type variant="meta" tone="inkMuted" style={{ marginTop: space.sm }}>
+              {`— ${block.cite}`}
+            </Type>
+          )}
         </View>
       );
     case "stat":
       return (
-        <View style={styles.stat}>
-          <Text style={styles.statValue}>{block.value}</Text>
-          {!!block.label && <Text style={styles.statLabel}>{block.label}</Text>}
+        <View style={{ borderTopWidth: 1, borderBottomWidth: 1, borderColor: c.rule, paddingVertical: 18 }}>
+          <Type variant="display" style={{ fontSize: 40, lineHeight: 46 }}>
+            {block.value}
+          </Type>
+          {!!block.label && (
+            <Type variant="meta" tone="inkSoft" style={{ marginTop: space.xs }}>
+              {block.label}
+            </Type>
+          )}
         </View>
       );
     case "callout":
       return (
-        <View style={styles.callout}>
-          {!!block.label && <Text style={styles.calloutLabel}>{block.label}</Text>}
-          <Text style={styles.calloutText}>{block.text}</Text>
+        <View style={{ borderLeftWidth: 2, borderLeftColor: c.accent, paddingLeft: space.lg }}>
+          {!!block.label && (
+            <Type variant="label" tone="accent">
+              {block.label}
+            </Type>
+          )}
+          <Type variant="body" tone="ink" style={{ marginTop: space.xs }}>
+            {block.text}
+          </Type>
         </View>
       );
     case "definition":
       return (
-        <View style={styles.def}>
-          <View style={styles.defBar} />
-          <View style={styles.defBody}>
-            <Text style={styles.defKicker}>용어</Text>
-            <Text style={styles.defTerm}>{block.term}</Text>
-            <Text style={styles.defText}>{block.text}</Text>
+        <View style={{ flexDirection: "row", gap: space.md }}>
+          <View style={{ width: 3, borderRadius: 2, backgroundColor: c.accent }} />
+          <View style={{ flex: 1 }}>
+            <Type variant="label" tone="inkMuted" style={{ marginBottom: space.xs }}>
+              용어
+            </Type>
+            <Type variant="h2">{block.term}</Type>
+            <Type variant="body" tone="inkSoft" style={{ marginTop: space.xs }}>
+              {block.text}
+            </Type>
           </View>
         </View>
       );
     case "divider":
-      return <Text style={styles.divider}>· · ·</Text>;
+      return (
+        <Type variant="body" tone="inkMuted" style={{ textAlign: "center" }}>
+          · · ·
+        </Type>
+      );
     case "code":
       return (
-        <View style={styles.code}>
-          <Text style={styles.codeText}>{block.code}</Text>
+        <View style={{ backgroundColor: "#26221E", borderRadius: 10, padding: 14 }}>
+          <Type variant="meta" style={{ fontFamily: "monospace", color: "#ECE6DA", lineHeight: 20 }}>
+            {block.code}
+          </Type>
         </View>
       );
     case "embed":
       return (
-        <Pressable onPress={() => openUrl(block.url)} accessibilityRole="link" style={styles.embed}>
-          <Text style={styles.embedTitle} numberOfLines={2}>
+        <Pressable
+          onPress={() => openUrl(block.url)}
+          accessibilityRole="link"
+          style={{ borderWidth: 1, borderColor: c.rule, borderRadius: 10, padding: 14, backgroundColor: c.surface, cursor: "pointer" }}
+        >
+          <Type variant="h2" numberOfLines={2}>
             {block.title ?? block.url}
-          </Text>
-          <Text style={styles.embedMeta}>{block.provider ?? hostOf(block.url)}  ›</Text>
+          </Type>
+          <Type variant="label" tone="accent" style={{ marginTop: space.xs }}>
+            {`${block.provider ?? hostOf(block.url)}  ›`}
+          </Type>
         </Pressable>
       );
     case "table": {
       if (block.rows.length === 0) return null;
       return (
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View style={styles.table}>
+          <View style={{ borderWidth: 1, borderColor: c.rule, borderRadius: radius.md, overflow: "hidden" }}>
             {block.headers.length > 0 && (
-              <View style={[styles.tr, styles.trHead]}>
+              <View style={{ flexDirection: "row", backgroundColor: c.surface }}>
                 {block.headers.map((h, i) => (
-                  <Text key={i} style={[styles.cell, styles.cellHead]}>
+                  <Type
+                    key={i}
+                    variant="meta"
+                    tone="ink"
+                    style={{ width: 130, paddingHorizontal: 10, paddingVertical: space.sm, fontWeight: "600" }}
+                  >
                     {h}
-                  </Text>
+                  </Type>
                 ))}
               </View>
             )}
             {block.rows.map((row, ri) => (
-              <View key={ri} style={styles.tr}>
-                {row.map((c, ci) => (
-                  <Text key={ci} style={styles.cell}>
-                    {c}
-                  </Text>
+              <View key={ri} style={{ flexDirection: "row", borderTopWidth: 1, borderTopColor: c.rule }}>
+                {row.map((cell, ci) => (
+                  <Type
+                    key={ci}
+                    variant="meta"
+                    tone="inkSoft"
+                    style={{ width: 130, paddingHorizontal: 10, paddingVertical: space.sm }}
+                  >
+                    {cell}
+                  </Type>
                 ))}
               </View>
             ))}
@@ -143,25 +215,37 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
       const cons = clean(block.cons);
       if (pros.length === 0 && cons.length === 0) return null;
       return (
-        <View style={styles.pcWrap}>
+        <View style={{ borderWidth: 1, borderColor: c.rule, borderRadius: 10, padding: 14 }}>
           {pros.length > 0 && (
             <View>
-              <Text style={styles.pcPro}>장점</Text>
+              <Type variant="label" style={{ color: PRO_GREEN, marginBottom: space.xs }}>
+                장점
+              </Type>
               {pros.map((p, i) => (
-                <View key={i} style={styles.row}>
-                  <Text style={styles.pcMarkPro}>+</Text>
-                  <Text style={styles.rowText}>{p}</Text>
+                <View key={i} style={{ flexDirection: "row", gap: space.md }}>
+                  <Type variant="body" style={{ color: PRO_GREEN, minWidth: 14 }}>
+                    +
+                  </Type>
+                  <Type variant="body" tone="inkSoft" style={{ flex: 1 }}>
+                    {p}
+                  </Type>
                 </View>
               ))}
             </View>
           )}
           {cons.length > 0 && (
-            <View style={pros.length > 0 ? styles.pcConsGap : undefined}>
-              <Text style={styles.pcCon}>단점</Text>
-              {cons.map((c, i) => (
-                <View key={i} style={styles.row}>
-                  <Text style={styles.pcMarkCon}>−</Text>
-                  <Text style={styles.rowText}>{c}</Text>
+            <View style={pros.length > 0 ? { marginTop: space.md } : undefined}>
+              <Type variant="label" tone="accent" style={{ marginBottom: space.xs }}>
+                단점
+              </Type>
+              {cons.map((con, i) => (
+                <View key={i} style={{ flexDirection: "row", gap: space.md }}>
+                  <Type variant="body" tone="accent" style={{ minWidth: 14 }}>
+                    −
+                  </Type>
+                  <Type variant="body" tone="inkSoft" style={{ flex: 1 }}>
+                    {con}
+                  </Type>
                 </View>
               ))}
             </View>
@@ -172,11 +256,17 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
     case "timeline": {
       if (block.events.length === 0) return null;
       return (
-        <View style={styles.tl}>
+        <View style={{ borderLeftWidth: 2, borderLeftColor: c.rule, paddingLeft: 14, gap: 10 }}>
           {block.events.map((e, i) => (
-            <View key={i} style={styles.tlRow}>
-              {!!e.date && <Text style={styles.tlDate}>{e.date}</Text>}
-              <Text style={styles.tlText}>{e.text}</Text>
+            <View key={i} style={{ gap: 2 }}>
+              {!!e.date && (
+                <Type variant="caption" tone="inkMuted">
+                  {e.date}
+                </Type>
+              )}
+              <Type variant="body" tone="inkSoft">
+                {e.text}
+              </Type>
             </View>
           ))}
         </View>
@@ -184,18 +274,17 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
     }
     case "image":
       return (
-        <View style={styles.imageWrap}>
+        <View style={{ gap: space.xs }}>
           <Image
             source={{ uri: block.url }}
-            style={styles.image}
+            style={{ width: "100%", aspectRatio: 1.6, borderRadius: 10, backgroundColor: c.rule }}
             resizeMode="cover"
             accessibilityLabel={block.alt ?? undefined}
           />
           {(!!block.caption || !!block.credit) && (
-            <Text style={styles.caption}>
-              {block.caption ?? ""}
-              {block.credit ? `${block.caption ? "  ·  " : ""}${block.credit}` : ""}
-            </Text>
+            <Type variant="caption" tone="inkMuted">
+              {`${block.caption ?? ""}${block.credit ? `${block.caption ? "  ·  " : ""}${block.credit}` : ""}`}
+            </Type>
           )}
         </View>
       );
@@ -208,63 +297,10 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
 export function ArticleBlocks({ blocks }: Props): ReactElement | null {
   if (blocks.length === 0) return null;
   return (
-    <View style={styles.wrap}>
+    <View style={{ marginTop: 14, gap: space.lg }}>
       {blocks.map((b, i) => (
         <BlockView key={i} block={b} />
       ))}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrap: { marginTop: 14, gap: 16 },
-  heading: { marginTop: 8, fontFamily: fonts.serif, fontSize: 21, lineHeight: 30, color: colors.ink },
-  paragraph: { fontFamily: fonts.sans, fontSize: 16, lineHeight: 28, color: colors.inkSoft },
-  label: { fontFamily: fonts.sans, fontSize: 12, fontWeight: "600", color: colors.inkMuted },
-  listWrap: { gap: 6 },
-  list: { gap: 8 },
-  row: { flexDirection: "row", gap: 12 },
-  dash: { fontFamily: fonts.serif, color: colors.inkMuted },
-  num: { fontFamily: fonts.serif, color: colors.spot, minWidth: 16 },
-  rowText: { flex: 1, fontFamily: fonts.sans, fontSize: 16, lineHeight: 26, color: colors.inkSoft },
-  quote: {},
-  quoteMark: { fontFamily: fonts.serif, fontSize: 44, lineHeight: 40, color: colors.spot },
-  quoteText: { fontFamily: fonts.serif, fontSize: 21, lineHeight: 31, color: colors.ink },
-  quoteCite: { marginTop: 8, fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
-  stat: { borderTopWidth: 1, borderBottomWidth: 1, borderColor: colors.rule, paddingVertical: 18 },
-  statValue: { fontFamily: fonts.serif, fontSize: 40, lineHeight: 46, color: colors.ink },
-  statLabel: { marginTop: 6, fontFamily: fonts.sans, fontSize: 13, lineHeight: 20, color: colors.inkSoft },
-  callout: { borderLeftWidth: 2, borderLeftColor: colors.accent, paddingLeft: 16 },
-  calloutLabel: { fontFamily: fonts.sans, fontSize: 12, fontWeight: "600", color: colors.accent },
-  calloutText: { marginTop: 4, fontFamily: fonts.sans, fontSize: 16, lineHeight: 26, color: colors.ink },
-  def: { flexDirection: "row", gap: 14 },
-  defBar: { width: 3, borderRadius: 2, backgroundColor: colors.spot },
-  defBody: { flex: 1 },
-  defKicker: { fontFamily: fonts.sans, fontSize: 11, fontWeight: "700", letterSpacing: 1.2, color: colors.inkMuted, marginBottom: 4 },
-  defTerm: { fontFamily: fonts.serif, fontSize: 16, color: colors.ink },
-  defText: { marginTop: 4, fontFamily: fonts.sans, fontSize: 15, lineHeight: 24, color: colors.inkSoft },
-  divider: { textAlign: "center", fontFamily: fonts.serif, fontSize: 16, color: colors.inkMuted },
-  code: { backgroundColor: "#26221E", borderRadius: 10, padding: 14 },
-  codeText: { fontFamily: "monospace", fontSize: 13, lineHeight: 20, color: "#ECE6DA" },
-  embed: { borderWidth: 1, borderColor: colors.rule, borderRadius: 10, padding: 14, backgroundColor: colors.card },
-  embedTitle: { fontFamily: fonts.serif, fontSize: 16, lineHeight: 22, color: colors.ink },
-  embedMeta: { marginTop: 6, fontFamily: fonts.sans, fontSize: 12, color: colors.accent },
-  table: { borderWidth: 1, borderColor: colors.rule, borderRadius: 8, overflow: "hidden" },
-  tr: { flexDirection: "row", borderTopWidth: 1, borderTopColor: colors.rule },
-  trHead: { borderTopWidth: 0, backgroundColor: colors.card },
-  cell: { width: 130, paddingHorizontal: 10, paddingVertical: 8, fontFamily: fonts.sans, fontSize: 13, lineHeight: 18, color: colors.inkSoft },
-  cellHead: { fontWeight: "600", color: colors.ink },
-  pcWrap: { borderWidth: 1, borderColor: colors.rule, borderRadius: 10, padding: 14 },
-  pcConsGap: { marginTop: 12 },
-  pcPro: { fontFamily: fonts.sans, fontSize: 12, fontWeight: "600", color: "#2E7D5B", marginBottom: 6 },
-  pcCon: { fontFamily: fonts.sans, fontSize: 12, fontWeight: "600", color: colors.accent, marginBottom: 6 },
-  pcMarkPro: { fontFamily: fonts.serif, color: "#2E7D5B", minWidth: 14 },
-  pcMarkCon: { fontFamily: fonts.serif, color: colors.accent, minWidth: 14 },
-  tl: { borderLeftWidth: 2, borderLeftColor: colors.rule, paddingLeft: 14, gap: 10 },
-  tlRow: { gap: 2 },
-  tlDate: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1, textTransform: "uppercase", color: colors.inkMuted },
-  tlText: { fontFamily: fonts.sans, fontSize: 15, lineHeight: 23, color: colors.inkSoft },
-  imageWrap: { gap: 6 },
-  image: { width: "100%", aspectRatio: 1.6, borderRadius: 10, backgroundColor: colors.rule },
-  caption: { fontFamily: fonts.sans, fontSize: 12, lineHeight: 18, color: colors.inkMuted },
-});

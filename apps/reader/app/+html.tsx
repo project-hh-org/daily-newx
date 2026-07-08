@@ -1,8 +1,14 @@
 import { ScrollViewStyleReset } from "expo-router/html";
 import type { PropsWithChildren, ReactElement } from "react";
 
-// 웹 전용 HTML 셸 — 폰트 주입(제목: 나눔명조 / 본문: Pretendard).
-// 네이티브에선 적용되지 않음(추후 expo-font 로 로드 필요).
+// 웹 전용 HTML 셸 — 제목(G마켓 산스 woff2, public/fonts) + 본문(Pretendard) 주입.
+// 네이티브는 _layout 의 useFonts 가 로컬 TTF 를 로드(웹에선 TTF 미사용).
+const GMARKET_FONT_FACE = `
+@font-face{font-family:'GmarketSansTTFLight';src:url('/fonts/GmarketSansTTFLight.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'GmarketSansTTFMedium';src:url('/fonts/GmarketSansTTFMedium.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'GmarketSansTTFBold';src:url('/fonts/GmarketSansTTFBold.woff2') format('woff2');font-display:swap}
+`;
+
 export default function Root({ children }: PropsWithChildren): ReactElement {
   return (
     <html lang="ko">
@@ -26,13 +32,9 @@ export default function Root({ children }: PropsWithChildren): ReactElement {
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* 제목: 나눔명조 */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        {/* 제목: G마켓 산스(로컬 woff2) */}
+        <style dangerouslySetInnerHTML={{ __html: GMARKET_FONT_FACE }} />
         {/* 본문: Pretendard */}
         <link
           rel="stylesheet"

@@ -1,9 +1,10 @@
 import type { ReactElement } from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import type { NewsCategory } from "@/types/news.types";
 import { categoryLabel } from "@/lib/categories";
-import { colors, fonts } from "@/lib/theme";
+import { useColors, radius, space } from "@/lib/theme";
+import { Type } from "@/ui/Type";
 
 type Props = {
   category: NewsCategory;
@@ -25,11 +26,15 @@ function MetaLinks({
   onGo: (axis: Axis, value: string) => void;
 }): ReactElement {
   return (
-    <View style={styles.linkRow}>
-      <Text style={styles.linkLabel}>{label}</Text>
+    <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "baseline", columnGap: space.md, rowGap: space.xs }}>
+      <Type variant="meta" tone="inkMuted">
+        {label}
+      </Type>
       {values.map((v, i) => (
-        <Pressable key={i} onPress={() => onGo(axis, v)} accessibilityRole="link">
-          <Text style={styles.link}>{v}</Text>
+        <Pressable key={i} onPress={() => onGo(axis, v)} accessibilityRole="link" style={{ cursor: "pointer" }}>
+          <Type variant="meta" tone="accent" style={{ textDecorationLine: "underline" }}>
+            {v}
+          </Type>
         </Pressable>
       ))}
     </View>
@@ -39,6 +44,7 @@ function MetaLinks({
 /** 아티클 하단 메타 — 카테고리/주제/주체를 타임라인 링크로. */
 export function MetaFooter({ category, tags, entities }: Props): ReactElement {
   const router = useRouter();
+  const c = useColors();
   const onGo = (axis: Axis, value: string): void => {
     router.push(`/timeline/${axis}/${encodeURIComponent(value)}`);
   };
@@ -46,14 +52,23 @@ export function MetaFooter({ category, tags, entities }: Props): ReactElement {
   const es = entities.filter((e) => e.trim().length > 0);
 
   return (
-    <View style={styles.wrap}>
-      <View style={styles.catRow}>
+    <View style={{ marginTop: space.xl, borderTopWidth: 1, borderTopColor: c.rule, paddingTop: space.lg, gap: space.sm }}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
         <Pressable
           onPress={() => onGo("category", category)}
           accessibilityRole="link"
-          style={styles.catTag}
+          style={{
+            borderWidth: 1,
+            borderColor: c.ink,
+            borderRadius: radius.sm,
+            paddingHorizontal: space.sm,
+            paddingVertical: space.xs,
+            cursor: "pointer",
+          }}
         >
-          <Text style={styles.catText}>{categoryLabel(category)}</Text>
+          <Type variant="label" tone="ink">
+            {categoryLabel(category)}
+          </Type>
         </Pressable>
       </View>
       {ts.length > 0 && <MetaLinks label="주제" axis="tag" values={ts} onGo={onGo} />}
@@ -61,13 +76,3 @@ export function MetaFooter({ category, tags, entities }: Props): ReactElement {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrap: { marginTop: 20, borderTopWidth: 1, borderTopColor: colors.rule, paddingTop: 16, gap: 8 },
-  catRow: { flexDirection: "row", flexWrap: "wrap" },
-  catTag: { borderWidth: 1, borderColor: colors.ink, borderRadius: 3, paddingHorizontal: 8, paddingVertical: 4 },
-  catText: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1, color: colors.ink },
-  linkRow: { flexDirection: "row", flexWrap: "wrap", alignItems: "baseline", columnGap: 10, rowGap: 4 },
-  linkLabel: { fontFamily: fonts.sans, fontSize: 13, fontWeight: "600", color: colors.inkMuted },
-  link: { fontFamily: fonts.sans, fontSize: 13, color: colors.accent, textDecorationLine: "underline" },
-});

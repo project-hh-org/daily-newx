@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { colors, fonts } from "@/lib/theme";
+import { View } from "react-native";
+import { space } from "@/lib/theme";
+import { Type } from "@/ui/Type";
 
 type Props = {
   label?: string;
@@ -13,25 +14,24 @@ export function Bullets({ label, points }: Props): ReactElement | null {
   if (items.length === 0) return null;
 
   return (
-    <View style={styles.wrap}>
-      {label !== undefined && <Text style={styles.label}>{label}</Text>}
-      <View style={styles.list}>
+    <View style={{ marginTop: space.lg }}>
+      {label !== undefined && (
+        <Type variant="label" tone="inkMuted">
+          {label}
+        </Type>
+      )}
+      <View style={{ marginTop: space.xs, gap: space.sm }}>
         {items.map((p, i) => (
-          <View key={i} style={styles.row}>
-            <Text style={styles.dash}>—</Text>
-            <Text style={styles.text}>{p}</Text>
+          <View key={i} style={{ flexDirection: "row", gap: space.md }}>
+            <Type variant="body" tone="accent">
+              —
+            </Type>
+            <Type variant="body" tone="inkSoft" style={{ flex: 1 }}>
+              {p}
+            </Type>
           </View>
         ))}
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrap: { marginTop: 16 },
-  label: { fontFamily: fonts.sans, fontSize: 12, fontWeight: "600", color: colors.inkMuted },
-  list: { marginTop: 6, gap: 8 },
-  row: { flexDirection: "row", gap: 12 },
-  dash: { fontFamily: fonts.serif, color: colors.accent },
-  text: { flex: 1, fontFamily: fonts.sans, fontSize: 16, lineHeight: 26, color: colors.inkSoft },
-});

@@ -1,12 +1,13 @@
 import type { ReactElement } from "react";
-import { ScrollView, View, Text, Pressable, Share, Platform, StyleSheet } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Pressable, Share, Platform } from "react-native";
 import { useArticle } from "@/hooks/useDailyIssue";
 import { useBackOr } from "@/hooks/useBackOr";
 import { PUBLIC_WEB_BASE } from "@/services/config";
 import { isoToLabel, isoToCompact } from "@/lib/date";
 import { categoryLabel } from "@/lib/categories";
-import { colors, fonts, MAX_READING } from "@/lib/theme";
+import { space } from "@/lib/theme";
+import { Screen } from "@/ui/Screen";
+import { Type } from "@/ui/Type";
 import { OptionalField } from "@/components/OptionalField";
 import { Bullets } from "@/components/Bullets";
 import { ArticleBlocks } from "@/components/ArticleBlocks";
@@ -21,7 +22,6 @@ type Props = {
 };
 
 export function ArticleScreen({ id }: Props): ReactElement {
-  const insets = useSafeAreaInsets();
   const backOr = useBackOr();
   const query = useArticle(id);
 
@@ -42,65 +42,65 @@ export function ArticleScreen({ id }: Props): ReactElement {
   };
 
   return (
-    <ScrollView
-      style={styles.scroll}
-      contentContainerStyle={{ paddingTop: insets.top + 24, paddingBottom: insets.bottom + 56 }}
-    >
-      <View style={styles.column}>
-        <Pressable
-          onPress={() => backOr(compact !== undefined ? `/daily/${compact}` : "/")}
-          accessibilityRole="link"
-          accessibilityLabel="돌아가기"
-          hitSlop={8}
-        >
-          <Text style={styles.crumb}>
-            ‹ {isoToLabel(a.issue_date)} · {categoryLabel(a.category)}
-          </Text>
-        </Pressable>
+    <Screen>
+      <Pressable
+        onPress={() => backOr(compact !== undefined ? `/daily/${compact}` : "/")}
+        accessibilityRole="link"
+        accessibilityLabel="돌아가기"
+        hitSlop={8}
+      >
+        <Type variant="meta" tone="accentDim" style={{ cursor: "pointer" }}>
+          {`‹ ${isoToLabel(a.issue_date)} · ${categoryLabel(a.category)}`}
+        </Type>
+      </Pressable>
 
-        <Text style={styles.title}>{a.title}</Text>
+      <Type variant="display" style={{ marginTop: space.lg }}>
+        {a.title}
+      </Type>
 
-        {a.tldr !== null && a.tldr.trim().length > 0 && <Text style={styles.tldr}>{a.tldr}</Text>}
+      {a.tldr !== null && a.tldr.trim().length > 0 && (
+        <Type variant="h2" style={{ marginTop: space.md }}>
+          {a.tldr}
+        </Type>
+      )}
 
-        <Text style={styles.summary}>{a.summary}</Text>
+      <Type variant="body" tone="inkSoft" style={{ marginTop: space.lg }}>
+        {a.summary}
+      </Type>
 
-        <Pressable onPress={onShare} accessibilityRole="button" accessibilityLabel="공유하기" hitSlop={8} style={styles.shareBtn}>
-          <Text style={styles.shareText}>공유하기 ↗</Text>
-        </Pressable>
+      <Pressable
+        onPress={onShare}
+        accessibilityRole="button"
+        accessibilityLabel="공유하기"
+        hitSlop={8}
+        style={{ marginTop: space.lg, alignSelf: "flex-start", cursor: "pointer" }}
+      >
+        <Type variant="label" tone="accent">
+          공유하기 ↗
+        </Type>
+      </Pressable>
 
-        {a.blocks.length > 0 ? (
-          <ArticleBlocks blocks={a.blocks} />
-        ) : (
-          <>
-            <Bullets label="핵심 포인트" points={a.key_points} />
-            <OptionalField label="얻는 것" value={a.what_you_get} />
-            <OptionalField label="왜 지금" value={a.why_now} />
-            <OptionalField label="지금 할 일" value={a.action} tone="action" />
-          </>
-        )}
+      {a.blocks.length > 0 ? (
+        <ArticleBlocks blocks={a.blocks} />
+      ) : (
+        <>
+          <Bullets label="핵심 포인트" points={a.key_points} />
+          <OptionalField label="얻는 것" value={a.what_you_get} />
+          <OptionalField label="왜 지금" value={a.why_now} />
+          <OptionalField label="지금 할 일" value={a.action} tone="action" />
+        </>
+      )}
 
-        <SourceLine
-          sourceName={a.source_name}
-          sourceUrl={a.source_url}
-          publishedAt={a.source_published_at}
-          related={a.related}
-        />
+      <SourceLine
+        sourceName={a.source_name}
+        sourceUrl={a.source_url}
+        publishedAt={a.source_published_at}
+        related={a.related}
+      />
 
-        <MetaFooter category={a.category} tags={a.tags} entities={a.entities} />
+      <MetaFooter category={a.category} tags={a.tags} entities={a.entities} />
 
-        <StoryThread slug={a.story_slug ?? a.follow_up_of} currentId={a.id} />
-      </View>
-    </ScrollView>
+      <StoryThread slug={a.story_slug ?? a.follow_up_of} currentId={a.id} />
+    </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  scroll: { flex: 1, backgroundColor: colors.paper },
-  column: { width: "100%", maxWidth: MAX_READING, marginHorizontal: "auto", paddingHorizontal: 20 },
-  crumb: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", color: colors.accent, cursor: "pointer" },
-  title: { marginTop: 16, fontFamily: fonts.serif, fontSize: 30, lineHeight: 40, color: colors.ink },
-  tldr: { marginTop: 12, fontFamily: fonts.serif, fontSize: 19, lineHeight: 31, color: colors.ink },
-  summary: { marginTop: 16, fontFamily: fonts.sans, fontSize: 16, lineHeight: 27, color: colors.inkSoft },
-  shareBtn: { marginTop: 16, alignSelf: "flex-start", cursor: "pointer" },
-  shareText: { fontFamily: fonts.sans, fontSize: 13, fontWeight: "600", color: colors.spot },
-});

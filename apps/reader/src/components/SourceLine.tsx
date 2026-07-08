@@ -1,7 +1,8 @@
 import type { ReactElement } from "react";
-import { View, Text, Pressable, Linking, StyleSheet } from "react-native";
+import { View, Pressable, Linking } from "react-native";
 import { formatSourceDate } from "@/lib/date";
-import { colors, fonts } from "@/lib/theme";
+import { useColors, space } from "@/lib/theme";
+import { Type } from "@/ui/Type";
 
 type Props = {
   sourceName: string;
@@ -29,28 +30,45 @@ export function SourceLine({
   publishedAt,
   related,
 }: Props): ReactElement {
+  const c = useColors();
   const relatedItems = related.filter((r) => r.trim().length > 0);
   const hasPublished =
     publishedAt !== null && publishedAt !== undefined && publishedAt.length > 0;
 
+  const rowStyle = {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "baseline",
+    columnGap: space.sm,
+    rowGap: space.xs,
+  } as const;
+
   return (
-    <View style={styles.wrap}>
-      <View style={styles.row}>
-        <Text style={styles.label}>출처</Text>
-        <Pressable onPress={() => openUrl(sourceUrl)} accessibilityRole="link">
-          <Text style={styles.link}>
-            {sourceName} · {hostOf(sourceUrl)}
-          </Text>
+    <View style={{ marginTop: space.xl, borderTopWidth: 1, borderTopColor: c.rule, paddingTop: space.md }}>
+      <View style={rowStyle}>
+        <Type variant="meta" tone="inkMuted">
+          출처
+        </Type>
+        <Pressable onPress={() => openUrl(sourceUrl)} accessibilityRole="link" style={{ cursor: "pointer" }}>
+          <Type variant="meta" tone="accent" style={{ textDecorationLine: "underline" }}>
+            {`${sourceName} · ${hostOf(sourceUrl)}`}
+          </Type>
         </Pressable>
-        {hasPublished && <Text style={styles.meta}>· 원문 {formatSourceDate(publishedAt)}</Text>}
+        {hasPublished && (
+          <Type variant="meta" tone="inkMuted">{`· 원문 ${formatSourceDate(publishedAt)}`}</Type>
+        )}
       </View>
 
       {relatedItems.length > 0 && (
-        <View style={[styles.row, styles.relatedRow]}>
-          <Text style={styles.label}>관련</Text>
+        <View style={[rowStyle, { marginTop: space.xs }]}>
+          <Type variant="meta" tone="inkMuted">
+            관련
+          </Type>
           {relatedItems.map((r, i) => (
-            <Pressable key={i} onPress={() => openUrl(r)} accessibilityRole="link">
-              <Text style={styles.link}>{hostOf(r)}</Text>
+            <Pressable key={i} onPress={() => openUrl(r)} accessibilityRole="link" style={{ cursor: "pointer" }}>
+              <Type variant="meta" tone="accent" style={{ textDecorationLine: "underline" }}>
+                {hostOf(r)}
+              </Type>
             </Pressable>
           ))}
         </View>
@@ -58,12 +76,3 @@ export function SourceLine({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrap: { marginTop: 20, borderTopWidth: 1, borderTopColor: colors.rule, paddingTop: 12 },
-  row: { flexDirection: "row", flexWrap: "wrap", alignItems: "baseline", columnGap: 8, rowGap: 4 },
-  relatedRow: { marginTop: 6 },
-  label: { fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
-  link: { fontFamily: fonts.sans, fontSize: 13, color: colors.accent, textDecorationLine: "underline" },
-  meta: { fontFamily: fonts.sans, fontSize: 13, color: colors.inkMuted },
-});

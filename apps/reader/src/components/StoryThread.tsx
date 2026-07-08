@@ -1,8 +1,9 @@
 import type { ReactElement } from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { isoToLabel } from "@/lib/date";
-import { colors, fonts } from "@/lib/theme";
+import { useColors, space } from "@/lib/theme";
+import { Type } from "@/ui/Type";
 import { useStory } from "@/hooks/useDailyIssue";
 
 type Props = {
@@ -13,6 +14,7 @@ type Props = {
 /** 같은 이야기의 과거~현재 흐름. 스레드가 2건 이상일 때만 표시. */
 export function StoryThread({ slug, currentId }: Props): ReactElement | null {
   const router = useRouter();
+  const c = useColors();
   const query = useStory(slug);
 
   if (slug === null) return null;
@@ -21,9 +23,11 @@ export function StoryThread({ slug, currentId }: Props): ReactElement | null {
   if (items.length <= 1) return null;
 
   return (
-    <View style={styles.wrap}>
-      <Text style={styles.label}>이 이야기의 흐름</Text>
-      <View style={styles.list}>
+    <View style={{ marginTop: space.xl, borderTopWidth: 1, borderTopColor: c.rule, paddingTop: space.lg }}>
+      <Type variant="label" tone="inkMuted">
+        이 이야기의 흐름
+      </Type>
+      <View style={{ marginTop: 10, borderLeftWidth: 2, borderLeftColor: c.rule, paddingLeft: 14, gap: space.md }}>
         {items.map((it) => {
           const isCurrent = it.id === currentId;
           return (
@@ -32,10 +36,14 @@ export function StoryThread({ slug, currentId }: Props): ReactElement | null {
               disabled={isCurrent}
               onPress={() => router.push(`/article/${it.id}`)}
               accessibilityRole="link"
-              style={styles.row}
+              style={{ gap: 2, cursor: "pointer" }}
             >
-              <Text style={styles.date}>{isoToLabel(it.issue_date)}</Text>
-              <Text style={isCurrent ? styles.titleCurrent : styles.title}>{it.title}</Text>
+              <Type variant="caption" tone="inkMuted">
+                {isoToLabel(it.issue_date)}
+              </Type>
+              <Type variant="h2" tone={isCurrent ? "ink" : "accent"}>
+                {it.title}
+              </Type>
             </Pressable>
           );
         })}
@@ -43,13 +51,3 @@ export function StoryThread({ slug, currentId }: Props): ReactElement | null {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrap: { marginTop: 24, borderTopWidth: 1, borderTopColor: colors.rule, paddingTop: 16 },
-  label: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: colors.inkMuted },
-  list: { marginTop: 10, borderLeftWidth: 2, borderLeftColor: colors.rule, paddingLeft: 14, gap: 12 },
-  row: { gap: 2 },
-  date: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1, textTransform: "uppercase", color: colors.inkMuted },
-  title: { fontFamily: fonts.serif, fontSize: 16, lineHeight: 22, color: colors.accent },
-  titleCurrent: { fontFamily: fonts.serif, fontSize: 16, lineHeight: 22, color: colors.ink },
-});

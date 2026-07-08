@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 type ToolsState = {
   selected: string[];
   toggle: (key: string) => void;
+  setSelected: (keys: string[]) => void; // 드래프트 일괄 저장(설정 화면)
   hasHydrated: boolean;
   setHasHydrated: (v: boolean) => void;
 };
@@ -20,6 +21,7 @@ export const useToolsStore = create<ToolsState>()(
             ? s.selected.filter((k) => k !== key)
             : [...s.selected, key],
         })),
+      setSelected: (keys) => set({ selected: [...new Set(keys)] }),
       hasHydrated: false,
       setHasHydrated: (v) => set({ hasHydrated: v }),
     }),

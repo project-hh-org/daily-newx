@@ -1,8 +1,9 @@
 import type { ReactElement } from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import type { DailyItem } from "@/types/news.types";
-import { colors, fonts } from "@/lib/theme";
+import { useColors, radius, space } from "@/lib/theme";
+import { Type } from "@/ui/Type";
 
 type Props = {
   items: readonly DailyItem[];
@@ -42,44 +43,45 @@ function topKeywords(items: readonly DailyItem[], max: number): Keyword[] {
 /** 오늘의 키워드 — 빈도 높은 tags/entities 를 칩으로. 비면 렌더 안 함. */
 export function TodayKeywords({ items, max = 8 }: Props): ReactElement | null {
   const router = useRouter();
+  const c = useColors();
   const keywords = topKeywords(items, max);
   if (keywords.length === 0) return null;
 
   return (
-    <View style={styles.wrap}>
-      <Text style={styles.label}>오늘의 키워드</Text>
-      <View style={styles.chips}>
+    <View style={{ marginTop: space.xl }}>
+      <Type variant="label" tone="inkMuted">
+        오늘의 키워드
+      </Type>
+      <View style={{ marginTop: 10, flexDirection: "row", flexWrap: "wrap", gap: space.sm }}>
         {keywords.map((k) => (
           <Pressable
             key={`${k.axis}:${k.value}`}
             onPress={() => router.push(`/timeline/${k.axis}/${encodeURIComponent(k.value)}`)}
             accessibilityRole="link"
-            style={styles.chip}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 6,
+              borderWidth: 1,
+              borderColor: c.rule,
+              backgroundColor: c.surface,
+              borderRadius: radius.pill,
+              paddingHorizontal: space.md,
+              paddingVertical: 6,
+              cursor: "pointer",
+            }}
           >
-            <Text style={styles.chipText}>{k.value}</Text>
-            {k.count > 1 && <Text style={styles.chipCount}>{k.count}</Text>}
+            <Type variant="body" tone="ink">
+              {k.value}
+            </Type>
+            {k.count > 1 && (
+              <Type variant="meta" tone="accent">
+                {k.count}
+              </Type>
+            )}
           </Pressable>
         ))}
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrap: { marginTop: 24 },
-  label: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: colors.inkMuted },
-  chips: { marginTop: 10, flexDirection: "row", flexWrap: "wrap", gap: 8 },
-  chip: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    borderWidth: 1,
-    borderColor: colors.rule,
-    backgroundColor: colors.card,
-    borderRadius: 999,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-  },
-  chipText: { fontFamily: fonts.sans, fontSize: 14, color: colors.ink },
-  chipCount: { fontFamily: fonts.sans, fontSize: 12, color: colors.accent },
-});
