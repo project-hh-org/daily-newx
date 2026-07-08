@@ -144,6 +144,7 @@ export type IngestResult = {
 export const toolUpdateIngestSchema = z.object({
   tool_key: z.string().min(1),
   update_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "YYYY-MM-DD"),
+  kind: z.enum(["news", "resource"]).default("news"),
   title: z.string().min(1),
   summary: z.string().min(1),
   url: httpUrlSchema,

@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import { ScrollView, View, Text, Pressable, Linking, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { isoToLabel } from "@/lib/date";
@@ -24,10 +24,14 @@ export function MyToolsScreen(): ReactElement {
   const toggle = useToolsStore((s) => s.toggle);
   const hasHydrated = useToolsStore((s) => s.hasHydrated);
   const query = useToolUpdates(selected);
+  const [tab, setTab] = useState<"news" | "resource">("news");
 
   if (!hasHydrated) return <LoadingView />;
 
   const updates = query.data ?? [];
+  const news = updates.filter((u) => u.kind === "news");
+  const resources = updates.filter((u) => u.kind === "resource");
+  const shown = tab === "news" ? news : resources;
 
   return (
     <ScrollView
@@ -69,7 +73,6 @@ export function MyToolsScreen(): ReactElement {
         {/* 최신 업데이트 */}
         <View style={styles.feedHead}>
           <Text style={styles.sectionLabel}>최신 업데이트</Text>
-          {selected.length > 0 && <Text style={styles.count}>{updates.length}건</Text>}
         </View>
 
         {selected.length === 0 ? (
@@ -78,28 +81,47 @@ export function MyToolsScreen(): ReactElement {
           <LoadingView />
         ) : query.error ? (
           <ErrorView message={query.error.message} onRetry={() => void query.refetch()} />
-        ) : updates.length === 0 ? (
-          <Text style={styles.empty}>아직 모인 업데이트가 없어요. 곧 채워집니다.</Text>
         ) : (
-          <View style={styles.feed}>
-            {updates.map((u, i) => (
-              <Pressable
-                key={u.id ?? `${u.tool_key}-${i}`}
-                onPress={() => openUrl(u.url)}
-                accessibilityRole="link"
-                accessibilityLabel={u.title}
-                style={styles.update}
-              >
-                <Text style={styles.updateKicker}>
-                  {toolByKey(u.tool_key)?.name ?? u.tool_key} · {isoToLabel(u.update_date)}
-                </Text>
-                <Text style={styles.updateTitle}>{u.title}</Text>
-                <Text style={styles.updateSummary} numberOfLines={3}>
-                  {u.summary}
+          <>
+            <View style={styles.tabs}>
+              <Pressable onPress={() => setTab("news")} style={styles.tab} accessibilityRole="button">
+                <Text style={tab === "news" ? styles.tabTextOn : styles.tabText}>
+                  소식 {news.length}
                 </Text>
               </Pressable>
-            ))}
-          </View>
+              <Pressable onPress={() => setTab("resource")} style={styles.tab} accessibilityRole="button">
+                <Text style={tab === "resource" ? styles.tabTextOn : styles.tabText}>
+                  리소스 {resources.length}
+                </Text>
+              </Pressable>
+            </View>
+
+            {shown.length === 0 ? (
+              <Text style={styles.empty}>
+                {tab === "news" ? "아직 소식이 없어요. 곧 채워집니다." : "아직 리소스가 없어요."}
+              </Text>
+            ) : (
+              <View style={styles.feed}>
+                {shown.map((u, i) => (
+                  <Pressable
+                    key={u.id ?? `${u.tool_key}-${i}`}
+                    onPress={() => openUrl(u.url)}
+                    accessibilityRole="link"
+                    accessibilityLabel={u.title}
+                    style={styles.update}
+                  >
+                    <Text style={styles.updateKicker}>
+                      {toolByKey(u.tool_key)?.name ?? u.tool_key} · {isoToLabel(u.update_date)}
+                    </Text>
+                    <Text style={styles.updateTitle}>{u.title}</Text>
+                    <Text style={styles.updateSummary} numberOfLines={3}>
+                      {u.summary}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            )}
+          </>
         )}
 
         {/* 선택 도구 리소스 */}
@@ -140,7 +162,10 @@ const styles = StyleSheet.create({
   chipTextOn: { fontFamily: fonts.sans, fontSize: 13, fontWeight: "600", color: colors.paper },
   chipTextOff: { fontFamily: fonts.sans, fontSize: 13, color: colors.inkSoft },
   feedHead: { marginTop: 36, flexDirection: "row", alignItems: "baseline", justifyContent: "space-between" },
-  count: { fontFamily: fonts.sans, fontSize: 11, color: colors.inkMuted },
+  tabs: { marginTop: 12, flexDirection: "row", gap: 20 },
+  tab: { paddingBottom: 4 },
+  tabText: { fontFamily: fonts.sans, fontSize: 14, color: colors.inkMuted },
+  tabTextOn: { fontFamily: fonts.sans, fontSize: 14, fontWeight: "700", color: colors.ink },
   empty: { marginTop: 16, fontFamily: fonts.serif, fontSize: 15, lineHeight: 24, color: colors.inkMuted },
   feed: { marginTop: 4 },
   update: { borderBottomWidth: 1, borderBottomColor: colors.rule, paddingVertical: 18 },

@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { ScrollView, View, Text, Pressable, Share, StyleSheet } from "react-native";
+import { ScrollView, View, Text, Pressable, Share, Platform, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useArticle } from "@/hooks/useDailyIssue";
 import { useBackOr } from "@/hooks/useBackOr";
@@ -37,7 +37,8 @@ export function ArticleScreen({ id }: Props): ReactElement {
 
   const onShare = (): void => {
     const url = `${API_BASE}/a/${a.id}`;
-    void Share.share({ url, message: `${a.title}\n${url}` });
+    // iOS: url 만 → OG 카드 하나. Android: url 미지원이라 message 로.
+    void Share.share(Platform.OS === "ios" ? { url } : { message: `${a.title}\n${url}` });
   };
 
   return (

@@ -134,6 +134,7 @@ export const toolUpdateSchema = z.object({
   id: z.string().nullable().default(null),
   tool_key: z.string().min(1),
   update_date: isoDate,
+  kind: z.enum(["news", "resource"]).default("news"),
   title: z.string().min(1),
   summary: z.string().min(1),
   url: z.string().url(),
