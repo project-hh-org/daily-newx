@@ -63,6 +63,7 @@ export async function generateMetadata({
       url: `/a/${a.id}`,
     },
     twitter: { card: "summary_large_image", title: a.title, description },
+    alternates: { canonical: `/a/${a.id}` },
     // iOS Safari 스마트 앱 배너(App Store ID 설정 시). 설치 시 앱으로 딥링크.
     ...(APP_STORE_ID
       ? { itunes: { appId: APP_STORE_ID, appArgument: `dailynewx://article/${a.id}` } }
@@ -81,6 +82,17 @@ export default async function SharePage({
   const readerUrl = `${READER_BASE}/article/${a.id}`;
   const kicker = CATEGORY_LABEL[a.category] ?? a.category;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: a.title,
+    description: dek(a),
+    datePublished: a.issue_date,
+    author: { "@type": "Organization", name: a.source_name },
+    publisher: { "@type": "Organization", name: "브리핑 LLM" },
+    mainEntityOfPage: `${SELF_BASE}/a/${a.id}`,
+  };
+
   return (
     <main
       style={{
@@ -93,6 +105,10 @@ export default async function SharePage({
         minHeight: "100vh",
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <p style={{ fontSize: 12, letterSpacing: 1.2, color: "#22324F", fontWeight: 700, margin: 0 }}>
         {kicker}
       </p>

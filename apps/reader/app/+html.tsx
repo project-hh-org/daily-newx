@@ -14,6 +14,9 @@ export default function Root({ children }: PropsWithChildren): ReactElement {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
 
+        {/* 네이버 서치어드바이저 사이트 소유 확인 */}
+        <meta name="naver-site-verification" content="907d0db1a86bf6aa0ed8c66314ed29fcaee564a6" />
+
         {/* 기본 메타(SPA라 전 라우트 공통) — per-article 미리보기는 Vercel /a/{id} SSR 페이지에서 제공 */}
         <title>브리핑 LLM · 오늘의 LLM 소식</title>
         <meta name="description" content="매일 오전 9시, LLM 업데이트·연구·산업 소식" />

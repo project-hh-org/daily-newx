@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import type { DailyItem } from "@/types/news.types";
@@ -21,6 +21,7 @@ function hostOf(url: string): string {
 /** 목차 행 — 번호 + 카테고리 키커 + 표제 + 한 줄 dek + 출처. 하단 헤어라인. 본문(blocks)은 상세에서. */
 export function NewsItemCard({ item, index }: Props): ReactElement {
   const router = useRouter();
+  const [hovered, setHovered] = useState(false);
   const ordinal = String(index).padStart(2, "0");
   const articleId = item.id;
   const dek = item.tldr !== null && item.tldr.trim().length > 0 ? item.tldr : item.summary;
@@ -33,10 +34,12 @@ export function NewsItemCard({ item, index }: Props): ReactElement {
     <Pressable
       onPress={openArticle}
       disabled={articleId === null}
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
       accessibilityRole="link"
       accessibilityLabel={`${categoryLabel(item.category)}, ${item.title}`}
       accessibilityHint={articleId !== null ? "아티클 열기" : undefined}
-      style={styles.row}
+      style={[styles.row, hovered && styles.rowHover]}
     >
       <View style={styles.inner}>
         <Text style={styles.num}>{ordinal}</Text>
@@ -56,7 +59,8 @@ export function NewsItemCard({ item, index }: Props): ReactElement {
 }
 
 const styles = StyleSheet.create({
-  row: { borderBottomWidth: 1, borderBottomColor: colors.rule, paddingVertical: 20 },
+  row: { borderBottomWidth: 1, borderBottomColor: colors.rule, paddingVertical: 20, paddingHorizontal: 8, marginHorizontal: -8, borderRadius: 8, cursor: "pointer" },
+  rowHover: { backgroundColor: colors.surface },
   inner: { flexDirection: "row", gap: 16, alignItems: "flex-start" },
   num: { width: 26, fontFamily: fonts.serif, fontSize: 20, lineHeight: 26, color: colors.inkMuted },
   body: { flex: 1 },

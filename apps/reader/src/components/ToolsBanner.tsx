@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 14,
     paddingVertical: 12,
+    cursor: "pointer",
   },
   kicker: { fontFamily: fonts.sans, fontSize: 10, fontWeight: "700", letterSpacing: 1, color: colors.spot },
   text: { flex: 1, fontFamily: fonts.sans, fontSize: 13, color: colors.ink },

@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   text: { flex: 1, fontFamily: fonts.sans, fontSize: 13, color: colors.paper },
-  btn: { backgroundColor: colors.paper, borderRadius: 6, paddingHorizontal: 12, paddingVertical: 6 },
+  btn: { backgroundColor: colors.paper, borderRadius: 6, paddingHorizontal: 12, paddingVertical: 6, cursor: "pointer" },
+  wrapCursor: { cursor: "pointer" },
   btnText: { fontFamily: fonts.sans, fontSize: 13, fontWeight: "700", color: colors.spot },
   close: { fontFamily: fonts.sans, fontSize: 14, color: colors.paper },
 });

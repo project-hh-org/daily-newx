@@ -33,7 +33,7 @@ export function ScreenHeader({ kicker, title, subtitle, crumb }: Props): ReactEl
 }
 
 const styles = StyleSheet.create({
-  crumb: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", color: colors.accent },
+  crumb: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", color: colors.accent, cursor: "pointer" },
   masthead: { marginTop: 16, borderBottomWidth: 2, borderBottomColor: colors.ink, paddingBottom: 16 },
   kicker: { fontFamily: fonts.sans, fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: colors.inkMuted },
   title: { marginTop: 8, fontFamily: fonts.serif, fontSize: 32, lineHeight: 38, color: colors.ink },

@@ -144,6 +144,21 @@ export async function getIssuesList(): Promise<unknown[]> {
   return data ?? [];
 }
 
+// 사이트맵용: 게시된 아티클 id/일자 (최신순).
+export async function listRecentArticles(
+  limit = 500,
+): Promise<Array<{ id: string; issue_date: string }>> {
+  const supabase = getServiceClient();
+  const { data, error } = await supabase
+    .from("daily_items")
+    .select("id, issue_date, daily_issues!inner(status)")
+    .eq("daily_issues.status", "published")
+    .order("issue_date", { ascending: false })
+    .limit(limit);
+  if (error) throw new Error("아티클 목록 조회 실패: " + error.message);
+  return (data ?? []) as unknown as Array<{ id: string; issue_date: string }>;
+}
+
 // ── 어드민(인증 필요) ─────────────────────────────────────────
 // 어드민은 status 무관하게 전체를 본다(draft 포함).
 const ADMIN_ITEM_COLS =

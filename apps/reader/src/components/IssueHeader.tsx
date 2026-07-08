@@ -62,5 +62,5 @@ const styles = StyleSheet.create({
   intro: { marginTop: 14, fontFamily: fonts.serif, fontSize: 17, lineHeight: 27, color: colors.inkSoft },
   rule: { marginTop: 16, height: 2, backgroundColor: colors.ink },
   nav: { marginTop: 14, flexDirection: "row", flexWrap: "wrap", alignItems: "center", columnGap: 18, rowGap: 8 },
-  navItem: { fontFamily: fonts.sans, fontSize: 13, fontWeight: "600", color: colors.inkSoft },
+  navItem: { fontFamily: fonts.sans, fontSize: 13, fontWeight: "600", color: colors.inkSoft, cursor: "pointer" },
 });

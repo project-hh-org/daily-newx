@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { colors, fonts } from "@/lib/theme";
 
@@ -11,12 +11,15 @@ type Props = {
 
 /** 인덱스/리스트 공용 행 — 제목(+부제) 좌측, 메타(개수 등) 우측, 상단 헤어라인. */
 export function ListRow({ title, subtitle, meta, onPress }: Props): ReactElement {
+  const [hovered, setHovered] = useState(false);
   return (
     <Pressable
       onPress={onPress}
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
       accessibilityRole="link"
       accessibilityLabel={meta !== undefined ? `${title}, ${meta}` : title}
-      style={styles.row}
+      style={[styles.row, hovered && styles.rowHover]}
     >
       <View style={styles.main}>
         <Text style={styles.title}>{title}</Text>
@@ -42,7 +45,12 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: colors.rule,
     paddingVertical: 16,
+    paddingHorizontal: 8,
+    marginHorizontal: -8,
+    borderRadius: 8,
+    cursor: "pointer",
   },
+  rowHover: { backgroundColor: colors.surface },
   main: { flex: 1 },
   title: { fontFamily: fonts.serif, fontSize: 18, lineHeight: 25, color: colors.ink },
   subtitle: { marginTop: 4, fontFamily: fonts.sans, fontSize: 14, lineHeight: 21, color: colors.inkMuted },

@@ -97,10 +97,10 @@ export function ArticleScreen({ id }: Props): ReactElement {
 const styles = StyleSheet.create({
   scroll: { flex: 1, backgroundColor: colors.paper },
   column: { width: "100%", maxWidth: MAX_READING, marginHorizontal: "auto", paddingHorizontal: 20 },
-  crumb: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", color: colors.accent },
+  crumb: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", color: colors.accent, cursor: "pointer" },
   title: { marginTop: 16, fontFamily: fonts.serif, fontSize: 30, lineHeight: 40, color: colors.ink },
   tldr: { marginTop: 12, fontFamily: fonts.serif, fontSize: 19, lineHeight: 31, color: colors.ink },
   summary: { marginTop: 16, fontFamily: fonts.sans, fontSize: 16, lineHeight: 27, color: colors.inkSoft },
-  shareBtn: { marginTop: 16, alignSelf: "flex-start" },
+  shareBtn: { marginTop: 16, alignSelf: "flex-start", cursor: "pointer" },
   shareText: { fontFamily: fonts.sans, fontSize: 13, fontWeight: "600", color: colors.spot },
 });
