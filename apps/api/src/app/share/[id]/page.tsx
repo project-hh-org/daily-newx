@@ -61,10 +61,10 @@ export async function generateMetadata({
       siteName: "브리핑 LLM",
       title: a.title,
       description,
-      url: `/a/${a.id}`,
+      url: `/share/${a.id}`,
     },
     twitter: { card: "summary_large_image", title: a.title, description },
-    alternates: { canonical: `/a/${a.id}` },
+    alternates: { canonical: `/share/${a.id}` },
     // iOS Safari 스마트 앱 배너(App Store ID 설정 시). 설치 시 앱으로 딥링크.
     ...(APP_STORE_ID
       ? { itunes: { appId: APP_STORE_ID, appArgument: `dailynewx://article/${a.id}` } }
@@ -91,7 +91,7 @@ export default async function SharePage({
     datePublished: a.issue_date,
     author: { "@type": "Organization", name: a.source_name },
     publisher: { "@type": "Organization", name: "브리핑 LLM" },
-    mainEntityOfPage: `${SELF_BASE}/a/${a.id}`,
+    mainEntityOfPage: `${SELF_BASE}/share/${a.id}`,
   };
 
   return (

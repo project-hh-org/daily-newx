@@ -36,7 +36,7 @@ export function ArticleScreen({ id }: Props): ReactElement {
   const compact = isoToCompact(a.issue_date);
 
   const onShare = (): void => {
-    const url = `${PUBLIC_WEB_BASE}/a/${a.id}`;
+    const url = `${PUBLIC_WEB_BASE}/share/${a.id}`;
     // iOS: url 만 → OG 카드 하나. Android: url 미지원이라 message 로.
     void Share.share(Platform.OS === "ios" ? { url } : { message: `${a.title}\n${url}` });
   };
