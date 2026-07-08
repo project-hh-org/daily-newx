@@ -23,7 +23,8 @@ type ArticleLike = {
   source_url: string;
 };
 
-const SELF_BASE = process.env.NEXT_PUBLIC_SELF_BASE ?? "https://daily-newx.vercel.app";
+// 공개 URL(canonical·OG·sitemap)은 사용자 접근 도메인 기준. Amplify가 이 경로를 Vercel로 프록시.
+const SELF_BASE = process.env.NEXT_PUBLIC_SELF_BASE ?? "https://daily-newx.project-hh.com";
 const READER_BASE = process.env.NEXT_PUBLIC_READER_BASE ?? "https://daily-newx.project-hh.com";
 
 const CATEGORY_LABEL: Record<string, string> = {

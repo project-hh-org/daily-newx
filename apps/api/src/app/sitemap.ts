@@ -4,7 +4,7 @@ import { listRecentArticles } from "@/services/newsRepository";
 export const runtime = "nodejs";
 export const revalidate = 3600; // 1시간마다 재생성
 
-const BASE = process.env.NEXT_PUBLIC_SELF_BASE ?? "https://daily-newx.vercel.app";
+const BASE = process.env.NEXT_PUBLIC_SELF_BASE ?? "https://daily-newx.project-hh.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let articles: Array<{ id: string; issue_date: string }> = [];

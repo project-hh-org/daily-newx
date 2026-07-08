@@ -3,7 +3,7 @@ import { ScrollView, View, Text, Pressable, Share, Platform, StyleSheet } from "
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useArticle } from "@/hooks/useDailyIssue";
 import { useBackOr } from "@/hooks/useBackOr";
-import { API_BASE } from "@/services/config";
+import { PUBLIC_WEB_BASE } from "@/services/config";
 import { isoToLabel, isoToCompact } from "@/lib/date";
 import { categoryLabel } from "@/lib/categories";
 import { colors, fonts, MAX_READING } from "@/lib/theme";
@@ -36,7 +36,7 @@ export function ArticleScreen({ id }: Props): ReactElement {
   const compact = isoToCompact(a.issue_date);
 
   const onShare = (): void => {
-    const url = `${API_BASE}/a/${a.id}`;
+    const url = `${PUBLIC_WEB_BASE}/a/${a.id}`;
     // iOS: url 만 → OG 카드 하나. Android: url 미지원이라 message 로.
     void Share.share(Platform.OS === "ios" ? { url } : { message: `${a.title}\n${url}` });
   };
