@@ -36,11 +36,12 @@ export function ArchiveScreen(): ReactElement {
         </Type>
       ) : (
         <View style={{ marginTop: space.xl }}>
-          {issues.map((issue) => {
+          {issues.map((issue, i) => {
             const compact = isoToCompact(issue.issue_date);
             return (
               <ListRow
                 key={issue.issue_date}
+                first={i === 0}
                 title={isoToLabel(issue.issue_date)}
                 subtitle={issue.intro ?? undefined}
                 meta={issue.issue_no !== null ? `${issue.issue_no}번째 브리핑` : undefined}

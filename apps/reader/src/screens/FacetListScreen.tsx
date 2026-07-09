@@ -42,9 +42,10 @@ export function FacetListScreen({ kind }: Props): ReactElement {
         </Type>
       ) : (
         <View style={{ marginTop: space.xl }}>
-          {facets.map((f) => (
+          {facets.map((f, i) => (
             <ListRow
               key={f.value}
+              first={i === 0}
               title={f.value}
               meta={`${f.count}건`}
               onPress={() => router.push(`/timeline/${kind}/${encodeURIComponent(f.value)}`)}

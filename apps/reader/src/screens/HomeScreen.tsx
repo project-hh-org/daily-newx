@@ -17,7 +17,7 @@ export function HomeScreen(): ReactElement {
     <Screen>
       <ScreenHeader kicker="매일의 LLM 뉴스" title="데일리 LLM 뉴스" subtitle="오늘의 LLM 소식" />
       <View style={{ marginTop: space.xxl }}>
-        <ListRow title="오늘 브리핑" meta={todayLabel} onPress={() => router.push(`/daily/${today}`)} />
+        <ListRow first title="오늘 브리핑" meta={todayLabel} onPress={() => router.push(`/daily/${today}`)} />
         <ListRow title="카테고리" subtitle="헤드라인·릴리스·연구·커뮤니티·산업" onPress={() => router.push("/categories")} />
         <ListRow title="키워드" subtitle="토픽 태그로 모아보기" onPress={() => router.push("/topics")} />
         <ListRow title="대상" subtitle="기업·모델·인물로 모아보기" onPress={() => router.push("/entities")} />

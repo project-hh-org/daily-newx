@@ -1,16 +1,19 @@
 import { useState, type ReactElement } from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
-import { colors, fonts } from "@/lib/theme";
+import { View, Pressable } from "react-native";
+import { useColors, radius, space } from "@/lib/theme";
+import { Type } from "@/ui/Type";
 
 type Props = {
   title: string;
   subtitle?: string;
   meta?: string;
   onPress: () => void;
+  first?: boolean; // 첫 행은 상단 헤어라인 제거(헤더 라인과 이중선 방지)
 };
 
 /** 인덱스/리스트 공용 행 — 제목(+부제) 좌측, 메타(개수 등) 우측, 상단 헤어라인. */
-export function ListRow({ title, subtitle, meta, onPress }: Props): ReactElement {
+export function ListRow({ title, subtitle, meta, onPress, first = false }: Props): ReactElement {
+  const c = useColors();
   const [hovered, setHovered] = useState(false);
   return (
     <Pressable
@@ -19,42 +22,38 @@ export function ListRow({ title, subtitle, meta, onPress }: Props): ReactElement
       onHoverOut={() => setHovered(false)}
       accessibilityRole="link"
       accessibilityLabel={meta !== undefined ? `${title}, ${meta}` : title}
-      style={[styles.row, hovered && styles.rowHover]}
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        gap: space.md,
+        borderTopWidth: first ? 0 : 1,
+        borderTopColor: c.rule,
+        paddingVertical: space.lg,
+        paddingHorizontal: space.sm,
+        marginHorizontal: -space.sm,
+        borderRadius: radius.md,
+        backgroundColor: hovered ? c.surface : "transparent",
+        cursor: "pointer",
+      }}
     >
-      <View style={styles.main}>
-        <Text style={styles.title}>{title}</Text>
+      <View style={{ flex: 1 }}>
+        <Type variant="h2">{title}</Type>
         {subtitle !== undefined && subtitle.length > 0 && (
-          <Text style={styles.subtitle} numberOfLines={2}>
+          <Type variant="body" tone="inkMuted" numberOfLines={2} style={{ marginTop: 4 }}>
             {subtitle}
-          </Text>
+          </Type>
         )}
       </View>
-      <View style={styles.right}>
-        {meta !== undefined && <Text style={styles.meta}>{meta}</Text>}
-        <Text style={styles.chevron}>›</Text>
+      <View style={{ flexDirection: "row", alignItems: "center", gap: space.sm }}>
+        {meta !== undefined && (
+          <Type variant="meta" tone="inkMuted">
+            {meta}
+          </Type>
+        )}
+        <Type variant="body" tone="inkMuted">
+          {"›"}
+        </Type>
       </View>
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 14,
-    borderTopWidth: 1,
-    borderTopColor: colors.rule,
-    paddingVertical: 16,
-    paddingHorizontal: 8,
-    marginHorizontal: -8,
-    borderRadius: 8,
-    cursor: "pointer",
-  },
-  rowHover: { backgroundColor: colors.surface },
-  main: { flex: 1 },
-  title: { fontFamily: fonts.serif, fontSize: 18, lineHeight: 25, color: colors.ink },
-  subtitle: { marginTop: 4, fontFamily: fonts.sans, fontSize: 14, lineHeight: 21, color: colors.inkMuted },
-  right: { flexDirection: "row", alignItems: "center", gap: 10 },
-  meta: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 0.3, color: colors.inkMuted },
-  chevron: { fontFamily: fonts.sans, fontSize: 18, color: colors.inkMuted },
-});

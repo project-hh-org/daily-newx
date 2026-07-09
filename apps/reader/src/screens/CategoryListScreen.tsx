@@ -21,9 +21,10 @@ export function CategoryListScreen(): ReactElement {
         crumb={{ label: "오늘", onPress: () => backOr("/") }}
       />
       <View style={{ marginTop: space.xl }}>
-        {CATEGORY_ORDER.map((cat) => (
+        {CATEGORY_ORDER.map((cat, i) => (
           <ListRow
             key={cat.key}
+            first={i === 0}
             title={cat.label}
             subtitle={cat.blurb}
             onPress={() => router.push(`/timeline/category/${cat.key}`)}
