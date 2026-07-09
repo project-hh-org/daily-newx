@@ -9,6 +9,7 @@ import { useToolUpdates } from "@/hooks/useDailyIssue";
 import { useBackOr } from "@/hooks/useBackOr";
 import { Screen } from "@/ui/Screen";
 import { Type } from "@/ui/Type";
+import { Tag } from "@/ui/Tag";
 import { ScreenHeader } from "@/components/ScreenHeader";
 import { LoadingView, ErrorView } from "@/components/StateViews";
 
@@ -47,10 +48,23 @@ export function MyToolsScreen(): ReactElement {
         crumb={{ label: "오늘", onPress: () => backOr("/") }}
       />
 
-      <View style={{ marginTop: space.md, flexDirection: "row", justifyContent: "flex-end" }}>
+      <View
+        style={{
+          marginTop: space.lg,
+          flexDirection: "row",
+          alignItems: "baseline",
+          justifyContent: "space-between",
+        }}
+      >
+        <Type variant="label" tone="inkMuted">{`선택한 도구 ${selected.length}`}</Type>
         <Type variant="meta" tone="accentDim" style={{ cursor: "pointer" }} onPress={() => router.push("/settings/tools")}>
           {"도구 편집 ›"}
         </Type>
+      </View>
+      <View style={{ marginTop: space.sm, flexDirection: "row", flexWrap: "wrap", gap: space.sm }}>
+        {selected.map((k) => (
+          <Tag key={k} label={toolByKey(k)?.name ?? k} tone="outline" />
+        ))}
       </View>
 
       {query.isPending ? (
