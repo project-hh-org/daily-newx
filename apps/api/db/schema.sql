@@ -143,14 +143,14 @@ create table if not exists public.tool_updates (
                  check (kind in ('news', 'resource')),
   title        text not null,
   summary      text not null,                     -- 카드용 1~2문장
-  body         text,                              -- 상세용 긴 설명(문단은 빈 줄로 구분)
+  blocks       jsonb not null default '[]'::jsonb, -- 상세 본문(아티클과 동일한 블록 배열: 사용법·설치·장단점 등)
   url          text not null check (url ~ '^https?://'),
   created_at   timestamptz not null default now(),
   unique (tool_key, url)                          -- 같은 링크 중복 방지(멱등)
 );
 -- 기존 테이블에도 안전하게 컬럼 추가(멱등)
 alter table public.tool_updates add column if not exists kind text not null default 'news';
-alter table public.tool_updates add column if not exists body text;
+alter table public.tool_updates add column if not exists blocks jsonb not null default '[]'::jsonb;
 
 create index if not exists idx_tool_updates_key_date
   on public.tool_updates (tool_key, update_date desc);

@@ -2,7 +2,7 @@
   "expo": {
     "name": "브리핑 LLM",
     "slug": "daily-newx",
-    "version": "0.1.1",
+    "version": "1.0.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -22,12 +22,37 @@
         "ITSAppUsesNonExemptEncryption": false
       }
     },
+    "android": {
+      "package": "com.projecthh.dailynewx"
+    },
     "web": {
       "bundler": "metro",
       "output": "single",
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-router", "expo-status-bar", "expo-notifications"],
+    "plugins": [
+      "expo-router",
+      "expo-status-bar",
+      "expo-notifications",
+      "@bacons/apple-targets",
+      [
+        "react-native-android-widget",
+        {
+          "widgets": [
+            {
+              "name": "Today",
+              "label": "브리핑 LLM",
+              "minWidth": "180dp",
+              "minHeight": "110dp",
+              "description": "오늘의 LLM 소식 헤드라인",
+              "previewImage": "./assets/icon.png",
+              "updatePeriodMillis": 1800000,
+              "resizeMode": "horizontal|vertical"
+            }
+          ]
+        }
+      ]
+    ],
     "extra": {
       "router": {
         "origin": false

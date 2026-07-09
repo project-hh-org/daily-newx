@@ -10,6 +10,7 @@ import { Screen } from "@/ui/Screen";
 import { Type } from "@/ui/Type";
 import { Tag } from "@/ui/Tag";
 import { Button } from "@/ui/Button";
+import { ArticleBlocks } from "@/components/ArticleBlocks";
 import { LoadingView, ErrorView } from "@/components/StateViews";
 
 type Props = { id: string };
@@ -67,16 +68,11 @@ export function ToolUpdateScreen({ id }: Props): ReactElement {
         {update.summary}
       </Type>
 
-      {update.body !== null &&
-        update.body
-          .split(/\n{2,}/)
-          .map((p) => p.trim())
-          .filter((p) => p.length > 0)
-          .map((para, i) => (
-            <Type key={i} variant="body" tone="inkSoft" style={{ marginTop: space.lg }}>
-              {para}
-            </Type>
-          ))}
+      {update.blocks.length > 0 && (
+        <View style={{ marginTop: space.lg }}>
+          <ArticleBlocks blocks={update.blocks} />
+        </View>
+      )}
 
       <View style={{ marginTop: space.xxl }}>
         <Button label="원문 열기 ↗" kind="primary" onPress={() => void Linking.openURL(update.url)} />

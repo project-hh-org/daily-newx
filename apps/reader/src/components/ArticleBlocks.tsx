@@ -10,6 +10,12 @@ type Props = {
 
 const PRO_GREEN = "#2E7D5B";
 
+// 코드/터미널 카드 — 라이트·다크 모드 무관하게 항상 다크(CLI 룩).
+const CODE_BG = "#161616";
+const CODE_RULE = "#262626";
+const CODE_FG = "#E8E8E8";
+const CODE_DIM = "#8A8A8A";
+
 function hostOf(url: string): string {
   try {
     return new URL(url).host.replace(/^www\./, "");
@@ -150,14 +156,33 @@ function BlockView({ block }: { block: Block }): ReactElement | null {
           · · ·
         </Type>
       );
-    case "code":
+    case "code": {
+      const hasLang = block.lang !== null && block.lang.length > 0;
       return (
-        <View style={{ backgroundColor: "#26221E", borderRadius: 10, padding: 14 }}>
-          <Type variant="meta" style={{ fontFamily: "monospace", color: "#ECE6DA", lineHeight: 20 }}>
-            {block.code}
-          </Type>
+        <View
+          style={{
+            backgroundColor: CODE_BG,
+            borderRadius: radius.lg,
+            borderWidth: 1,
+            borderColor: CODE_RULE,
+            overflow: "hidden",
+          }}
+        >
+          {hasLang && (
+            <View style={{ paddingHorizontal: space.md, paddingTop: space.sm }}>
+              <Type variant="caption" style={{ color: CODE_DIM, letterSpacing: 1 }}>
+                {(block.lang ?? "").toUpperCase()}
+              </Type>
+            </View>
+          )}
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ padding: space.md, paddingTop: hasLang ? space.sm : space.md }}>
+            <Type variant="meta" style={{ fontFamily: "monospace", color: CODE_FG, lineHeight: 20 }}>
+              {block.code}
+            </Type>
+          </ScrollView>
         </View>
       );
+    }
     case "embed":
       return (
         <Pressable

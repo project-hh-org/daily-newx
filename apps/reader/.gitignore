@@ -1,1 +1,15 @@
+# CNG(prebuild) 산출물 — app.json/플러그인으로 재생성되므로 커밋하지 않음.
+/ios
+/android
 
+# Expo
+.expo/
+dist/
+web-build/
+
+# 서명/키 (절대 커밋 금지)
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision

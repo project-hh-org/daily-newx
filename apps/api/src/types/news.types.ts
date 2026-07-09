@@ -147,7 +147,7 @@ export const toolUpdateIngestSchema = z.object({
   kind: z.enum(["news", "resource"]).default("news"),
   title: z.string().min(1),
   summary: z.string().min(1), // 카드용 1~2문장
-  body: z.string().nullable().default(null), // 상세용 긴 설명(문단 = 빈 줄 구분)
+  blocks: z.array(blockSchema).default([]), // 상세 본문(사용법·설치·장단점 등)
   url: httpUrlSchema,
 });
 export type ToolUpdateIngest = z.infer<typeof toolUpdateIngestSchema>;

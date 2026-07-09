@@ -10,7 +10,7 @@ import { Type } from "@/ui/Type";
 import { Row } from "@/ui/Row";
 import { Segmented } from "@/ui/Segmented";
 
-const APP_VERSION = "0.1.1";
+const APP_VERSION = "1.0.0";
 
 const THEME_OPTIONS: ReadonlyArray<{ value: ThemeMode; label: string }> = [
   { value: "system", label: "시스템" },
