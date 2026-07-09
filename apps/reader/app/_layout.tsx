@@ -8,7 +8,7 @@ import { useFonts } from "expo-font";
 import * as Notifications from "expo-notifications";
 import { registerPushToken } from "@/services/pushRegistration";
 import { useSettingsStore } from "@/store/settingsStore";
-import { useColors, radius, space } from "@/lib/theme";
+import { useColors, useEffectiveScheme, radius, space } from "@/lib/theme";
 import { Type } from "@/ui/Type";
 
 // 렌더 중 예외 시 표시(500 성격). expo-router 가 자동으로 사용.
@@ -55,6 +55,7 @@ export function ErrorBoundary({ retry }: ErrorBoundaryProps): ReactElement {
 
 export default function RootLayout(): ReactElement {
   const c = useColors();
+  const scheme = useEffectiveScheme();
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -64,7 +65,7 @@ export default function RootLayout(): ReactElement {
       }),
   );
 
-  // 네이티브는 로컬 번들 TTF, 웹은 +html 의 woff2 @font-face 사용(웹은 TTF 로드 안 함).
+  // 네이티브는 로컬 번들 폰트(G마켓 TTF · Pretendard OTF), 웹은 +html 의 woff2 @font-face 사용.
   const [fontsLoaded] = useFonts(
     Platform.OS === "web"
       ? {}
@@ -72,6 +73,8 @@ export default function RootLayout(): ReactElement {
           GmarketSansTTFLight: require("../assets/fonts/GmarketSansTTFLight.ttf"),
           GmarketSansTTFMedium: require("../assets/fonts/GmarketSansTTFMedium.ttf"),
           GmarketSansTTFBold: require("../assets/fonts/GmarketSansTTFBold.ttf"),
+          Pretendard: require("../assets/fonts/Pretendard-Regular.otf"),
+          PretendardSemiBold: require("../assets/fonts/Pretendard-SemiBold.otf"),
         },
   );
 
@@ -102,7 +105,8 @@ export default function RootLayout(): ReactElement {
   return (
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
-        <StatusBar style="auto" />
+        {/* 설정 테마(라이트/다크/시스템)를 따라 상태바 대비 반전 */}
+        <StatusBar style={scheme === "dark" ? "light" : "dark"} />
         <Stack screenOptions={{ headerShown: false }} />
       </SafeAreaProvider>
     </QueryClientProvider>

@@ -146,7 +146,8 @@ export const toolUpdateIngestSchema = z.object({
   update_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "YYYY-MM-DD"),
   kind: z.enum(["news", "resource"]).default("news"),
   title: z.string().min(1),
-  summary: z.string().min(1),
+  summary: z.string().min(1), // 카드용 1~2문장
+  body: z.string().nullable().default(null), // 상세용 긴 설명(문단 = 빈 줄 구분)
   url: httpUrlSchema,
 });
 export type ToolUpdateIngest = z.infer<typeof toolUpdateIngestSchema>;

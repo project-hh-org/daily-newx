@@ -63,9 +63,20 @@ export function ToolUpdateScreen({ id }: Props): ReactElement {
         <Tag label={update.kind === "resource" ? "리소스" : "소식"} tone="outline" />
       </View>
 
-      <Type variant="body" tone="inkSoft" style={{ marginTop: space.xl }}>
+      <Type variant="body" tone="ink" style={{ marginTop: space.xl }}>
         {update.summary}
       </Type>
+
+      {update.body !== null &&
+        update.body
+          .split(/\n{2,}/)
+          .map((p) => p.trim())
+          .filter((p) => p.length > 0)
+          .map((para, i) => (
+            <Type key={i} variant="body" tone="inkSoft" style={{ marginTop: space.lg }}>
+              {para}
+            </Type>
+          ))}
 
       <View style={{ marginTop: space.xxl }}>
         <Button label="원문 열기 ↗" kind="primary" onPress={() => void Linking.openURL(update.url)} />

@@ -142,13 +142,15 @@ create table if not exists public.tool_updates (
   kind         text not null default 'news'      -- news(공식 소식) | resource(커뮤니티 레포/스킬/gist)
                  check (kind in ('news', 'resource')),
   title        text not null,
-  summary      text not null,
+  summary      text not null,                     -- 카드용 1~2문장
+  body         text,                              -- 상세용 긴 설명(문단은 빈 줄로 구분)
   url          text not null check (url ~ '^https?://'),
   created_at   timestamptz not null default now(),
   unique (tool_key, url)                          -- 같은 링크 중복 방지(멱등)
 );
 -- 기존 테이블에도 안전하게 컬럼 추가(멱등)
 alter table public.tool_updates add column if not exists kind text not null default 'news';
+alter table public.tool_updates add column if not exists body text;
 
 create index if not exists idx_tool_updates_key_date
   on public.tool_updates (tool_key, update_date desc);

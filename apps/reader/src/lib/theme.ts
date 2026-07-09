@@ -59,12 +59,17 @@ export const darkColors: Palette = {
   white: "#FFFFFF",
 };
 
-// 설정(테마모드) + 시스템 스킴을 반영해 팔레트 반환.
-export function useColors(): Palette {
+// 설정(테마모드) + 시스템 스킴을 합친 실제 적용 스킴.
+export function useEffectiveScheme(): "light" | "dark" {
   const system = useColorScheme();
   const mode = useSettingsStore((s) => s.themeMode);
-  const effective = mode === "system" ? (system === "dark" ? "dark" : "light") : mode;
-  return effective === "dark" ? darkColors : lightColors;
+  if (mode === "system") return system === "dark" ? "dark" : "light";
+  return mode;
+}
+
+// 실제 적용 스킴에 맞는 팔레트 반환.
+export function useColors(): Palette {
+  return useEffectiveScheme() === "dark" ? darkColors : lightColors;
 }
 
 // 하위호환: 기존 정적 import 용 기본값(라이트). Step 3에서 useColors() 로 이전.

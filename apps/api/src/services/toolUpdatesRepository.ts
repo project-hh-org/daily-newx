@@ -11,6 +11,7 @@ export async function upsertToolUpdates(updates: readonly ToolUpdateIngest[]): P
     kind: u.kind,
     title: u.title,
     summary: u.summary,
+    body: u.body,
     url: u.url,
   }));
   const { error } = await supabase
@@ -29,7 +30,7 @@ export async function getToolUpdates(
   const supabase = getServiceClient();
   const { data, error } = await supabase
     .from("tool_updates")
-    .select("id, tool_key, update_date, kind, title, summary, url")
+    .select("id, tool_key, update_date, kind, title, summary, body, url")
     .in("tool_key", toolKeys as string[])
     .gte("update_date", sinceDate)
     .order("update_date", { ascending: false })

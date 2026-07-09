@@ -136,7 +136,8 @@ export const toolUpdateSchema = z.object({
   update_date: isoDate,
   kind: z.enum(["news", "resource"]).default("news"),
   title: z.string().min(1),
-  summary: z.string().min(1),
+  summary: z.string().min(1), // 카드용 1~2문장
+  body: z.string().nullable().default(null), // 상세용 긴 설명(문단 = 빈 줄 구분)
   url: z.string().url(),
 });
 export type ToolUpdate = z.infer<typeof toolUpdateSchema>;
