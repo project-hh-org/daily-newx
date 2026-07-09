@@ -77,8 +77,11 @@ export function MyToolsScreen(): ReactElement {
               {shown.map((u, i) => (
                 <Pressable
                   key={u.id ?? `${u.tool_key}-${i}`}
-                  onPress={() => openUrl(u.url)}
-                  accessibilityRole="link"
+                  onPress={() => {
+                    if (u.id !== null) router.push(`/tool/${u.id}`);
+                    else openUrl(u.url);
+                  }}
+                  accessibilityRole="button"
                   accessibilityLabel={u.title}
                   style={{
                     paddingVertical: space.lg,
