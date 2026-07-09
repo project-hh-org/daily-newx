@@ -1,12 +1,14 @@
 import { ScrollViewStyleReset } from "expo-router/html";
 import type { PropsWithChildren, ReactElement } from "react";
 
-// 웹 전용 HTML 셸 — 제목(G마켓 산스 woff2, public/fonts) + 본문(Pretendard) 주입.
-// 네이티브는 _layout 의 useFonts 가 로컬 TTF 를 로드(웹에선 TTF 미사용).
-const GMARKET_FONT_FACE = `
+// 웹 전용 HTML 셸 — 제목(G마켓 산스) + 본문(Pretendard) 모두 로컬 woff2(public/fonts).
+// 외부 CDN 의존 없음. 네이티브는 _layout 의 useFonts 가 로컬 TTF 를 로드(웹에선 TTF 미사용).
+const FONT_FACE = `
 @font-face{font-family:'GmarketSansTTFLight';src:url('/fonts/GmarketSansTTFLight.woff2') format('woff2');font-display:swap}
 @font-face{font-family:'GmarketSansTTFMedium';src:url('/fonts/GmarketSansTTFMedium.woff2') format('woff2');font-display:swap}
 @font-face{font-family:'GmarketSansTTFBold';src:url('/fonts/GmarketSansTTFBold.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'Pretendard';src:url('/fonts/Pretendard-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('/fonts/Pretendard-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
 `;
 
 export default function Root({ children }: PropsWithChildren): ReactElement {
@@ -32,14 +34,8 @@ export default function Root({ children }: PropsWithChildren): ReactElement {
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-        {/* 제목: G마켓 산스(로컬 woff2) */}
-        <style dangerouslySetInnerHTML={{ __html: GMARKET_FONT_FACE }} />
-        {/* 본문: Pretendard */}
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css"
-        />
+        {/* 제목 G마켓 산스 · 본문 Pretendard — 모두 로컬 woff2 */}
+        <style dangerouslySetInnerHTML={{ __html: FONT_FACE }} />
 
         <ScrollViewStyleReset />
       </head>
