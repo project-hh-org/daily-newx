@@ -59,7 +59,19 @@
         "origin": false
       },
       "eas": {
-        "projectId": "aaffaa07-2378-4eee-b242-93d98a19d8fc"
+        "projectId": "aaffaa07-2378-4eee-b242-93d98a19d8fc",
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "widget",
+                  "bundleIdentifier": "com.projecthh.dailynewx.widget"
+                }
+              ]
+            }
+          }
+        }
       }
     },
     "owner": "project-hh"
