@@ -17,6 +17,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.projecthh.dailynewx",
+      "appleTeamId": "ZAT9VDF4D4",
       "buildNumber": "1",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false

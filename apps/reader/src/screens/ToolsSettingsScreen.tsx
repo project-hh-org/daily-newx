@@ -1,6 +1,5 @@
-import { useEffect, useState, type ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import { View, Pressable } from "react-native";
-import { useRouter } from "expo-router";
 import { useColors, radius, space } from "@/lib/theme";
 import { TOOL_CATALOG, type ToolCategory } from "@/lib/toolCatalog";
 import { useToolsStore } from "@/store/toolsStore";
@@ -19,27 +18,19 @@ function sameSet(a: readonly string[], b: readonly string[]): boolean {
   return b.every((k) => s.has(k));
 }
 
-/** 자주 쓰는 도구·에이전트 선택 — 로컬 드래프트, 저장 버튼으로 커밋. */
-export function ToolsSettingsScreen(): ReactElement {
+type FormProps = { initial: readonly string[] };
+
+/** 선택 폼 — 하이드레이션 완료 후에만 마운트되므로 initial 로 1회 초기화된다. */
+function ToolsSettingsForm({ initial }: FormProps): ReactElement {
   const c = useColors();
-  const router = useRouter();
   const backOr = useBackOr();
-  const selected = useToolsStore((s) => s.selected);
   const setSelected = useToolsStore((s) => s.setSelected);
-  const hasHydrated = useToolsStore((s) => s.hasHydrated);
-
-  const [draft, setDraft] = useState<string[]>(selected);
-  useEffect(() => {
-    if (hasHydrated) setDraft(selected);
-    // 하이드레이션 완료 시 1회 동기화
-  }, [hasHydrated]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  if (!hasHydrated) return <LoadingView />;
+  const [draft, setDraft] = useState<string[]>([...initial]);
 
   const toggle = (key: string): void =>
     setDraft((d) => (d.includes(key) ? d.filter((k) => k !== key) : [...d, key]));
 
-  const dirty = !sameSet(draft, selected);
+  const dirty = !sameSet(draft, initial);
 
   const save = (): void => {
     setSelected(draft);
@@ -97,4 +88,13 @@ export function ToolsSettingsScreen(): ReactElement {
       </View>
     </Screen>
   );
+}
+
+/** 자주 쓰는 도구·에이전트 선택 — 로컬 드래프트, 저장 버튼으로 커밋. */
+export function ToolsSettingsScreen(): ReactElement {
+  const selected = useToolsStore((s) => s.selected);
+  const hasHydrated = useToolsStore((s) => s.hasHydrated);
+
+  if (!hasHydrated) return <LoadingView />;
+  return <ToolsSettingsForm initial={selected} />;
 }

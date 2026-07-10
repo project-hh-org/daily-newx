@@ -8,7 +8,7 @@ const CACHE_KEY = "widget.brief.cache.v1";
 type ApiResponse = {
   issue_date: string;
   is_today: boolean;
-  items: Array<{ title: string; source_name: string }>;
+  items: { title: string; source_name: string }[];
 };
 
 async function readCache(): Promise<WidgetData> {

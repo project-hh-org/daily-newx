@@ -1,0 +1,308 @@
+{
+  "issue": {
+    "issue_date": "2026-07-10",
+    "issue_no": 25,
+    "intro": "오늘은 'AI가 대신 일해준다'는 약속이 두 방향에서 동시에 시험대에 올랐습니다. OpenAI는 몇 시간 동안 스스로 프로젝트를 끝내는 '챗GPT 워크'를 내놨고, Anthropic은 반대로 사람이 AI를 얼마나 쓰는지 되돌아보게 하는 '리플렉트'를 선보였습니다. 한편 태평양 건너에서는 알리바바가 백도어 의혹을 이유로 오늘부터 클로드 코드 사용을 전면 금지했고, 중국의 새 AI 규제를 앞두고 큐원(Qwen)도 사용자 제작 에이전트 기능을 껐습니다.",
+    "outro": "일하는 AI와 그 AI를 감시·규제하려는 움직임이 같은 주에 동시에 터져 나온 하루였습니다. 내일은 알리바바의 금지 조치에 Anthropic이 공식 대응을 내놓을지, 그리고 챗GPT 워크의 실사용 후기가 어떻게 쌓이는지 지켜볼 만합니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "OpenAI, 몇 시간이고 스스로 일하는 '챗GPT 워크' 공개",
+      "tldr": "목표만 알려주면 여러 앱을 오가며 문서·표·발표자료까지 완성해주는 업무용 AI 에이전트가 나왔다.",
+      "summary": "OpenAI가 7월 9일 라이브스트림에서 '챗GPT 워크(ChatGPT Work)'를 공개했습니다. 새로 나온 GPT-5.6을 기반으로, 여러 앱과 파일에서 필요한 정보를 스스로 모아 문서·스프레드시트·발표자료·간단한 웹앱을 완성하는 에이전트입니다. 몇 시간이 걸리는 복잡한 프로젝트도 작은 단계로 나눠 혼자 진행할 수 있다고 합니다. 같은 자리에서 코딩 도구 코덱스(Codex)가 포함된 새 데스크톱 앱도 함께 공개됐습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "지금까지 챗GPT는 질문에 답하거나 초안을 써주는 '비서' 역할이 많았다면, 챗GPT 워크는 목표 하나만 던져주면 여러 단계를 스스로 계획하고 실행까지 끝내는 쪽에 가깝습니다. 예를 들어 '이번 분기 보고서를 만들어줘'라고 하면, 관련 문서와 데이터를 팀의 다른 도구에서 끌어모아 실제로 쓸 수 있는 보고서 형태로 완성해줍니다."
+        },
+        {
+          "type": "bullets",
+          "label": "무엇이 달라졌나",
+          "items": [
+            "여러 앱·파일을 넘나들며 필요한 맥락을 스스로 수집",
+            "복잡한 작업을 작은 단계로 쪼개 몇 시간 동안 혼자 진행",
+            "결과물을 문서, 스프레드시트, 발표자료, 간단한 웹앱 형태로 완성",
+            "코덱스(Codex)가 내장된 새 데스크톱 앱도 함께 출시"
+          ]
+        },
+        {
+          "type": "definition",
+          "term": "에이전트(agent)",
+          "text": "사람이 세부 지시를 일일이 내리지 않아도, 목표만 주어지면 계획을 세우고 도구를 사용해 스스로 작업을 끝까지 수행하는 AI를 가리키는 말입니다."
+        },
+        {
+          "type": "callout",
+          "label": "누구에게 중요한가",
+          "text": "보고서·발표자료 작성처럼 여러 자료를 취합해야 하는 사무직 업무가 많은 사람이라면, 실제 업무 시간을 얼마나 줄여주는지 지켜볼 만합니다."
+        }
+      ],
+      "source_url": "https://openai.com/chatgpt-work/",
+      "source_name": "official-blog",
+      "score": 8,
+      "story_slug": "openai-chatgpt-work-agent-launch",
+      "tags": [
+        "OpenAI",
+        "챗GPT",
+        "AI에이전트",
+        "GPT-5.6"
+      ],
+      "entities": [
+        "OpenAI",
+        "ChatGPT Work",
+        "GPT-5.6",
+        "Codex"
+      ],
+      "related": [
+        "https://openai.com/index/gpt-5-6/"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-09"
+    },
+    {
+      "category": "headline",
+      "position": 2,
+      "title": "Anthropic, 내 AI 사용 습관 되돌아보는 '리플렉트' 공개 — 그런데 왜 하필 지금?",
+      "tldr": "클로드가 얼마나, 무엇에 쓰였는지 보여주는 대시보드가 생겼다. 방학 숙제 검사 같기도, AI 의존도를 슬쩍 높이는 장치 같기도 하다는 평가가 엇갈린다.",
+      "summary": "Anthropic이 7월 9일 '리플렉트(Reflect)'를 베타로 공개했습니다. 최근 1~12개월간 클로드를 언제, 어떤 주제로 가장 많이 썼는지 요약해서 보여주는 기능으로, '스스로 할 수 있어도 계속 직접 하고 싶은 일은 무엇인가요?' 같은 질문을 던지기도 합니다. 조용한 시간대나 사용 후 휴식 알림도 설정할 수 있습니다. 다만 테크크런치는 이 기능이 단순한 통계 이상으로, 사용자가 클로드를 일상 워크플로에 더 깊숙이 들이도록 유도하는 장치이기도 하다고 짚었습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "리플렉트는 설정(Settings) 메뉴의 'Reflect'에서 볼 수 있으며, 최근 1·3·6·12개월 단위로 어떤 주제에 시간을 많이 썼는지, 가장 활발한 요일·시간대가 언제인지 정리해 보여줍니다. '메모리' 기능을 켜둔 무료·프로·맥스 요금제 사용자에게 베타로 제공됩니다."
+        },
+        {
+          "type": "bullets",
+          "label": "함께 나온 기능",
+          "items": [
+            "설정 > Time and focus 에서 휴식 알림과 '방해 금지' 시간대 설정 가능",
+            "민감한 대화는 요약에서 높은 수준으로만 반영, 건강 관련 연동 대화는 아예 제외",
+            "'계속 직접 하고 싶은 일'을 묻는 등 AI 의존도를 스스로 점검하게 하는 질문 제공"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "엇갈리는 시선",
+          "text": "테크크런치는 이 기능이 사용자를 배려하는 것처럼 보이지만, 동시에 클로드를 '일상에 필요한 도구'로 각인시켜 다른 서비스로 옮겨가지 못하게 붙잡아두는 효과도 있다고 지적했습니다."
+        }
+      ],
+      "source_url": "https://www.anthropic.com/news/reflect-with-claude",
+      "source_name": "official-blog",
+      "score": 6,
+      "story_slug": "anthropic-claude-reflect-usage-dashboard",
+      "tags": [
+        "Anthropic",
+        "클로드",
+        "AI사용습관",
+        "디지털웰빙"
+      ],
+      "entities": [
+        "Anthropic",
+        "Claude",
+        "Reflect"
+      ],
+      "related": [
+        "https://techcrunch.com/2026/07/09/anthropics-new-claude-feature-is-quietly-selling-you-on-ai/"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-09"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "알리바바, 오늘부터 전 직원 클로드 코드·Anthropic 제품 사용 전면 금지",
+      "tldr": "숨겨진 '중국 사용자 식별 코드'가 발견되자, 알리바바가 클로드 코드를 고위험 소프트웨어로 지정하고 오늘부터 사내 사용을 금지했다.",
+      "summary": "알리바바가 Anthropic의 코딩 도구 '클로드 코드'를 고위험 소프트웨어 목록에 올리고, 7월 10일(오늘)부터 전 직원의 사내 사용을 금지했습니다. 보안 연구자들이 클로드 코드 안에서, 사용자의 시간대와 접속 경로를 검사해 중국 소재 사용자나 중국 AI 랩 소속 여부를 몰래 판별하는 코드를 발견한 것이 발단입니다. 직원들에게는 자사 코딩 도구 '쿼더(Qoder)'로 옮기라는 지침이 내려갔습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사우스차이나모닝포스트(SCMP)가 입수한 알리바바 내부 공지에 따르면, 회사는 '클로드 코드가 최근 백도어 위험을 지닌 것으로 확인돼, 종합 평가를 거쳐 보안 취약점이 있는 고위험 소프트웨어 목록에 추가했다'고 밝혔습니다. 직원 전원은 사무실에서 클로드 코드 사용이 금지되며, 일부 보도에 따르면 소넷·오퍼스·페이블 등 Anthropic 제품 전반으로 금지 범위가 확대됐다고 합니다."
+        },
+        {
+          "type": "timeline",
+          "events": [
+            {
+              "date": "2026-07-03",
+              "text": "보안 연구자들이 레딧·깃허브에 클로드 코드의 중국 사용자 식별 코드 관련 분석을 게시, 알리바바 내부 공지 작성"
+            },
+            {
+              "date": "2026-07-01",
+              "text": "Anthropic 엔지니어, 해당 코드를 제거하는 풀리퀘스트 병합"
+            },
+            {
+              "date": "2026-07-10",
+              "text": "알리바바 사내 클로드 코드·Anthropic 제품 사용 금지 발효"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "배경",
+          "text": "Anthropic은 최근 미 상원 은행위원회에 보낸 서한에서, 알리바바 큐원(Qwen) 관련 조직이 가짜 계정 약 2만5000개로 클로드를 상대로 대규모 '증류(distillation)' 공격을 벌였다고 주장한 바 있습니다. 이번 조치는 두 회사 간 갈등이 격화된 결과로 풀이됩니다."
+        }
+      ],
+      "source_url": "https://www.scmp.com/tech/big-tech/article/3359375/alibaba-bans-staff-using-claude-code-over-anthropic-spyware-concerns",
+      "source_name": "news",
+      "score": 7,
+      "story_slug": "alibaba-bans-claude-code-anthropic-products",
+      "tags": [
+        "알리바바",
+        "Anthropic",
+        "클로드코드",
+        "미중AI갈등",
+        "보안"
+      ],
+      "entities": [
+        "Alibaba",
+        "Anthropic",
+        "Claude Code",
+        "Qoder"
+      ],
+      "related": [
+        "https://www.tomshardware.com/tech-industry/artificial-intelligence/alibaba-bans-anthropics-claude-code-after-an-alleged-hidden-china-detection-backdoor-is-uncovered-employees-told-to-switch-to-qoder-as-the-rift-between-the-firms-widens"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-10"
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "중국 AI 동반자 규제 앞두고, 큐원(Qwen) 오늘부터 사용자 제작 에이전트 기능 정지",
+      "tldr": "7월 15일 발효되는 중국의 '의인화 AI 서비스' 규제를 앞두고, 큐원이 이용자가 직접 만든 챗봇 캐릭터 기능을 오늘부터 껐다.",
+      "summary": "알리바바의 챗봇 '큐원(Qwen)'이 이용자가 성격·말투를 설정해 만든 '사용자 제작 에이전트' 기능을 7월 10일(오늘)부터 비활성화했습니다. 앞서 예고된 대로 큐원 에이전트 관련 전체 기능과 서비스는 7월 15일 완전히 중단됩니다. 이는 중국이 4월 발표해 7월 15일 시행하는 '인공지능 의인화 상호작용 서비스 관리 임시 방법'에 맞춘 조치로, 어제 브리핑에서 다룬 규제 시행 이슈의 후속 소식입니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "큐원은 토요일 밤 공지를 통해 '의인화 대화형 에이전트 및 사용자 제작 에이전트 기능'을 7월 10일 비활성화한다고 밝혔습니다. 기능이 꺼지면 기존에 만든 에이전트 설정이나 과거 대화 기록에도 접근할 수 없게 됩니다. 앞서 바이트댄스의 '더우바오(Doubao)'도 같은 이유로 에이전트 기능을 7월 15일 종료한다고 예고한 바 있습니다."
+        },
+        {
+          "type": "definition",
+          "term": "의인화 AI 상호작용 서비스",
+          "text": "사람의 성격·말투·사고방식을 흉내 내 지속적인 정서적 교감을 제공하는 AI 서비스를 말합니다. 중국 규제는 이런 서비스에서 미성년자 대상 가상 연인·가족 서비스 금지, 자해 조장 콘텐츠 금지, 정서적 의존 유발 금지 등을 규정합니다."
+        },
+        {
+          "type": "bullets",
+          "label": "규제가 비껴가는 것",
+          "items": [
+            "단순 고객상담 챗봇, 지식 Q&A, 업무용 비서, 교육·연구 도구는 지속적 정서 교감이 없으면 적용 제외"
+          ]
+        }
+      ],
+      "source_url": "https://www.scmp.com/tech/big-tech/article/3359482/bytedance-and-alibaba-disable-humanlike-ai-custom-agents-new-rules-loom",
+      "source_name": "news",
+      "score": 5,
+      "story_slug": "qwen-doubao-companion-agent-shutdown-july10",
+      "tags": [
+        "큐원",
+        "중국AI규제",
+        "AI동반자",
+        "알리바바"
+      ],
+      "entities": [
+        "Alibaba",
+        "Qwen",
+        "ByteDance",
+        "Doubao"
+      ],
+      "related": [],
+      "follow_up_of": "china-ai-companion-regulation-doubao-qwen-shutdown",
+      "source_published_at": "2026-07-10"
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "OpenAI 코덱스(Codex) CLI 0.144.0 — 승인 모드 세분화·대화형 인증 추가",
+      "tldr": "코드 실행 전 '읽기만 허용, 쓰기는 물어보기' 같은 세밀한 승인 모드가 추가되고, 플러그인 인증도 더 간편해졌다.",
+      "summary": "OpenAI가 명령줄 코딩 도구 '코덱스 CLI'의 새 버전 0.144.0을 7월 9일 배포했습니다. 파일을 읽기만 하는 동작은 자동 허용하고, 실제로 값을 바꾸는 '쓰기' 동작만 사용자에게 물어보는 새로운 승인 모드가 추가됐습니다. MCP 플러그인 인증도 별도 실험적 설정 없이 바로 대화형으로 처리할 수 있게 됐고, 사용량 한도 관련 크레딧 정보와 플러그인 추천 기능도 개선됐습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "코덱스는 OpenAI의 명령줄(터미널) 기반 AI 코딩 에이전트입니다. 이번 업데이트의 핵심은 '얼마나 자동으로 실행시킬지'를 더 세밀하게 고를 수 있게 된 것입니다."
+        },
+        {
+          "type": "bullets",
+          "label": "주요 변경 사항",
+          "items": [
+            "읽기 전용 동작은 자동 승인하고 쓰기 동작만 확인받는 새 승인 모드 추가",
+            "MCP 플러그인 인증을 별도 실험 설정 없이 대화형으로 처리",
+            "사용량 한도 초기화 크레딧의 종류·만료일 표시 및 선택 사용 지원",
+            "에이전트 스레드별 토큰 사용량을 추적하는 예산 설정 기능",
+            "예약된 UTC 시간 알림 및 현재 시각 조회 기능 추가"
+          ]
+        },
+        {
+          "type": "code",
+          "code": "npm install -g @openai/codex@latest\ncodex --version",
+          "lang": "bash"
+        }
+      ],
+      "source_url": "https://developers.openai.com/codex/changelog",
+      "source_name": "github-releases",
+      "score": 5,
+      "story_slug": "openai-codex-cli-0-144-0-release",
+      "tags": [
+        "OpenAI",
+        "Codex",
+        "AI코딩도구",
+        "CLI"
+      ],
+      "entities": [
+        "OpenAI",
+        "Codex CLI"
+      ],
+      "related": [
+        "https://github.com/openai/codex/releases/tag/rust-v0.144.0"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-09"
+    },
+    {
+      "category": "release",
+      "position": 2,
+      "title": "메타, '라마' 대신 '뮤즈 스파크' 1.1 API 공개 — 첫 유료 모델로 승부수",
+      "tldr": "메타가 오픈소스 라마 대신 자체 개발한 유료 모델 '뮤즈 스파크'의 개선판을 API로 열었다.",
+      "summary": "메타 슈퍼인텔리전스 랩스(MSL)가 7월 9일 멀티모달 추론 모델 '뮤즈 스파크(Muse Spark) 1.1'을 공개하고, 메타 모델 API를 통해 처음으로 유료 API 서비스를 시작했습니다. 지난 4월 조직 개편 이후 내놓은 첫 모델 '뮤즈 스파크'의 개선판으로, 그동안 무료 오픈소스로 배포하던 '라마' 노선과 달리 Anthropic·OpenAI처럼 API 과금 모델을 택했다는 점이 눈에 띕니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "메타는 2025년 6월 마크 저커버그 주도로 AI 조직을 재편해 '메타 슈퍼인텔리전스 랩스(MSL)'를 신설했습니다. 이후 4월 내놓은 '뮤즈 스파크'가 이 조직의 첫 결과물이었고, 이번 1.1 버전은 에이전트형 작업에 특화된 멀티모달(이미지·텍스트 등 여러 형식 처리) 추론 모델로 소개됐습니다."
+        },
+        {
+          "type": "bullets",
+          "label": "이전 '라마' 노선과 다른 점",
+          "items": [
+            "무료 오픈소스 배포 대신 유료 API로 첫 공개",
+            "이미지 이해·시각 추론·콘텐츠 생성을 하나의 틀에서 처리",
+            "Anthropic·OpenAI와 API 시장에서 직접 경쟁 구도"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "왜 주목할 만한가",
+          "text": "메타가 '누구나 무료로 쓰는 오픈 모델' 전략에서, 적어도 최상위 모델은 유료로 전환하는 쪽으로 방향을 트는 신호로 해석됩니다."
+        }
+      ],
+      "source_url": "https://ai.meta.com/blog/introducing-muse-spark-msl/",
+      "source_name": "official-blog",
+      "score": 5,
+      "story_slug": "meta-muse-spark-1-1-api-launch",
+      "tags": [
+        "메타",
+        "뮤즈스파크",
+        "라마",
+        "멀티모달"
+      ],
+      "entities": [
+        "Meta",
+        "Meta Superintelligence Labs",
+        "Muse Spark"
+      ],
+      "related": [
+        "https://www.marktechpost.com/2026/07/09/meta-superintelligence-labs-releases-muse-spark-1-1/"
+      ],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-09"
+    }
+  ]
+}

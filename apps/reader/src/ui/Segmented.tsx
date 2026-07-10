@@ -6,7 +6,7 @@ import { Type } from "./Type";
 type Option<T extends string> = { value: T; label: string };
 type Props<T extends string> = {
   value: T;
-  options: ReadonlyArray<Option<T>>;
+  options: readonly Option<T>[];
   onChange: (v: T) => void;
 };
 

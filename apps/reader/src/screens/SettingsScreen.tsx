@@ -12,7 +12,7 @@ import { Segmented } from "@/ui/Segmented";
 
 const APP_VERSION = "1.0.0";
 
-const THEME_OPTIONS: ReadonlyArray<{ value: ThemeMode; label: string }> = [
+const THEME_OPTIONS: readonly { value: ThemeMode; label: string }[] = [
   { value: "system", label: "시스템" },
   { value: "light", label: "라이트" },
   { value: "dark", label: "다크" },
