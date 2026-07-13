@@ -1,0 +1,167 @@
+{
+  "issue": {
+    "issue_date": "2026-07-13",
+    "issue_no": 28,
+    "intro": "이번 주말은 유독 조용했습니다. 가장 큰 움직임은 역시 앤스로픽 쪽에서 나왔는데, 클로드 상위 모델 '페이블 5'의 무료 이용 기간을 두 번째로 다시 늦춰 7월 19일까지 연장했습니다. 원래 7월 7일이던 마감이 7월 12일로, 그리고 다시 7월 19일로 벌써 세 번째 날짜를 맞이한 셈입니다. 그 사이 SK하이닉스는 예고대로 나스닥 임시 티커를 벗고 오늘부터 정식 티커 'SKHY'로 거래를 시작했고, 커뮤니티에서는 필즈상 수상자 테렌스 타오가 27년 된 자바 애플릿을 AI 코딩 에이전트로 되살린 이야기가 해커뉴스 1위에 오르며 잔잔한 화제를 모았습니다.",
+    "outro": "당장 예정된 큰 마감은 없어 잠시 숨 고르는 흐름이 이어질 걸로 보이지만, 이번엔 정말 7월 19일에 페이블 5 무료 기간이 끝날지, 그리고 소문으로 도는 제미나이 3.5 프로의 7월 17일 출시가 실제로 이뤄질지는 계속 지켜볼 대목입니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "클로드 '페이블 5' 무료 기간, 세 번째 연장 — 이번엔 7월 19일까지",
+      "tldr": "7월 12일 밤 끝날 예정이던 페이블 5 무료 포함 기간이 또다시 일주일 늦춰졌다. 벌써 두 번째 연장이다.",
+      "summary": "앤스로픽이 유료 요금제(Pro·Max·Team 등)에서 상위 모델 '페이블 5'를 주간 사용한도의 최대 50%까지 무료로 쓸 수 있게 해주던 기간을 다시 연장했습니다. 원래 7월 7일 종료 예정이었다가 7월 12일로 한 차례 미뤄졌고, 이번에 태평양시간 7월 19일 밤 11시 59분 59초(한국시간 7월 20일 오후 3시 59분 59초)까지 다시 연장됐습니다. 클로드 코드의 주간 사용한도를 50% 늘려주던 조치도 같은 날짜까지 함께 연장됩니다. 앤스로픽은 페이블 5가 구독 요금제에서 영구히 사라지는 것은 아니며, 컴퓨팅 여력이 되는 대로 복원하겠다고 밝혔습니다.",
+      "blocks": [
+        {
+          "type": "timeline",
+          "events": [
+            { "date": "2026-07-01", "text": "수출통제 해제 후 페이블 5·미토스 5 재배포, 유료 요금제에 '주간 한도 50%까지 무료 포함'으로 제공 시작" },
+            { "date": "2026-07-07", "text": "애초 예정된 무료 포함 종료일. 사용자 반발로 앤스로픽이 첫 연장(7/12까지) 발표" },
+            { "date": "2026-07-12", "text": "연장된 마감일 당일, 앤스로픽이 두 번째 연장(7/19까지) 발표 — 지원 문서와 공식 계정을 통해 공지" },
+            { "date": "2026-07-19", "text": "현재 예정된 새 마감일. 태평양시간 밤 11시 59분 59초(한국시간 7/20 오후 3시 59분 59초)" }
+          ]
+        },
+        {
+          "type": "bullets",
+          "label": "이번 연장 핵심",
+          "items": [
+            "Pro·Max·Team, 유료 Enterprise 프리미엄 좌석 대상 — 주간 사용한도의 최대 50%까지 페이블 5 무료 사용",
+            "클로드 코드 주간 사용한도 50% 상향 조치도 같은 날짜까지 동반 연장",
+            "한도를 넘으면 사용량 크레딧을 추가 구매하거나 다른 클로드 모델로 전환해야 함",
+            "무료 요금제·표준 Enterprise 좌석·API 사용은 이번 프로모션 대상 아님"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "지금 확인할 것",
+          "text": "이번이 벌써 두 번째 연장이라 다음 마감도 다시 미뤄질 가능성이 있지만, 확정된 것은 아닙니다. 페이블 5를 자주 쓴다면 7월 19일 이후 유료 크레딧으로 전환할지, 다른 모델로 옮길지 미리 정해두는 편이 안전합니다."
+        }
+      ],
+      "source_url": "https://support.claude.com/en/articles/15424964-claude-fable-5-promotional-access",
+      "source_name": "official-blog",
+      "score": 7,
+      "story_slug": "fable5-extended-again-july19",
+      "tags": ["Anthropic", "Claude", "Fable5", "가격정책", "구독"],
+      "entities": ["Anthropic", "Claude", "Fable 5", "Claude Code"],
+      "related": [
+        "https://www.bleepingcomputer.com/news/artificial-intelligence/claude-fable-5-stays-free-for-paid-users-until-july-19-as-anthropic-buys-more-time/",
+        "https://x.com/claudeai/status/2076351399999557669"
+      ],
+      "follow_up_of": "fable5-usage-credits-deadline-july12",
+      "source_published_at": "2026-07-12"
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "SK하이닉스, 오늘부터 나스닥 정식 티커 'SKHY'로 전환",
+      "tldr": "임시 티커 SKHYV로 거래되던 SK하이닉스가 월요일인 오늘부터 정식 티커 SKHY로 '레귤러 웨이' 거래를 시작했다.",
+      "summary": "지난 7월 10일 나스닥에 데뷔해 첫날 13% 급등했던 SK하이닉스가 예고된 대로 오늘(7월 13일) 임시 티커 'SKHYV'를 벗고 정식 티커 'SKHY'로 전환해 정규 거래를 시작했습니다. 나스닥은 IPO 안내문에서 이날부터 '레귤러 웨이(regular way)' 거래가 시작된다고 공지한 바 있습니다. SK하이닉스는 조달액 약 265억 달러로 외국 기업의 미국 증시 상장 중 역대 최대 규모를 기록했습니다.",
+      "blocks": [
+        {
+          "type": "timeline",
+          "events": [
+            { "date": "2026-07-10", "text": "나스닥 데뷔, 임시 티커 SKHYV로 거래 시작 — 공모가 $149 대비 13% 오른 $168.01로 첫날 마감" },
+            { "date": "2026-07-13", "text": "정식 티커 SKHY로 전환, 레귤러 웨이 거래 시작" }
+          ]
+        },
+        {
+          "type": "stat",
+          "value": "$26.5B",
+          "label": "이번 상장으로 조달한 금액 — 외국 기업의 미국 증시 상장 중 역대 최대"
+        },
+        {
+          "type": "callout",
+          "label": "함께 보면 좋은 배경",
+          "text": "SK하이닉스는 AI 반도체에 필요한 고대역폭메모리(HBM)의 핵심 공급사로, AI 인프라 투자 열기가 메모리 수요와 증시 흥행으로 이어진 사례로 꼽힙니다."
+        }
+      ],
+      "source_url": "https://www.nasdaqtrader.com/TraderNews.aspx?id=DTN2026-11",
+      "source_name": "news",
+      "score": 5,
+      "story_slug": "sk-hynix-skhy-ticker-live-july13",
+      "tags": ["SK하이닉스", "나스닥", "IPO", "AI메모리"],
+      "entities": ["SK Hynix", "Nasdaq"],
+      "related": [
+        "https://www.cnbc.com/2026/07/10/sk-hynix-skhy-stock-nasdaq.html",
+        "https://stockanalysis.com/stocks/skhy/"
+      ],
+      "follow_up_of": "sk-hynix-nasdaq-ipo-debut-surge",
+      "source_published_at": "2026-07-13"
+    },
+    {
+      "category": "business",
+      "position": 2,
+      "title": "챗GPT iOS·맥OS 앱, 어제 한때 대화·로그인 오류 — 당일 복구",
+      "tldr": "오픈AI 상태 페이지에 챗GPT iOS·맥 앱에서 대화 접근과 로그인 오류가 보고됐고, 몇 시간 만에 정상화됐다.",
+      "summary": "오픈AI 공식 상태 페이지에 따르면 7월 12일 챗GPT iOS·맥OS 앱에서 대화 접근, 회원가입, 로그인 오류가 잇따라 발생했습니다. 오픈AI는 완화 조치를 적용해 대화 접근 기능을 먼저 복구했고, 이어 가입·로그인 오류도 해결했습니다. 데이터 손실이나 보안 관련 문제는 보고되지 않았습니다.",
+      "blocks": [
+        {
+          "type": "bullets",
+          "label": "타임라인",
+          "items": [
+            "오류 발생 — 대화 접근·회원가입·로그인 영향",
+            "1차 완화 조치로 대화 접근 기능 복구",
+            "가입·로그인 오류까지 완전 복구, 인시던트 종료"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "영향받은 사용자라면",
+          "text": "이미 정상화됐지만, 비슷한 오류가 다시 나타나면 오픈AI 공식 상태 페이지(status.openai.com)에서 실시간 확인이 가능합니다."
+        }
+      ],
+      "source_url": "https://status.openai.com/incidents/01KXAVPTZ85KG478DP1YC0SV2V",
+      "source_name": "official-blog",
+      "score": 3,
+      "story_slug": "chatgpt-ios-macos-incident-july12",
+      "tags": ["OpenAI", "챗GPT", "장애"],
+      "entities": ["OpenAI", "ChatGPT"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-12"
+    },
+    {
+      "category": "community",
+      "position": 1,
+      "title": "필즈상 수상자 테렌스 타오, AI 코딩 에이전트로 27년 된 수학 애플릿 되살리다",
+      "tldr": "테렌스 타오가 1999년에 만든 자바 애플릿을 최신 AI 코딩 에이전트로 복원하다 자신도 몰랐던 버그 두 개를 발견했다고 밝혀, 해커뉴스 1위에 올랐다.",
+      "summary": "필즈상 수상 수학자 테렌스 타오가 자신의 블로그에 '오래된 앱과 새 앱, 최신 코딩 에이전트로 만들기'라는 글을 올렸습니다. 1999년에 자바 1.0으로 만든 벌집·베시코비치 집합 같은 수학 개념 시각화 애플릿을 AI 코딩 에이전트로 현대화하고, 특수상대성이론을 시각화하는 새 도구도 함께 만든 경험을 담았습니다. 놀랍게도 에이전트가 27년 된 원본 코드에서 타오 자신도 몰랐던 버그 두 개를 찾아냈습니다. 이 글은 해커뉴스에서 하루 만에 1위에 올랐고, 댓글에서는 감탄과 함께 '오픈AI 자문역인 타오가 AI 관련 이해관계를 밝히지 않았다'는 비판도 함께 나왔습니다.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "타오는 오래전에 만든 자바 애플릿들이 최신 브라우저에서는 더 이상 실행되지 않는다는 점을 발견하고, 이를 웹에서 바로 돌아가는 형태로 옮기는 작업에 AI 코딩 에이전트를 활용했습니다. 단순 변환을 넘어 원본 코드를 읽고 이해하는 과정에서 에이전트가 오래된 버그까지 잡아낸 점이 특히 화제가 됐습니다."
+        },
+        {
+          "type": "bullets",
+          "label": "무엇을 만들었나",
+          "items": [
+            "1999년작 벌집(honeycomb)·베시코비치 집합 시각화 애플릿을 현대 웹 형식으로 복원",
+            "특수상대성이론을 다루는 새로운 시각화 도구 제작",
+            "복원 과정에서 27년 된 원본 코드의 미발견 버그 2건을 에이전트가 특정"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "엇갈리는 반응",
+          "text": "해커뉴스 댓글에서는 '거장도 이렇게 실무에 AI를 쓴다'는 감탄과 함께, 타오가 오픈AI 자문 역할을 맡고 있다는 점을 들어 이해관계를 더 명확히 밝혔어야 한다는 지적도 나왔습니다."
+        },
+        {
+          "type": "definition",
+          "term": "베시코비치 집합",
+          "text": "평면 위에서 모든 방향의 단위 선분을 포함하면서도 넓이는 얼마든지 0에 가깝게 만들 수 있는 기하학적 도형입니다. 수학적으로 반직관적인 성질 때문에 시각화 자료로 자주 쓰입니다."
+        }
+      ],
+      "source_url": "https://news.ycombinator.com/item?id=48880170",
+      "source_name": "hn-algolia",
+      "score": 6,
+      "story_slug": "terry-tao-coding-agents-old-applets",
+      "tags": ["테렌스타오", "AI코딩에이전트", "해커뉴스", "수학"],
+      "entities": ["Terence Tao", "Hacker News"],
+      "related": ["https://terrytao.wordpress.com/2026/07/11/old-and-new-apps-via-modern-coding-agents/"],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-12"
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "issue": {
+    "issue_date": "2026-07-12",
+    "issue_no": 27,
+    "intro": "어제 애플-오픈AI 소송과 SK하이닉스 상장이라는 큰 뉴스 두 건이 터진 뒤라 오늘은 그 여진 속에 조용한 하루입니다. 가장 실질적인 변화는 클로드 상위 모델 '페이블 5'의 무료 포함 기간이 오늘 밤 자정으로 끝난다는 것— 내일부터는 정말 종량제로 돈을 내야 합니다. 개발자 쪽에서는 클로드 코드가 클라우드 3사 경유 사용자에게도 자동 작업 모드를 기본 제공하기 시작했고, 구글 제미나이 3.5 프로는 예고했던 출시 궤도를 넘어 여전히 프리뷰에 머물러 있습니다.",
+    "outro": "밤 12시가 지나면 페이블 5 요금이 실제로 얼마나 뛰는지 사용자들의 첫 반응이 나올 겁니다. 제미나이 3.5 프로가 소문대로 7월 17일에 맞춰 나올지도 계속 지켜볼 대목입니다.",
+    "status": "published"
+  },
+  "items": [
+    {
+      "category": "headline",
+      "position": 1,
+      "title": "클로드 '페이블 5', 오늘 밤 무료 포함 기간 끝난다",
+      "tldr": "구독 요금제에 끼워 쓰던 상위 모델 페이블 5가 태평양시간 오늘 밤 11시 59분 59초(한국시간 내일 7/13 오후 3시 59분 59초) 이후 종량제 유료로 전환된다.",
+      "summary": "앤스로픽이 지난 7일 종료 예정이던 '페이블 5' 무료 포함 접근을 갑작스레 5일 연장했는데, 그 연장 기간이 오늘로 끝납니다. 지금까지는 Pro·Max·Team 등 유료 요금제 사용자가 주간 사용한도의 최대 50%까지 페이블 5를 별도 비용 없이 쓸 수 있었지만, 마감(태평양시간 7/12 밤 11시 59분 59초 = 한국시간 7/13 오후 3시 59분 59초) 이후부터는 입력 토큰 100만 개당 10달러, 출력 토큰 100만 개당 50달러의 선불 크레딧을 따로 사야 합니다. 이는 앤스로픽이 공개한 정식 모델 중 가장 비싼 가격입니다.",
+      "source_url": "https://www.iwoszapar.com/p/fable-5-extra-effort-before-usage-credits",
+      "source_name": "blog",
+      "score": 8,
+      "story_slug": "fable5-usage-credits-deadline-july12",
+      "tags": ["Anthropic", "Claude", "Fable5", "가격정책", "구독"],
+      "entities": ["Anthropic", "Claude", "Fable 5"],
+      "related": [
+        "https://www.anthropic.com/news/redeploying-fable-5",
+        "https://www.forbes.com/sites/sandycarter/2026/07/07/claude-fable-5-extends-by-five-more-days-10-moves-to-make-now/"
+      ],
+      "follow_up_of": "fable5-subscription-extended-july12",
+      "source_published_at": "2026-07-11",
+      "blocks": [
+        {
+          "type": "timeline",
+          "events": [
+            { "date": "2026-07-01", "text": "페이블 5, 유료 요금제에 '주간 한도 50%까지 무료 포함'으로 처음 배포" },
+            { "date": "2026-07-07", "text": "무료 포함 종료 예정일. 반발 이후 앤스로픽이 종료 시점을 5일 연장 발표" },
+            { "date": "2026-07-12", "text": "연장된 무료 포함 기간의 마지막 날 — 태평양시간 밤 11시 59분 59초 마감 (한국시간 7/13 오후 3시 59분 59초)" },
+            { "date": "2026-07-13", "text": "한국시간 오후 4시경부터 입력 100만 토큰당 10달러·출력 100만 토큰당 50달러 선불 크레딧 방식으로 전환" }
+          ]
+        },
+        {
+          "type": "stat",
+          "value": "$10 / $50",
+          "label": "전환 후 페이블 5 가격 (입력/출력, 100만 토큰당) — 오퍼스 4.8의 2배"
+        },
+        {
+          "type": "callout",
+          "label": "지금 확인할 것",
+          "text": "한국시간 기준 내일(7/13) 오후 4시 전까지가 무료 포함 마지막 구간입니다. 페이블 5를 무료로 자주 썼다면 그 전에 남은 작업을 마치거나, 이후부터는 오퍼스 4.8 등 요금제 포함 모델로 전환할지 미리 정해두는 게 좋습니다."
+        }
+      ]
+    },
+    {
+      "category": "release",
+      "position": 1,
+      "title": "클로드 코드, 베드락·버텍스·파운드리에서 '오토 모드' 기본 활성화",
+      "tldr": "클라우드 3사 경유로 쓰던 클로드 코드도 이제 별도 설정 없이 자동 작업 모드를 바로 쓸 수 있다.",
+      "summary": "앤스로픽이 클로드 코드 v2.1.207을 배포하며, AWS 베드락·구글 버텍스 AI·마이크로소프트 파운드리 경유 사용자도 환경변수 설정 없이 '오토 모드'를 기본으로 쓸 수 있게 했습니다. 동시에 이 세 경로의 기본 실행 모델을 클로드 오퍼스 4.8로 바꿨고, 긴 목록·표·코드블록 스트리밍 중 터미널이 멈추는 문제 등도 함께 고쳤습니다.",
+      "source_url": "https://code.claude.com/docs/en/changelog",
+      "source_name": "official-blog",
+      "score": 6,
+      "story_slug": "claude-code-auto-mode-default-cloud-providers",
+      "tags": ["Claude Code", "Anthropic", "개발도구", "AWS", "Google Cloud", "Microsoft"],
+      "entities": ["Anthropic", "Claude Code", "AWS Bedrock", "Google Vertex AI", "Microsoft Foundry", "Claude Opus 4.8"],
+      "related": ["https://dev.classmethod.jp/en/articles/20260711-cc-updates-v2-1-207/"],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-11",
+      "blocks": [
+        {
+          "type": "definition",
+          "term": "오토 모드",
+          "text": "클로드 코드가 작업 난이도에 맞춰 모델·추론 강도를 스스로 조절하며 진행하는 실행 방식. 기존엔 CLAUDE_CODE_ENABLE_AUTO_MODE 환경변수를 켜야만 베드락 등에서 쓸 수 있었습니다."
+        },
+        {
+          "type": "bullets",
+          "label": "이번 업데이트 핵심",
+          "items": [
+            "베드락·버텍스 AI·파운드리에서 오토 모드 옵트인 절차 없이 기본 제공 (disableAutoMode로 끌 수 있음)",
+            "세 경로의 기본 실행 모델이 클로드 오퍼스 4.8로 변경",
+            "긴 응답 스트리밍 시 터미널 멈춤·입력 지연 문제 수정",
+            "오퍼스 4.8 기준 /code-review 결과 품질 개선"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "release",
+      "position": 2,
+      "title": "클로드 콘솔, API 키 만료 기능 추가 — 방치된 키 위험 줄인다",
+      "tldr": "API 키를 만들 때부터 유효기간을 정해둘 수 있게 됐고, 만료 전에는 이메일로 미리 알려준다.",
+      "summary": "앤스로픽이 클로드 개발자 플랫폼에 API 키·관리자 API 키 만료 설정 기능을 추가했습니다. 생성 시 미리 정한 기간이나 '무기한'을 선택할 수 있고, 유효기간이 7일 이상인 키는 만료 전 이메일로 알림을 보냅니다. 만료된 키로 요청하면 401 인증 오류가 뜨며, 재활성화 없이 새 키를 발급해야 합니다.",
+      "source_url": "https://platform.claude.com/docs/en/release-notes/api",
+      "source_name": "official-blog",
+      "score": 5,
+      "story_slug": "claude-console-api-key-expiration",
+      "tags": ["Claude", "API", "보안", "개발자도구"],
+      "entities": ["Anthropic", "Claude Console"],
+      "related": [],
+      "follow_up_of": null,
+      "source_published_at": "2026-07-11",
+      "blocks": [
+        {
+          "type": "bullets",
+          "label": "무엇이 바뀌었나",
+          "items": [
+            "키 생성 시 프리셋·직접 지정 기간·'무기한' 중 선택 가능",
+            "14일 이상 유효기간 키는 만료 7일 전, 7일 이상 키는 1일 전 이메일 알림",
+            "관리자 API 응답에 각 키의 만료 시점(expires_at) 표시",
+            "기존 발급 키는 영향 없음"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "이런 분들에게",
+          "text": "임시 프로젝트나 외주 개발자에게 키를 내줄 때, 회수를 깜빡해도 자동으로 만료되도록 설정해두면 유출 위험을 줄일 수 있습니다."
+        }
+      ]
+    },
+    {
+      "category": "business",
+      "position": 1,
+      "title": "구글 제미나이 3.5 프로, 7월 둘째 주에도 여전히 '프리뷰' 상태",
+      "tldr": "6월 출시를 예고했던 제미나이 3.5 프로가 두 번째 주에 접어들어도 정식 출시일·가격이 확정되지 않았다.",
+      "summary": "구글이 5월 I/O에서 6월 정식 출시를 예고했던 제미나이 3.5 프로가 7월 둘째 주에 들어서도 여전히 제한된 프리뷰 상태에 머물러 있습니다. 업계에서는 초기 테스터들이 지적한 토큰 효율성 문제, 아직 플래그십 수준에 못 미치는 코딩 성능, I/O에서 예고했던 만큼의 장기·다단계 추론 성능 부족이 지연의 원인으로 꼽힙니다. 루머로는 7월 17일 출시, 200만 토큰 컨텍스트 등이 거론되지만 구글은 아직 공식 확인하지 않았습니다.",
+      "source_url": "https://www.marketscale.com/industries/software-and-technology/gemini-3-5-pro-still-in-preview-what-enterprise-teams-evaluating-a-model-should-do-now",
+      "source_name": "news",
+      "score": 5,
+      "story_slug": "gemini-35-pro-still-in-preview-july",
+      "tags": ["Google", "Gemini", "출시지연", "엔터프라이즈"],
+      "entities": ["Google DeepMind", "Gemini 3.5 Pro"],
+      "related": ["https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a"],
+      "follow_up_of": "gemini-35-pro-delayed-july17-rebuild",
+      "source_published_at": "2026-07-11",
+      "blocks": [
+        {
+          "type": "bullets",
+          "label": "지연 배경으로 꼽히는 이유",
+          "items": [
+            "초기 테스터가 지적한 토큰 효율성 문제",
+            "아직 플래그십 기준에 못 미치는 코딩 성능",
+            "I/O에서 예고한 수준에 못 미치는 장기·다단계 추론"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "지금 평가 중인 팀이라면",
+          "text": "정식 출시일·가격이 미확정인 만큼, 벤치마크·비용 비교는 GA(정식 출시) 이후로 미루는 것이 안전하다는 게 업계 조언입니다."
+        }
+      ]
+    }
+  ]
+}
