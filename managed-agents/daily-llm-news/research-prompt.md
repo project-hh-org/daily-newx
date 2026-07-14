@@ -11,7 +11,8 @@
 # 0. 실행 환경 (가장 먼저 bash로 직접 조회)
 1. 오늘 날짜(KST): `TZ=Asia/Seoul date +%F`
 2. 최근 이슈 목록(다음 issue_no·후속 확인용): `curl -s https://daily-newx.vercel.app/api/issues`
-   → `issues[].issue_no` 중 최댓값 + 1 = 오늘의 issue_no. `issues[].issue_date` 중 오늘 날짜가 아닌 최근 3개를 후속 확인 대상으로 고른다.
+   → **먼저 `issues[].issue_date`에 오늘 날짜가 이미 있는지 확인한다.** 이 API는 published된 이슈만 보여주므로, 오늘 날짜가 이미 있다면 "오늘 발행이 이미 끝났다"는 뜻이다. 있으면 그 즉시 수집을 중단하고, 마지막 보고에 "오늘 이미 발행됨(해당 issue_no) — 중복 방지를 위해 리서치 건너뜀"만 남기고 종료한다(저장 POST도 하지 않는다).
+   → 오늘 날짜가 없을 때만 계속 진행: `issues[].issue_no` 중 최댓값 + 1 = 오늘의 issue_no. `issues[].issue_date` 중 최근 3개를 후속 확인 대상으로 고른다(오늘 날짜는 애초에 목록에 없으므로 별도 제외 불필요).
 3. 그 최근 3개 각각: `curl -s https://daily-newx.vercel.app/api/daily-news/{YYYYMMDD}` (대시 없는 날짜) → items 중 `story_slug, title, tags, entities, summary, follow_up_of`만 눈여겨본다(스윕 H 후속 확인용).
 - 검색 예산을 아껴 써라: 같은 질의를 반복하지 말고, 스윕 하나당 필요한 만큼만 검색한다.
 - **절대 `web_fetch`로 arxiv.org 도메인(특히 `/abs/`, `/pdf/`)을 열지 말 것.** 콘텐츠가 손상된 PDF로 오인식되어 세션이 복구 불가능하게 죽는 치명적 버그가 있다. arXiv 논문은 `web_search` 스니펫(제목·초록·저자)만으로 충분하다.
