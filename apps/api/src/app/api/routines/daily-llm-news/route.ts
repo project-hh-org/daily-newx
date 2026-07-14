@@ -22,6 +22,12 @@
 //   ANTHROPIC_API_KEY   Anthropic 콘솔에서 발급
 //   INGEST_TOKEN         기존과 동일(이 라우트 자체의 호출 인증 + 인제스트 인증 겸용)
 //   ANTHROPIC_MODEL      (선택) 기본 claude-sonnet-5
+//
+// 비용 안전장치(2026-07-14 추가) — 07-13·07-14 실행분이 캐싱 없이 회당 $11.78/$14.41이
+// 나온 것을 확인(웹서치 결과 누적으로 대화가 20만 토큰 초과, input_no_cache로 전액 정가 청구).
+// 그래서: ① 시스템 프롬프트+누적 대화에 prompt caching 브레이크포인트 ② web_search를
+// dynamic filtering 버전(20260209)으로 교체 ③ max_uses 30→20 ④ 누적 토큰 하드 컷오프
+// (MAX_CUMULATIVE_TOKENS)를 추가했다.
 
 import { NextResponse } from "next/server";
 import { verifyBearer } from "@/lib/auth";
@@ -35,6 +41,23 @@ export const maxDuration = 300; // Vercel Function 최대 실행시간(초). Pro
 const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_VERSION = "2023-06-01";
 const MAX_PAUSE_TURNS = 6; // pause_turn 반복 상한 (무한루프 방지)
+
+// 비용 안전장치 — 2026-07-13·07-14 실제 실행에서 회당 $11.78 / $14.41이 나왔다(캐싱 없이
+// 웹서치 결과가 누적되며 대화가 20만 토큰을 넘어감). 아래 값들로 토큰 사용을 줄이고,
+// 그래도 폭주하면 하드 컷오프로 중단한다.
+const WEB_SEARCH_MAX_USES = 20; // 30→20. 8개 스윕 평균 2.5회/스윕이면 충분.
+// 누적 토큰(입력+출력+캐시 전부 합산) 하드 한도 — 정상 실행 실측치의 2배 이상 여유.
+// 이 값을 넘으면 즉시 중단해 무한정 비용이 불어나는 것을 막는다.
+const MAX_CUMULATIVE_TOKENS = 700_000;
+
+function cacheControlLast<T extends { content: unknown }>(msg: T): T {
+  const content = msg.content;
+  if (!Array.isArray(content) || content.length === 0) return msg;
+  const copy = content.slice();
+  const lastIdx = copy.length - 1;
+  copy[lastIdx] = { ...(copy[lastIdx] as object), cache_control: { type: "ephemeral" } };
+  return { ...msg, content: copy };
+}
 
 function todayKst(): string {
   const fmt = new Intl.DateTimeFormat("en-CA", {
@@ -62,7 +85,7 @@ type AnthropicMessage = { role: "user" | "assistant"; content: unknown };
 async function callAnthropic(
   apiKey: string,
   model: string,
-  system: string,
+  systemBlocks: Array<{ type: "text"; text: string; cache_control?: { type: "ephemeral" } }>,
   messages: AnthropicMessage[],
 ): Promise<any> {
   const res = await fetch(ANTHROPIC_API_URL, {
@@ -75,9 +98,11 @@ async function callAnthropic(
     body: JSON.stringify({
       model,
       max_tokens: 16000,
-      system,
+      system: systemBlocks,
       messages,
-      tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 30 }],
+      // web_search_20260209: dynamic filtering — 검색 결과를 컨텍스트에 그대로 다 넣지 않고
+      // 코드로 걸러서 넣어 토큰 사용을 줄인다(Sonnet 5 지원). max_uses도 30→20으로 축소.
+      tools: [{ type: "web_search_20260209", name: "web_search", max_uses: WEB_SEARCH_MAX_USES }],
     }),
   });
   if (!res.ok) {
@@ -87,21 +112,48 @@ async function callAnthropic(
   return await res.json();
 }
 
+function usageTokenTotal(usage: Record<string, unknown> | undefined): number {
+  if (!usage) return 0;
+  const n = (v: unknown) => (typeof v === "number" ? v : 0);
+  return (
+    n(usage.input_tokens) +
+    n(usage.output_tokens) +
+    n(usage.cache_creation_input_tokens) +
+    n(usage.cache_read_input_tokens)
+  );
+}
+
 // pause_turn 이면 assistant 메시지를 그대로 돌려보내며 이어간다.
+// 시스템 프롬프트와 누적 대화 모두에 캐시 브레이크포인트를 걸어, 매 턴 반복 전송되는
+// 이전 내용은 정가가 아니라 캐시 읽기 단가(1/10)로 청구되게 한다.
 async function runUntilDone(
   apiKey: string,
   model: string,
   system: string,
   initialMessages: AnthropicMessage[],
-): Promise<{ text: string; turns: number }> {
+): Promise<{ text: string; turns: number; cumulativeTokens: number; searchRequests: number }> {
+  const systemBlocks = [
+    { type: "text" as const, text: system, cache_control: { type: "ephemeral" as const } },
+  ];
   const messages = [...initialMessages];
   let turns = 0;
+  let cumulativeTokens = 0;
+  let searchRequests = 0;
   let last: any;
   do {
-    last = await callAnthropic(apiKey, model, system, messages);
+    last = await callAnthropic(apiKey, model, systemBlocks, messages);
     turns += 1;
+    cumulativeTokens += usageTokenTotal(last.usage);
+    searchRequests += Number(last.usage?.server_tool_use?.web_search_requests ?? 0);
+
+    if (cumulativeTokens > MAX_CUMULATIVE_TOKENS) {
+      throw new Error(
+        `누적 토큰 하드 한도(${MAX_CUMULATIVE_TOKENS.toLocaleString()}) 초과(현재 ${cumulativeTokens.toLocaleString()}) — 비용 폭주 방지를 위해 중단. 프롬프트나 max_uses를 재검토하세요.`,
+      );
+    }
+
     if (last.stop_reason === "pause_turn") {
-      messages.push({ role: "assistant", content: last.content });
+      messages.push(cacheControlLast({ role: "assistant", content: last.content }));
     }
   } while (last.stop_reason === "pause_turn" && turns < MAX_PAUSE_TURNS);
 
@@ -117,7 +169,7 @@ async function runUntilDone(
   const textBlocks = (last.content as any[])
     .filter((b) => b.type === "text")
     .map((b) => b.text);
-  return { text: textBlocks.join("\n"), turns };
+  return { text: textBlocks.join("\n"), turns, cumulativeTokens, searchRequests };
 }
 
 // 최종 답변에서 JSON 객체만 뽑아 파싱 (설명 문구가 섞여도 방어적으로 처리).
@@ -202,7 +254,7 @@ export async function POST(req: Request): Promise<NextResponse> {
       recentIssues,
     });
 
-    const { text, turns } = await runUntilDone(apiKey, model, system, [
+    const { text, turns, cumulativeTokens, searchRequests } = await runUntilDone(apiKey, model, system, [
       {
         role: "user",
         content: "오늘자 브리핑을 만들어라. 지시된 출력 형식(JSON 객체 하나)만 답하라.",
@@ -238,6 +290,8 @@ export async function POST(req: Request): Promise<NextResponse> {
         items_count: parsed.items.length,
         tool_updates_count: parsed.tool_updates?.length ?? 0,
         anthropic_turns: turns,
+        anthropic_cumulative_tokens: cumulativeTokens,
+        anthropic_web_search_requests: searchRequests,
         daily_news: newsResult,
         tool_updates: toolUpdatesResult,
       },
