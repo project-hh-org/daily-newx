@@ -260,21 +260,25 @@ struct AccessoryRectangularBriefView: View {
   }
 
   var body: some View {
-    let content = VStack(alignment: .leading, spacing: 2) {
-      Text("오늘의 LLM 소식")
-        .font(.system(size: 11, weight: .semibold))
+    // 라벨 한 줄을 없애고 헤드라인에 공간을 몰아준다 — 위젯 이름은 잠금화면이 아이콘으로 이미 보여준다.
+    // lineLimit 을 늘려 사각형 위젯의 세로 공간을 최대한 텍스트로 채운다.
+    let content = VStack(alignment: .leading, spacing: 3) {
+      Text("$ today --llm")
+        .font(.system(size: 9, weight: .semibold, design: .monospaced))
+        .foregroundStyle(.secondary)
         .widgetAccentable()
       if let firstItem {
         Text(firstItem.title)
-          .font(.system(size: 12))
-          .lineLimit(2)
+          .font(.system(size: 13, weight: .semibold))
+          .lineLimit(3)
           .truncationMode(.tail)
       } else {
         Text("연결되면 자동으로 채워집니다")
-          .font(.system(size: 12))
+          .font(.system(size: 13))
           .foregroundStyle(.secondary)
       }
     }
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
     if let url = articleURL(firstItem?.id) {
       Link(destination: url) { content }
