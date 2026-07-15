@@ -15,7 +15,7 @@ function kstToday(): string {
   return new Date(Date.now() + KST_OFFSET_MS).toISOString().slice(0, 10);
 }
 
-type WidgetItem = { title: string; source_name: string };
+type WidgetItem = { id: string | null; title: string; source_name: string };
 type WidgetPayload = {
   issue_date: string;
   issue_no: number | null;
@@ -35,7 +35,8 @@ function pickLatestDate(list: readonly unknown[]): string | null {
 /**
  * GET /api/today — 위젯(iOS/Android)용 경량 페이로드.
  * 오늘 브리핑이 없으면 가장 최신 브리핑으로 폴백(is_today=false).
- * 상위 3건의 제목·출처만 담아 응답을 작게 유지한다.
+ * 상위 3건의 id·제목·출처만 담아 응답을 작게 유지한다.
+ * id 는 위젯에서 아티클 상세로 딥링크할 때 사용(dailynewx://article/{id}).
  */
 export async function GET(): Promise<Response> {
   try {
@@ -55,7 +56,7 @@ export async function GET(): Promise<Response> {
       .slice()
       .sort((a, b) => a.position - b.position)
       .slice(0, 3)
-      .map((it) => ({ title: it.title, source_name: it.source_name }));
+      .map((it) => ({ id: it.id, title: it.title, source_name: it.source_name }));
 
     const body: WidgetPayload = {
       issue_date: issueDate,
