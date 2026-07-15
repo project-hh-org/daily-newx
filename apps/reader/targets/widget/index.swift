@@ -9,6 +9,7 @@ private let cacheKey = "brief.cache.v1"
 
 struct Brief: Codable {
   struct Item: Codable {
+    let id: String?
     let title: String
     let source_name: String
   }
@@ -24,9 +25,9 @@ private let sampleBrief = Brief(
   issue_no: 24,
   is_today: true,
   items: [
-    .init(title: "오늘의 핵심을 3줄로 요약", source_name: "브리핑 LLM"),
-    .init(title: "모든 기사에 원문 출처 표기", source_name: "브리핑 LLM"),
-    .init(title: "광고 없이, 핵심만", source_name: "브리핑 LLM"),
+    .init(id: "sample-1", title: "오늘의 핵심을 3줄로 요약", source_name: "브리핑 LLM"),
+    .init(id: "sample-2", title: "모든 기사에 원문 출처 표기", source_name: "브리핑 LLM"),
+    .init(id: "sample-3", title: "광고 없이, 핵심만", source_name: "브리핑 LLM"),
   ]
 )
 
@@ -49,6 +50,20 @@ private func saveCache(_ brief: Brief) {
 private func loadCache() -> Brief? {
   guard let data = UserDefaults.standard.data(forKey: cacheKey) else { return nil }
   return try? JSONDecoder().decode(Brief.self, from: data)
+}
+
+/// 아티클 상세로 이동하는 딥링크. id 가 없으면(구버전 캐시 등) nil → 탭 시 앱만 열림.
+private func articleURL(_ id: String?) -> URL? {
+  guard let id, !id.isEmpty else { return nil }
+  let encoded = id.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? id
+  return URL(string: "dailynewx://article/\(encoded)")
+}
+
+private func isAccessoryFamily(_ family: WidgetFamily) -> Bool {
+  switch family {
+  case .accessoryCircular, .accessoryRectangular, .accessoryInline: return true
+  default: return false
+  }
 }
 
 struct Provider: TimelineProvider {
@@ -101,8 +116,10 @@ struct Provider: TimelineProvider {
   }
 }
 
-struct BriefWidgetView: View {
-  @Environment(\.widgetFamily) private var family
+// MARK: - 홈 화면 위젯 (small / medium / large)
+
+struct HomeScreenBriefView: View {
+  let family: WidgetFamily
   let entry: BriefEntry
 
   private var maxItems: Int {
@@ -144,22 +161,23 @@ struct BriefWidgetView: View {
       }
 
       if let brief, !brief.items.isEmpty {
-        ForEach(Array(brief.items.prefix(maxItems).enumerated()), id: \.offset) { index, item in
-          HStack(alignment: .top, spacing: 6) {
-            Text(String(format: "[%02d]", index + 1))
-              .font(.system(size: 10, design: .monospaced))
-              .foregroundStyle(.secondary)
-            VStack(alignment: .leading, spacing: 2) {
-              Text(item.title)
-                .font(.system(size: family == .systemSmall ? 12 : 13, weight: .semibold))
-                .lineLimit(family == .systemSmall ? 4 : 2)
-              if family == .systemLarge {
-                Text(item.source_name)
-                  .font(.system(size: 10))
-                  .foregroundStyle(.secondary)
-              }
+        let items = Array(brief.items.prefix(maxItems).enumerated())
+        if family == .systemLarge {
+          // 가장 큰 위젯: 리스트 영역을 아이템 수만큼 균등 분할해 남는 여백 없이 채운다.
+          // 각 행을 Link 로 감싸 탭하면 해당 아티클 상세로 바로 이동.
+          VStack(alignment: .leading, spacing: 0) {
+            ForEach(items, id: \.offset) { index, item in
+              itemRow(index: index, item: item, large: true)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             }
           }
+        } else {
+          VStack(alignment: .leading, spacing: 8) {
+            ForEach(items, id: \.offset) { index, item in
+              itemRow(index: index, item: item, large: false)
+            }
+          }
+          Spacer(minLength: 0)
         }
       } else {
         VStack(alignment: .leading, spacing: 4) {
@@ -169,14 +187,148 @@ struct BriefWidgetView: View {
             .font(.system(size: 10))
             .foregroundStyle(.secondary)
         }
+        Spacer(minLength: 0)
       }
-
-      Spacer(minLength: 0)
     }
     .padding(12)
+  }
+
+  @ViewBuilder
+  private func itemRow(index: Int, item: Brief.Item, large: Bool) -> some View {
+    let row = HStack(alignment: .top, spacing: 6) {
+      Text(String(format: "[%02d]", index + 1))
+        .font(.system(size: 10, design: .monospaced))
+        .foregroundStyle(.secondary)
+      VStack(alignment: .leading, spacing: 2) {
+        Text(item.title)
+          .font(.system(size: large ? 15 : (family == .systemSmall ? 12 : 13), weight: .semibold))
+          .lineLimit(large ? 3 : (family == .systemSmall ? 4 : 2))
+          .truncationMode(.tail)
+        if large {
+          Text(item.source_name)
+            .font(.system(size: 11))
+            .foregroundStyle(.secondary)
+            .lineLimit(1)
+            .truncationMode(.tail)
+        }
+      }
+    }
+
+    // 가장 큰 위젯의 각 행만 개별 탭 타겟(iOS 17+ 다중 Link) → 아티클 상세.
+    if large, let url = articleURL(item.id) {
+      Link(destination: url) { row }
+    } else {
+      row
+    }
+  }
+}
+
+// MARK: - 잠금화면 / StandBy 위젯 (accessory)
+
+struct AccessoryCircularBriefView: View {
+  let entry: BriefEntry
+
+  private var count: Int {
+    switch entry.state {
+    case .fresh(let b), .cached(let b): return b.items.count
+    case .empty: return 0
+    }
+  }
+
+  var body: some View {
+    ZStack {
+      AccessoryWidgetBackground()
+      VStack(spacing: 1) {
+        Text("LLM")
+          .font(.system(size: 9, weight: .bold, design: .monospaced))
+        Text("\(count)")
+          .font(.system(size: 15, weight: .bold))
+      }
+    }
+    .widgetAccentable()
+  }
+}
+
+struct AccessoryRectangularBriefView: View {
+  let entry: BriefEntry
+
+  private var firstItem: Brief.Item? {
+    switch entry.state {
+    case .fresh(let b), .cached(let b): return b.items.first
+    case .empty: return nil
+    }
+  }
+
+  var body: some View {
+    let content = VStack(alignment: .leading, spacing: 2) {
+      Text("오늘의 LLM 소식")
+        .font(.system(size: 11, weight: .semibold))
+        .widgetAccentable()
+      if let firstItem {
+        Text(firstItem.title)
+          .font(.system(size: 12))
+          .lineLimit(2)
+          .truncationMode(.tail)
+      } else {
+        Text("연결되면 자동으로 채워집니다")
+          .font(.system(size: 12))
+          .foregroundStyle(.secondary)
+      }
+    }
+
+    if let url = articleURL(firstItem?.id) {
+      Link(destination: url) { content }
+    } else {
+      content
+    }
+  }
+}
+
+struct AccessoryInlineBriefView: View {
+  let entry: BriefEntry
+
+  private var firstTitle: String? {
+    switch entry.state {
+    case .fresh(let b), .cached(let b): return b.items.first?.title
+    case .empty: return nil
+    }
+  }
+
+  var body: some View {
+    if let firstTitle {
+      Text("오늘의 LLM: \(firstTitle)")
+    } else {
+      Text("오늘의 LLM 소식")
+    }
+  }
+}
+
+// MARK: - 진입점
+
+struct BriefWidgetView: View {
+  @Environment(\.widgetFamily) private var family
+  let entry: BriefEntry
+
+  var body: some View {
+    Group {
+      switch family {
+      case .accessoryCircular:
+        AccessoryCircularBriefView(entry: entry)
+      case .accessoryRectangular:
+        AccessoryRectangularBriefView(entry: entry)
+      case .accessoryInline:
+        AccessoryInlineBriefView(entry: entry)
+      default:
+        HomeScreenBriefView(family: family, entry: entry)
+      }
+    }
     .widgetURL(appURL)
     .containerBackground(for: .widget) {
-      Color(UIColor.systemBackground)
+      if isAccessoryFamily(family) {
+        Color.clear
+      } else {
+        Color(UIColor.systemBackground)
+      }
     }
   }
 }
@@ -191,6 +343,9 @@ struct BriefWidget: Widget {
     }
     .configurationDisplayName("브리핑 LLM")
     .description("오늘의 LLM 소식 헤드라인")
-    .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .supportedFamilies([
+      .systemSmall, .systemMedium, .systemLarge,
+      .accessoryCircular, .accessoryRectangular, .accessoryInline,
+    ])
   }
 }
