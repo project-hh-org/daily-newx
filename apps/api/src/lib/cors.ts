@@ -7,8 +7,12 @@ export const CORS_HEADERS: Record<string, string> = {
   "access-control-allow-headers": "accept, content-type",
 };
 
-export function corsJson(body: unknown, status = 200): NextResponse {
-  return NextResponse.json(body, { status, headers: CORS_HEADERS });
+export function corsJson(
+  body: unknown,
+  status = 200,
+  extraHeaders: Record<string, string> = {},
+): NextResponse {
+  return NextResponse.json(body, { status, headers: { ...CORS_HEADERS, ...extraHeaders } });
 }
 
 export function corsPreflight(): Response {

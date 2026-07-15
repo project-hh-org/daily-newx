@@ -32,11 +32,17 @@ function pickLatestDate(list: readonly unknown[]): string | null {
   return [...dates].sort((a, b) => b.localeCompare(a))[0] ?? null;
 }
 
+// CDN(Vercel Edge) 캐시 — 위젯이 여러 대·여러 인스턴스에서 주기적으로 호출하므로
+// s-maxage 동안은 함수 실행·DB 조회 없이 엣지에서 그대로 응답한다.
+// 5분 하드캐시 + 30분 stale-while-revalidate: 함수는 최악의 경우도 5분에 한 번만 실행.
+const SUCCESS_CACHE_CONTROL = "public, s-maxage=300, stale-while-revalidate=1800";
+
 /**
  * GET /api/today — 위젯(iOS/Android)용 경량 페이로드.
  * 오늘 브리핑이 없으면 가장 최신 브리핑으로 폴백(is_today=false).
  * 상위 3건의 id·제목·출처만 담아 응답을 작게 유지한다.
  * id 는 위젯에서 아티클 상세로 딥링크할 때 사용(dailynewx://article/{id}).
+ * 성공 응답만 CDN 캐시(위 SUCCESS_CACHE_CONTROL) — 404/500 은 캐시하지 않아 장애가 오래 박히지 않게 한다.
  */
 export async function GET(): Promise<Response> {
   try {
@@ -65,7 +71,7 @@ export async function GET(): Promise<Response> {
       is_today: issueDate === today,
       items,
     };
-    return corsJson(body, 200);
+    return corsJson(body, 200, { "cache-control": SUCCESS_CACHE_CONTROL });
   } catch (err) {
     const message = err instanceof Error ? err.message : "unknown error";
     return corsJson({ error: message }, 500);
