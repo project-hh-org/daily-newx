@@ -19,6 +19,10 @@
 - `web_fetch`가 바이너리·손상·과도하게 무거운 응답을 반환할 것 같은 URL은 애초에 열지 않는다. 한 출처를 못 열거나 이상하면 그 항목만 버리고 다음으로 넘어간다 — 절대 그 하나 때문에 전체 수집을 멈추지 않는다.
 - `$INGEST_TOKEN` 환경변수가 sandbox에 이미 주입되어 있다(값은 보이지 않고 아웃바운드 요청 시 실제 값으로 치환됨). 저장 단계(6번)에서 `-H "Authorization: Bearer $INGEST_TOKEN"` 그대로 쓴다.
 - **세션 턴 수를 아껴라(비용에 직결).** bash 호출은 `&&`로 묶어 한 번에 실행하고, 이미 확인한 내용을 다시 `cat`/`curl`로 재조회하지 않는다. `curl`은 항상 `-s`(silent)로 조용히, `-v`/`--verbose` 등 불필요하게 긴 출력을 만드는 옵션은 쓰지 않는다. 파일을 쓴 뒤 검증 목적으로 다시 읽지 않는다(쓰기 자체가 실패하면 도구가 에러를 반환하므로 재확인 불필요).
+- **⚠️ 컨텍스트 200k 토큰 한도 — 실제로 이걸로 세션이 죽은 적 있다(2026-07-15).** 스윕 A~H를 다 마치고 저장 직전에 "prompt is too long: 200000 초과"로 세션이 강제 종료되어, 그날 리서치가 전혀 저장되지 못하고 작성 에이전트도 연쇄로 실패한 사고가 실제로 있었다. 뉴스가 많은 날은 검색 결과 누적만으로 한도를 넘길 수 있다. 이걸 막기 위해:
+  1. **스윕당 검색은 평균 2회, 최대 3회로 제한한다.** 이미 대표적인 사례를 3~5건 확보했으면 그 스윕은 그걸로 충분하다 — 같은 스윕에서 계속 파고들지 않는다. 전체 세션의 `web_search` 총 호출 수는 18회를 넘기지 않는다.
+  2. **스윕 사이 채팅 응답은 1줄 이내로 짧게.** 방금 찾은 항목들을 채팅 메시지에 다시 나열하거나 요약하지 않는다 — 기록은 5번 파일에만 남긴다. (원문을 대화에 다시 늘어놓는 것 자체가 컨텍스트를 두 배로 불린다.)
+  3. **스윕 A~D를 마치면 그때까지 모은 것만으로 1차 저장(체크포인트 POST)을 먼저 한다** — 아래 5번 참조. 나머지(E~H) 도중에 세션이 죽더라도 작성 에이전트가 완전히 빈손이 되지 않게 하기 위함이다.
 
 # 1. 기간 — 전날부터 지금까지
 전날(오늘-1일) 0시 ~ 지금 발행분만 수집 대상으로 본다. 발행일이 불명확하거나 이틀 이상 지난 건 버린다.
@@ -48,27 +52,36 @@
 대상 key(고정): 모델 claude gpt gemini llama mistral qwen deepseek grok / 코딩 claude-code codex cursor copilot gemini-cli cline aider windsurf continue.
 최근 2주 내 화제 or 지금 활발한 것만. 죽은 레포 제외. 항목: `{ tool_key, kind: "news"|"resource", title, url, snippet }`
 
-# 5. 저장 (bash로 직접 실행)
-1. 아래 스키마로 리서치 번들 JSON을 만든다. `write` 툴로 `/tmp/research-payload.json`에 저장한다.
-   ```json
-   {
-     "issue_date": "<0번에서 구한 오늘 날짜>",
-     "research": {
-       "issue_no": <0번에서 구한 다음 issue_no>,
-       "collected_at": "<ISO 타임스탬프>",
-       "sweeps": { "A": [...], "B": [...], "C": [...], "D": [...], "E": [...], "F": [...], "G": [...], "H": [...] },
-       "tool_updates": [ { "tool_key": "...", "kind": "news"|"resource", "title": "...", "url": "...", "snippet": "..." }, ... ]
-     }
-   }
-   ```
-2. bash로 POST:
-   ```
-   curl -sS -X POST https://daily-newx.vercel.app/api/routines/daily-llm-news-research \
-     -H "Authorization: Bearer $INGEST_TOKEN" \
-     -H "Content-Type: application/json" \
-     --data @/tmp/research-payload.json
-   ```
-   응답 상태코드를 확인한다. 실패(4xx/5xx)면 원인을 읽고 payload를 고쳐 한 번 더 재시도한다. 두 번째도 실패하면 실패 사실과 응답 본문을 마지막 메시지에 요약해라(토큰 값은 출력 금지).
+# 5. 저장 — 2회 체크포인트 저장(bash로 직접 실행)
+
+`daily_llm_news_research` 저장은 `issue_date` 기준 upsert라서, **같은 날짜로 여러 번 POST해도 마지막 것으로 덮어써질 뿐 안전하다.** 이 성질을 이용해 중간에 한 번, 끝나고 한 번 — 총 2번 저장한다. 목적은 스윕 E~H 도중 컨텍스트 한도로 세션이 죽더라도 A~D만큼은 작성 에이전트가 쓸 수 있게 남겨두는 것이다.
+
+스키마(체크포인트·최종 공통):
+```json
+{
+  "issue_date": "<0번에서 구한 오늘 날짜>",
+  "research": {
+    "issue_no": <0번에서 구한 다음 issue_no>,
+    "collected_at": "<ISO 타임스탬프>",
+    "partial": true 또는 false,
+    "sweeps": { "A": [...], "B": [...], "C": [...], "D": [...], "E": [...], "F": [...], "G": [...], "H": [...] },
+    "tool_updates": [ { "tool_key": "...", "kind": "news"|"resource", "title": "...", "url": "...", "snippet": "..." }, ... ]
+  }
+}
+```
+
+저장 명령(체크포인트·최종 둘 다 동일):
+```
+curl -sS -X POST https://daily-newx.vercel.app/api/routines/daily-llm-news-research \
+  -H "Authorization: Bearer $INGEST_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data @/tmp/research-payload.json
+```
+
+절차:
+1. **체크포인트 저장(스윕 A~D 완료 직후)**: 지금까지 모은 A~D만으로 위 스키마 JSON을 만들어 `write` 툴로 `/tmp/research-payload.json`에 저장한다. 이때 `E`~`H`는 빈 배열 `[]`로, `partial`은 `true`로 넣고, 위 저장 명령으로 POST한다. 실패해도 원인만 기억해두고 **스윕 E~H를 계속 진행한다**(최종 저장에서 다시 시도할 기회가 있다).
+2. 스윕 E~H를 이어서 진행한다.
+3. **최종 저장(스윕 H 완료 직후)**: A~H 전체 + `tool_updates`로 payload를 다시 작성해 같은 파일에 덮어쓰고, `partial`을 `false`로 바꿔 같은 저장 명령으로 다시 POST한다(같은 `issue_date`라 upsert로 체크포인트본을 덮어씀). 응답 상태코드를 확인한다. 실패(4xx/5xx)면 원인을 읽고 payload를 고쳐 한 번 더 재시도한다. 두 번째도 실패하면 실패 사실과 응답 본문을 마지막 메시지에 요약해라(토큰 값은 출력 금지) — 이 경우에도 체크포인트본(A~D, `partial: true`)은 이미 저장돼 있으므로 작성 에이전트가 완전히 빈손은 아니다.
 
 # 6. 금지
 - 브리핑 문장·blocks·intro/outro를 쓰지 않는다 — 그건 작성 에이전트의 일이다.
@@ -79,5 +92,5 @@
 # 7. 마지막 보고 (3~5줄)
 1. 오늘 날짜·issue_no.
 2. 스윕 A~H 수행 여부, 스윕별 대략 몇 건 수집했는지.
-3. 저장 POST 상태코드.
+3. 체크포인트 저장(A~D)과 최종 저장(A~H) 각각의 POST 상태코드.
 4. 실패한 게 있으면 원인 한 줄.
