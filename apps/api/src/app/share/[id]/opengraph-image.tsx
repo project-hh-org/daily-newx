@@ -47,18 +47,18 @@ export default async function OgImage({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#F2F0E9",
+          background: "#FAF9F7",
           padding: 72,
           fontFamily: "NotoSansKR",
         }}
       >
-        <div style={{ display: "flex", fontSize: 28, letterSpacing: 2, color: "#22324F", fontWeight: 700 }}>
+        <div style={{ display: "flex", fontSize: 28, letterSpacing: 2, color: "#1C1917", fontWeight: 700 }}>
           {kicker}
         </div>
-        <div style={{ display: "flex", fontSize: 64, lineHeight: 1.25, color: "#15161A", fontWeight: 700 }}>
+        <div style={{ display: "flex", fontSize: 64, lineHeight: 1.25, color: "#1C1917", fontWeight: 700 }}>
           {title}
         </div>
-        <div style={{ display: "flex", fontSize: 26, color: "#8B8A86" }}>브리핑 LLM · 매일 오전 9시</div>
+        <div style={{ display: "flex", fontSize: 26, color: "#6E6659" }}>브리핑 LLM · 매일 오전 9시</div>
       </div>
     ),
     {

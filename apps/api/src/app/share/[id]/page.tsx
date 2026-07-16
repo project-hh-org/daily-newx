@@ -101,8 +101,8 @@ export default async function SharePage({
         margin: "0 auto",
         padding: "48px 24px",
         fontFamily: "Pretendard, -apple-system, system-ui, sans-serif",
-        color: "#15161A",
-        background: "#F2F0E9",
+        color: "#1C1917",
+        background: "#FAF9F7",
         minHeight: "100vh",
       }}
     >
@@ -110,22 +110,22 @@ export default async function SharePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <p style={{ fontSize: 12, letterSpacing: 1.2, color: "#22324F", fontWeight: 700, margin: 0 }}>
+      <p style={{ fontSize: 12, letterSpacing: 1.2, color: "#1C1917", fontWeight: 700, margin: 0 }}>
         {kicker}
       </p>
-      <h1 style={{ fontSize: 30, lineHeight: 1.3, margin: "10px 0 0", color: "#15161A" }}>
+      <h1 style={{ fontSize: 30, lineHeight: 1.3, margin: "10px 0 0", color: "#1C1917" }}>
         {a.title}
       </h1>
       {a.tldr && a.tldr.trim().length > 0 && (
-        <p style={{ fontSize: 18, lineHeight: 1.6, color: "#34353A", marginTop: 12 }}>{a.tldr}</p>
+        <p style={{ fontSize: 18, lineHeight: 1.6, color: "#33302B", marginTop: 12 }}>{a.tldr}</p>
       )}
-      <p style={{ fontSize: 16, lineHeight: 1.7, color: "#34353A", marginTop: 16 }}>{a.summary}</p>
+      <p style={{ fontSize: 16, lineHeight: 1.7, color: "#33302B", marginTop: 16 }}>{a.summary}</p>
 
-      <p style={{ fontSize: 13, color: "#8B8A86", marginTop: 24 }}>
+      <p style={{ fontSize: 13, color: "#6E6659", marginTop: 24 }}>
         출처 · {a.source_name}
       </p>
 
-      <div style={{ borderTop: "2px solid #15161A", marginTop: 32, paddingTop: 20 }}>
+      <div style={{ borderTop: "2px solid #1C1917", marginTop: 32, paddingTop: 20 }}>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
           <AppOpenButton deepLink={`dailynewx://article/${a.id}`} installUrl={APP_INSTALL_URL} />
           <a
@@ -134,8 +134,8 @@ export default async function SharePage({
               display: "inline-block",
               padding: "10px 18px",
               background: "transparent",
-              color: "#22324F",
-              border: "1px solid #22324F",
+              color: "#1C1917",
+              border: "1px solid #E8E4DE",
               borderRadius: 8,
               textDecoration: "none",
               fontSize: 14,
@@ -145,7 +145,7 @@ export default async function SharePage({
             웹에서 읽기 →
           </a>
         </div>
-        <p style={{ fontSize: 12, color: "#8B8A86", marginTop: 16 }}>
+        <p style={{ fontSize: 12, color: "#6E6659", marginTop: 16 }}>
           daily-newx · 매일 오전 9시 발행
         </p>
       </div>

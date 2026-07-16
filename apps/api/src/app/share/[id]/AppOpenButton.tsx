@@ -27,8 +27,8 @@ export function AppOpenButton({ deepLink, installUrl }: Props): ReactElement {
       style={{
         display: "inline-block",
         padding: "10px 18px",
-        background: "#22324F",
-        color: "#F2F0E9",
+        background: "#1C1917",
+        color: "#FAF9F7",
         border: "none",
         borderRadius: 8,
         fontSize: 14,
