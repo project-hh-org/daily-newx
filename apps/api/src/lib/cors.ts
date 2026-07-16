@@ -4,7 +4,9 @@ import { NextResponse } from "next/server";
 export const CORS_HEADERS: Record<string, string> = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET, OPTIONS",
-  "access-control-allow-headers": "accept, content-type",
+  "access-control-allow-headers": "accept, content-type, if-none-match",
+  // 브라우저 fetch 가 조건부 재검증(If-None-Match)에 쓸 수 있도록 ETag 를 노출.
+  "access-control-expose-headers": "etag",
 };
 
 export function corsJson(
