@@ -4,6 +4,7 @@ import { TodayWidget, type WidgetData } from "./TodayWidget";
 
 const API_URL = "https://daily-newx.vercel.app/api/today";
 const CACHE_KEY = "widget.brief.cache.v1";
+const ETAG_KEY = "widget.brief.etag.v1";
 
 type ApiResponse = {
   issue_date: string;
@@ -22,10 +23,31 @@ async function readCache(): Promise<WidgetData> {
   }
 }
 
-/** 네트워크 → 실패 시 캐시 → 그것도 없으면 null. */
+async function readETag(): Promise<string | null> {
+  try {
+    return await AsyncStorage.getItem(ETAG_KEY);
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * 네트워크(조건부 GET) → 304(안 바뀜) 면 캐시를 그대로 최신으로 사용
+ * → 실패 시 캐시(stale) → 그것도 없으면 null.
+ */
 async function loadToday(): Promise<WidgetData> {
   try {
-    const res = await fetch(API_URL, { headers: { accept: "application/json" } });
+    const etag = await readETag();
+    const headers: Record<string, string> = { accept: "application/json" };
+    if (etag !== null) headers["if-none-match"] = etag;
+
+    const res = await fetch(API_URL, { headers });
+
+    if (res.status === 304) {
+      // 서버가 "안 바뀜"을 확인해준 것 — 캐시가 곧 최신이므로 stale 로 표시하지 않는다.
+      const cached = await readCache();
+      return cached === null ? null : { ...cached, stale: false };
+    }
     if (!res.ok) return await readCache();
     const json = (await res.json()) as ApiResponse;
     if (!Array.isArray(json.items)) return await readCache();
@@ -37,6 +59,10 @@ async function loadToday(): Promise<WidgetData> {
       stale: false,
     };
     await AsyncStorage.setItem(CACHE_KEY, JSON.stringify(data)).catch(() => undefined);
+    const newETag = res.headers.get("etag");
+    if (newETag !== null) {
+      await AsyncStorage.setItem(ETAG_KEY, newETag).catch(() => undefined);
+    }
     return data;
   } catch {
     return await readCache();
