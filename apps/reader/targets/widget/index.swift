@@ -6,6 +6,7 @@ import UIKit
 private let apiURL = URL(string: "https://daily-newx.vercel.app/api/today")!
 private let appURL = URL(string: "dailynewx://")!
 private let cacheKey = "brief.cache.v1"
+private let etagKey = "brief.etag.v1"
 
 struct Brief: Codable {
   struct Item: Codable {
@@ -52,6 +53,15 @@ private func loadCache() -> Brief? {
   return try? JSONDecoder().decode(Brief.self, from: data)
 }
 
+/// 서버가 준 ETag 저장/조회 — 다음 요청에 If-None-Match 로 실어 보내 "안 바뀌었으면 304" 를 받는다.
+private func saveETag(_ etag: String) {
+  UserDefaults.standard.set(etag, forKey: etagKey)
+}
+
+private func loadETag() -> String? {
+  UserDefaults.standard.string(forKey: etagKey)
+}
+
 /// 아티클 상세로 이동하는 딥링크. id 가 없으면(구버전 캐시 등) nil → 탭 시 앱만 열림.
 private func articleURL(_ id: String?) -> URL? {
   guard let id, !id.isEmpty else { return nil }
@@ -95,15 +105,35 @@ struct Provider: TimelineProvider {
     }
   }
 
-  /// 네트워크 → 실패 시 캐시 → 그것도 없으면 empty.
+  /// 네트워크(조건부 GET) → 304(안 바뀜) 면 캐시를 그대로 fresh 로 → 실패 시 캐시 → 그것도 없으면 empty.
   private func resolve(_ done: @escaping (BriefState) -> Void) {
     var req = URLRequest(url: apiURL)
     req.cachePolicy = .reloadIgnoringLocalCacheData
     req.timeoutInterval = 10
+    // 저장해둔 ETag 를 실어 보내 서버 데이터가 그대로면 바디 없는 304 만 받는다(대역폭·파싱 절감).
+    if let etag = loadETag() {
+      req.setValue(etag, forHTTPHeaderField: "If-None-Match")
+    }
     URLSession.shared.dataTask(with: req) { data, response, _ in
-      let ok = (response as? HTTPURLResponse).map { (200..<300).contains($0.statusCode) } ?? false
+      let http = response as? HTTPURLResponse
+      let status = http?.statusCode ?? 0
+
+      // 304 — 서버가 "안 바뀜"을 확인해준 것. 로컬 캐시가 곧 최신이므로 fresh 로 취급.
+      if status == 304 {
+        if let cached = loadCache() {
+          done(.fresh(cached))
+        } else {
+          done(.empty)
+        }
+        return
+      }
+
+      let ok = (200..<300).contains(status)
       if ok, let data, let brief = try? JSONDecoder().decode(Brief.self, from: data) {
         saveCache(brief)
+        if let newETag = http?.value(forHTTPHeaderField: "Etag") {
+          saveETag(newETag)
+        }
         done(.fresh(brief))
         return
       }
