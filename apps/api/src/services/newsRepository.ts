@@ -55,6 +55,23 @@ export async function upsertIssue(payload: IngestPayload): Promise<IngestResult>
   return { issue_date: issue.issue_date, items_upserted: count ?? rows.length };
 }
 
+// 발행 푸시를 이번 호출이 "처음" 보내는 것인지 원자적으로 확인·표시.
+// UPDATE ... WHERE notified_at IS NULL 은 Postgres 행 잠금으로 직렬화되므로,
+// 같은 issue_date에 대해 거의 동시에 여러 번 POST 되어도(재시도·디버깅 등)
+// 정확히 한 번만 true를 반환한다 — 2026-07-18 중복 푸시 사고(디버깅용 재게시가
+// 매번 실제 브로드캐스트를 발생시킴) 재발 방지용 가드.
+export async function tryClaimNotification(issueDate: string): Promise<boolean> {
+  const supabase = getServiceClient();
+  const { data, error } = await supabase
+    .from("daily_issues")
+    .update({ notified_at: new Date().toISOString() })
+    .eq("issue_date", issueDate)
+    .is("notified_at", null)
+    .select("issue_date");
+  if (error) throw new Error("notified_at 갱신 실패: " + error.message);
+  return (data ?? []).length > 0;
+}
+
 // 공개 읽기는 기본 published 만. 로컬 개발에서 draft 까지 보려면 PUBLIC_READ_DRAFTS=1.
 // service_role 은 RLS 를 우회하므로, 이 필터로 공개 노출을 직접 통제한다.
 function includeDrafts(): boolean {

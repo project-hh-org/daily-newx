@@ -28,9 +28,12 @@ create table if not exists public.daily_issues (
   outro        text,                             -- 하단 마무리 문단
   status       text not null default 'draft'     -- draft | published
                  check (status in ('draft', 'published')),
+  notified_at  timestamptz,                      -- 발행 푸시를 실제로 보낸 시각(1회만, null=아직 안 보냄)
   created_at   timestamptz not null default now(),
   updated_at   timestamptz not null default now()
 );
+-- 기존 테이블에도 안전하게 컬럼 추가(멱등) — 2026-07-18 중복 푸시 사고 이후 추가.
+alter table public.daily_issues add column if not exists notified_at timestamptz;
 
 -- ------------------------------------------------------------
 -- 2) 개별 항목 (기사 1건 = 1행)

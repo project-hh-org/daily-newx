@@ -129,10 +129,30 @@ export const dailyIssueSchema = z.object({
 export type DailyIssue = z.infer<typeof dailyIssueSchema>;
 
 // 인제스트 페이로드 ({ issue, items[] })
-export const ingestPayloadSchema = z.object({
-  issue: dailyIssueSchema,
-  items: z.array(dailyItemSchema),
-});
+// superRefine: 같은 payload 안에서 source_url이 중복되면 즉시 422로 거부.
+// (2026-07-18 사고 원인 — 같은 배치 안 두 항목이 같은 source_url을 가져 daily_items
+//  upsert가 "ON CONFLICT DO UPDATE command cannot affect row a second time"로 죽었음.
+//  Postgres raw 에러 대신 여기서 명확한 스키마 오류로 먼저 걸러낸다.)
+export const ingestPayloadSchema = z
+  .object({
+    issue: dailyIssueSchema,
+    items: z.array(dailyItemSchema),
+  })
+  .superRefine((val, ctx) => {
+    const seenAt = new Map<string, number>();
+    val.items.forEach((item, idx) => {
+      const prevIdx = seenAt.get(item.source_url);
+      if (prevIdx !== undefined) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: `같은 payload 안에서 source_url이 항목 ${prevIdx}과(와) 중복됩니다 (DB unique(issue_date, source_url) 위반 예방)`,
+          path: ["items", idx, "source_url"],
+        });
+      } else {
+        seenAt.set(item.source_url, idx);
+      }
+    });
+  });
 export type IngestPayload = z.infer<typeof ingestPayloadSchema>;
 
 export type IngestResult = {
