@@ -2,11 +2,11 @@ import type { ReactElement } from "react";
 import { todayCompact, isoToCompact, isBeforePublishTime, PUBLISH_HOUR } from "@/lib/date";
 import { useDailyIssue, useIssues } from "@/hooks/useDailyIssue";
 import { NotFoundError } from "@/services/dailyNewsApi";
-import { DailyScreen } from "@/screens/DailyScreen";
+import { IssueDeckScreen } from "@/screens/IssueDeckScreen";
 import { LoadingView, ErrorView, EmptyView } from "@/components/StateViews";
 
 /**
- * 첫 페이지 = 오늘 호.
+ * 첫 페이지 = 오늘 호 카드 덱.
  * - 오늘 호가 발행됐으면 그대로.
  * - 없으면: 정식 발행 시각 전이면 "발행 예정", 지났으면 "발행된 호 없음" 안내 + 가장 최신 호 노출.
  */
@@ -16,7 +16,7 @@ export function TodayScreen(): ReactElement {
   const issuesQuery = useIssues();
 
   // 1) 오늘 호 정상 → 그대로
-  if (todayQuery.data !== undefined) return <DailyScreen compactDate={today} />;
+  if (todayQuery.data !== undefined) return <IssueDeckScreen compactDate={today} />;
 
   const todayMissing = todayQuery.error instanceof NotFoundError;
 
@@ -43,5 +43,5 @@ export function TodayScreen(): ReactElement {
     : "오늘 발행된 브리핑이 아직 없어요. 우선 최신 브리핑을 보여드릴게요.";
 
   const latestCompact = isoToCompact(latest.issue_date) ?? today;
-  return <DailyScreen compactDate={latestCompact} notice={notice} />;
+  return <IssueDeckScreen compactDate={latestCompact} notice={notice} />;
 }

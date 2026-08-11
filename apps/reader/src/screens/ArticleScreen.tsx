@@ -1,5 +1,6 @@
 import type { ReactElement } from "react";
-import { Pressable, Share, Platform } from "react-native";
+import { Pressable, Share, Platform, View } from "react-native";
+import { useRouter } from "expo-router";
 import { useArticle } from "@/hooks/useDailyIssue";
 import { useBackOr } from "@/hooks/useBackOr";
 import { PUBLIC_WEB_BASE } from "@/services/config";
@@ -21,8 +22,11 @@ type Props = {
   id: string;
 };
 
+// 아카이브(세로 스크롤) 뷰 — 기본 화면은 카드 덱(ArticleDeckScreen)으로 전환됨. 이 화면은
+// /article/[id]/text 에서 계속 접근 가능하도록 코드를 유지한다(삭제하지 않기로 결정).
 export function ArticleScreen({ id }: Props): ReactElement {
   const backOr = useBackOr();
+  const router = useRouter();
   const query = useArticle(id);
 
   if (query.isPending) return <LoadingView />;
@@ -43,16 +47,29 @@ export function ArticleScreen({ id }: Props): ReactElement {
 
   return (
     <Screen>
-      <Pressable
-        onPress={() => backOr(compact !== undefined ? `/daily/${compact}` : "/")}
-        accessibilityRole="link"
-        accessibilityLabel="돌아가기"
-        hitSlop={8}
-      >
-        <Type variant="meta" tone="accentDim" style={{ cursor: "pointer" }}>
-          {`‹ ${isoToLabel(a.issue_date)} · ${categoryLabel(a.category)}`}
-        </Type>
-      </Pressable>
+      <View style={{ flexDirection: "row", alignItems: "baseline", justifyContent: "space-between" }}>
+        <Pressable
+          onPress={() => backOr(compact !== undefined ? `/daily/${compact}` : "/")}
+          accessibilityRole="link"
+          accessibilityLabel="돌아가기"
+          hitSlop={8}
+        >
+          <Type variant="meta" tone="accentDim" style={{ cursor: "pointer" }}>
+            {`‹ ${isoToLabel(a.issue_date)} · ${categoryLabel(a.category)}`}
+          </Type>
+        </Pressable>
+
+        <Pressable
+          onPress={() => router.push(`/article/${a.id}`)}
+          accessibilityRole="link"
+          accessibilityLabel="카드로 보기"
+          hitSlop={8}
+        >
+          <Type variant="label" tone="accent" style={{ cursor: "pointer" }}>
+            카드로 보기
+          </Type>
+        </Pressable>
+      </View>
 
       <Type variant="display" style={{ marginTop: space.lg }}>
         {a.title}

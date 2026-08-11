@@ -1,5 +1,6 @@
 import { useMemo, type ReactElement } from "react";
-import { View } from "react-native";
+import { View, Pressable } from "react-native";
+import { useRouter } from "expo-router";
 import type { DailyItem, NewsCategory } from "@/types/news.types";
 import { CATEGORY_ORDER } from "@/lib/categories";
 import { compactToIso, isoToLabel, PUBLISH_HOUR } from "@/lib/date";
@@ -37,8 +38,11 @@ function groupByCategory(items: readonly DailyItem[]): Record<NewsCategory, Dail
   return groups;
 }
 
+// 아카이브(목록) 뷰 — 기본 화면은 카드 덱(IssueDeckScreen)으로 전환됨. 이 화면은
+// /daily/[date]/list 에서 계속 접근 가능하도록 코드를 유지한다(삭제하지 않기로 결정).
 export function DailyScreen({ compactDate, notice }: Props): ReactElement {
   const c = useColors();
+  const router = useRouter();
   const activeCategory = useUiStore((s) => s.activeCategory);
   const query = useDailyIssue(compactDate);
 
@@ -80,6 +84,18 @@ export function DailyScreen({ compactDate, notice }: Props): ReactElement {
           </Type>
         </View>
       )}
+
+      <Pressable
+        onPress={() => router.push(`/daily/${compactDate}`)}
+        accessibilityRole="link"
+        accessibilityLabel="카드로 보기"
+        hitSlop={8}
+        style={{ marginBottom: space.md, alignSelf: "flex-start" }}
+      >
+        <Type variant="label" tone="accent" style={{ cursor: "pointer" }}>
+          ‹ 카드로 보기
+        </Type>
+      </Pressable>
 
       <IssueHeader issue={issue} />
 
