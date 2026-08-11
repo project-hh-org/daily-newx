@@ -15,7 +15,7 @@
     "icon": "./assets/icon.png",
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
       "bundleIdentifier": "com.projecthh.dailynewx",
       "appleTeamId": "ZAT9VDF4D4",
       "buildNumber": "1",
