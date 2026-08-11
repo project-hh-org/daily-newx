@@ -160,6 +160,16 @@ export type IngestResult = {
   items_upserted: number;
 };
 
+// 조회(SELECT) 응답 전용 — daily_items 행은 항상 DB가 채운 id를 갖는다.
+// (인제스트 입력에는 id가 없어 dailyItemSchema/IngestPayload에는 넣지 않는다 —
+//  2026-07-27: today/route.ts가 getIssue() 결과의 it.id에 접근하는데, getIssue()가
+//  실제로는 id를 select하면서도 반환 타입은 IngestPayload로 캐스팅돼 있어 타입에서만
+//  id가 안 보이던 기존 버그를 고치며 정리함.)
+export type DailyItemWithId = DailyItem & { id: string };
+export type PublishedIssuePayload = {
+  issue: DailyIssue;
+  items: DailyItemWithId[];
+};
 
 // ── 도구 카탈로그("내 도구" 화면의 선택 대상 목록, DB 이관) ──────────────
 // 2026-07-27: apps/reader/src/lib/toolCatalog.ts 하드코딩 배열을 DB로 이관.

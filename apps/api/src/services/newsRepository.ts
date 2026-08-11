@@ -1,5 +1,5 @@
 import { getServiceClient } from "@/services/supabase";
-import type { IngestPayload, IngestResult } from "@/types/news.types";
+import type { IngestPayload, IngestResult, PublishedIssuePayload } from "@/types/news.types";
 
 // 멱등 upsert: 호는 issue_date 기준, 항목은 (issue_date, source_url) 기준.
 export async function upsertIssue(payload: IngestPayload): Promise<IngestResult> {
@@ -78,7 +78,10 @@ function includeDrafts(): boolean {
   return process.env.PUBLIC_READ_DRAFTS === "1";
 }
 
-export async function getIssue(issueDate: string): Promise<IngestPayload | null> {
+// 조회 전용 — select 컬럼에 id가 실제로 포함되므로(daily_items PK) 반환 타입도
+// id를 포함하는 PublishedIssuePayload로 정확히 맞춘다(2026-07-27, 기존엔 IngestPayload로
+// 잘못 캐스팅돼 있어 today/route.ts가 it.id에 접근할 때 타입 에러가 났었음).
+export async function getIssue(issueDate: string): Promise<PublishedIssuePayload | null> {
   const supabase = getServiceClient();
   let issueQuery = supabase
     .from("daily_issues")
@@ -99,7 +102,7 @@ export async function getIssue(issueDate: string): Promise<IngestPayload | null>
     .order("position", { ascending: true });
   if (itemsError) throw new Error("daily_items 조회 실패: " + itemsError.message);
 
-  return { issue, items: items ?? [] } as IngestPayload;
+  return { issue, items: items ?? [] } as PublishedIssuePayload;
 }
 
 // 아티클/타임라인 공통 컬럼 — id 와 issue_date 포함(개별 행이 자기 날짜를 안다).
