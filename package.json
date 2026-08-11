@@ -20,6 +20,9 @@
   "engines": {
     "node": ">=20.19.0"
   },
+  "resolutions": {
+    "@types/node": "^24.0.0"
+  },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.108.2"

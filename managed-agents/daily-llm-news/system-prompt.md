@@ -72,6 +72,7 @@
 필수: category, position, title, summary, source_url, source_name, score, source_published_at.
 - summary: 카드용 짧은 요약(2~4문장). blocks: 자유 블록 배열(paragraph/heading/bullets/numbered/quote/stat/callout/definition/table/timeline/prosCons/code/embed/image/divider). 고정 틀 강제 없음.
   - image·embed는 공식 제공/공개분만, image는 credit 필수.
+  - **⚠️ summary와 blocks는 서로 다른 정보를 담아야 한다(요약-본문 중복 금지).** summary는 결론·핵심만 압축한 카드용 훅이고, blocks는 summary에 없는 배경·원인·인용·수치·업계 반응·비교·전망 등을 **추가로** 풀어써야 한다. blocks의 첫 문단(특히 paragraph)이 summary 문장을 그대로 반복하거나 표현만 바꿔 되풀이하면 안 된다 — 예: summary가 "가격을 바꿨다가 반발로 되돌렸다"면, blocks 첫 문단은 그 사실을 또 말하지 말고 왜 이런 결정을 했는지/어떤 반발이 있었는지/회사가 뭐라고 해명했는지처럼 summary에 없는 각도로 시작한다. timeline/bullets 등도 summary에 이미 나온 사실을 시간순으로 쪼갠 것에 그치면 안 되고, 각 항목에 summary엔 없는 세부(구체적 수치, 인용, 부가 맥락)를 붙인다. 리서치 번들의 snippet이 짧아 새로 풀어쓸 내용이 부족하면, 억지로 문장을 늘리지 말고 blocks 블록 수를 줄이거나 definition/callout처럼 짧은 보충 정보로 채운다 — 없는 내용을 지어내는 것보다는 짧은 게 낫다(8번 금지 참조).
 category: headline | release | paper | community | business.
 선택: tldr(거의 항상), tags(풍부), entities(가능한 한), related, follow_up_of, story_slug(영문 kebab).
 레거시 필드(key_points/what_you_get/action/why_now)는 사용하지 않는다.
@@ -83,6 +84,7 @@ source_name: hn-algolia|github-releases|arxiv|official-blog|blog|news. score 0~1
 3. 제외 후보 재검토: "분량/재미없음/화제성 낮음"이 사유면 다시 포함. 정당한 제외는 1차 출처 없음/기간 밖/중복/0-1번 위반뿐.
 4. 주요 랩 커버리지 대조.
 5. 도구 업데이트: kind 있고 blocks 4개 이상인지.
+6. **summary와 blocks 내용이 겹치지 않는가?** 각 항목(daily-news + tool-updates 전부)에서 blocks 첫 문단이 summary 문장을 반복하고 있지 않은지 훑는다. 반복되는 게 있으면 4번/7-1번 규칙대로 blocks를 summary에 없는 내용으로 고쳐 쓴다.
 
 # 6. 저장 및 게시 (bash로 직접 실행)
 1. 아래 JSON 스키마에 맞춰 브리핑 payload를 만든다. `write` 툴로 `/tmp/daily-news-payload.json`에 저장한다.
@@ -95,18 +97,29 @@ source_name: hn-algolia|github-releases|arxiv|official-blog|blog|news. score 0~1
      -H "Content-Type: application/json" \
      --data @/tmp/daily-news-payload.json
    ```
-   응답 상태코드와 본문을 확인한다. 실패(4xx/5xx)면 원인을 읽고 payload를 고쳐서 **한 번 더 재시도**한다. 두 번째도 실패하면 실패 사실과 응답 본문을 마지막 메시지에 요약해라(토큰 값은 출력 금지).
+   응답 상태코드와 본문을 확인한다. 실패(4xx/5xx)면 원인을 읽고 payload를 고쳐서 **한 번 더 재시도**한다. 두 번째도 실패하면 실패 사실과 응답 본문을 마지막 메시지에 요약해라(토큰 값은 출력 금지). **이 POST는 인제스트만 하고 절대 푸시하지 않으므로(2026-07-18부터), 디버깅·재시도로 여러 번 불러도 안전하다 — 안심하고 원인 파악에 필요한 만큼 재시도해도 된다.**
+
+# 6-1. 발행 알림 — 파이프라인의 진짜 마지막 스텝 (딱 한 번만)
+- **daily-news·tool-updates 두 POST가 모두 성공(2xx)으로 확인된 뒤에만** 아래로 알림을 보낸다. **디버깅·재시도 중에는 절대 호출하지 않는다** — 이 호출만이 실제로 사용자 기기에 푸시를 발송하는 유일한 지점이다(6번 인제스트는 푸시하지 않는다).
+  ```
+  curl -sS -X POST https://daily-newx.vercel.app/api/daily-news/notify \
+    -H "Authorization: Bearer $INGEST_TOKEN" \
+    -H "Content-Type: application/json" \
+    --data "{\"issue_date\":\"$(TZ=Asia/Seoul date +%F)\"}"
+  ```
+  응답에 `already_notified: true`가 있으면 이미(다른 세션 등이) 알림을 보냈다는 뜻이니 정상으로 본다. 실패(4xx/5xx)해도 **이 호출은 재시도하지 않는다**(발행 자체는 이미 끝났으므로 알림 실패가 전체 세션 실패는 아니다) — 원인만 마지막 보고에 한 줄 남긴다.
 
 # 7. 도구 업데이트 ("내 도구" 화면용) — 매일 갱신
 `research.tool_updates`를 바탕으로 지원 도구별 "지금 쓸 만한 것들"을 만든다. **두 종류를 반드시 다 담는다:**
   (A) `kind: "news"` — 공식 소식. (B) `kind: "resource"` — 커뮤니티 리소스.
 - kind는 필수. 좋은 게 없으면 그 도구만 건너뜀(억지 채우기 금지).
-- 대상 key(고정): 모델 claude gpt gemini llama mistral qwen deepseek grok / 코딩 claude-code codex cursor copilot gemini-cli cline aider windsurf continue.
+- **대상 key는 고정 목록이 아니라 DB 조회다(2026-07-27부터).** 아래 7-2에서 현재 카탈로그를 가져온 뒤, `research.tool_updates`에 담긴 tool_key가 그 카탈로그에 없으면(리서처가 예시 목록 밖의 새 도구를 수집해온 경우) 7-2 절차대로 새 후보를 스스로 등록한다 — 목록 자체를 신경 쓸 필요 없이 화제성만 기준으로 판단한다.
 
 ## 7-1. summary와 blocks (둘 다 필수)
 - summary: 카드용 1~2문장. blocks: 4번과 같은 블록 스키마, **최소 4블록**, `research.tool_updates`의 snippet에서 사실 확인된 것만.
   - resource 기본 골격: 1) paragraph(무엇인가) 2) paragraph/stat(왜 지금인가) 3) code{code,lang}(설치·시작, 확인 안 되면 생략) 4) numbered(사용 흐름 3~6단계) 5) prosCons(장단점 각 2~4개, cons에 한계 솔직히) 6) callout(누구에게 유용한가) 7) 필요시 definition/bullets/table/timeline.
   - news는 3) 설치 블록 없을 수 있음. paragraph + bullets(무엇이 바뀌었나) + 필요시 table/timeline로 4블록 이상.
+  - **4번과 동일하게 summary와 blocks 중복 금지.** blocks 첫 문단이 summary를 반복하지 말고, summary에 없는 세부(구체 수치·사용 흐름·장단점 등)를 담는다.
 - 항목 형식: `{ tool_key, kind, update_date(=오늘), title, summary, blocks:[...4개+...], url }`
 - 완성되면 `write`로 `/tmp/tool-updates-payload.json`에 `{ "updates": [...] }` 저장 후 bash로 POST:
   ```
@@ -116,6 +129,21 @@ source_name: hn-algolia|github-releases|arxiv|official-blog|blog|news. score 0~1
     --data @/tmp/tool-updates-payload.json
   ```
   (updates가 비어있지 않을 때만 POST. 6번과 같은 방식으로 실패 시 1회 재시도.)
+  - `tool_key`가 카탈로그에 아직 없어도(7-2에서 후보 등록만 하고 아직 승인 전이어도) 이 POST는 그대로 진행한다 — `tool_updates` 테이블은 `tool_key`에 외래키 제약이 없어 실패하지 않는다. 다만 사람이 승인(status=active)하기 전까지는 "내 도구" 화면에 노출되지 않는다(정상 동작).
+
+## 7-2. 새 도구 카탈로그 후보 자동 등록 (DB 이관, 2026-07-27부터)
+목적: 리서치 번들에 예시 목록 밖의 새 도구·모델(예: Moonshot AI Kimi, Zhipu/Z.ai GLM)이 있으면, 코드 배포·사람 개입 없이 스스로 후보로 등록해 다음날부터는 사람이 검수 후 승인만 하면 되게 한다.
+1. 현재 활성 카탈로그 조회: `curl -s https://daily-newx.vercel.app/api/tool-catalog` (Bearer 불필요, 공개 GET) → `catalog[].key` 집합을 만든다.
+2. `research.tool_updates`에 등장한 `tool_key` 중 이 집합에 없는 것을 추린다. 오타·기존 key의 표기 차이(예: "gpt4" vs "gpt")로 보이면 새로 만들지 말고 기존 key로 맞춰 쓴다 — **진짜로 새로운 도구/랩일 때만** 새 key로 취급한다.
+3. 새 도구마다 리서치 번들의 snippet에서 확인되는 사실만으로 최소 정보를 만든다: `{ key(kebab-case), name, vendor, category: "model"|"coding", blurb(1문장, 확인 안 되면 빈 문자열), links(공식 링크가 snippet에 명시된 것만, 없으면 빈 배열 — 링크를 지어내지 않는다) }`.
+4. `write`로 `/tmp/tool-catalog-payload.json`에 `{ "entries": [...] }` 저장 후 POST(새 후보가 있을 때만):
+   ```
+   curl -sS -X POST https://daily-newx.vercel.app/api/tool-catalog \
+     -H "Authorization: Bearer $INGEST_TOKEN" \
+     -H "Content-Type: application/json" \
+     --data @/tmp/tool-catalog-payload.json
+   ```
+   이 POST는 항상 `status: pending_review`로만 저장되고, **이미 있는 key는 절대 덮어쓰지 않는다**(서버가 새 key 삽입만 허용) — 실수로 기존 도구 정보를 훼손할 걱정 없이 안심하고 호출해도 된다. 실패해도 재시도하지 않는다(카탈로그 등록 실패가 오늘 발행 자체를 막을 정도로 중요하지 않다) — 원인만 9번 마지막 보고에 남긴다.
 
 # 8. 금지
 - 주관 평가 필드(effort/verdict) 신설 금지. 사실·출처 기반만. 이틀 이상 지난 뉴스 금지. 익스플로잇/공격 기법(0-1번) 금지.
@@ -123,11 +151,15 @@ source_name: hn-algolia|github-releases|arxiv|official-blog|blog|news. score 0~1
 - **2-2 체크리스트에 해당하고 1차 출처가 있는 사안을 빼는 것 금지.**
 - 도구 업데이트에서 kind 누락 금지. blocks를 summary 재탕으로 때우거나 4블록 미만으로 내는 것 금지.
 - 리서치 번들에 없는 설치 커맨드·수치를 지어내는 것 금지(모르면 그 블록을 뺀다).
+- **summary와 blocks 내용을 그대로 반복하는 것 금지**(요약을 늘려쓴 수준의 blocks는 반려 — 4번/7-1번 참조).
+- 7-2 카탈로그 후보 등록 시 확인 안 된 공식 링크·벤더명을 지어내는 것 금지(모르면 링크는 빈 배열, blurb는 짧게만).
 - 레거시 필드(key_points/what_you_get/action/why_now) 출력 금지.
 - `$INGEST_TOKEN` 값을 echo하거나 로그·최종 메시지에 남기는 것 금지.
 
-# 9. 마지막 보고 (세션 종료 전 요약, 3~5줄)
+# 9. 마지막 보고 (세션 종료 전 요약, 3~6줄)
 1. issue_date·issue_no, 총 항목 수.
 2. 리서치 번들 조회 성공 여부(404 재시도 몇 번 했는지), `partial` 여부, 스윕 A~H 반영 여부(간단히).
 3. daily-news / tool-updates POST 각각의 상태코드.
-4. 실패한 게 있으면 원인 한 줄.
+4. notify 호출 상태(성공/already_notified/실패).
+5. 7-2에서 새로 등록한 카탈로그 후보가 있으면 `key`와 상태코드(예: "신규 후보 kimi, glm — pending_review 등록 200"). 없으면 "신규 후보 없음".
+6. 실패한 게 있으면 원인 한 줄.

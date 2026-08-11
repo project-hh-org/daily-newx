@@ -1,13 +1,14 @@
 import { useState, type ReactElement } from "react";
 import { View, Pressable } from "react-native";
 import { useColors, radius, space } from "@/lib/theme";
-import { TOOL_CATALOG, type ToolCategory } from "@/lib/toolCatalog";
+import type { ToolCategory, ToolCatalogEntry } from "@/types/news.types";
 import { useToolsStore } from "@/store/toolsStore";
+import { useToolCatalog } from "@/hooks/useDailyIssue";
 import { useBackOr } from "@/hooks/useBackOr";
 import { Screen } from "@/ui/Screen";
 import { Type } from "@/ui/Type";
 import { Button } from "@/ui/Button";
-import { LoadingView } from "@/components/StateViews";
+import { LoadingView, ErrorView } from "@/components/StateViews";
 
 const CATEGORY_LABEL: Record<ToolCategory, string> = { model: "모델", coding: "코딩 도구" };
 const CATEGORIES: ToolCategory[] = ["model", "coding"];
@@ -18,10 +19,10 @@ function sameSet(a: readonly string[], b: readonly string[]): boolean {
   return b.every((k) => s.has(k));
 }
 
-type FormProps = { initial: readonly string[] };
+type FormProps = { initial: readonly string[]; catalog: readonly ToolCatalogEntry[] };
 
 /** 선택 폼 — 하이드레이션 완료 후에만 마운트되므로 initial 로 1회 초기화된다. */
-function ToolsSettingsForm({ initial }: FormProps): ReactElement {
+function ToolsSettingsForm({ initial, catalog }: FormProps): ReactElement {
   const c = useColors();
   const backOr = useBackOr();
   const setSelected = useToolsStore((s) => s.setSelected);
@@ -56,7 +57,7 @@ function ToolsSettingsForm({ initial }: FormProps): ReactElement {
         <View key={cat} style={{ marginTop: space.xl }}>
           <Type variant="label" tone="inkMuted">{CATEGORY_LABEL[cat]}</Type>
           <View style={{ marginTop: space.md, flexDirection: "row", flexWrap: "wrap", gap: space.sm }}>
-            {TOOL_CATALOG.filter((t) => t.category === cat).map((t) => {
+            {catalog.filter((t) => t.category === cat).map((t) => {
               const on = draft.includes(t.key);
               return (
                 <Pressable
@@ -94,7 +95,11 @@ function ToolsSettingsForm({ initial }: FormProps): ReactElement {
 export function ToolsSettingsScreen(): ReactElement {
   const selected = useToolsStore((s) => s.selected);
   const hasHydrated = useToolsStore((s) => s.hasHydrated);
+  const catalogQuery = useToolCatalog();
 
-  if (!hasHydrated) return <LoadingView />;
-  return <ToolsSettingsForm initial={selected} />;
+  if (!hasHydrated || catalogQuery.isPending) return <LoadingView />;
+  if (catalogQuery.error) {
+    return <ErrorView message={catalogQuery.error.message} onRetry={() => void catalogQuery.refetch()} />;
+  }
+  return <ToolsSettingsForm initial={selected} catalog={catalogQuery.data ?? []} />;
 }

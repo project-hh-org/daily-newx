@@ -2,9 +2,8 @@ import type { ReactElement } from "react";
 import { View, Linking } from "react-native";
 import { isoToLabel } from "@/lib/date";
 import { space } from "@/lib/theme";
-import { toolByKey } from "@/lib/toolCatalog";
 import { useToolsStore } from "@/store/toolsStore";
-import { useToolUpdates } from "@/hooks/useDailyIssue";
+import { useToolUpdates, useToolCatalog } from "@/hooks/useDailyIssue";
 import { useBackOr } from "@/hooks/useBackOr";
 import { Screen } from "@/ui/Screen";
 import { Type } from "@/ui/Type";
@@ -21,6 +20,7 @@ export function ToolUpdateScreen({ id }: Props): ReactElement {
   const selected = useToolsStore((s) => s.selected);
   const hasHydrated = useToolsStore((s) => s.hasHydrated);
   const query = useToolUpdates(selected);
+  const catalogQuery = useToolCatalog();
 
   if (!hasHydrated || query.isPending) return <LoadingView />;
   if (query.error)
@@ -44,7 +44,8 @@ export function ToolUpdateScreen({ id }: Props): ReactElement {
     );
   }
 
-  const toolName = toolByKey(update.tool_key)?.name ?? update.tool_key;
+  const toolName =
+    (catalogQuery.data ?? []).find((t) => t.key === update.tool_key)?.name ?? update.tool_key;
 
   return (
     <Screen>

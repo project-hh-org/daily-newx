@@ -8,6 +8,7 @@ import {
   facetsResponseSchema,
   storyResponseSchema,
   toolUpdatesResponseSchema,
+  toolCatalogResponseSchema,
   type DailyPayload,
   type Article,
   type TimelineResponse,
@@ -17,6 +18,7 @@ import {
   type FacetKind,
   type StoryResponse,
   type ToolUpdate,
+  type ToolCatalogEntry,
 } from "@/types/news.types";
 
 export class NotFoundError extends Error {
@@ -90,4 +92,13 @@ export async function fetchToolUpdates(toolKeys: readonly string[]): Promise<Too
   const qs = encodeURIComponent(toolKeys.join(","));
   const json = await getJson(`${API_BASE}/api/tool-updates?tools=${qs}`, "tool-updates");
   return toolUpdatesResponseSchema.parse(json).updates;
+}
+
+/**
+ * 도구 카탈로그(활성분만) — "내 도구" 설정/피드 화면의 선택 대상 목록.
+ * 2026-07-27부터 DB 조회로 전환(이전엔 lib/toolCatalog.ts 하드코딩 배열).
+ */
+export async function fetchToolCatalog(): Promise<ToolCatalogEntry[]> {
+  const json = await getJson(`${API_BASE}/api/tool-catalog`, "tool-catalog");
+  return toolCatalogResponseSchema.parse(json).catalog;
 }

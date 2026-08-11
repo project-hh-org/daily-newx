@@ -3,9 +3,8 @@ import { View, Pressable, Linking } from "react-native";
 import { useRouter } from "expo-router";
 import { isoToLabel } from "@/lib/date";
 import { useColors, space } from "@/lib/theme";
-import { toolByKey } from "@/lib/toolCatalog";
 import { useToolsStore } from "@/store/toolsStore";
-import { useToolUpdates } from "@/hooks/useDailyIssue";
+import { useToolUpdates, useToolCatalog } from "@/hooks/useDailyIssue";
 import { useBackOr } from "@/hooks/useBackOr";
 import { Screen } from "@/ui/Screen";
 import { Type } from "@/ui/Type";
@@ -25,6 +24,7 @@ export function MyToolsScreen(): ReactElement {
   const selected = useToolsStore((s) => s.selected);
   const hasHydrated = useToolsStore((s) => s.hasHydrated);
   const query = useToolUpdates(selected);
+  const catalogQuery = useToolCatalog();
   const [tab, setTab] = useState<"news" | "resource">("news");
 
   // 미설정 → 설정(도구 선택)으로 유도.
@@ -34,6 +34,9 @@ export function MyToolsScreen(): ReactElement {
 
   if (!hasHydrated || selected.length === 0) return <LoadingView />;
 
+  // 카탈로그가 아직 안 왔으면(로딩/에러) key를 그대로 표시 — 목록 자체는 이 화면의 핵심이
+  // 아니라 이름 표시일 뿐이라 폴백으로 화면을 막지 않는다.
+  const nameByKey = new Map((catalogQuery.data ?? []).map((t) => [t.key, t.name]));
   const updates = query.data ?? [];
   const news = updates.filter((u) => u.kind === "news");
   const resources = updates.filter((u) => u.kind === "resource");
@@ -63,7 +66,7 @@ export function MyToolsScreen(): ReactElement {
       </View>
       <View style={{ marginTop: space.sm, flexDirection: "row", flexWrap: "wrap", gap: space.sm }}>
         {selected.map((k) => (
-          <Tag key={k} label={toolByKey(k)?.name ?? k} tone="outline" />
+          <Tag key={k} label={nameByKey.get(k) ?? k} tone="outline" />
         ))}
       </View>
 
@@ -107,7 +110,7 @@ export function MyToolsScreen(): ReactElement {
                   }}
                 >
                   <Type variant="label" tone="accentDim">
-                    {`${toolByKey(u.tool_key)?.name ?? u.tool_key} · ${isoToLabel(u.update_date)}`}
+                    {`${nameByKey.get(u.tool_key) ?? u.tool_key} · ${isoToLabel(u.update_date)}`}
                   </Type>
                   <Type variant="h2" style={{ marginTop: 4 }}>{u.title}</Type>
                   <Type variant="body" tone="inkSoft" numberOfLines={3} style={{ marginTop: 4 }}>

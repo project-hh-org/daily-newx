@@ -146,6 +146,30 @@ export const toolUpdatesResponseSchema = z.object({
   updates: z.array(toolUpdateSchema),
 });
 
+// 도구 카탈로그 — "내 도구" 화면의 선택 대상 목록(2026-07-27부터 DB 조회, apps/api 와 동기화).
+export const toolCategorySchema = z.enum(["model", "coding"]);
+export type ToolCategory = z.infer<typeof toolCategorySchema>;
+
+export const toolLinkSchema = z.object({
+  label: z.string().min(1),
+  url: z.string().url(),
+});
+export type ToolLink = z.infer<typeof toolLinkSchema>;
+
+export const toolCatalogEntrySchema = z.object({
+  key: z.string().min(1),
+  name: z.string().min(1),
+  vendor: z.string().min(1),
+  category: toolCategorySchema,
+  blurb: z.string().default(""),
+  links: z.array(toolLinkSchema).default([]),
+});
+export type ToolCatalogEntry = z.infer<typeof toolCatalogEntrySchema>;
+
+export const toolCatalogResponseSchema = z.object({
+  catalog: z.array(toolCatalogEntrySchema),
+});
+
 // 단건/타임라인 항목 — id 보장 + 자기 issue_date 포함.
 export const articleSchema = dailyItemSchema.extend({
   id: z.string().min(1),

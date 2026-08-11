@@ -7,6 +7,7 @@ import {
   fetchFacets,
   fetchStory,
   fetchToolUpdates,
+  fetchToolCatalog,
   NotFoundError,
 } from "@/services/dailyNewsApi";
 import type {
@@ -19,6 +20,7 @@ import type {
   FacetKind,
   StoryResponse,
   ToolUpdate,
+  ToolCatalogEntry,
 } from "@/types/news.types";
 
 const retryNon404 = (failureCount: number, error: Error): boolean => {
@@ -89,6 +91,19 @@ export function useToolUpdates(
     queryFn: () => fetchToolUpdates(sorted),
     enabled: sorted.length > 0,
     staleTime: 5 * 60 * 1000,
+    retry: retryNon404,
+  });
+}
+
+/**
+ * 도구 카탈로그(활성분) — "내 도구" 설정/피드 화면의 선택 대상 목록.
+ * 자주 안 바뀌는 데이터라 staleTime을 길게(1시간) 잡는다.
+ */
+export function useToolCatalog(): UseQueryResult<ToolCatalogEntry[], Error> {
+  return useQuery<ToolCatalogEntry[], Error>({
+    queryKey: ["tool-catalog"] as const,
+    queryFn: () => fetchToolCatalog(),
+    staleTime: 60 * 60 * 1000,
     retry: retryNon404,
   });
 }

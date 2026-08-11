@@ -160,6 +160,47 @@ export type IngestResult = {
   items_upserted: number;
 };
 
+
+// ── 도구 카탈로그("내 도구" 화면의 선택 대상 목록, DB 이관) ──────────────
+// 2026-07-27: apps/reader/src/lib/toolCatalog.ts 하드코딩 배열을 DB로 이관.
+// 목적: 루틴이 목록에 없는 새 도구(예: Moonshot AI Kimi)를 발견하면 코드 배포 없이
+// 스스로 후보(status=pending_review)로 등록할 수 있게 하기 위함.
+export const toolCategorySchema = z.enum(["model", "coding"]);
+export type ToolCategory = z.infer<typeof toolCategorySchema>;
+
+export const toolLinkSchema = z.object({
+  label: z.string().min(1),
+  url: httpUrlSchema,
+});
+export type ToolLink = z.infer<typeof toolLinkSchema>;
+
+// 루틴이 새 도구를 등록할 때 쓰는 입력 — 최소 정보만 필수(blurb/links는 비어도 됨,
+// 실제 화면 노출을 위한 큐레이션은 사람이 status를 active로 바꾸며 채운다).
+export const toolCatalogEntryIngestSchema = z.object({
+  key: z.string().min(1).regex(/^[a-z0-9-]+$/, "key는 소문자·숫자·하이픈만(kebab-case)"),
+  name: z.string().min(1),
+  vendor: z.string().min(1),
+  category: toolCategorySchema,
+  blurb: z.string().default(""),
+  links: z.array(toolLinkSchema).default([]),
+});
+export type ToolCatalogEntry = z.infer<typeof toolCatalogEntryIngestSchema>;
+
+export const toolCatalogIngestSchema = z.object({
+  entries: z.array(toolCatalogEntryIngestSchema),
+});
+
+// 공개 읽기 응답(활성 카탈로그만) — status는 내부 필드라 응답엔 포함하지 않는다.
+export const toolCatalogPublicEntrySchema = z.object({
+  key: z.string().min(1),
+  name: z.string().min(1),
+  vendor: z.string().min(1),
+  category: toolCategorySchema,
+  blurb: z.string().default(""),
+  links: z.array(toolLinkSchema).default([]),
+});
+export type ToolCatalogPublicEntry = z.infer<typeof toolCatalogPublicEntrySchema>;
+
 // ── 도구 업데이트(루틴이 매일 생성) ──────────────────────────
 export const toolUpdateIngestSchema = z.object({
   tool_key: z.string().min(1),
