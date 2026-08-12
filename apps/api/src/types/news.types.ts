@@ -200,10 +200,27 @@ export const toolCatalogIngestSchema = z.object({
   entries: z.array(toolCatalogEntryIngestSchema),
 });
 
+// 버전 이력 1건 — tool_catalog_versions 테이블(2026-08-12 신설)에 upsert된다.
+// key가 카탈로그에 없으면 FK 위반으로 조용히 건너뛴다(repository 참조). 이미 있는
+// (key, full_name) 조합이면 last_seen만 갱신되고 first_seen은 그대로 보존된다 —
+// 한 브랜드가 여러 버전을 동시에 낼 수 있어(예: Claude Opus 5 / Claude Sonnet 5)
+// full_name을 단일 필드가 아니라 이력 테이블로 관리한다.
+export const toolCatalogFullNameUpdateSchema = z.object({
+  key: z.string().min(1).regex(/^[a-z0-9-]+$/, "key는 소문자·숫자·하이픈만(kebab-case)"),
+  full_name: z.string().min(1),
+});
+export type ToolCatalogFullNameUpdate = z.infer<typeof toolCatalogFullNameUpdateSchema>;
+
+export const toolCatalogFullNameUpdatesIngestSchema = z.object({
+  updates: z.array(toolCatalogFullNameUpdateSchema),
+});
+
 // 공개 읽기 응답(활성 카탈로그만) — status는 내부 필드라 응답엔 포함하지 않는다.
+// full_names: tool_catalog_versions을 last_seen 내림차순으로 모은 배열(모르면 빈 배열).
 export const toolCatalogPublicEntrySchema = z.object({
   key: z.string().min(1),
   name: z.string().min(1),
+  full_names: z.array(z.string().min(1)).default([]),
   vendor: z.string().min(1),
   category: toolCategorySchema,
   blurb: z.string().default(""),

@@ -159,6 +159,9 @@ export type ToolLink = z.infer<typeof toolLinkSchema>;
 export const toolCatalogEntrySchema = z.object({
   key: z.string().min(1),
   name: z.string().min(1),
+  // 버전 포함 표기들(예: ["GPT-5.6"], ["Claude Opus 5","Claude Sonnet 5"]) — 최신순.
+  // apps/api news.types.ts와 동일(2026-08-12, tool_catalog_versions 이력 테이블 기반).
+  full_names: z.array(z.string().min(1)).default([]),
   vendor: z.string().min(1),
   category: toolCategorySchema,
   blurb: z.string().default(""),

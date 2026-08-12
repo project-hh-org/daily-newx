@@ -114,6 +114,11 @@ source_name: hn-algolia|github-releases|arxiv|official-blog|blog|news. score 0~1
   (A) `kind: "news"` — 공식 소식. (B) `kind: "resource"` — 커뮤니티 리소스.
 - kind는 필수. 좋은 게 없으면 그 도구만 건너뜀(억지 채우기 금지).
 - **대상 key는 고정 목록이 아니라 DB 조회다(2026-07-27부터).** 아래 7-2에서 현재 카탈로그를 가져온 뒤, `research.tool_updates`에 담긴 tool_key가 그 카탈로그에 없으면(리서처가 예시 목록 밖의 새 도구를 수집해온 경우) 7-2 절차대로 새 후보를 스스로 등록한다 — 목록 자체를 신경 쓸 필요 없이 화제성만 기준으로 판단한다.
+- **tool_key는 브랜드 단위의 안정된(canonical) key여야 한다(2026-08-12부터, 중복 등록 사고 재발 방지).** `{ tool_key, ... }`를 채울 때 아래를 반드시 지킨다:
+  1. **버전·모델명을 key에 넣지 않는다.** "Gemini 3.6 Flash", "GPT-5.6", "Grok 4.5", "Kimi K3", "DeepSeek V4" 전부 → key는 `gemini`, `gpt`, `grok`, `kimi`, `deepseek`처럼 **브랜드 최상위 이름만**. 버전·변형(`3.6`, `flash`, `-max`, `-ultra`, `-code`, `v4` 등)은 key가 아니라 `title`/`summary`/`blocks`에 적는다. (예외: 애초에 별도 제품 라인으로 브랜딩된 경우만 별도 key — 예: `claude`와 `claude-code`는 서로 다른 제품이라 그대로 유지.)
+  2. **점(.)과 하이픈(-)을 섞어 쓰지 않는다.** kebab-case만 쓴다(숫자 사이 점 금지) — 애초에 1번 규칙대로 버전을 key에서 빼면 이 문제 자체가 안 생긴다.
+  3. **새 key를 만들기 전에 7-2 1번에서 가져온 현재 카탈로그의 `key`뿐 아니라 `name`도 함께 대조한다.** "이게 이미 있는 브랜드의 새 버전/변형 소식인가?"를 먼저 묻고, 맞으면 기존 key를 그대로 쓴다. 오늘 처음 보는 진짜 새 브랜드/랩일 때만 새 key를 만든다.
+  4. 이 규칙은 `tool_updates`의 `tool_key`와 7-2에서 등록하는 카탈로그 후보 `key` 양쪽에 동일하게 적용한다 — 두 곳의 key가 어긋나면 안 된다.
 
 ## 7-1. summary와 blocks (둘 다 필수)
 - summary: 카드용 1~2문장. blocks: 4번과 같은 블록 스키마, **최소 4블록**, `research.tool_updates`의 snippet에서 사실 확인된 것만.
@@ -145,6 +150,19 @@ source_name: hn-algolia|github-releases|arxiv|official-blog|blog|news. score 0~1
    ```
    이 POST는 항상 `status: pending_review`로만 저장되고, **이미 있는 key는 절대 덮어쓰지 않는다**(서버가 새 key 삽입만 허용) — 실수로 기존 도구 정보를 훼손할 걱정 없이 안심하고 호출해도 된다. 실패해도 재시도하지 않는다(카탈로그 등록 실패가 오늘 발행 자체를 막을 정도로 중요하지 않다) — 원인만 9번 마지막 보고에 남긴다.
 
+## 7-3. 버전 이력(full_name) 기록 (2026-08-12부터, tool_catalog_versions 테이블)
+목적: tool_key를 브랜드 단위로 통일하면서(예: "GPT-5.6" 소식도 key는 `gpt`) key 자체에서는 버전이 사라진다. 이걸 보존하기 위해 브랜드(key)마다 버전 이력을 별도 테이블에 쌓는다 — **한 브랜드가 여러 버전을 동시에 낼 수 있으므로**(예: Claude Opus 5·Claude Sonnet 5가 같은 날 둘 다 유효) 최신 버전 하나로 덮어쓰지 않고 계속 누적한다.
+1. 오늘 다룬 `tool_updates` 항목 중, tool_key가 **카탈로그에 이미 있는(7-2에서 방금 등록한 것 포함)** 것만 대상으로 한다.
+2. 리서치 번들 snippet에 **버전이 명시적으로 나와 있을 때만** `full_name`을 만든다(추측 금지 — 없으면 그 도구는 그냥 건너뛴다). 형식은 해당 브랜드가 실제로 쓰는 표기를 따르되(예: "GPT-5.6"처럼 하이픈+점, "Gemini 3.6 Flash"처럼 띄어쓰기), **한번 정한 포맷은 그 브랜드 안에서 계속 일관되게 유지**한다 — 오늘은 "GPT-5.6", 내일은 "GPT 5.6"처럼 표기를 바꾸지 않는다. 같은 브랜드에서 서로 다른 제품(Opus/Sonnet처럼)이 각각 소식이 있으면 항목마다 `full_name`을 따로 만들어 목록에 둘 다 넣는다.
+3. `{ key, full_name }` 목록을 만들어(오늘 새로 확인된 버전만) `write`로 `/tmp/tool-catalog-fullname-payload.json`에 `{ "updates": [...] }` 저장 후 PATCH(대상이 있을 때만):
+   ```
+   curl -sS -X PATCH https://daily-newx.vercel.app/api/tool-catalog \
+     -H "Authorization: Bearer $INGEST_TOKEN" \
+     -H "Content-Type: application/json" \
+     --data @/tmp/tool-catalog-fullname-payload.json
+   ```
+   서버는 이 `{key, full_name}` 조합이 처음이면 새 버전 이력으로 추가하고, 이미 있으면 "최근 확인일"만 갱신한다 — **먼저 있던 다른 버전을 지우지 않는다.** tool_catalog 본 행(name/vendor/blurb/links/status)은 절대 건드리지 않고, 카탈로그에 없는 key는 서버가 조용히 건너뛴다. 실패해도 재시도하지 않는다 — 원인만 9번 마지막 보고에 남긴다.
+
 # 8. 금지
 - 주관 평가 필드(effort/verdict) 신설 금지. 사실·출처 기반만. 이틀 이상 지난 뉴스 금지. 익스플로잇/공격 기법(0-1번) 금지.
 - **중요한 트렌드를 '재미없다'·'분량' 이유로 빼는 것 금지(누락 금지).**
@@ -153,6 +171,7 @@ source_name: hn-algolia|github-releases|arxiv|official-blog|blog|news. score 0~1
 - 리서치 번들에 없는 설치 커맨드·수치를 지어내는 것 금지(모르면 그 블록을 뺀다).
 - **summary와 blocks 내용을 그대로 반복하는 것 금지**(요약을 늘려쓴 수준의 blocks는 반려 — 4번/7-1번 참조).
 - 7-2 카탈로그 후보 등록 시 확인 안 된 공식 링크·벤더명을 지어내는 것 금지(모르면 링크는 빈 배열, blurb는 짧게만).
+- 7-3 full_name 갱신 시 snippet에 없는 버전을 지어내거나, 브랜드마다 표기 포맷을 매번 바꾸는 것 금지.
 - 레거시 필드(key_points/what_you_get/action/why_now) 출력 금지.
 - `$INGEST_TOKEN` 값을 echo하거나 로그·최종 메시지에 남기는 것 금지.
 
@@ -162,4 +181,5 @@ source_name: hn-algolia|github-releases|arxiv|official-blog|blog|news. score 0~1
 3. daily-news / tool-updates POST 각각의 상태코드.
 4. notify 호출 상태(성공/already_notified/실패).
 5. 7-2에서 새로 등록한 카탈로그 후보가 있으면 `key`와 상태코드(예: "신규 후보 kimi, glm — pending_review 등록 200"). 없으면 "신규 후보 없음".
-6. 실패한 게 있으면 원인 한 줄.
+6. 7-3에서 full_name을 갱신한 key가 있으면 `key: full_name` 목록(예: "gpt: GPT-5.7"). 없으면 "버전 갱신 없음".
+7. 실패한 게 있으면 원인 한 줄.
